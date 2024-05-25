@@ -5,7 +5,7 @@
     "name": "Banners",
     "description": "Extremely customizable banners",
     "authors": ["Craluminum2413", "Moby_"],
-    "version": "0.22.0",
+    "version": "0.23.0",
     "dependencies": {
         "game": "1.19.0"
     }
