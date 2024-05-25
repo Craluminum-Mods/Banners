@@ -1,0 +1,32 @@
+[
+    {
+        "op": "addmerge",
+        "path": "/attributes/bannerLiquid",
+        "value": {
+            "type": "Bleach",
+            "litresPerUse": 0.1
+        },
+        "file": "game:itemtypes/liquid/waterportion.json",
+        "side": "Server"
+    },
+    {
+        "op": "addmerge",
+        "path": "/attributes/bannerLiquid",
+        "value": {
+            "type": "Bleach",
+            "litresPerUse": 0.1
+        },
+        "file": "game:itemtypes/liquid/saltwaterportion.json",
+        "side": "Server"
+    },
+    {
+        "op": "addmerge",
+        "path": "/attributes/bannerLiquid",
+        "value": {
+            "type": "Bleach",
+            "litresPerUse": 0.1
+        },
+        "file": "game:itemtypes/liquid/boilingwaterportion.json",
+        "side": "Server"
+    }
+]

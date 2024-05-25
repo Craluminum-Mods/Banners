@@ -1,0 +1,14 @@
+[
+    {
+        "ingredientPattern": "___,BX_,_O_",
+        "output": { "attributes": { "bannerpattern": { "type": "bri" } }, "type": "item", "code": "flags:bannerpattern" },
+        "ingredients": {
+            "O": { "type": "item", "code": "flags:bannerpattern-blank" },
+            "B": { "type": "item", "code": "game:burnedbrick-*" },
+            "X": { "type": "item", "code": "game:stick" }
+        },
+        "shapeless": true,
+        "width": 3,
+        "height": 3
+    }
+]

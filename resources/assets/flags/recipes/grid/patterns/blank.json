@@ -1,0 +1,25 @@
+[
+    {
+        "ingredientPattern": "PC",
+        "ingredients": {
+            "P": { "type": "item", "code": "game:paper-parchment" },
+            "C": { "type": "item", "code": "game:flaxtwine" }
+        },
+        "width": 1,
+        "height": 2,
+        "recipeGroup": 1,
+        "output": { "type": "item", "code": "flags:bannerpattern-blank" }
+    },
+    {
+        "ingredientPattern": "PC",
+        "ingredients": {
+            "P": { "type": "item", "code": "game:paper-parchment" },
+            "C": { "type": "item", "code": "game:sewingkit", "returnedStack": { "type": "item", "code": "game:sewingkit" } }
+        },
+        "width": 1,
+        "height": 2,
+        "requiresTrait": "clothier",
+        "recipeGroup": 2,
+        "output": { "type": "item", "code": "flags:bannerpattern-blank" }
+    }
+]

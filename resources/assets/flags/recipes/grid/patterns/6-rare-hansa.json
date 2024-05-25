@@ -1,0 +1,168 @@
+[
+    {
+        "ingredientPattern": "XO",
+        "output": { "type": "item", "code": "flags:bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_fish" } } },
+        "ingredients": {
+            "O": { "type": "item", "code": "flags:bannerpattern-blank" },
+            "X": {
+                "type": "block",
+                "code": "game:banner-banner",
+                "attributes": { "type": "hansa-wall-fish" },
+                "returnedStack": { "type": "block", "code": "game:banner-banner", "attributes": { "type": "hansa-wall-fish" } }
+            }
+        },
+        "shapeless": true,
+        "width": 1,
+        "height": 2
+    },
+    {
+        "ingredientPattern": "XO",
+        "output": { "type": "item", "code": "flags:bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_keys" } } },
+        "ingredients": {
+            "O": { "type": "item", "code": "flags:bannerpattern-blank" },
+            "X": {
+                "type": "block",
+                "code": "game:banner-banner",
+                "attributes": { "type": "hansa-wall-keys" },
+                "returnedStack": { "type": "block", "code": "game:banner-banner", "attributes": { "type": "hansa-wall-keys" } }
+            }
+        },
+        "shapeless": true,
+        "width": 1,
+        "height": 2
+    },
+    {
+        "ingredientPattern": "XO",
+        "output": { "type": "item", "code": "flags:bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_largefish" } } },
+        "ingredients": {
+            "O": { "type": "item", "code": "flags:bannerpattern-blank" },
+            "X": {
+                "type": "block",
+                "code": "game:banner-banner",
+                "attributes": { "type": "hansa-wall-largefish" },
+                "returnedStack": { "type": "block", "code": "game:banner-banner", "attributes": { "type": "hansa-wall-largefish" } }
+            }
+        },
+        "shapeless": true,
+        "width": 1,
+        "height": 2
+    },
+    {
+        "ingredientPattern": "XO",
+        "output": { "type": "item", "code": "flags:bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_ship" } } },
+        "ingredients": {
+            "O": { "type": "item", "code": "flags:bannerpattern-blank" },
+            "X": {
+                "type": "block",
+                "code": "game:banner-banner",
+                "attributes": { "type": "hansa-wall-ship" },
+                "returnedStack": { "type": "block", "code": "game:banner-banner", "attributes": { "type": "hansa-wall-ship" } }
+            }
+        },
+        "shapeless": true,
+        "width": 1,
+        "height": 2
+    },
+    {
+        "ingredientPattern": "XO",
+        "output": { "type": "item", "code": "flags:bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_town" } } },
+        "ingredients": {
+            "O": { "type": "item", "code": "flags:bannerpattern-blank" },
+            "X": {
+                "type": "block",
+                "code": "game:banner-banner",
+                "attributes": { "type": "hansa-wall-town" },
+                "returnedStack": { "type": "block", "code": "game:banner-banner", "attributes": { "type": "hansa-wall-town" } }
+            }
+        },
+        "shapeless": true,
+        "width": 1,
+        "height": 2
+    },
+
+    {
+        "ingredientPattern": "XO",
+        "output": { "type": "item", "code": "flags:bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_fish" } } },
+        "ingredients": {
+            "O": { "type": "item", "code": "flags:bannerpattern-blank" },
+            "X": {
+                "type": "block",
+                "code": "game:banner-banner",
+                "attributes": { "type": "hansa-ground-fish" },
+                "returnedStack": { "type": "block", "code": "game:banner-banner", "attributes": { "type": "hansa-ground-fish" } }
+            }
+        },
+        "shapeless": true,
+        "recipeGroup": 1,
+        "width": 1,
+        "height": 2
+    },
+    {
+        "ingredientPattern": "XO",
+        "output": { "type": "item", "code": "flags:bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_keys" } } },
+        "ingredients": {
+            "O": { "type": "item", "code": "flags:bannerpattern-blank" },
+            "X": {
+                "type": "block",
+                "code": "game:banner-banner",
+                "attributes": { "type": "hansa-ground-keys" },
+                "returnedStack": { "type": "block", "code": "game:banner-banner", "attributes": { "type": "hansa-ground-keys" } }
+            }
+        },
+        "shapeless": true,
+        "recipeGroup": 1,
+        "width": 1,
+        "height": 2
+    },
+    {
+        "ingredientPattern": "XO",
+        "output": { "type": "item", "code": "flags:bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_largefish" } } },
+        "ingredients": {
+            "O": { "type": "item", "code": "flags:bannerpattern-blank" },
+            "X": {
+                "type": "block",
+                "code": "game:banner-banner",
+                "attributes": { "type": "hansa-ground-largefish" },
+                "returnedStack": { "type": "block", "code": "game:banner-banner", "attributes": { "type": "hansa-ground-largefish" } }
+            }
+        },
+        "shapeless": true,
+        "recipeGroup": 1,
+        "width": 1,
+        "height": 2
+    },
+    {
+        "ingredientPattern": "XO",
+        "output": { "type": "item", "code": "flags:bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_ship" } } },
+        "ingredients": {
+            "O": { "type": "item", "code": "flags:bannerpattern-blank" },
+            "X": {
+                "type": "block",
+                "code": "game:banner-banner",
+                "attributes": { "type": "hansa-ground-ship" },
+                "returnedStack": { "type": "block", "code": "game:banner-banner", "attributes": { "type": "hansa-ground-ship" } }
+            }
+        },
+        "shapeless": true,
+        "recipeGroup": 1,
+        "width": 1,
+        "height": 2
+    },
+    {
+        "ingredientPattern": "XO",
+        "output": { "type": "item", "code": "flags:bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_town" } } },
+        "ingredients": {
+            "O": { "type": "item", "code": "flags:bannerpattern-blank" },
+            "X": {
+                "type": "block",
+                "code": "game:banner-banner",
+                "attributes": { "type": "hansa-ground-town" },
+                "returnedStack": { "type": "block", "code": "game:banner-banner", "attributes": { "type": "hansa-ground-town" } }
+            }
+        },
+        "shapeless": true,
+        "recipeGroup": 1,
+        "width": 1,
+        "height": 2
+    }
+]

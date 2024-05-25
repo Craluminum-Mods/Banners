@@ -1,0 +1,12 @@
+{
+    "type": "code",
+    "side": "universal",
+    "modid": "flags",
+    "name": "Banners",
+    "description": "Extremely customizable banners",
+    "authors": ["Craluminum2413", "Moby_"],
+    "version": "1.0.0",
+    "dependencies": {
+        "game": "1.19.0"
+    }
+}

@@ -1,0 +1,16 @@
+[
+    { "ingredientPattern": "XXX,XOX,XXX", "output": { "attributes": { "bannerpattern": { "type": "bo" } }, "type": "item", "code": "flags:bannerpattern" }, "ingredients": { "O": { "type": "item", "code": "flags:bannerpattern-blank" }, "X": { "type": "item", "code": "game:stick" } }, "width": 3, "height": 3 },
+
+    {
+        "ingredientPattern": "___,BX_,_O_",
+        "output": { "attributes": { "bannerpattern": { "type": "cbo" } }, "type": "item", "code": "flags:bannerpattern" },
+        "ingredients": {
+            "O": { "type": "item", "code": "flags:bannerpattern-blank" },
+            "B": { "type": "block", "code": "game:wildvine-section-north" },
+            "X": { "type": "item", "code": "game:stick" }
+        },
+        "shapeless": true,
+        "width": 3,
+        "height": 3
+    }
+]

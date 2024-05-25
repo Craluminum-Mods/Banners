@@ -1,0 +1,27 @@
+[
+    {
+        "op": "addmerge",
+        "path": "/attributes/bannerLiquid",
+        "value": {
+            "type": "Dye",
+            "litresPerUse": 0.1,
+            "colorByType": {
+                "*-woad": "blue",
+                "*": "{color}"
+            }
+        },
+        "file": "game:itemtypes/liquid/dye.json",
+        "side": "Server"
+    },
+    {
+        "op": "addmerge",
+        "path": "/attributes/bannerLiquid",
+        "value": {
+            "type": "Dye",
+            "litresPerUse": 0.1,
+            "color": "brown"
+        },
+        "file": "game:itemtypes/liquid/strongtanninportion.json",
+        "side": "Server"
+    }
+]

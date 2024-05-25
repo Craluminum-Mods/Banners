@@ -1,0 +1,4 @@
+[
+    { "enabled": false, "ingredientPattern": "XOX,_X_,_X_", "output": { "attributes": { "bannerpattern": { "type": "gra" } }, "type": "item", "code": "flags:bannerpattern" }, "ingredients": { "O": { "type": "item", "code": "flags:bannerpattern-blank" }, "X": { "type": "item", "code": "game:stick" } }, "width": 3, "height": 3 },
+    { "enabled": false, "ingredientPattern": "_X_,_X_,XOX", "output": { "attributes": { "bannerpattern": { "type": "gru" } }, "type": "item", "code": "flags:bannerpattern" }, "ingredients": { "O": { "type": "item", "code": "flags:bannerpattern-blank" }, "X": { "type": "item", "code": "game:stick" } }, "width": 3, "height": 3 }
+]

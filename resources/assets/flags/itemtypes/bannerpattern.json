@@ -1,0 +1,154 @@
+{
+    "code": "bannerpattern",
+    "class": "Flags.ItemBannerPattern",
+    "attributes": {
+        // "noConsumeOnCrafting": true,
+        "rolledShape": "game:item/lore/scroll-unbound",
+        "scrollrackable": true,
+        "displaycaseable": true,
+        "shelvable": true,
+        "groundStorageTransform": {
+            "translation": { "x": 0, "y": -0.02, "z": 0 },
+            "rotation": { "x": 0, "y": -30, "z": 0 },
+            "origin": { "x": 0.5, "y": 0.15, "z": 0.5 },
+            "scale": 0.9
+        },
+        "onscrollrackTransform": {
+            "translation": { "x": -0.5, "y": -0.18, "z": 0.48 },
+            "rotation": { "x": -45, "y": 0, "z": 0 },
+            "origin": { "x": 0.5, "y": 0.1, "z": 0.5 }
+        },
+        "defaultType": "bs",
+        "textureCodesForOverlays": ["placeholder"],
+        "textures": {
+            "labelbase": { "base": "game:block/cloth/linen/white" },
+            "placeholder": { "base": "game:block/transparent" },
+
+            "placeholder-bs": { "base": "flags:item/bannerpattern/pattern/stripe_bottom" },
+            "placeholder-ts": { "base": "flags:item/bannerpattern/pattern/stripe_top" },
+            "placeholder-ls": { "base": "flags:item/bannerpattern/pattern/stripe_left" },
+            "placeholder-rs": { "base": "flags:item/bannerpattern/pattern/stripe_right" },
+            "placeholder-cs": { "base": "flags:item/bannerpattern/pattern/stripe_center" },
+            "placeholder-ms": { "base": "flags:item/bannerpattern/pattern/stripe_middle" },
+            "placeholder-drs": { "base": "flags:item/bannerpattern/pattern/stripe_downright" },
+            "placeholder-dls": { "base": "flags:item/bannerpattern/pattern/stripe_downleft" },
+            "placeholder-ss": { "base": "flags:item/bannerpattern/pattern/small_stripes" },
+            "placeholder-cr": { "base": "flags:item/bannerpattern/pattern/cross" },
+            "placeholder-sc": { "base": "flags:item/bannerpattern/pattern/straight_cross" },
+            "placeholder-ld": { "base": "flags:item/bannerpattern/pattern/diagonal_left" },
+            "placeholder-rud": { "base": "flags:item/bannerpattern/pattern/diagonal_right" },
+            "placeholder-lud": { "base": "flags:item/bannerpattern/pattern/diagonal_up_left" },
+            "placeholder-rd": { "base": "flags:item/bannerpattern/pattern/diagonal_up_right" },
+            "placeholder-vh": { "base": "flags:item/bannerpattern/pattern/half_vertical" },
+            "placeholder-vhr": { "base": "flags:item/bannerpattern/pattern/half_vertical_right" },
+            "placeholder-hh": { "base": "flags:item/bannerpattern/pattern/half_horizontal" },
+            "placeholder-hhb": { "base": "flags:item/bannerpattern/pattern/half_horizontal_bottom" },
+            "placeholder-bl": { "base": "flags:item/bannerpattern/pattern/square_bottom_left" },
+            "placeholder-br": { "base": "flags:item/bannerpattern/pattern/square_bottom_right" },
+            "placeholder-tl": { "base": "flags:item/bannerpattern/pattern/square_top_left" },
+            "placeholder-tr": { "base": "flags:item/bannerpattern/pattern/square_top_right" },
+            "placeholder-bt": { "base": "flags:item/bannerpattern/pattern/triangle_bottom" },
+            "placeholder-tt": { "base": "flags:item/bannerpattern/pattern/triangle_top" },
+            "placeholder-bts": { "base": "flags:item/bannerpattern/pattern/triangles_bottom" },
+            "placeholder-tts": { "base": "flags:item/bannerpattern/pattern/triangles_top" },
+            "placeholder-mc": { "base": "flags:item/bannerpattern/pattern/circle" },
+            "placeholder-mr": { "base": "flags:item/bannerpattern/pattern/rhombus" },
+            "placeholder-bo": { "base": "flags:item/bannerpattern/pattern/border" },
+            "placeholder-cbo": { "base": "flags:item/bannerpattern/pattern/curly_border" },
+            "placeholder-bri": { "base": "flags:item/bannerpattern/pattern/bricks" },
+            // rare ptterns
+            "placeholder-hansa_fish": { "base": "flags:item/bannerpattern/pattern/hansa/fish" },
+            "placeholder-hansa_keys": { "base": "flags:item/bannerpattern/pattern/hansa/keys" },
+            "placeholder-hansa_largefish": { "base": "flags:item/bannerpattern/pattern/hansa/largefish" },
+            "placeholder-hansa_ship": { "base": "flags:item/bannerpattern/pattern/hansa/ship" },
+            "placeholder-hansa_town": { "base": "flags:item/bannerpattern/pattern/hansa/town" }
+        }
+    },
+    "shape": { "base": "flags:item/bannerpattern" },
+    "textures": {
+        "scrolls-rotten": { "base": "game:block/cloth/linen/white" }
+    },
+    "creativeInventoryStacks": [
+        {
+            "tabs": ["general", "items", "flags"],
+            "stacks": [
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "bs" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "ts" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "ls" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "rs" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "cs" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "ms" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "drs" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "dls" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "ss" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "cr" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "sc" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "ld" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "rud" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "lud" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "rd" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "vh" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "vhr" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "hh" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "hhb" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "bl" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "br" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "tl" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "tr" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "bt" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "tt" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "bts" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "tts" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "mc" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "mr" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "bo" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "cbo" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "bri" } } },
+                // rare ptterns
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_fish" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_keys" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_largefish" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_ship" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_town" } } }
+            ]
+        }
+    ],
+    "behaviors": [
+        { "name": "GroundStorable", "properties": { "layout": "Quadrants", "collisionBox": { "x1": 0, "y1": 0, "z1": 0, "x2": 1, "y2": 0.125, "z2": 1 } } },
+        {
+            "name": "Flags.BannerPatternName",
+            "properties": {
+                "parts": ["flags:item-bannerpattern", " (", "flags:Pattern.pattern_placeholder", ")"],
+                "replacePart": "pattern_placeholder",
+                "defaultName": "flags:item-bannerpattern"
+            }
+        }
+    ],
+    "storageFlags": 257,
+    "maxstacksize": 32,
+    "materialDensity": 210,
+    "fpHandTransform": {
+        "translation": { "x": 0.15, "y": -0.5, "z": 0 },
+        "rotation": { "x": -25, "y": -17, "z": -16 },
+        "origin": { "x": 0.5, "y": 0.5, "z": 0.1 },
+        "scale": 2.55
+    },
+    "tpHandTransform": {
+        "translation": { "x": 0, "y": 0, "z": 0 },
+        "rotation": { "x": 5, "y": 180, "z": 1 },
+        "origin": { "x": -0.8, "y": -1.47, "z": -0.39 },
+        "scale": 0.65
+    },
+    "groundTransform": {
+        "translation": { "x": 0, "y": 0, "z": 0 },
+        "rotation": { "x": 90, "y": 0, "z": 2 },
+        "origin": { "x": 0.5, "y": 0.5, "z": 0.08 },
+        "scale": 3.2
+    },
+    "guiTransform": {
+        "translation": { "x": 0, "y": 0, "z": 0 },
+        "rotation": { "x": 180, "y": 24, "z": 0 },
+        "origin": { "x": 0.5299, "y": 0.58, "z": 0 },
+        "scaleXyz": { "x": -2.4, "y": 2.4, "z": 2.4 }
+    }
+}

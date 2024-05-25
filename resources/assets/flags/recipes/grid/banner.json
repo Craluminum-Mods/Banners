@@ -1,0 +1,13 @@
+[
+    {
+        "ingredientPattern": "PNC",
+        "ingredients": {
+            "P": { "type": "item", "code": "game:plank-*", "name": "wood" },
+            "N": { "type": "item", "code": "game:metalnailsandstrips-*" },
+            "C": { "type": "item", "code": "game:cloth-*", "name": "color", "skipVariants": ["mordant"] }
+        },
+        "width": 1,
+        "height": 3,
+        "output": { "type": "block", "code": "flags:banner", "attributes": { "banner": { "layers": { "0-b": "{color}" } } } }
+    }
+]
