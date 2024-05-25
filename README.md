@@ -1,3 +1,3 @@
-# Flags
+# Banners
 
 Extremely customizable banners
