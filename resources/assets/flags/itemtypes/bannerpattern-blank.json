@@ -16,6 +16,11 @@
             "translation": { "x": -0.5, "y": -0.18, "z": 0.48 },
             "rotation": { "x": -45, "y": 0, "z": 0 },
             "origin": { "x": 0.5, "y": 0.1, "z": 0.5 }
+        },
+        "onshelfTransform": {
+            "rotation": { "x": 0, "y": -25, "z": 0 },
+            "origin": { "x": 0.5, "y": 0, "z": 0.5 },
+            "scale": 0.8
         }
     },
     "shape": { "base": "flags:item/bannerpattern" },
