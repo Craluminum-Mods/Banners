@@ -52,7 +52,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         {
             return false;
         }
-        if (!blockEntity.BannerProps.AddLayer(world, byPlayer, new BannerLayer(BannerPatternProperties.FromStack(offHandSlot.Itemstack, itemPattern).Type, liquidProps)))
+        if (!blockEntity.BannerProps.AddLayer(new BannerLayer(BannerPatternProperties.FromStack(offHandSlot.Itemstack, itemPattern).Type, liquidProps), world, byPlayer))
         {
             return false;
         }

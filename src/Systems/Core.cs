@@ -3,7 +3,7 @@ using Vintagestory.API.Common;
 using Vintagestory.API.Server;
 using Vintagestory.API.Util;
 
-[assembly: ModInfo(name: "Flags", modID: "flags")]
+[assembly: ModInfo(name: "Banners", modID: "flags")]
 
 namespace Flags;
 

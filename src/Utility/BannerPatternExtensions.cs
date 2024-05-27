@@ -22,7 +22,7 @@ public static class BannerPatternExtensions
         if (!Meshes.TryGetValue(key, out MeshData mesh))
         {
             mesh = new MeshData(4, 3);
-            CompositeShape rcshape = item.Shape?.Clone();
+            CompositeShape rcshape = item.Shape;
             if (rcshape == null)
             {
                 capi.Tesselator.TesselateItem(item, out mesh);
@@ -80,7 +80,7 @@ public static class BannerPatternExtensions
         if (!item.CustomTextures.TryGetValue(properties.GetTextureCode(textureCode), out CompositeTexture _newTexture) || _newTexture == null)
         {
             capi.Logger.Error("[Flags] Item {0} defines a texture key '{1}', but no matching texture found", item.Code, properties.GetTextureCode(textureCode));
-            ctex.Base = new AssetLocation("unknown");
+            ctex.Base = AssetLocation.Create("unknown");
             return;
         }
 

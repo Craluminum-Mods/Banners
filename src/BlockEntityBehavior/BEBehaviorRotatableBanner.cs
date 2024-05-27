@@ -42,8 +42,7 @@ public class BEBehaviorRotatableBanner : BlockEntityBehavior, IRotatableBanner
 
     public MeshData RotatedMesh(MeshData blockMesh)
     {
-        Vec3f Rotation = new(0, 0, 0);
-        return blockMesh.Clone().Rotate(new Vec3f(0.5f, 0.5f, 0.5f), RotateX, RotateY + Rotation.Y * DegreesToRadians, RotateZ);
+        return blockMesh.Clone().Rotate(new Vec3f(0.5f, 0.5f, 0.5f), RotateX, RotateY * DegreesToRadians, RotateZ);
     }
 
     public Cuboidf RotatedCuboid(Cuboidf cuboid)
@@ -123,7 +122,6 @@ public class BEBehaviorRotatableBanner : BlockEntityBehavior, IRotatableBanner
             },
         };
     }
-
 
     public void OnTransformed(IWorldAccessor worldAccessor, ITreeAttribute tree, int degreeRotation, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping, EnumAxis? flipAxis)
     {

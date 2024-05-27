@@ -110,7 +110,7 @@ public static class BannerExtensions
         if (!block.CustomTextures.TryGetValue(layer.TextureCode, out CompositeTexture _overlayTexture) || _overlayTexture == null)
         {
             capi.Logger.Error("[Flags] Block {0} defines an overlay texture key '{1}', but no matching texture found", block.Code, layer.TextureCode);
-            ctex.BlendedOverlays = ctex.BlendedOverlays.Concat(new[] { new BlendedOverlayTexture() { Base = new AssetLocation(textureUnknown), BlendMode = EnumColorBlendMode.Normal } }).ToArray();
+            ctex.BlendedOverlays = ctex.BlendedOverlays.Append(new BlendedOverlayTexture() { Base = AssetLocation.Create(textureUnknown), BlendMode = EnumColorBlendMode.Normal });
             return;
         }
 
@@ -122,11 +122,11 @@ public static class BannerExtensions
         if (!capi.Assets.Exists(logCode))
         {
             capi.Logger.Error("[Flags] Block {0} defines an overlay texture key '{1}' with path '{2}' for color '{3}', but no matching texture found", block.Code, layer.TextureCode, logCode.ToString(), layer.Color);
-            ctex.BlendedOverlays = ctex.BlendedOverlays.Concat(new[] { new BlendedOverlayTexture() { Base = new AssetLocation(textureUnknown), BlendMode = EnumColorBlendMode.Normal } }).ToArray();
+            ctex.BlendedOverlays = ctex.BlendedOverlays.Append(new BlendedOverlayTexture() { Base = AssetLocation.Create(textureUnknown), BlendMode = EnumColorBlendMode.Normal });
             return;
         }
 
-        ctex.BlendedOverlays = ctex.BlendedOverlays.Concat(new[] { new BlendedOverlayTexture() { Base = overlayTexture.Base, BlendMode = EnumColorBlendMode.Normal } }).ToArray();
+        ctex.BlendedOverlays = ctex.BlendedOverlays.Append(new BlendedOverlayTexture() { Base = overlayTexture.Base, BlendMode = EnumColorBlendMode.Normal });
     }
 
     public static void DebugPregenerateTextures(this BlockBanner blockBanner, ICoreClientAPI capi, bool replaceExisting = false, string grayscaleColor = "black")
@@ -149,7 +149,7 @@ public static class BannerExtensions
                     continue;
                 }
 
-                IAsset coloredTextureAsset = capi.Assets.TryGet(new AssetLocation($"{blockBanner.TopTexturePrefix}{colorKey}").WithPathPrefixOnce(prefixTextures).WithPathAppendixOnce(appendixPng));
+                IAsset coloredTextureAsset = capi.Assets.TryGet(AssetLocation.Create($"{blockBanner.TopTexturePrefix}{colorKey}").WithPathPrefixOnce(prefixTextures).WithPathAppendixOnce(appendixPng));
                 if (coloredTextureAsset == null)
                 {
                     continue;
@@ -183,7 +183,7 @@ public static class BannerExtensions
 
                 layerBmp.SetPixels(layerPixels);
 
-                string newFilePath = Path.Combine(GamePaths.Cache, "Flags", location.Domain, newLocation.Clone().Path.Replace('/', Path.DirectorySeparatorChar));
+                string newFilePath = Path.Combine(GamePaths.Cache, outputFolderName, location.Domain, newLocation.Clone().Path.Replace('/', Path.DirectorySeparatorChar));
                 string newFolderPath = newFilePath.RemoveAfterLastSymbol(Path.DirectorySeparatorChar);
                 if (!Path.Exists(newFolderPath))
                 {

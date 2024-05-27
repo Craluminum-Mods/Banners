@@ -88,5 +88,4 @@ public class BEBehaviorWrenchOrientableBanner : BlockEntityBehavior, IWrenchOrie
             }
         };
     }
-
 }

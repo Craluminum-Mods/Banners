@@ -86,6 +86,8 @@ public static class Constants
     public const string prefixShapes = "shapes/";
     public const string prefixTextures = "textures/";
 
+    public const string outputFolderName = "Banners";
+
     public const string pathConverter = "flags:config/mc-to-vs-converter.json";
 
     public class Commands
@@ -116,4 +118,6 @@ public static class Constants
         public const string BannerCopyLayers = $"{modDomain}:ingameerror-banner-copylayers";
         public const string BannerRename = $"{modDomain}:ingameerror-banner-rename";
     }
+
+    public static string OutputFolder => Path.Combine(GamePaths.Cache, outputFolderName);
 }
