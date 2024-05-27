@@ -57,11 +57,18 @@
     "Pattern.cbo": "Curly Border",
     "Pattern.bri": "Brick",
 
+    "Pattern.hansa_fish": "Hansa (Fish)",
+    "Pattern.hansa_keys": "Hansa (Keys)",
+    "Pattern.hansa_largefish": "Hansa (Large fish)",
+    "Pattern.hansa_ship": "Hansa (Ship)",
+    "Pattern.hansa_town": "Hansa (Town)",
 
     "Command.Error.NoBanner": "Active hand is missing banner",
 
     "Command.GenerateTextures.Description": "Generates textures for banner from textures defined in json attributes. Overlays colored cloth textures on top of grayscale texture and saves new textures to {0} folder",
     "Command.GenerateTextures.Success": "Textures were sucessfully generated for banner",
+    "Command.GenerateTextures.OptionalArg.TextureColor": "texture color",
+    "Command.GenerateTextures.OptionalArg.ReplaceExisting": "replace",
 
     "Command.GenerateBannerMC.Success": "Successfully parsed mc command and generated vs banner",
     "Command.GenerateBannerMC.Description": "Generates banner from Minecraft command",
