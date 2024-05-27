@@ -10,7 +10,7 @@ public class Server : ModSystem
 
     public override void StartServerSide(ICoreServerAPI sapi)
     {
-        IChatCommand commands = sapi.ChatCommands.GetOrCreate("flags").RequiresPlayer().RequiresPrivilege(Privilege.give);
+        IChatCommand commands = sapi.ChatCommands.GetOrCreate("flags").WithRootAlias("banners").RequiresPlayer().RequiresPrivilege(Privilege.give);
         CommandArgumentParsers parsers = sapi.ChatCommands.Parsers;
 
         commands.BeginSub("genbannermc")

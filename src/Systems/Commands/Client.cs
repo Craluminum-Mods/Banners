@@ -11,7 +11,7 @@ public class Client : ModSystem
 
     public override void StartClientSide(ICoreClientAPI capi)
     {
-        IChatCommand commands = capi.ChatCommands.GetOrCreate("flags");
+        IChatCommand commands = capi.ChatCommands.GetOrCreate("flags").WithRootAlias("banners");
         CommandArgumentParsers parsers = capi.ChatCommands.Parsers;
 
         commands.BeginSub("gentextures")
