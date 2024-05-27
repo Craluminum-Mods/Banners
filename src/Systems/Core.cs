@@ -38,11 +38,20 @@ public class Core : ModSystem
     {
         foreach (CollectibleObject obj in api.World.Collectibles)
         {
-            if (BannerLiquid.HasAttribute(obj) && !obj.HasBehavior<CollectibleBehaviorBannerLiquidDescription>())
+            if (BannerLiquid.HasAttribute(obj))
             {
-                obj.CollectibleBehaviors = obj.CollectibleBehaviors.Append(new CollectibleBehaviorBannerLiquidDescription(obj));
+                if (!obj.HasBehavior<CollectibleBehaviorBannerLiquidDescription>())
+                {
+                    obj.CollectibleBehaviors = obj.CollectibleBehaviors.Append(new CollectibleBehaviorBannerLiquidDescription(obj));
+                }
+
+                foreach (CreativeTabAndStackList item in obj.CreativeInventoryStacks)
+                {
+                    item.Tabs = item?.Tabs?.Append(modCreativeTab);
+                }
             }
         }
+    }
 
     public override void AssetsLoaded(ICoreAPI api)
     {

@@ -7,6 +7,7 @@ namespace Flags;
 public static class Constants
 {
     public const string modDomain = "flags";
+    public const string modCreativeTab = "flags";
 
     public const float DegreesToRadians = (float)Math.PI / 180f;
     public const float RadiansToDegrees = 180f / (float)Math.PI;
