@@ -1,43 +1,46 @@
 {
-    "__comment": "Not implemented",
     "_comment": "https://minecraft.wiki/w/Banner/DV",
-    "colors": {
-        "0": { "mc_fullname": "white", "to": "white", "hex": "#FFFFFF" },
-        "1": { "mc_fullname": "orange", "to": "orange", "hex": "#D87F33" },
-        "2": { "mc_fullname": "magenta", "to": "pink", "hex": "#B24CD8" },
-        "3": { "mc_fullname": "light_blue", "to": "blue", "hex": "#6699D8" },
-        "4": { "mc_fullname": "yellow", "to": "yellow", "hex": "#E5E533" },
-        "5": { "mc_fullname": "lime", "to": "green", "hex": "#7FCC19" },
-        "6": { "mc_fullname": "pink", "to": "pink", "hex": "#F27FA5" },
-        "7": { "mc_fullname": "gray", "to": "gray", "hex": "#4C4C4C" },
-        "8": { "mc_fullname": "light_gray", "to": "gray", "hex": "#999999" },
-        "9": { "mc_fullname": "cyan", "to": "blue", "hex": "#4C7F99" },
-        "10": { "mc_fullname": "purple", "to": "purple", "hex": "#7F3FB2" },
-        "11": { "mc_fullname": "blue", "to": "blue", "hex": "#334CB2" },
-        "12": { "mc_fullname": "brown", "to": "brown", "hex": "#664C33" },
-        "13": { "mc_fullname": "green", "to": "green", "hex": "#667F33" },
-        "14": { "mc_fullname": "red", "to": "red", "hex": "#993333" },
-        "15": { "mc_fullname": "black", "to": "black", "hex": "#191919" }
+    // mc color id to vs color
+    "IdsToColors": {
+        "0": "white", //"#FFFFFF"
+        "1": "orange", //"#D87F33"
+        "2": "pink", //"#B24CD8"
+        "3": "blue", //"#6699D8"
+        "4": "yellow", //"#E5E533"
+        "5": "green", //"#7FCC19"
+        "6": "pink", //"#F27FA5"
+        "7": "gray", //"#4C4C4C"
+        "8": "gray", //"#999999"
+        "9": "blue", //"#4C7F99"
+        "10": "purple", //"#7F3FB2"
+        "11": "blue", //"#334CB2"
+        "12": "brown", //"#664C33"
+        "13": "green", //"#667F33"
+        "14": "red", //"#993333"
+        "15": "black", //"#191919"
+        "*": "white"
     },
-    "basecolors": {
-        "white": { "mc_fullname": "white_banner", "to": { "b": "white" } },
-        "orange": { "mc_fullname": "orange_banner", "to": { "b": "orange" } },
-        "magenta": { "mc_fullname": "magenta_banner", "to": { "b": "pink" } },
-        "light_blue": { "mc_fullname": "light_blue_banner", "to": { "b": "blue" } },
-        "yellow": { "mc_fullname": "yellow_banner", "to": { "b": "yellow" } },
-        "lime": { "mc_fullname": "lime_banner", "to": { "b": "green" } },
-        "pink": { "mc_fullname": "pink_banner", "to": { "b": "pink" } },
-        "gray": { "mc_fullname": "gray_banner", "to": { "b": "gray" } },
-        "light_gray": { "mc_fullname": "light_gray_banner", "to": { "b": "gray" } },
-        "cyan": { "mc_fullname": "cyan_banner", "to": { "b": "blue" } },
-        "purple": { "mc_fullname": "purple_banner", "to": { "b": "purple" } },
-        "blue": { "mc_fullname": "blue_banner", "to": { "b": "blue" } },
-        "brown": { "mc_fullname": "brown_banner", "to": { "b": "brown" } },
-        "green": { "mc_fullname": "green_banner", "to": { "b": "green" } },
-        "red": { "mc_fullname": "red_banner", "to": { "b": "red" } },
-        "black": { "mc_fullname": "black_banner", "to": { "b": "black" } }
+    // mc color to vs color
+    "BaseColorsToColors": {
+        "white": "white",
+        "orange": "orange",
+        "magenta": "pink",
+        "light_blue": "blue",
+        "yellow": "yellow",
+        "lime": "green",
+        "pink": "pink",
+        "gray": "gray",
+        "light_gray": "gray",
+        "cyan": "blue",
+        "purple": "purple",
+        "blue": "blue",
+        "brown": "brown",
+        "green": "green",
+        "red": "red",
+        "black": "black",
+        "*": "plain"
     },
-    "patterns": {
+    "Patterns": {
         "bs": "bs",
         "ts": "ts",
         "ls": "ls",

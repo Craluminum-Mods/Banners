@@ -9,6 +9,8 @@ namespace Flags;
 
 public class Core : ModSystem
 {
+    public static BannerConverter Converter { get; set; } = new();
+
     public override void Start(ICoreAPI api)
     {
         api.RegisterBlockClass("Flags.BlockBanner", typeof(BlockBanner));
@@ -41,5 +43,9 @@ public class Core : ModSystem
                 obj.CollectibleBehaviors = obj.CollectibleBehaviors.Append(new CollectibleBehaviorBannerLiquidDescription(obj));
             }
         }
+
+    public override void AssetsLoaded(ICoreAPI api)
+    {
+        Converter = api.Assets.TryGet(AssetLocation.Create(pathConverter)).ToObject<BannerConverter>();
     }
 }

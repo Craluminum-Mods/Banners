@@ -86,14 +86,27 @@ public static class Constants
     public const string prefixShapes = "shapes/";
     public const string prefixTextures = "textures/";
 
+    public const string pathConverter = "flags:config/mc-to-vs-converter.json";
+
     public class Commands
     {
+        public const string ErrorNoBanner = $"{modDomain}:Command.Error.NoBanner";
+
+        /// <summary> Server command </summary>
+        public class GenerateBannerMC
+        {
+            public const string Description = $"{modDomain}:Command.GenerateBannerMC.Description";
+            public const string Success = $"{modDomain}:Command.GenerateBannerMC.Success";
+            public const string ArgCommandMC = $"{modDomain}:Command.GenerateBannerMC.ArgCommandMC";
+            public const string ErrorSyntax = $"{modDomain}:Command.GenerateBannerMC.Error.MCSyntax";
+        }
+
+        /// <summary> Client command </summary>
         public class GenerateTextures
         {
             public const string Description = $"{modDomain}:Command.GenerateTextures.Description";
             public const string Success = $"{modDomain}:Command.GenerateTextures.Success";
-            public const string ErrorNoBanner = $"{modDomain}:Command.GenerateTextures.Error.NoBanner";
-            public const string OptionalArgGrayscaleColor = $"{modDomain}:Command.GenerateTextures.OptionalArg.GrayscaleColor";
+            public const string OptionalArgTextureColor = $"{modDomain}:Command.GenerateTextures.OptionalArg.TextureColor";
             public const string OptionalArgReplaceExisting = $"{modDomain}:Command.GenerateTextures.OptionalArg.ReplaceExisting";
         }
     }

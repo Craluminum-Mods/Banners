@@ -55,15 +55,14 @@
     "Pattern.cbo": "Curly Border",
     "Pattern.bri": "Brick",
 
-    "Pattern.hansa_fish": "Fish",
-    "Pattern.hansa_keys": "Keys",
-    "Pattern.hansa_largefish": "Large fish",
-    "Pattern.hansa_ship": "Ship",
-    "Pattern.hansa_town": "Town",
 
-    "Command.GenerateTextures.Description": "Generates textures for banner from textures defined in json attributes. Overlays colored cloth textures on top of grayscale color and saves new textures to /VintagestoryData/Cache/Flags folder",
+    "Command.Error.NoBanner": "Active hand is missing banner",
+
+    "Command.GenerateTextures.Description": "Generates textures for banner from textures defined in json attributes. Overlays colored cloth textures on top of grayscale texture and saves new textures to {0} folder",
     "Command.GenerateTextures.Success": "Textures were sucessfully generated for banner",
-    "Command.GenerateTextures.Error.NoBanner": "Active hand is missing banner",
-    "Command.GenerateTextures.OptionalArg.GrayscaleColor": "grayscale color",
-    "Command.GenerateTextures.OptionalArg.ReplaceExisting": "replace"
+
+    "Command.GenerateBannerMC.Success": "Successfully parsed mc command and generated vs banner",
+    "Command.GenerateBannerMC.Description": "Generates banner from Minecraft command",
+    "Command.GenerateBannerMC.Error.MCSyntax": "Invalid syntax. Vaild example: 'minecraft:white_banner{BlockEntityTag:{_PLACEHOLDER_}}'. Make sure it is valid MC 1.13+ syntax and has nothing before `minecraft:` and after last '}' symbol",
+    "Command.GenerateBannerMC.ArgCommandMC": "minecraft command"
 }
