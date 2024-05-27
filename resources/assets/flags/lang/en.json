@@ -70,8 +70,8 @@
     "Command.GenerateTextures.OptionalArg.TextureColor": "texture color",
     "Command.GenerateTextures.OptionalArg.ReplaceExisting": "replace",
 
-    "Command.GenerateBannerMC.Success": "Successfully parsed mc command and generated vs banner",
-    "Command.GenerateBannerMC.Description": "Generates banner from Minecraft command",
-    "Command.GenerateBannerMC.Error.MCSyntax": "Invalid syntax. Vaild example: 'minecraft:white_banner{BlockEntityTag:{_PLACEHOLDER_}}'. Make sure it is valid MC 1.13+ syntax and has nothing before `minecraft:` and after last '}' symbol",
-    "Command.GenerateBannerMC.ArgCommandMC": "minecraft command"
+    "Command.GenerateBannerMC.Success": "Successfully parsed Minecraft syntax and generated vs banner",
+    "Command.GenerateBannerMC.Description": "Generates banner from Minecraft syntax",
+    "Command.GenerateBannerMC.Error.MCSyntax": "Invalid syntax. Example: 'minecraft:white_banner{BlockEntityTag:{_PLACEHOLDER_}}'. Make sure it is valid Minecraft 1.13+ syntax and has nothing before `minecraft:` and after last '}' symbol",
+    "Command.GenerateBannerMC.ArgCommandMC": "minecraft syntax"
 }
