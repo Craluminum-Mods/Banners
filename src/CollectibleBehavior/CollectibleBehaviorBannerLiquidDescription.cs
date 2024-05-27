@@ -16,7 +16,7 @@ public class CollectibleBehaviorBannerLiquidDescription : CollectibleBehavior
             return;
         }
 
-        sb.AppendLine(langCodeBannerLiquidType.Localize(liquidProps.Type.ToString()));
+        sb.AppendLine(langCodeBannerLiquidType.Localize(liquidProps.Type.ToString().Localize()));
 
         if (!string.IsNullOrEmpty(liquidProps.Color))
         {

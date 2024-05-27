@@ -20,6 +20,8 @@
     "ClearRotationsXZ": "Clear all rotations for X and Z axis",
     "BannerLiquid.Type": "Banner liquid type: {0}",
     "BannerLiquid.Color": "Banner liquid color: {0}",
+    "game:Dye": "Dye",
+    "game:Bleach": "Bleach",
 
     "Pattern.b": "Base",
     "Pattern.bs": "Bottom Stripe",
