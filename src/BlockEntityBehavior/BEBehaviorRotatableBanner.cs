@@ -42,7 +42,7 @@ public class BEBehaviorRotatableBanner : BlockEntityBehavior, IRotatableBanner
 
     public MeshData RotatedMesh(MeshData blockMesh)
     {
-        return blockMesh.Clone().Rotate(new Vec3f(0.5f, 0.5f, 0.5f), RotateX, RotateY * DegreesToRadians, RotateZ);
+        return blockMesh.Clone().Rotate(new Vec3f(0.5f, 0.5f, 0.5f), RotateX, RotateY, RotateZ);
     }
 
     public Cuboidf RotatedCuboid(Cuboidf cuboid)
