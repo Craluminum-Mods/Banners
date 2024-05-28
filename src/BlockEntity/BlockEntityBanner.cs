@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
@@ -97,6 +98,7 @@ public class BlockEntityBanner : BlockEntity
     public override void GetBlockInfo(IPlayer forPlayer, StringBuilder sb)
     {
         base.GetBlockInfo(forPlayer, sb);
+        sb.AppendLine(langCodePatternGroups.Localize(string.Join(", ", BannerBlock.PatternGroups.Select(group => group))));
         BannerProps.GetDescription(sb, BannerBlock.ShowDebugInfo);
     }
 

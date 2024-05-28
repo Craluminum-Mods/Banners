@@ -2,6 +2,7 @@
     "code": "bannerpattern",
     "class": "Flags.ItemBannerPattern",
     "attributes": {
+        "patternGroups": ["basic"],
         "rolledShape": "game:item/lore/scroll-unbound",
         "scrollrackable": true,
         "displaycaseable": true,

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
@@ -8,6 +9,8 @@ namespace Flags;
 
 public class BlockBanner : Block
 {
+    public List<string> PatternGroups { get; protected set; } = new();
+
     public Dictionary<string, CompositeShape> CustomShapes { get; protected set; } = new();
     public Dictionary<string, CompositeTexture> CustomTextures { get; protected set; } = new();
     public Dictionary<string, List<string>> IgnoredTextureCodes { get; protected set; } = new();
@@ -35,6 +38,7 @@ public class BlockBanner : Block
     public override void OnUnloaded(ICoreAPI api)
     {
         base.OnUnloaded(api);
+        PatternGroups.Clear();
         CustomShapes.Clear();
         CustomTextures.Clear();
         IgnoredTextureCodes.Clear();
@@ -47,6 +51,8 @@ public class BlockBanner : Block
 
     public void LoadTypes()
     {
+        PatternGroups = Attributes[attributePatternGroups].AsObject<List<string>>();
+
         CustomShapes = Attributes[attributeShapes].AsObject<Dictionary<string, CompositeShape>>();
         CustomTextures = Attributes[attributeTextures].AsObject<Dictionary<string, CompositeTexture>>();
         IgnoredTextureCodes = Attributes[attributeIgnoredTextureCodesForOverlays].AsObject<Dictionary<string, List<string>>>();
@@ -69,6 +75,7 @@ public class BlockBanner : Block
     public override void GetHeldItemInfo(ItemSlot inSlot, StringBuilder sb, IWorldAccessor world, bool withDebugInfo)
     {
         base.GetHeldItemInfo(inSlot, sb, world, withDebugInfo);
+        sb.AppendLine(langCodePatternGroups.Localize(string.Join(", ", PatternGroups.Select(group => group))));
         BannerProperties.FromStack(inSlot.Itemstack, this).GetDescription(sb, ShowDebugInfo);
     }
 

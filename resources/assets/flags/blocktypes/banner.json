@@ -3,6 +3,7 @@
     "class": "Flags.BlockBanner",
     "entityClass": "Flags.Banner",
     "attributes": {
+        "patternGroups": ["basic"],
         "shapes": {
             "normal-groundsimple": { "base": "flags:block/wood/banner/normal-groundsimple" },
             "normal-ground": { "base": "flags:block/wood/banner/normal-ground" },

@@ -31,8 +31,8 @@ public static class Constants
 
     public const string langCodeColor = "color-";
     public const string langCodePattern = $"{modDomain}:Pattern.";
-    public const string langCodePatternAndColor = $"{modDomain}:pattern-and-color";
-
+    public const string langCodePatternGroup = $"{modDomain}:patterngroup-";
+    public const string langCodePatternGroups = $"{modDomain}:patterngroups";
     public const string langCodeAddLayer = $"{modDomain}:blockhelp-banner-addlayer";
     public const string langCodeRemovelayer = $"{modDomain}:blockhelp-banner-removelayer";
     public const string langCodeCopyLayers = $"{modDomain}:blockhelp-banner-copylayers";
@@ -59,6 +59,7 @@ public static class Constants
     public const string attributeRotateX = "rotateX";
     public const string attributeRotateY = "meshAngle";
     public const string attributeRotateZ = "rotateZ";
+    public const string attributePatternGroups = "patternGroups";
     public const string attributeShapes = "shapes";
     public const string attributeTextures = "textures";
     public const string attributeColors = "colors";
@@ -120,6 +121,7 @@ public static class Constants
     {
         public const string BannerCopyLayers = $"{modDomain}:ingameerror-banner-copylayers";
         public const string BannerRename = $"{modDomain}:ingameerror-banner-rename";
+        public const string BannerPatternGroups = $"{modDomain}:ingameerror-banner-patterngroups";
     }
 
     public static string OutputFolder => Path.Combine(GamePaths.Cache, outputFolderName);

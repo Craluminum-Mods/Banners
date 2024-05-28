@@ -40,12 +40,13 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         ItemSlot activeSlot = byPlayer.Entity.RightHandItemSlot;
         ItemSlot offHandSlot = byPlayer.Entity.LeftHandItemSlot;
 
-        if (activeSlot?.Itemstack?.Collectible is not BlockLiquidContainerTopOpened blockContainer)
+        if (offHandSlot?.Itemstack?.Collectible is not ItemBannerPattern itemPattern || activeSlot?.Itemstack?.Collectible is not BlockLiquidContainerTopOpened blockContainer)
         {
             return false;
         }
-        if (offHandSlot?.Itemstack?.Collectible is not ItemBannerPattern itemPattern)
+        if (!itemPattern.PatternGroups.Any(groups1 => blockEntity.BannerBlock.PatternGroups.Any(groups2 => groups1 == groups2)))
         {
+            (byPlayer.Entity.World.Api as ICoreClientAPI)?.TriggerIngameError(this, IngameError.BannerPatternGroups, IngameError.BannerPatternGroups.Localize());
             return false;
         }
         if (!BannerLiquid.TryGet(activeSlot.Itemstack, blockContainer, out BannerLiquid liquidProps) || !liquidProps.IsDye)
@@ -86,19 +87,19 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
     {
         ItemSlot activeSlot = byPlayer.Entity.RightHandItemSlot;
 
-        if (activeSlot?.Itemstack?.Collectible is not BlockBanner)
+        if (activeSlot?.Itemstack?.Collectible is not BlockBanner blockBanner)
         {
             return false;
         }
-        if (blockEntity.BannerProps.CopyFrom(activeSlot.Itemstack, copyLayers: true))
+        if (!blockBanner.PatternGroups.Any(groups1 => blockEntity.BannerBlock.PatternGroups.Any(groups2 => groups1 == groups2)))
+        {
+            (byPlayer.Entity.World.Api as ICoreClientAPI)?.TriggerIngameError(this, IngameError.BannerPatternGroups, IngameError.BannerPatternGroups.Localize());
+            return false;
+        }
+        if (blockEntity.BannerProps.CopyFrom(activeSlot.Itemstack, copyLayers: true) || blockEntity.BannerProps.CopyTo(activeSlot.Itemstack, copyLayers: true))
         {
             return true;
         }
-        if (blockEntity.BannerProps.CopyTo(activeSlot.Itemstack, copyLayers: true))
-        {
-            return true;
-        }
-
         (byPlayer.Entity.World.Api as ICoreClientAPI)?.TriggerIngameError(this, IngameError.BannerCopyLayers, IngameError.BannerCopyLayers.Localize());
         return false;
     }
