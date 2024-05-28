@@ -1,5 +1,6 @@
 using System.Text;
 using Vintagestory.API.Common;
+using Vintagestory.GameContent;
 
 namespace Flags;
 
@@ -11,7 +12,8 @@ public class CollectibleBehaviorBannerLiquidDescription : CollectibleBehavior
     {
         base.GetHeldItemInfo(inSlot, sb, world, withDebugInfo);
 
-        if (!BannerLiquid.TryGet(collObj, out BannerLiquid liquidProps))
+        if (!BannerLiquid.TryGet(collObj, out BannerLiquid liquidProps)
+            && (collObj is not BlockLiquidContainerTopOpened container || !BannerLiquid.TryGet(inSlot.Itemstack, container, out liquidProps)))
         {
             return;
         }

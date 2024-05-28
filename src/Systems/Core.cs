@@ -2,6 +2,7 @@ global using static Flags.Constants;
 using Vintagestory.API.Common;
 using Vintagestory.API.Server;
 using Vintagestory.API.Util;
+using Vintagestory.GameContent;
 
 [assembly: ModInfo(name: "Banners", modID: "flags")]
 
@@ -49,6 +50,10 @@ public class Core : ModSystem
                 {
                     item.Tabs = item?.Tabs?.Append(modCreativeTab);
                 }
+            }
+            if (obj is BlockLiquidContainerTopOpened && !obj.HasBehavior<CollectibleBehaviorBannerLiquidDescription>())
+            {
+                obj.CollectibleBehaviors = obj.CollectibleBehaviors.Append(new CollectibleBehaviorBannerLiquidDescription(obj));
             }
         }
     }
