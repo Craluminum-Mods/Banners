@@ -15,9 +15,9 @@ public class Server : ModSystem
 
         commands.BeginSub("genbannermc")
             .WithAlias("genmc")
-            .WithDesc(Constants.Commands.GenerateBannerMC.Description.Localize())
+            .WithDesc($"{modDomain}:command-genbannermc-desc".Localize())
             .WithArgs(
-            parsers.Unparsed(Constants.Commands.GenerateBannerMC.ArgCommandMC.Localize()))
+            parsers.Unparsed("minecraft syntax"))
             .HandleWith(GenerateBannerMC)
         .EndSub();
     }
@@ -26,11 +26,11 @@ public class Server : ModSystem
     {
         if (args.Caller.Player.Entity.RightHandItemSlot?.Itemstack?.Collectible is not BlockBanner)
         {
-            return TextCommandResult.Error(Constants.Commands.ErrorNoBanner.Localize());
+            return TextCommandResult.Error($"{modDomain}:command-nobanner".Localize());
         }
 
         return Core.Converter.TryGenerateBanner(args)
-            ? TextCommandResult.Success(Constants.Commands.GenerateBannerMC.Success.Localize())
-            : TextCommandResult.Error(Constants.Commands.GenerateBannerMC.ErrorSyntax.Localize());
+            ? TextCommandResult.Success($"{modDomain}:command-genbannermc".Localize())
+            : TextCommandResult.Error($"{modDomain}:command-genbannermc-invalidsyntax".Localize());
     }
 }

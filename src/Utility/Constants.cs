@@ -26,23 +26,20 @@ public static class Constants
     public const string textureCodePattern = "{pattern}";
     public const string textureUnknown = "unknown";
 
-    public const string langCodeBannerLiquidType = $"{modDomain}:BannerLiquid.Type";
-    public const string langCodeBannerColorType = $"{modDomain}:BannerLiquid.Color";
-
+    public const string langCodeBannerLiquidType = $"{modDomain}:bannerliquid-type";
+    public const string langCodeBannerColorType = $"{modDomain}:bannerliquid-color";
     public const string langCodeColor = "color-";
-    public const string langCodePattern = $"{modDomain}:Pattern.";
+    public const string langCodePattern = $"{modDomain}:pattern-";
     public const string langCodePatternGroup = $"{modDomain}:patterngroup-";
     public const string langCodePatternGroups = $"{modDomain}:patterngroups";
     public const string langCodeAddLayer = $"{modDomain}:blockhelp-banner-addlayer";
     public const string langCodeRemovelayer = $"{modDomain}:blockhelp-banner-removelayer";
     public const string langCodeCopyLayers = $"{modDomain}:blockhelp-banner-copylayers";
     public const string langCodeRename = $"{modDomain}:blockhelp-banner-rename";
-    public const string langCodeRotate = "Rotate";
-    public const string langCodeRotateByAxis = $"{modDomain}:Rotate.Axis";
-    public const string langCodeRotateBy22_5 = $"{modDomain}:Rotate.22.5";
-    public const string langCodeRotateBy90 = $"{modDomain}:Rotate.90";
-    public const string langCodeClearRotationsXZ = $"{modDomain}:ClearRotationsXZ";
     public const string langCodeCycleVariants = $"{modDomain}:blockhelp-banner-cyclevariants";
+    public const string langCodeRotateBy22_5 = $"{modDomain}:blockhelp-banner-rotation-22_5";
+    public const string langCodeRotateByAxisBy90 = $"{modDomain}:blockhelp-banner-rotation-axis-90";
+    public const string langCodeClearRotationsXZ = $"{modDomain}:blockhelp-banner-rotation-clearxz";
 
     public const string cacheKeyBlockBannerMeshes = $"{modDomain}BlockBannerMeshes";
     public const string cacheKeyBlockBannerInvMeshes = $"{modDomain}BlockBannerMeshesInventory";
@@ -93,29 +90,6 @@ public static class Constants
     public const string outputFolderName = "Banners";
 
     public const string pathConverter = "flags:config/mc-to-vs-converter.json";
-
-    public class Commands
-    {
-        public const string ErrorNoBanner = $"{modDomain}:Command.Error.NoBanner";
-
-        /// <summary> Server command </summary>
-        public class GenerateBannerMC
-        {
-            public const string Description = $"{modDomain}:Command.GenerateBannerMC.Description";
-            public const string Success = $"{modDomain}:Command.GenerateBannerMC.Success";
-            public const string ArgCommandMC = $"{modDomain}:Command.GenerateBannerMC.ArgCommandMC";
-            public const string ErrorSyntax = $"{modDomain}:Command.GenerateBannerMC.Error.MCSyntax";
-        }
-
-        /// <summary> Client command </summary>
-        public class GenerateTextures
-        {
-            public const string Description = $"{modDomain}:Command.GenerateTextures.Description";
-            public const string Success = $"{modDomain}:Command.GenerateTextures.Success";
-            public const string OptionalArgTextureColor = $"{modDomain}:Command.GenerateTextures.OptionalArg.TextureColor";
-            public const string OptionalArgReplaceExisting = $"{modDomain}:Command.GenerateTextures.OptionalArg.ReplaceExisting";
-        }
-    }
 
     public class IngameError
     {

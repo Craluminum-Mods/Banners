@@ -2,7 +2,7 @@ namespace Flags;
 
 public class BannerLayer
 {
-    public string Name => $"{langCodePatternAndColor}".Localize($"{langCodePattern}{Pattern}".Localize(), $"{langCodeColor}{Color}".Localize());
+    public string Name => string.Format("{0} ({1})", $"{langCodePattern}{Pattern}".Localize(), $"{langCodeColor}{Color}".Localize());
     public string Priority { get; protected set; }
     public string Pattern { get; protected set; }
     public string Color { get; protected set; }

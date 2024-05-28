@@ -102,13 +102,13 @@ public class BEBehaviorRotatableBanner : BlockEntityBehavior, IRotatableBanner
         {
             new()
             {
-                ActionLangCode = string.Format("{0} ({1})",  langCodeRotate.Localize(), langCodeRotateBy22_5.Localize()),
+                ActionLangCode = langCodeRotateBy22_5,
                 MouseButton = EnumMouseButton.Left,
                 Itemstacks = wrenchStacks?.ToArray()
             },
             new()
             {
-                ActionLangCode = string.Format("{0} ({1})", langCodeRotateByAxis.Localize(), langCodeRotateBy90.Localize()),
+                ActionLangCode = langCodeRotateByAxisBy90,
                 MouseButton = EnumMouseButton.Left,
                 HotKeyCodes = new[] { "shift" },
                 Itemstacks = wrenchStacks?.ToArray()

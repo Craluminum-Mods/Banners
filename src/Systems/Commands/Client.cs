@@ -16,10 +16,10 @@ public class Client : ModSystem
 
         commands.BeginSub("gentextures")
             .WithAlias("gentex")
-            .WithDesc(Constants.Commands.GenerateTextures.Description.Localize(OutputFolder))
+            .WithDesc($"{modDomain}:command-generatetextures-desc".Localize(OutputFolder))
             .WithArgs(
-            parsers.Bool(Constants.Commands.GenerateTextures.OptionalArgReplaceExisting.Localize()),
-            parsers.Word(Constants.Commands.GenerateTextures.OptionalArgTextureColor.Localize()))
+            parsers.Bool("replace"),
+            parsers.Word("texture color"))
             .HandleWith(GenerateTextures)
         .EndSub();
     }
@@ -32,9 +32,9 @@ public class Client : ModSystem
         ICoreClientAPI capi = args.Caller.Player.Entity.Api as ICoreClientAPI;
         if (slot?.Itemstack?.Collectible is not BlockBanner blockBanner)
         {
-            return TextCommandResult.Error(Constants.Commands.ErrorNoBanner.Localize());
+            return TextCommandResult.Error($"{modDomain}:command-nobanner".Localize());
         }
         blockBanner.DebugPregenerateTextures(capi, replaceExisting, textureColor);
-        return TextCommandResult.Success(Constants.Commands.GenerateTextures.Success.Localize());
+        return TextCommandResult.Success($"{modDomain}:command-generatetextures".Localize());
     }
 }

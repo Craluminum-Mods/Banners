@@ -123,7 +123,7 @@
         {
             "name": "Flags.BannerPatternName",
             "properties": {
-                "parts": ["flags:item-bannerpattern", " (", "flags:Pattern.pattern_placeholder", ")"],
+                "parts": ["flags:item-bannerpattern", " (", "flags:pattern-pattern_placeholder", ")"],
                 "replacePart": "pattern_placeholder",
                 "defaultName": "flags:item-bannerpattern"
             }
