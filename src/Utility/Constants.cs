@@ -26,8 +26,8 @@ public static class Constants
     public const string textureCodePattern = "{pattern}";
     public const string textureUnknown = "unknown";
 
-    public const string langCodeBannerLiquidType = $"{modDomain}:bannerliquid-type";
-    public const string langCodeBannerColorType = $"{modDomain}:bannerliquid-color";
+    public const string langCodeBannerLiquidType = $"{modDomain}:banner-liquid-type";
+    public const string langCodeBannerColorType = $"{modDomain}:banner-liquid-color";
     public const string langCodeColor = "color-";
     public const string langCodePattern = $"{modDomain}:pattern-";
     public const string langCodePatternGroup = $"{modDomain}:patterngroup-";
@@ -36,10 +36,10 @@ public static class Constants
     public const string langCodeRemovelayer = $"{modDomain}:blockhelp-banner-removelayer";
     public const string langCodeCopyLayers = $"{modDomain}:blockhelp-banner-copylayers";
     public const string langCodeRename = $"{modDomain}:blockhelp-banner-rename";
-    public const string langCodeCycleVariants = $"{modDomain}:blockhelp-banner-cyclevariants";
-    public const string langCodeRotateBy22_5 = $"{modDomain}:blockhelp-banner-rotation-22_5";
-    public const string langCodeRotateByAxisBy90 = $"{modDomain}:blockhelp-banner-rotation-axis-90";
-    public const string langCodeClearRotationsXZ = $"{modDomain}:blockhelp-banner-rotation-clearxz";
+    public const string langCodeSwapModel = $"{modDomain}:blockhelp-banner-swapmodel";
+    public const string langCodeRotateBy22_5 = $"{modDomain}:blockhelp-banner-rotate-22_5";
+    public const string langCodeRotateByAxisBy90 = $"{modDomain}:blockhelp-banner-rotate-axis-90";
+    public const string langCodeClearRotationsXZ = $"{modDomain}:blockhelp-banner-clear-rotations-xz";
 
     public const string cacheKeyBlockBannerMeshes = $"{modDomain}BlockBannerMeshes";
     public const string cacheKeyBlockBannerInvMeshes = $"{modDomain}BlockBannerMeshesInventory";

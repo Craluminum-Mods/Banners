@@ -81,7 +81,7 @@ public class BEBehaviorWrenchOrientableBanner : BlockEntityBehavior, IWrenchOrie
         {
             new()
             {
-                ActionLangCode = langCodeCycleVariants,
+                ActionLangCode = langCodeSwapModel,
                 MouseButton = EnumMouseButton.Left,
                 HotKeyCodes = new[] { "shift", "ctrl" },
                 Itemstacks = wrenchStacks?.ToArray()
