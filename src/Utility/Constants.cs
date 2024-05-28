@@ -6,22 +6,20 @@ namespace Flags;
 
 public static class Constants
 {
-    public const string modDomain = "flags";
-    public const string modCreativeTab = "flags";
+    public const int bannerCodeMaxElements = 2;
+    public const int defaultLayersLimit = 14;
 
     public const float DegreesToRadians = (float)Math.PI / 180f;
     public const float RadiansToDegrees = 180f / (float)Math.PI;
-
     public const float Radians90 = (float)Math.PI / 2f;
     public const float Radians22_5 = (float)Math.PI / 8f;
 
-    public const string Wildcard = "*";
     public const char layerSeparator = '|';
-    public const int bannerCodeMaxElements = 2;
 
+    public const string modDomain = "flags";
+    public const string modCreativeTab = "flags";
+    public const string Wildcard = "*";
     public const string worldConfigLayersLimit = "bannerLayersLimit";
-    public const int defaultLayersLimit = 14;
-
     public const string textureCodeColor = "{color}";
     public const string textureCodePattern = "{pattern}";
     public const string textureUnknown = "unknown";
@@ -87,9 +85,9 @@ public static class Constants
     public const string prefixShapes = "shapes/";
     public const string prefixTextures = "textures/";
 
-    public const string outputFolderName = "Banners";
-
     public const string pathConverter = "flags:config/mc-to-vs-converter.json";
+    public const string outputFolderName = "Banners";
+    public static string OutputFolder => Path.Combine(GamePaths.Cache, outputFolderName);
 
     public class IngameError
     {
@@ -97,6 +95,4 @@ public static class Constants
         public const string BannerRename = $"{modDomain}:ingameerror-banner-rename";
         public const string BannerPatternGroups = $"{modDomain}:ingameerror-banner-patterngroups";
     }
-
-    public static string OutputFolder => Path.Combine(GamePaths.Cache, outputFolderName);
 }
