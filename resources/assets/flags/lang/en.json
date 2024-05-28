@@ -1,19 +1,6 @@
 {
     "game:tabname-flags": "Banners",
 
-    "blockhelp-banner-addlayer": "Add pattern (requires pattern in left hand)",
-    "blockhelp-banner-removelayer": "Remove last pattern",
-    "blockhelp-banner-copylayers": "Copy patterns",
-    "blockhelp-banner-rename": "Rename (requires book/paper with title)",
-    "blockhelp-banner-cyclevariants": "Switch to next model",
-    "blockhelp-banner-rotation-22_5": "Rotate by 22.5 degrees",
-    "blockhelp-banner-rotation-axis-90": "Rotate by 90 degrees around the axis",
-    "blockhelp-banner-rotation-clearxz": "Clear rotations for the X and Z axes",
-
-    "ingameerror-banner-copylayers": "Not able to copy from banner because both have patterns or base colors don't match",
-    "ingameerror-banner-rename": "Not able to rename banner because book or paper has no title",
-    "ingameerror-banner-patterngroups": "Pattern groups don't match",
-
     "block-banner": "Banner",
     "item-bannerpattern": "Banner Pattern",
     "blank": "Blank",
@@ -62,6 +49,19 @@
     "pattern-hansa_largefish": "Hansa (Large fish)",
     "pattern-hansa_ship": "Hansa (Ship)",
     "pattern-hansa_town": "Hansa (Town)",
+
+    "blockhelp-banner-addlayer": "Add pattern (requires pattern in left hand)",
+    "blockhelp-banner-removelayer": "Remove last pattern",
+    "blockhelp-banner-copylayers": "Copy patterns",
+    "blockhelp-banner-rename": "Rename (requires book/paper with title)",
+    "blockhelp-banner-cyclevariants": "Switch to next model",
+    "blockhelp-banner-rotation-22_5": "Rotate by 22.5 degrees",
+    "blockhelp-banner-rotation-axis-90": "Rotate by 90 degrees around the axis",
+    "blockhelp-banner-rotation-clearxz": "Clear rotations for the X and Z axes",
+
+    "ingameerror-banner-copylayers": "Not able to copy from banner because both have patterns or base colors don't match",
+    "ingameerror-banner-rename": "Not able to rename banner because book or paper has no title",
+    "ingameerror-banner-patterngroups": "Pattern groups don't match",
 
     "command-nobanner": "Active hand is missing banner",
     "command-generatetextures": "Textures were sucessfully generated for banner",

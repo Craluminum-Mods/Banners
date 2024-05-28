@@ -1,22 +1,9 @@
 {
     "game:tabname-flags": "Прапори",
 
-    "blockhelp-banner-addlayer": "Додати шар (потрібен візерунок в лівій руці)",
-    "blockhelp-banner-removelayer": "Видалити останній шар",
-    "blockhelp-banner-copylayers": "Копіювати шари",
-    "blockhelp-banner-rename": "Перейменувати (потрібна книга/папір з заголовком)",
-    "blockhelp-banner-cyclevariants": "Перемикати варіанти",
-    "blockhelp-banner-rotation-22_5": "Повернути на 22,5 градуса",
-    "blockhelp-banner-rotation-axis-90": "Повернути на 90 градусів навколо осі",
-    "blockhelp-banner-rotation-clearxz": "Скинути повороти по осям X і Z",
-
-    "ingameerror-banner-copylayers": "Неможливо скопіювати з прапора, оскільки обидва мають візерунки або базові кольори не збігаються",
-    "ingameerror-banner-rename": "Неможливо перейменувати прапор, оскільки книга або папір не має заголовка",
-    "ingameerror-banner-patterngroups": "Групи візерунків не збігаються",
-
     "block-banner": "Прапор",
     "item-bannerpattern": "Візерунок для прапора",
-    "blank": "Пусто",
+    "blank": "Пустий",
     "bannerliquid-type": "Тип рідини для прапора: {0}",
     "bannerliquid-color": "Колір рідини для прапора: {0}",
     "Dye": "Фарба",
@@ -62,6 +49,19 @@
     "pattern-hansa_largefish": "Ганза (Велика риба)",
     "pattern-hansa_ship": "Ганза (Корабель)",
     "pattern-hansa_town": "Ганза (Місто)",
+
+    "blockhelp-banner-addlayer": "Додати шар (потрібен візерунок в лівій руці)",
+    "blockhelp-banner-removelayer": "Видалити останній шар",
+    "blockhelp-banner-copylayers": "Копіювати шари",
+    "blockhelp-banner-rename": "Перейменувати (потрібна книга/папір з заголовком)",
+    "blockhelp-banner-cyclevariants": "Перемикати варіанти",
+    "blockhelp-banner-rotation-22_5": "Повернути на 22,5 градуса",
+    "blockhelp-banner-rotation-axis-90": "Повернути на 90 градусів навколо осі",
+    "blockhelp-banner-rotation-clearxz": "Скинути повороти по осям X і Z",
+
+    "ingameerror-banner-copylayers": "Неможливо скопіювати з прапора, оскільки обидва мають візерунки або базові кольори не збігаються",
+    "ingameerror-banner-rename": "Неможливо перейменувати прапор, оскільки книга або папір не має заголовка",
+    "ingameerror-banner-patterngroups": "Групи візерунків не збігаються",
 
     "command-nobanner": "В активній руці немає прапора",
     "command-generatetextures": "Текстури для прапора успішно згенеровані",

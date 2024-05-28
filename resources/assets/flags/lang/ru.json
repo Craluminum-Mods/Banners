@@ -1,19 +1,6 @@
 {
     "game:tabname-flags": "Флаги",
 
-    "blockhelp-banner-addlayer": "Добавить узор (требуется узор в левой руке)",
-    "blockhelp-banner-removelayer": "Удалить последний узор",
-    "blockhelp-banner-copylayers": "Копировать узоры",
-    "blockhelp-banner-rename": "Переименовать (требуется книга/бумага с заголовком)",
-    "blockhelp-banner-cyclevariants": "Переключить на следующую модель",
-    "blockhelp-banner-rotation-22_5": "Повернуть на 22,5 градуса",
-    "blockhelp-banner-rotation-axis-90": "Повернуть на 90 градусов вокруг оси",
-    "blockhelp-banner-rotation-clearxz": "Сбросить повороты по осям X и Z",
-
-    "ingameerror-banner-copylayers": "Невозможно скопировать с флага, так как у обоих есть узоры или базовые цвета не совпадают",
-    "ingameerror-banner-rename": "Невозможно переименовать флаг, так как книга или бумага не имеет заголовка",
-    "ingameerror-banner-patterngroups": "Группы узоров не совпадают",
-
     "block-banner": "Флаг",
     "item-bannerpattern": "Узор для флага",
     "blank": "Пустой",
@@ -62,6 +49,19 @@
     "pattern-hansa_largefish": "Ганза (Крупная рыба)",
     "pattern-hansa_ship": "Ганза (Корабль)",
     "pattern-hansa_town": "Ганза (Город)",
+
+    "blockhelp-banner-addlayer": "Добавить узор (требуется узор в левой руке)",
+    "blockhelp-banner-removelayer": "Удалить последний узор",
+    "blockhelp-banner-copylayers": "Копировать узоры",
+    "blockhelp-banner-rename": "Переименовать (требуется книга/бумага с заголовком)",
+    "blockhelp-banner-cyclevariants": "Переключить на следующую модель",
+    "blockhelp-banner-rotation-22_5": "Повернуть на 22,5 градуса",
+    "blockhelp-banner-rotation-axis-90": "Повернуть на 90 градусов вокруг оси",
+    "blockhelp-banner-rotation-clearxz": "Сбросить повороты по осям X и Z",
+
+    "ingameerror-banner-copylayers": "Невозможно скопировать с флага, так как у обоих есть узоры или базовые цвета не совпадают",
+    "ingameerror-banner-rename": "Невозможно переименовать флаг, так как книга или бумага не имеет заголовка",
+    "ingameerror-banner-patterngroups": "Группы узоров не совпадают",
 
     "command-nobanner": "В активной руке нет флага",
     "command-generatetextures": "Текстуры для флага успешно сгенерированы",
