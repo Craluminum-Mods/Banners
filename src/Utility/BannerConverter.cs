@@ -14,10 +14,16 @@ public class BannerConverter
     public Dictionary<string, string> IdsToColors { get; set; } = new();
     public Dictionary<string, string> Patterns { get; set; } = new();
 
-    public bool TryGenerateBanner(TextCommandCallingArgs args)
+    public TextCommandResult TryGenerateBanner(TextCommandCallingArgs args)
     {
         IPlayer byPlayer = args.Caller.Player;
         ItemSlot slot = byPlayer.Entity.RightHandItemSlot;
+
+        if (slot?.Itemstack?.Collectible is not BlockBanner blockBanner)
+        {
+            return TextCommandResult.Error($"{modDomain}:command-nobanner".Localize());
+        }
+
         string mcBaseColor = args.RawArgs.PopUntil('{').Replace("minecraft:", "").Replace("_banner", "");
         string bannerAttributes = args.RawArgs.PopAll();
 
@@ -35,15 +41,15 @@ public class BannerConverter
 
         if ((fromObject?.KeyExists("BlockEntityTag")) != true || !fromObject["BlockEntityTag"].KeyExists("Patterns") || !fromObject["BlockEntityTag"]["Patterns"].AsArray().Any())
         {
-            return false;
+            return TextCommandResult.Error($"{modDomain}:command-genbannermc-invalidsyntax".Localize());
         }
 
         if (!BaseColorsToColors.TryGetValue(mcBaseColor, out string vsBaseColor) && !BaseColorsToColors.TryGetValue(Wildcard, out vsBaseColor))
         {
-            return false;
+            return TextCommandResult.Error($"{modDomain}:command-genbannermc-invalidsyntax".Localize());
         }
 
-        BannerProperties bannerProperties = new BannerProperties((slot.Itemstack.Collectible as BlockBanner)?.DefaultPlacement);
+        BannerProperties bannerProperties = new BannerProperties(blockBanner.DefaultPlacement);
         bannerProperties.AddLayer(new BannerLayer("0-b", vsBaseColor), byPlayer.Entity.World);
         foreach (BannerLayer layer in fromObject["BlockEntityTag"]["Patterns"].AsArray().Select((pattern, index) => new BannerLayer(
             layer: $"{index}-{GetPattern(pattern)}",
@@ -56,7 +62,7 @@ public class BannerConverter
         slot.Itemstack.Attributes.RemoveAttribute(attributeBanner);
         bannerProperties.ToStack(slot.Itemstack);
         slot.MarkDirty();
-        return true;
+        return TextCommandResult.Success($"{modDomain}:command-genbannermc".Localize());
     }
 
     private string GetPattern(JsonObject pattern)

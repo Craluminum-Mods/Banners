@@ -18,19 +18,8 @@ public class Server : ModSystem
             .WithDesc($"{modDomain}:command-genbannermc-desc".Localize())
             .WithArgs(
             parsers.Unparsed("minecraft syntax"))
-            .HandleWith(GenerateBannerMC)
+            .HandleWith(Core.Converter.TryGenerateBanner)
         .EndSub();
-    }
 
-    public static TextCommandResult GenerateBannerMC(TextCommandCallingArgs args)
-    {
-        if (args.Caller.Player.Entity.RightHandItemSlot?.Itemstack?.Collectible is not BlockBanner)
-        {
-            return TextCommandResult.Error($"{modDomain}:command-nobanner".Localize());
-        }
-
-        return Core.Converter.TryGenerateBanner(args)
-            ? TextCommandResult.Success($"{modDomain}:command-genbannermc".Localize())
-            : TextCommandResult.Error($"{modDomain}:command-genbannermc-invalidsyntax".Localize());
     }
 }
