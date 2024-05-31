@@ -20,23 +20,5 @@ public class Server : ModSystem
             parsers.Unparsed("minecraft syntax"))
             .HandleWith(Core.Converter.TryGenerateBanner)
         .EndSub();
-
-        // commands.BeginSub("rotatecontainable")
-        //     .WithAlias("rotcnt")
-        //     // .WithDesc($"{modDomain}:command-genbannermc-desc".Localize())
-        //     .WithArgs(
-        //         parsers.OptionalBool("toggle debug"),
-        //         parsers.OptionalWord("axis"),
-        //         parsers.OptionalFloat("rotation")
-        //     )
-        //     .HandleWith(delegate (TextCommandCallingArgs args)
-        //     {
-        //         BlockSelection blockSel = args.Caller.Player.CurrentBlockSelection;
-        //         BlockEntity blockEntity = args.Caller.Player.Entity.World.BlockAccessor.GetBlockEntity(blockSel?.Position);
-        //         return args.Caller.Player.Entity.World.BlockAccessor.TryGetBEBehavior(blockSel, out BEBehaviorBannerContainable bebehavior)
-        //             ? bebehavior.DebugRotate(blockSel, (bool)args?[0], (string)args?[1], (float)args?[2])
-        //             : TextCommandResult.Deferred;
-        //     })
-        // .EndSub();
     }
 }

@@ -20,10 +20,6 @@ public class BEBehaviorBannerContainable : BlockEntityBehavior, IBlockEntityCont
     public RotationsByFace RotationsByFace { get; protected set; } = new();
 
     public Vec3f GetRotation(BlockFacing facing) => RotationsByFace[facing];
-    // public bool DropOnRemoved { get; protected set; } = false;
-    // public static bool UseDebugRotations = false;
-    // public RotationsByFace RotationsDebug { get; protected set; } = new();
-    // public Vec3f GetRotation(BlockFacing facing) => !UseDebugRotations ? RotationsByFace[facing] : RotationsDebug[facing];
 
     public IInventory Inventory => inv;
     public string InventoryClassName => bannerContainableInvClassName;
@@ -42,7 +38,6 @@ public class BEBehaviorBannerContainable : BlockEntityBehavior, IBlockEntityCont
         ExcludeFaces = properties[attributeExcludeFaces].AsObject<List<int>>(new(BlockFacing.NumberOfFaces));
         ShapeKey = properties[attributeShapeKey].AsString();
         RotationsByFace = properties[attributeRotationsByFace].AsObject<RotationsByFace>();
-        // DropOnRemoved = properties["dropOnRemoved"].AsBool(true);
 
         if (meshes == null || !meshes.Any())
         {
@@ -80,7 +75,6 @@ public class BEBehaviorBannerContainable : BlockEntityBehavior, IBlockEntityCont
 
     public override void OnBlockRemoved()
     {
-        // if (Api.Side.IsServer() && DropOnRemoved)
         if (Api.Side.IsServer())
         {
             DropContents();
@@ -108,7 +102,6 @@ public class BEBehaviorBannerContainable : BlockEntityBehavior, IBlockEntityCont
     public override void FromTreeAttributes(ITreeAttribute tree, IWorldAccessor worldForResolving)
     {
         inv.FromTreeAttributes(tree.GetTreeAttribute(attributeInventoryBannerContainable));
-        // RotationsDebug.FromTreeAttribute(tree);
         Init();
     }
 
@@ -120,7 +113,6 @@ public class BEBehaviorBannerContainable : BlockEntityBehavior, IBlockEntityCont
             inv.ToTreeAttributes(invtree);
             tree[attributeInventoryBannerContainable] = invtree;
         }
-        // RotationsDebug.ToTreeAttribute(tree);
     }
 
     public override bool OnTesselation(ITerrainMeshPool mesher, ITesselatorAPI tessThreadTesselator)
@@ -165,34 +157,4 @@ public class BEBehaviorBannerContainable : BlockEntityBehavior, IBlockEntityCont
         }
         return false;
     }
-
-    // public TextCommandResult DebugRotate(BlockSelection blockSel, bool? toggleDebug = null, string axis = null, float? rot = null)
-    // {
-    // if (toggleDebug != null) UseDebugRotations = (bool)toggleDebug;
-
-    // if (axis != null && rot != null)
-    // {
-    //     switch (axis)
-    //     {
-    //         case "x":
-    //             RotationsDebug[blockSel.Face].X += (float)rot % 360;
-    //             break;
-    //         case "y":
-    //             RotationsDebug[blockSel.Face].Y += (float)rot % 360;
-    //             break;
-    //         case "z":
-    //             RotationsDebug[blockSel.Face].Z += (float)rot % 360;
-    //             break;
-    //     }
-    // }
-
-    // Blockentity.MarkDirty(true);
-
-    //     StringBuilder sb = new StringBuilder()
-    //     .AppendLine("face: " + blockSel?.Face?.Code)
-    //     .AppendLine("x: " + RotationsByFace[blockSel.Face].X)
-    //     .AppendLine("y: " + RotationsByFace[blockSel.Face].Y)
-    //     .Append("z: " + RotationsByFace[blockSel.Face].Z);
-    //     return TextCommandResult.Success(sb.ToString());
-    // }
 }
