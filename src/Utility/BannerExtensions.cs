@@ -170,7 +170,7 @@ public static class BannerExtensions
         ctex.BlendedOverlays = ctex.BlendedOverlays.Append(new BlendedOverlayTexture() { Base = overlayTexture.Base, BlendMode = EnumColorBlendMode.Normal });
     }
 
-    public static void DebugPregenerateTextures(this BlockBanner blockBanner, ICoreClientAPI capi, bool replaceExisting = false, string grayscaleColor = "black")
+    public static void DebugPregenerateTextures(this BlockBanner blockBanner, ICoreClientAPI capi, bool replaceExisting = false, string grayscaleColor = defaultColor)
     {
         foreach ((string key, CompositeTexture tex) in blockBanner.CustomTextures)
         {

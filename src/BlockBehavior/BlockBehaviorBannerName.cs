@@ -20,8 +20,8 @@ public class BlockBehaviorBannerName : BlockBehavior
         base.Initialize(properties);
 
         Parts = properties[attributeParts].AsObject<List<string>>(new());
-        ReplacePart = properties.KeyExists(attributeReplacePart) ? properties[attributeReplacePart].AsString() : "";
-        DefaultName = properties.KeyExists(attributeDefaultName) ? properties[attributeDefaultName].AsString() : "";
+        ReplacePart = properties.KeyExists(attributeReplacePart) ? properties[attributeReplacePart].AsString() : string.Empty;
+        DefaultName = properties.KeyExists(attributeDefaultName) ? properties[attributeDefaultName].AsString() : string.Empty;
     }
 
     public override void GetPlacedBlockName(StringBuilder sb, IWorldAccessor world, BlockPos pos) => ConstructName(sb: sb, world: world, pos: pos);
@@ -34,7 +34,7 @@ public class BlockBehaviorBannerName : BlockBehavior
         if (!Parts.Any()) return newName;
         if (string.IsNullOrEmpty(ReplacePart))
         {
-            newName = string.Join("", Parts.Select(x => x.LocalizeM()));
+            newName = string.Join(string.Empty, Parts.Select(x => x.LocalizeM()));
             sb.Clear();
             sb.Append(newName);
             return sb.ToString();
@@ -43,7 +43,7 @@ public class BlockBehaviorBannerName : BlockBehavior
         {
             newName = !string.IsNullOrEmpty(props.Name)
                 ? props.Name
-                : string.Join("", Parts.Select(x => x.Replace(ReplacePart, props.BaseColor).LocalizeM()));
+                : string.Join(string.Empty, Parts.Select(x => x.Replace(ReplacePart, props.BaseColor).LocalizeM()));
 
             sb.Clear();
             sb.Append(newName);

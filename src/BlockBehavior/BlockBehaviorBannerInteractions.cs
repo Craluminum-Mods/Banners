@@ -113,7 +113,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
             return false;
         }
 
-        string newName = activeSlot.Itemstack.Attributes.GetString("title");
+        string newName = activeSlot.Itemstack.Attributes.GetString(attributeTitle);
 
         if (string.IsNullOrEmpty(newName))
         {

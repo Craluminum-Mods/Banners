@@ -24,7 +24,7 @@ public class BannerConverter
             return TextCommandResult.Error($"{modDomain}:command-nobanner".Localize());
         }
 
-        string mcBaseColor = args.RawArgs.PopUntil('{').Replace("minecraft:", "").Replace("_banner", "");
+        string mcBaseColor = args.RawArgs.PopUntil('{').Replace("minecraft:", string.Empty).Replace("_banner", string.Empty);
         string bannerAttributes = args.RawArgs.PopAll();
 
         JsonObject fromObject;

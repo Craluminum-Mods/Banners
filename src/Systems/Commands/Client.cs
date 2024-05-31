@@ -19,7 +19,7 @@ public class Client : ModSystem
             .WithDesc($"{modDomain}:command-generatetextures-desc".Localize(OutputFolder))
             .WithArgs(
             parsers.Bool("replace"),
-            parsers.Word("texture color"))
+            parsers.Word("texture color", new string[] { defaultColor }))
             .HandleWith(GenerateTextures)
         .EndSub();
     }

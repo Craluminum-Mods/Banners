@@ -15,6 +15,7 @@ public static class Constants
     public const float Radians22_5 = (float)Math.PI / 8f;
 
     public const char layerSeparator = '|';
+    public const string commaSeparator = ", ";
 
     public const string modDomain = "flags";
     public const string modCreativeTab = "flags";
@@ -23,6 +24,7 @@ public static class Constants
     public const string textureCodeColor = "{color}";
     public const string textureCodePattern = "{pattern}";
     public const string textureUnknown = "unknown";
+    public const string defaultColor = "grayscale";
 
     public const string langCodeEmpty = "Empty";
     public const string langCodeColor = "color-";
@@ -50,6 +52,7 @@ public static class Constants
     public const string cacheKeyBannerInteractions = $"{modDomain}BannerInteractions";
     public const string cacheKeyBlockBannerContainableMeshes = $"{modDomain}BlockBannerMeshesContainable";
 
+    public const string attributeTitle = "title";
     public const string attributeBanner = "banner";
     public const string attributeLayers = "layers";
     public const string attributeName = "name";

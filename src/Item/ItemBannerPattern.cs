@@ -40,7 +40,7 @@ public class ItemBannerPattern : ItemRollableFixed
     public override void GetHeldItemInfo(ItemSlot inSlot, StringBuilder sb, IWorldAccessor world, bool withDebugInfo)
     {
         base.GetHeldItemInfo(inSlot, sb, world, withDebugInfo);
-        sb.AppendLine(langCodePatternGroups.Localize(string.Join(", ", PatternGroups.Select(group => group))));
+        sb.AppendLine(langCodePatternGroups.Localize(string.Join(commaSeparator, PatternGroups.Select(group => group))));
     }
 
     public override void OnBeforeRender(ICoreClientAPI capi, ItemStack itemstack, EnumItemRenderTarget target, ref ItemRenderInfo renderinfo)
