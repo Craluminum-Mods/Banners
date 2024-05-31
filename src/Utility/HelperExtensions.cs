@@ -37,4 +37,15 @@ public static class HelperExtensions
     {
         return Lang.GetMatching(input, args);
     }
+
+    public static bool TryGetBEBehavior<T>(this IBlockAccessor blockAccessor, BlockSelection blockSel, out T behavior) where T : BlockEntityBehavior
+    {
+        if (blockSel == null)
+        {
+            behavior = null;
+            return false;
+        }
+        behavior = blockAccessor.GetBlockEntity(blockSel.Position)?.GetBehavior<T>();
+        return behavior != null;
+    }
 }

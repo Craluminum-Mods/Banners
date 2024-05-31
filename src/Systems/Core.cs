@@ -17,9 +17,11 @@ public class Core : ModSystem
         api.RegisterBlockClass("Flags.BlockBanner", typeof(BlockBanner));
         api.RegisterBlockBehaviorClass("Flags.BannerName", typeof(BlockBehaviorBannerName));
         api.RegisterBlockBehaviorClass("Flags.BannerInteractions", typeof(BlockBehaviorBannerInteractions));
+        api.RegisterBlockBehaviorClass("Flags.BannerContainableInteractions", typeof(BlockBehaviorBannerContainableInteractions));
         api.RegisterBlockEntityClass("Flags.Banner", typeof(BlockEntityBanner));
         api.RegisterBlockEntityBehaviorClass("Flags.Banner.Rotatable", typeof(BEBehaviorRotatableBanner));
         api.RegisterBlockEntityBehaviorClass("Flags.Banner.WrenchOrientable", typeof(BEBehaviorWrenchOrientableBanner));
+        api.RegisterBlockEntityBehaviorClass("Flags.BannerContainable", typeof(BEBehaviorBannerContainable));
         api.RegisterItemClass("Flags.ItemRollableFixed", typeof(ItemRollableFixed));
         api.RegisterItemClass("Flags.ItemBannerPattern", typeof(ItemBannerPattern));
         api.RegisterCollectibleBehaviorClass("Flags.BannerPatternName", typeof(CollectibleBehaviorBannerPatternName));

@@ -8,6 +8,7 @@
     "banner-liquid-color": "Колір рідини для прапора: {0}",
     "Dye": "Фарба",
     "Bleach": "Відбілювач",
+    "bannercontainable-contained-banner": "Містить прапор: {0}",
 
     "patterngroups": "Групи візерунків: {0}",
     "patterngroup-basic": "Основний",
@@ -58,6 +59,8 @@
     "blockhelp-banner-rotate-22_5": "Повернути на 22,5 градуса",
     "blockhelp-banner-rotate-axis-90": "Повернути на 90 градусів навколо осі",
     "blockhelp-banner-clear-rotations-xz": "Скинути повороти по осям X і Z",
+    "blockhelp-bannercontainable-add": "Додати прапор",
+    "blockhelp-bannercontainable-remove": "Видалити прапор",
 
     "ingameerror-banner-copylayers": "Неможливо скопіювати з прапора, оскільки обидва мають візерунки або базові кольори не збігаються",
     "ingameerror-banner-rename": "Неможливо перейменувати прапор, оскільки книга або папір не має заголовка",

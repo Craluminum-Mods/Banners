@@ -63,6 +63,47 @@ public static class BannerExtensions
         return mesh;
     }
 
+    public static MeshData GetOrCreateContainableMesh(this BlockBanner block, ICoreAPI api, ItemStack stack, string shapeKey, Vec3f rotation)
+    {
+        ICoreClientAPI capi = api as ICoreClientAPI;
+        Dictionary<string, MeshData> Meshes = ObjectCacheUtil.GetOrCreate(capi, cacheKeyBlockBannerContainableMeshes, () => new Dictionary<string, MeshData>());
+
+        BannerProperties properties = BannerProperties.FromStack(stack);
+        string key = $"{block.Code}-{properties}-{shapeKey}-{rotation}";
+
+        if (!Meshes.TryGetValue(key, out MeshData mesh))
+        {
+            mesh = new MeshData(4, 3);
+            if (!block.CustomShapesContainable.TryGetValue(shapeKey, out CompositeShape rcshape) && !block.CustomShapesContainable.TryGetValue(Wildcard, out rcshape))
+            {
+                capi.Tesselator.TesselateBlock(block, out mesh);
+                capi.Logger.Error("[Flags] No matching shape found for block {0} for BannerContainable key '{1}'", block.Code, shapeKey);
+                return mesh;
+            }
+            rcshape.Base.WithPathAppendixOnce(appendixJson).WithPathPrefixOnce(prefixShapes);
+            Shape shape = capi.Assets.TryGet(rcshape.Base)?.ToObject<Shape>();
+            ITexPositionSource texSource = block.HandleTextures(properties, capi, shape, rcshape.Base.ToString());
+            if (shape == null)
+            {
+                capi.Tesselator.TesselateBlock(block, out mesh);
+                capi.Logger.Error("[Flags] BannerContainable {0} defines shape '{1}', but no matching shape found", block.Code, rcshape.Base);
+                return mesh;
+            }
+            try
+            {
+                capi.Tesselator.TesselateShape("Containable banner block", shape, out mesh, texSource, rotation);
+            }
+            catch (Exception)
+            {
+                capi.Tesselator.TesselateBlock(block, out mesh);
+                capi.Logger.Error("[Flags] Can't create shape for block {0} for BannerContainable key '{1}' because of broken textures", block.Code, shapeKey);
+                return mesh;
+            }
+            Meshes[key] = mesh;
+        }
+        return mesh;
+    }
+
     public static void GetInventoryMesh(this BlockBanner block, ICoreClientAPI capi, ItemStack stack, ItemRenderInfo renderinfo)
     {
         Dictionary<string, MultiTextureMeshRef> InvMeshes = ObjectCacheUtil.GetOrCreate(capi, cacheKeyBlockBannerInvMeshes, () => new Dictionary<string, MultiTextureMeshRef>());

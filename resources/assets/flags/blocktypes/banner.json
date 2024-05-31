@@ -16,6 +16,11 @@
             "segment-groundsimple": { "base": "flags:block/wood/banner/segment-groundsimple" },
             "segment-wall": { "base": "flags:block/wood/banner/segment-wall" }
         },
+        "shapesContainable": {
+            "bed-vanilla-hay": { "base": "flags:block/bannercontainable/bed/vanilla-hay" },
+            "bed-vanilla-wood": { "base": "flags:block/bannercontainable/bed/vanilla-wood" },
+            "bed-vanilla-woodaged": { "base": "flags:block/bannercontainable/bed/vanilla-woodaged" }
+        },
         "ignoredTextureCodesForOverlays": {
             "topsymbol": ["hhb", "bs", "bl", "br", "bt", "bts"],
             "botsymbol": ["hh", "ts", "tl", "tr", "tt", "tts"]

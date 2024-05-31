@@ -1,0 +1,47 @@
+[
+    {
+        "op": "addmerge",
+        "path": "/behaviors",
+        "value": [{ "name": "Flags.BannerContainableInteractions" }],
+        "file": "game:blocktypes/wood/bed.json",
+        "side": "Server"
+    },
+    {
+        "op": "addmerge",
+        "path": "/entityBehaviors",
+        "value": [
+            {
+                "name": "Flags.BannerContainable",
+                "properties": {
+                    // "NORTH": 0,
+                    // "EAST": 1,
+                    // "SOUTH": 2,
+                    // "WEST": 3,
+                    // "UP": 4,
+                    // "DOWN": 5,
+                    "excludeFacesByType": {
+                        "*-feet-*": [0, 1, 2, 3, 4, 5],
+                        "*": [0, 1, 2, 3, 5]
+                    },
+                    "shapeKeyByType": {
+                        "*-wood-*": "bed-vanilla-wood",
+                        "*-hay-*": "bed-vanilla-hay",
+                        "*-woodaged-*": "bed-vanilla-woodaged"
+                    },
+                    "rotationsByFace": {
+                        "up": {
+                            "yByType": {
+                                "*-north": 180,
+                                "*-east": 90,
+                                "*-south": 0,
+                                "*-west": 270
+                            }
+                        }
+                    }
+                }
+            }
+        ],
+        "file": "game:blocktypes/wood/bed.json",
+        "side": "Server"
+    }
+]

@@ -12,6 +12,7 @@ public class BlockBanner : Block
     public List<string> PatternGroups { get; protected set; } = new();
 
     public Dictionary<string, CompositeShape> CustomShapes { get; protected set; } = new();
+    public Dictionary<string, CompositeShape> CustomShapesContainable { get; protected set; } = new();
     public Dictionary<string, CompositeTexture> CustomTextures { get; protected set; } = new();
     public Dictionary<string, List<string>> IgnoredTextureCodes { get; protected set; } = new();
     public List<string> TextureCodesForOverlays { get; protected set; } = new();
@@ -40,6 +41,7 @@ public class BlockBanner : Block
         base.OnUnloaded(api);
         PatternGroups.Clear();
         CustomShapes.Clear();
+        CustomShapesContainable.Clear();
         CustomTextures.Clear();
         IgnoredTextureCodes.Clear();
         TextureCodesForOverlays.Clear();
@@ -54,6 +56,7 @@ public class BlockBanner : Block
         PatternGroups = Attributes[attributePatternGroups].AsObject<List<string>>();
 
         CustomShapes = Attributes[attributeShapes].AsObject<Dictionary<string, CompositeShape>>();
+        CustomShapesContainable = Attributes[attributeShapesContainable].AsObject<Dictionary<string, CompositeShape>>();
         CustomTextures = Attributes[attributeTextures].AsObject<Dictionary<string, CompositeTexture>>();
         IgnoredTextureCodes = Attributes[attributeIgnoredTextureCodesForOverlays].AsObject<Dictionary<string, List<string>>>();
         TextureCodesForOverlays = Attributes[attributeTextureCodesForOverlays].AsObject<List<string>>();

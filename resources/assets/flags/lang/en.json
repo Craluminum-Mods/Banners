@@ -8,6 +8,7 @@
     "banner-liquid-color": "Banner liquid color: {0}",
     "Dye": "Dye",
     "Bleach": "Bleach",
+    "bannercontainable-contained-banner": "Contains banner: {0}",
 
     "patterngroups": "Pattern groups: {0}",
     "patterngroup-basic": "Basic",
@@ -58,6 +59,8 @@
     "blockhelp-banner-rotate-22_5": "Rotate by 22.5 degrees",
     "blockhelp-banner-rotate-axis-90": "Rotate by 90 degrees around the axis",
     "blockhelp-banner-clear-rotations-xz": "Clear rotations for the X and Z axes",
+    "blockhelp-bannercontainable-add": "Add banner",
+    "blockhelp-bannercontainable-remove": "Remove banner",
 
     "ingameerror-banner-copylayers": "Not able to copy from banner because both have patterns or base colors don't match",
     "ingameerror-banner-rename": "Not able to rename banner because book or paper has no title",

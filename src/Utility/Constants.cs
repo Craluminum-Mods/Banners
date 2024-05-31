@@ -24,10 +24,11 @@ public static class Constants
     public const string textureCodePattern = "{pattern}";
     public const string textureUnknown = "unknown";
 
-    public const string langCodeBannerLiquidType = $"{modDomain}:banner-liquid-type";
-    public const string langCodeBannerColorType = $"{modDomain}:banner-liquid-color";
+    public const string langCodeEmpty = "Empty";
     public const string langCodeColor = "color-";
     public const string langCodePattern = $"{modDomain}:pattern-";
+    public const string langCodeBannerLiquidType = $"{modDomain}:banner-liquid-type";
+    public const string langCodeBannerColorType = $"{modDomain}:banner-liquid-color";
     public const string langCodePatternGroup = $"{modDomain}:patterngroup-";
     public const string langCodePatternGroups = $"{modDomain}:patterngroups";
     public const string langCodeAddLayer = $"{modDomain}:blockhelp-banner-addlayer";
@@ -38,12 +39,16 @@ public static class Constants
     public const string langCodeRotateBy22_5 = $"{modDomain}:blockhelp-banner-rotate-22_5";
     public const string langCodeRotateByAxisBy90 = $"{modDomain}:blockhelp-banner-rotate-axis-90";
     public const string langCodeClearRotationsXZ = $"{modDomain}:blockhelp-banner-clear-rotations-xz";
+    public const string langCodeBannerContainableContainedBanner = $"{modDomain}:bannercontainable-contained-banner";
+    public const string langCodeBannerContainableContainedBannerAdd = $"{modDomain}:blockhelp-bannercontainable-add";
+    public const string langCodeBannerContainableContainedBannerRemove = $"{modDomain}:blockhelp-bannercontainable-remove";
 
     public const string cacheKeyBlockBannerMeshes = $"{modDomain}BlockBannerMeshes";
     public const string cacheKeyBlockBannerInvMeshes = $"{modDomain}BlockBannerMeshesInventory";
     public const string cacheKeyItemBannerPatternMeshes = $"{modDomain}ItemBannerPatternMeshes";
     public const string cacheKeyItemBannerPatternMeshesInv = $"{modDomain}ItemBannerPatternMeshesInventory";
     public const string cacheKeyBannerInteractions = $"{modDomain}BannerInteractions";
+    public const string cacheKeyBlockBannerContainableMeshes = $"{modDomain}BlockBannerMeshesContainable";
 
     public const string attributeBanner = "banner";
     public const string attributeLayers = "layers";
@@ -79,6 +84,13 @@ public static class Constants
     public const string attributeDefaultType = "defaultType";
     public const string attributeRolledShape = "rolledShape";
     public const string attributeBannerLiquid = "bannerLiquid";
+    public const string attributeShapesContainable = "shapesContainable";
+    public const string attributeInventoryBannerContainable = "inventoryBannerContainable";
+    public const string attributeExcludeFaces = "excludeFaces";
+    public const string attributeShapeKey = "shapeKey";
+    public const string attributeRotationsByFace = "rotationsByFace";
+
+    public const string bannerContainableInvClassName = "flags-bannercontainable";
 
     public const string appendixJson = ".json";
     public const string appendixPng = ".png";

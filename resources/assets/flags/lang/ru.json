@@ -8,6 +8,7 @@
     "banner-liquid-color": "Цвет жидкости для флага: {0}",
     "Dye": "Краска",
     "Bleach": "Отбеливатель",
+    "bannercontainable-contained-banner": "Содержит флаг: {0}",
 
     "patterngroups": "Группы узоров: {0}",
     "patterngroup-basic": "Базовый",
@@ -58,6 +59,8 @@
     "blockhelp-banner-rotate-22_5": "Повернуть на 22,5 градуса",
     "blockhelp-banner-rotate-axis-90": "Повернуть на 90 градусов вокруг оси",
     "blockhelp-banner-clear-rotations-xz": "Сбросить повороты по осям X и Z",
+    "blockhelp-bannercontainable-add": "Добавить флаг",
+    "blockhelp-bannercontainable-remove": "Удалить флаг",
 
     "ingameerror-banner-copylayers": "Невозможно скопировать с флага, так как у обоих есть узоры или базовые цвета не совпадают",
     "ingameerror-banner-rename": "Невозможно переименовать флаг, так как книга или бумага не имеет заголовка",
