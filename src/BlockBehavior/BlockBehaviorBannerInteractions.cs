@@ -189,7 +189,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
             newStack.StackSize = 1;
             BannerProperties placedProps = blockEntity.BannerProps;
             BannerProperties stackProps = BannerProperties.FromStack(stack);
-            if (placedProps.BaseColor == stackProps.BaseColor && stackProps.Layers.Count == 1)
+            if (placedProps.SameBaseColors(stackProps) && stackProps.Layers.Count == 1)
             {
                 bannerStacks.Add(newStack);
             }

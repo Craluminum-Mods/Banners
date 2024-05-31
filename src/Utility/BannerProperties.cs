@@ -115,7 +115,7 @@ public class BannerProperties
     public bool CopyFrom(ItemStack fromStack, bool copyLayers = false)
     {
         BannerProperties fromProps = FromStack(fromStack);
-        if (copyLayers && fromProps.Layers.Count > 1 && Layers.Count == 1 && fromProps.BaseColor == BaseColor)
+        if (copyLayers && fromProps.Layers.Count > 1 && Layers.Count == 1 && SameBaseColors(fromProps))
         {
             LayersFromTree(GetBannerTree(fromStack.Attributes));
             return true;
@@ -126,12 +126,17 @@ public class BannerProperties
     public bool CopyTo(ItemStack toStack, bool copyLayers = false)
     {
         BannerProperties toProps = FromStack(toStack);
-        if (copyLayers && Layers.Count > 1 && toProps.Layers.Count == 1 && toProps.BaseColor == BaseColor)
+        if (copyLayers && Layers.Count > 1 && toProps.Layers.Count == 1 && SameBaseColors(toProps))
         {
             LayersToTree(GetBannerTree(toStack.Attributes));
             return true;
         }
         return false;
+    }
+
+    public bool SameBaseColors(BannerProperties properties)
+    {
+        return BaseColor == properties.BaseColor;
     }
 
     public void SetPlacement(string placement)
