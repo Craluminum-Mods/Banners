@@ -1,8 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
+using Vintagestory.API.Util;
 
 namespace Flags;
 
@@ -23,20 +22,12 @@ public class BlockBehaviorBannerContainableInteractions : BlockBehavior
 
     public WorldInteraction[] ContainableInteractions(ICoreClientAPI capi)
     {
-        List<ItemStack> bannerStacks = new();
-        foreach (ItemStack stack in capi.World.Collectibles.Where(obj => obj is BlockBanner).SelectMany(obj => obj.GetHandBookStacks(capi) ?? Array.Empty<ItemStack>().ToList()))
-        {
-            ItemStack newStack = stack.Clone();
-            newStack.StackSize = 1;
-            bannerStacks.Add(newStack);
-        }
-
         return new WorldInteraction[] {
             new WorldInteraction()
             {
                 ActionLangCode = langCodeBannerContainableContainedBannerAdd,
                 MouseButton = EnumMouseButton.Right,
-                Itemstacks = bannerStacks.ToArray()
+                Itemstacks = ObjectCacheUtil.TryGet<ItemStack[]>(capi, cacheKeyBannerStacks)
             },
             new WorldInteraction()
             {

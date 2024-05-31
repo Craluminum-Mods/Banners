@@ -3,6 +3,7 @@ using System.Linq;
 using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
+using Vintagestory.API.Util;
 
 namespace Flags;
 
@@ -13,6 +14,8 @@ public class ItemBannerPattern : ItemRollableFixed
     public string DefaultType { get; protected set; }
     public Dictionary<string, CompositeTexture> CustomTextures { get; protected set; } = new();
     public List<string> TextureCodesForOverlays { get; protected set; } = new();
+
+    public Dictionary<string, MultiTextureMeshRef> InvMeshes => ObjectCacheUtil.GetOrCreate(api, cacheKeyItemBannerPatternMeshesInv, () => new Dictionary<string, MultiTextureMeshRef>());
 
     public override void OnLoaded(ICoreAPI api)
     {
@@ -26,6 +29,12 @@ public class ItemBannerPattern : ItemRollableFixed
         PatternGroups.Clear();
         CustomTextures.Clear();
         TextureCodesForOverlays.Clear();
+
+        foreach (MultiTextureMeshRef meshRef in InvMeshes.Values)
+        {
+            meshRef.Dispose();
+        }
+        ObjectCacheUtil.Delete(api, cacheKeyItemBannerPatternMeshesInv);
     }
 
     public void LoadTypes()

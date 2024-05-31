@@ -1,3 +1,4 @@
+using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 
@@ -47,5 +48,10 @@ public static class HelperExtensions
         }
         behavior = blockAccessor.GetBlockEntity(blockSel.Position)?.GetBehavior<T>();
         return behavior != null;
+    }
+
+    public static ItemStack[] GetHandBookStacksArray(this CollectibleObject obj, ICoreClientAPI capi)
+    {
+        return obj.GetHandBookStacks(capi)?.ToArray() ?? System.Array.Empty<ItemStack>();
     }
 }

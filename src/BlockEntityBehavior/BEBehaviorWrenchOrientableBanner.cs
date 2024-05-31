@@ -4,6 +4,7 @@ using System.Linq;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
+using Vintagestory.API.Util;
 using Vintagestory.GameContent;
 
 namespace Flags;
@@ -70,7 +71,7 @@ public class BEBehaviorWrenchOrientableBanner : BlockEntityBehavior, IWrenchOrie
         be.MarkDirty(redrawOnClient: true);
     }
 
-    public WorldInteraction[] GetPlacedBlockInteractionHelp(IWorldAccessor world, BlockSelection selection, IPlayer forPlayer, List<ItemStack> wrenchStacks)
+    public WorldInteraction[] GetPlacedBlockInteractionHelp(IWorldAccessor world, BlockSelection selection, IPlayer forPlayer)
     {
         if (selection.IsProtected(world, forPlayer, EnumBlockAccessFlags.BuildOrBreak))
         {
@@ -84,7 +85,7 @@ public class BEBehaviorWrenchOrientableBanner : BlockEntityBehavior, IWrenchOrie
                 ActionLangCode = langCodeSwapModel,
                 MouseButton = EnumMouseButton.Left,
                 HotKeyCodes = new[] { "shift", "ctrl" },
-                Itemstacks = wrenchStacks?.ToArray()
+                Itemstacks = ObjectCacheUtil.TryGet<ItemStack[]>(world.Api as ICoreClientAPI, cacheKeyWrenchStacks)
             }
         };
     }

@@ -51,6 +51,11 @@ public static class Constants
     public const string cacheKeyItemBannerPatternMeshesInv = $"{modDomain}ItemBannerPatternMeshesInventory";
     public const string cacheKeyBannerInteractions = $"{modDomain}BannerInteractions";
     public const string cacheKeyBlockBannerContainableMeshes = $"{modDomain}BlockBannerMeshesContainable";
+    public const string cacheKeyBookStacks = $"{modDomain}BookStacks";
+    public const string cacheKeyWrenchStacks = $"{modDomain}WrenchStacks";
+    public const string cacheKeyDyeStacks = $"{modDomain}DyeStacks";
+    public const string cacheKeyBleachStacks = $"{modDomain}BleachStacks";
+    public const string cacheKeyBannerStacks = $"{modDomain}BannerStacks";
 
     public const string attributeTitle = "title";
     public const string attributeBanner = "banner";

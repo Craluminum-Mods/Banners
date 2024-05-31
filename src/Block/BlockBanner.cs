@@ -4,6 +4,7 @@ using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Util;
 
 namespace Flags;
 
@@ -30,6 +31,8 @@ public class BlockBanner : Block
     public List<string> Colors { get; protected set; } = new();
     public List<string> IgnoreForGeneratingTextures { get; protected set; } = new();
 
+    public Dictionary<string, MultiTextureMeshRef> InvMeshes => ObjectCacheUtil.GetOrCreate(api, cacheKeyBlockBannerInvMeshes, () => new Dictionary<string, MultiTextureMeshRef>());
+
     public override void OnLoaded(ICoreAPI api)
     {
         base.OnLoaded(api);
@@ -49,6 +52,12 @@ public class BlockBanner : Block
         IgnoreForGeneratingTextures.Clear();
         CustomSelectionBoxes.Clear();
         CustomCollisionBoxes.Clear();
+
+        foreach (MultiTextureMeshRef meshRef in InvMeshes.Values)
+        {
+            meshRef.Dispose();
+        }
+        ObjectCacheUtil.Delete(api, cacheKeyBlockBannerInvMeshes);
     }
 
     public void LoadTypes()

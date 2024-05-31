@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
@@ -16,5 +15,5 @@ public interface IRotatableBanner : IRotatable
     Cuboidf RotatedCuboid(Cuboidf cuboid);
     bool TryRotate(EntityAgent byEntity, BlockSelection blockSel, int dir);
     void RotateByAxis(int dir, EnumAxis axis, float rotInterval);
-    WorldInteraction[] GetPlacedBlockInteractionHelp(IWorldAccessor world, BlockSelection selection, IPlayer forPlayer, List<ItemStack> wrenchStacks);
+    WorldInteraction[] GetPlacedBlockInteractionHelp(IWorldAccessor world, BlockSelection selection, IPlayer forPlayer);
 }

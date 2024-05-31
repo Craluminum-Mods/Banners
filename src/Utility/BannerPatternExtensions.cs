@@ -46,14 +46,12 @@ public static class BannerPatternExtensions
 
     public static void GetInventoryMesh(this ItemBannerPattern item, ICoreClientAPI capi, ItemStack stack, ItemRenderInfo renderinfo)
     {
-        Dictionary<string, MultiTextureMeshRef> InvMeshes = ObjectCacheUtil.GetOrCreate(capi, cacheKeyItemBannerPatternMeshesInv, () => new Dictionary<string, MultiTextureMeshRef>());
-
         BannerPatternProperties properties = BannerPatternProperties.FromStack(stack, item);
         string key = $"{item.Code}-{properties}";
-        if (!InvMeshes.TryGetValue(key, out MultiTextureMeshRef meshref))
+        if (!item.InvMeshes.TryGetValue(key, out MultiTextureMeshRef meshref))
         {
             MeshData mesh = item.GetOrCreateMesh(capi, properties);
-            meshref = InvMeshes[key] = capi.Render.UploadMultiTextureMesh(mesh);
+            meshref = item.InvMeshes[key] = capi.Render.UploadMultiTextureMesh(mesh);
         }
         renderinfo.ModelRef = meshref;
     }

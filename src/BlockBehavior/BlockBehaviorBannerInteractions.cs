@@ -1,19 +1,14 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
+using Vintagestory.API.Util;
 using Vintagestory.GameContent;
 
 namespace Flags;
 
 public class BlockBehaviorBannerInteractions : BlockBehavior
 {
-    public List<ItemStack> DyeStacks { get; protected set; } = new();
-    public List<ItemStack> BleachStacks { get; protected set; } = new();
-    public List<ItemStack> BookStacks { get; protected set; } = new();
-    public List<ItemStack> WrenchStacks { get; protected set; } = new();
-
     public BlockBehaviorBannerInteractions(Block block) : base(block) { }
 
     public override bool OnBlockInteractStart(IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel, ref EnumHandling handling)
@@ -125,48 +120,6 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         return true;
     }
 
-    public override void OnLoaded(ICoreAPI api)
-    {
-        if (api is not ICoreClientAPI capi)
-        {
-            return;
-        }
-
-        foreach (CollectibleObject obj in api.World.Collectibles)
-        {
-            if (obj is ItemBook)
-            {
-                BookStacks.AddRange(obj.GetHandBookStacks(capi) ?? Array.Empty<ItemStack>().ToList());
-            }
-            if (obj is ItemWrench)
-            {
-                WrenchStacks.AddRange(obj.GetHandBookStacks(capi) ?? Array.Empty<ItemStack>().ToList());
-            }
-            if (BannerLiquid.TryGet(obj, out BannerLiquid liquidProps))
-            {
-                foreach (ItemStack stack in obj.GetHandBookStacks(capi) ?? Array.Empty<ItemStack>().ToList())
-                {
-                    switch (liquidProps.Type)
-                    {
-                        case EnumBannerLiquid.Dye: DyeStacks.Add(stack); break;
-                        case EnumBannerLiquid.Bleach: BleachStacks.Add(stack); break;
-                    };
-                }
-            }
-        }
-    }
-
-    public override void OnUnloaded(ICoreAPI api)
-    {
-        if (api is ICoreClientAPI)
-        {
-            DyeStacks.Clear();
-            BleachStacks.Clear();
-            BookStacks.Clear();
-            WrenchStacks.Clear();
-        }
-    }
-
     public override WorldInteraction[] GetPlacedBlockInteractionHelp(IWorldAccessor world, BlockSelection selection, IPlayer forPlayer, ref EnumHandling handling)
     {
         if (world.Api is not ICoreClientAPI capi || world.BlockAccessor.GetBlockEntity(selection.Position) is not BlockEntityBanner blockEntity)
@@ -182,16 +135,14 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
     {
         WorldInteraction[] interactions = Array.Empty<WorldInteraction>();
 
-        List<ItemStack> bannerStacks = new();
-        foreach (ItemStack stack in capi.World.Collectibles.Where(obj => obj is BlockBanner).SelectMany(obj => obj.GetHandBookStacks(capi) ?? Array.Empty<ItemStack>().ToList()))
+        ItemStack[] bannerStacks = Array.Empty<ItemStack>();
+        foreach (ItemStack stack in ObjectCacheUtil.TryGet<ItemStack[]>(capi, cacheKeyBannerStacks))
         {
-            ItemStack newStack = stack.Clone();
-            newStack.StackSize = 1;
             BannerProperties placedProps = blockEntity.BannerProps;
             BannerProperties stackProps = BannerProperties.FromStack(stack);
             if (placedProps.SameBaseColors(stackProps) && stackProps.Layers.Count == 1)
             {
-                bannerStacks.Add(newStack);
+                bannerStacks = bannerStacks.Append(stack);
             }
         }
 
@@ -201,7 +152,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
                 {
                     ActionLangCode = langCodeCopyLayers,
                     MouseButton = EnumMouseButton.Right,
-                    Itemstacks = bannerStacks.ToArray()
+                    Itemstacks = bannerStacks
                 }
         }).ToArray();
 
@@ -211,19 +162,19 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
                 {
                     ActionLangCode = langCodeAddLayer,
                     MouseButton = EnumMouseButton.Right,
-                    Itemstacks = DyeStacks.ToArray()
+                    Itemstacks = ObjectCacheUtil.TryGet<ItemStack[]>(capi, cacheKeyDyeStacks)
                 },
                 new WorldInteraction()
                 {
                     ActionLangCode =  langCodeRemovelayer,
                     MouseButton = EnumMouseButton.Right,
-                    Itemstacks = BleachStacks.ToArray()
+                    Itemstacks = ObjectCacheUtil.TryGet<ItemStack[]>(capi, cacheKeyBleachStacks)
                 },
                 new WorldInteraction()
                 {
                     ActionLangCode = langCodeRename,
                     MouseButton = EnumMouseButton.Right,
-                    Itemstacks = BookStacks.ToArray()
+                    Itemstacks = ObjectCacheUtil.TryGet<ItemStack[]>(capi, cacheKeyBookStacks)
                 }
         }).ToArray();
 
@@ -232,11 +183,11 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
 
         if (rotatableBanner != null)
         {
-            interactions = interactions.Concat(rotatableBanner.GetPlacedBlockInteractionHelp(capi.World, selection, forPlayer, WrenchStacks)).ToArray();
+            interactions = interactions.Concat(rotatableBanner.GetPlacedBlockInteractionHelp(capi.World, selection, forPlayer)).ToArray();
         }
         if (wrenchableBanner != null)
         {
-            interactions = interactions.Concat(wrenchableBanner.GetPlacedBlockInteractionHelp(capi.World, selection, forPlayer, WrenchStacks)).ToArray();
+            interactions = interactions.Concat(wrenchableBanner.GetPlacedBlockInteractionHelp(capi.World, selection, forPlayer)).ToArray();
         }
 
         return interactions;
