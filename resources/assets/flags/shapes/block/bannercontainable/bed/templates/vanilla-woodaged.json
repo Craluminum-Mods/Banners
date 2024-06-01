@@ -31,8 +31,8 @@
 					"faces": {
 						"north": { "texture": "#topsymbol", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
 						"east": { "texture": "#topsides", "uv": [ 0.0, 0.0, 0.5, 16.0 ] },
-						"south": { "texture": "#topsymbol", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
-						"west": { "texture": "#topsides", "uv": [ 0.0, 0.0, 0.5, 16.0 ] },
+						"south": { "texture": "#topsymbol", "uv": [ 0.0, 0.0, 16.0, 16.0 ]},
+						"west": { "texture": "#topsides", "uv": [ 0.0, 0.0, 0.5, 16.0 ]},
 						"up": { "texture": "#topsides", "uv": [ 0.0, 0.0, 16.0, 0.5 ] }
 					},
 					"children": [
@@ -50,19 +50,6 @@
 							}
 						}
 					]
-				},
-				{
-					"name": "banner top2",
-					"from": [ -7.0, 29.0, 1.0 ],
-					"to": [ 7.0, 37.0, 1.2 ],
-					"rotationOrigin": [ 1.5, 45.0, 1.0 ],
-					"faces": {
-						"north": { "texture": "#topsymbol", "uv": [ 1.0, 1.0, 15.0, 9.0 ], "autoUv": false },
-						"east": { "texture": "#topsides", "uv": [ 0.0, 0.0, 0.5, 8.0 ] },
-						"south": { "texture": "#topsymbol", "uv": [ 1.0, 1.0, 15.0, 9.0 ], "autoUv": false },
-						"west": { "texture": "#topsides", "uv": [ 0.0, 0.0, 0.5, 8.0 ] },
-						"up": { "texture": "#topsides", "uv": [ 0.0, 0.0, 14.0, 0.5 ] }
-					}
 				}
 			]
 		}

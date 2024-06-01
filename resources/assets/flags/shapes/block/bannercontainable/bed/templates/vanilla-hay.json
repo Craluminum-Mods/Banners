@@ -16,9 +16,9 @@
 	"elements": [
 		{
 			"name": "origin flag",
-			"from": [ 8.0, -13.9, 16.0 ],
-			"to": [ 8.0, -13.9, 16.0 ],
-			"rotationOrigin": [ 8.0, 8.1, 16.0 ],
+			"from": [ 8.0, -17.9, 16.0 ],
+			"to": [ 8.0, -17.9, 16.0 ],
+			"rotationOrigin": [ 8.0, 4.1, 16.0 ],
 			"rotationX": -90.0,
 			"faces": {
 			},
@@ -30,7 +30,7 @@
 					"rotationOrigin": [ 0.5, 38.0, 0.0 ],
 					"faces": {
 						"north": { "texture": "#topsymbol", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
-						"east": { "texture": "#topsides", "uv": [ 0.0, 0.0, 0.5, 16.0 ] },
+						"east": { "texture": "#topsides", "uv": [ 0.0, 0.0, 0.5, 16.0 ]},
 						"south": { "texture": "#topsymbol", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
 						"west": { "texture": "#topsides", "uv": [ 0.0, 0.0, 0.5, 16.0 ] },
 						"up": { "texture": "#topsides", "uv": [ 0.0, 0.0, 16.0, 0.5 ] }
@@ -50,19 +50,6 @@
 							}
 						}
 					]
-				},
-				{
-					"name": "banner top2",
-					"from": [ -7.0, 29.0, 1.0 ],
-					"to": [ 7.0, 37.0, 1.2 ],
-					"rotationOrigin": [ 1.5, 45.0, 1.0 ],
-					"faces": {
-						"north": { "texture": "#topsymbol", "uv": [ 1.0, 1.0, 15.0, 9.0 ], "autoUv": false },
-						"east": { "texture": "#topsides", "uv": [ 0.0, 0.0, 0.5, 8.0 ] },
-						"south": { "texture": "#topsymbol", "uv": [ 1.0, 1.0, 15.0, 9.0 ], "autoUv": false },
-						"west": { "texture": "#topsides", "uv": [ 0.0, 0.0, 0.5, 8.0 ] },
-						"up": { "texture": "#topsides", "uv": [ 0.0, 0.0, 14.0, 0.5 ] }
-					}
 				}
 			]
 		}
