@@ -1,3 +1,5 @@
+using HarmonyLib;
+using System.Reflection;
 using Vintagestory.API.Common;
 using Vintagestory.GameContent;
 
@@ -8,6 +10,11 @@ namespace Flags;
 /// </summary>
 public static class BlockBed_OnBlockInteractStart_Patch
 {
+    public static MethodBase TargetMethod()
+    {
+        return AccessTools.Method(typeof(BlockBed), nameof(BlockBed.OnBlockInteractStart), new[] { typeof(IWorldAccessor), typeof(IPlayer), typeof(BlockSelection) });
+    }
+
     public static bool Prefix(BlockBed __instance, ref bool __result, IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel)
     {
         if (blockSel != null

@@ -14,15 +14,15 @@ public class HarmonyPatches : ModSystem
     public override void Start(ICoreAPI _api)
     {
         api = _api;
-        HarmonyInstance.Patch(original: typeof(BlockBed).GetMethod(nameof(BlockBed.OnBlockInteractStart)), prefix: typeof(BlockBed_OnBlockInteractStart_Patch).GetMethod(nameof(BlockBed_OnBlockInteractStart_Patch.Prefix)));
-        HarmonyInstance.Patch(original: AccessTools.Method(typeof(ServerSystemBlockSimulation), "HandleBlockPlaceOrBreak"), prefix: typeof(ServerSystemBlockSimulation_HandleBlockPlaceOrBreak_Patch).GetMethod(nameof(ServerSystemBlockSimulation_HandleBlockPlaceOrBreak_Patch.Prefix)));
-        HarmonyInstance.Patch(original: BlockEntityBed_DidUnmount_Patch.TargetMethod(), transpiler: typeof(BlockEntityBed_DidUnmount_Patch).GetMethod(nameof(BlockEntityBed_DidUnmount_Patch.Transpiler)));
+        HarmonyInstance.Patch(original: BlockBed_OnBlockInteractStart_Patch.TargetMethod(), prefix: typeof(BlockBed_OnBlockInteractStart_Patch).GetMethod("Prefix"));
+        HarmonyInstance.Patch(original: ServerSystemBlockSimulation_HandleBlockPlaceOrBreak_Patch.TargetMethod(), prefix: typeof(ServerSystemBlockSimulation_HandleBlockPlaceOrBreak_Patch).GetMethod("Prefix"));
+        HarmonyInstance.Patch(original: BlockEntityBed_DidUnmount_Patch.TargetMethod(), transpiler: typeof(BlockEntityBed_DidUnmount_Patch).GetMethod("Transpiler"));
     }
 
     public override void Dispose()
     {
-        HarmonyInstance.Unpatch(original: typeof(BlockBed).GetMethod(nameof(BlockBed.OnBlockInteractStart)), HarmonyPatchType.All, HarmonyInstance.Id);
-        HarmonyInstance.Unpatch(original: AccessTools.Method(typeof(ServerSystemBlockSimulation), "HandleBlockPlaceOrBreak"), HarmonyPatchType.All, HarmonyInstance.Id);
+        HarmonyInstance.Unpatch(original: BlockBed_OnBlockInteractStart_Patch.TargetMethod(), HarmonyPatchType.All, HarmonyInstance.Id);
+        HarmonyInstance.Unpatch(original: ServerSystemBlockSimulation_HandleBlockPlaceOrBreak_Patch.TargetMethod(), HarmonyPatchType.All, HarmonyInstance.Id);
         HarmonyInstance.Unpatch(original: BlockEntityBed_DidUnmount_Patch.TargetMethod(), HarmonyPatchType.All, HarmonyInstance.Id);
         BlockEntityBed_DidUnmount_Patch.Applied = false;
     }
