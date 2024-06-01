@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
@@ -133,63 +134,57 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
 
     public WorldInteraction[] BannerInteractions(BlockEntityBanner blockEntity, ICoreClientAPI capi, BlockSelection selection, IPlayer forPlayer)
     {
-        WorldInteraction[] interactions = Array.Empty<WorldInteraction>();
+        List<WorldInteraction> interactions = new List<WorldInteraction>();
 
         ItemStack[] bannerStacks = Array.Empty<ItemStack>();
         foreach (ItemStack stack in ObjectCacheUtil.TryGet<ItemStack[]>(capi, cacheKeyBannerStacks))
         {
-            BannerProperties placedProps = blockEntity.BannerProps;
             BannerProperties stackProps = BannerProperties.FromStack(stack);
-            if (placedProps.SameBaseColors(stackProps) && stackProps.Layers.Count == 1)
+            if (blockEntity.BannerProps.SameBaseColors(stackProps) && stackProps.Layers.Count == 1)
             {
                 bannerStacks = bannerStacks.Append(stack);
             }
         }
 
-        interactions = interactions.Concat(new WorldInteraction[]
+        interactions.Add(new WorldInteraction()
         {
-                new()
-                {
-                    ActionLangCode = langCodeCopyLayers,
-                    MouseButton = EnumMouseButton.Right,
-                    Itemstacks = bannerStacks
-                }
-        }).ToArray();
+            ActionLangCode = langCodeCopyLayers,
+            MouseButton = EnumMouseButton.Right,
+            Itemstacks = bannerStacks
+        });
 
-        interactions = interactions.Concat(new WorldInteraction[]
+        interactions.AddRange(new List<WorldInteraction>()
         {
-                new WorldInteraction()
-                {
-                    ActionLangCode = langCodeAddLayer,
-                    MouseButton = EnumMouseButton.Right,
-                    Itemstacks = ObjectCacheUtil.TryGet<ItemStack[]>(capi, cacheKeyDyeStacks)
-                },
-                new WorldInteraction()
-                {
-                    ActionLangCode =  langCodeRemovelayer,
-                    MouseButton = EnumMouseButton.Right,
-                    Itemstacks = ObjectCacheUtil.TryGet<ItemStack[]>(capi, cacheKeyBleachStacks)
-                },
-                new WorldInteraction()
-                {
-                    ActionLangCode = langCodeRename,
-                    MouseButton = EnumMouseButton.Right,
-                    Itemstacks = ObjectCacheUtil.TryGet<ItemStack[]>(capi, cacheKeyBookStacks)
-                }
-        }).ToArray();
+            new WorldInteraction()
+            {
+                ActionLangCode = langCodeAddLayer,
+                MouseButton = EnumMouseButton.Right,
+                Itemstacks = ObjectCacheUtil.TryGet<ItemStack[]>(capi, cacheKeyDyeStacks)
+            },
+            new WorldInteraction()
+            {
+                ActionLangCode =  langCodeRemovelayer,
+                MouseButton = EnumMouseButton.Right,
+                Itemstacks = ObjectCacheUtil.TryGet<ItemStack[]>(capi, cacheKeyBleachStacks)
+            },
+            new WorldInteraction()
+            {
+                ActionLangCode = langCodeRename,
+                MouseButton = EnumMouseButton.Right,
+                Itemstacks = ObjectCacheUtil.TryGet<ItemStack[]>(capi, cacheKeyBookStacks)
+            }
+        });
 
         IRotatableBanner rotatableBanner = blockEntity.Block.GetInterface<IRotatableBanner>(capi.World, selection.Position);
         BEBehaviorWrenchOrientableBanner wrenchableBanner = blockEntity.GetBehavior<BEBehaviorWrenchOrientableBanner>();
-
         if (rotatableBanner != null)
         {
-            interactions = interactions.Concat(rotatableBanner.GetPlacedBlockInteractionHelp(capi.World, selection, forPlayer)).ToArray();
+            interactions.AddRange(ObjectCacheUtil.TryGet<WorldInteraction[]>(capi, cacheKeyRotatableBannerInteractions));
         }
         if (wrenchableBanner != null)
         {
-            interactions = interactions.Concat(wrenchableBanner.GetPlacedBlockInteractionHelp(capi.World, selection, forPlayer)).ToArray();
+            interactions.Add(ObjectCacheUtil.TryGet<WorldInteraction>(capi, cacheKeyWrenchableBannerInteractions));
         }
-
-        return interactions;
+        return interactions.ToArray();
     }
 }

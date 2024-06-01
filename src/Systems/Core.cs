@@ -1,6 +1,5 @@
 global using static Flags.Constants;
 using System.Linq;
-using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Server;
 using Vintagestory.API.Util;
@@ -12,8 +11,6 @@ namespace Flags;
 
 public class Core : ModSystem
 {
-    private ICoreClientAPI capi;
-
     public static BannerConverter Converter { get; set; } = new();
 
     public override void Start(ICoreAPI api)
@@ -41,11 +38,6 @@ public class Core : ModSystem
         }
     }
 
-    public override void StartClientSide(ICoreClientAPI api)
-    {
-        capi = api;
-    }
-
     public override void AssetsFinalize(ICoreAPI api)
     {
         foreach (CollectibleObject obj in api.World.Collectibles)
@@ -66,52 +58,6 @@ public class Core : ModSystem
             {
                 obj.CollectibleBehaviors = obj.CollectibleBehaviors.Append(new CollectibleBehaviorBannerLiquidDescription(obj));
             }
-        }
-
-        if (api is ICoreClientAPI capi)
-        {
-
-            ObjectCacheUtil.GetOrCreate(capi, cacheKeyBannerStacks, () =>
-            {
-                return capi.World.Collectibles.Where(obj => obj is BlockBanner).SelectMany(obj => obj.GetHandBookStacksArray(capi)).Select(stack =>
-                {
-                    ItemStack newStack = stack.Clone();
-                    newStack.StackSize = 1;
-                    return newStack;
-                }).ToArray();
-            });
-
-            ObjectCacheUtil.GetOrCreate(capi, cacheKeyBookStacks, () =>
-            {
-                return capi.World.Collectibles.Where(obj => obj is ItemBook).SelectMany(obj => obj.GetHandBookStacksArray(capi)).ToArray();
-            });
-
-            ObjectCacheUtil.GetOrCreate(capi, cacheKeyWrenchStacks, () =>
-            {
-                return capi.World.Collectibles.Where(obj => obj is ItemWrench).SelectMany(obj => obj.GetHandBookStacksArray(capi)).ToArray();
-            });
-
-            ObjectCacheUtil.GetOrCreate(capi, cacheKeyDyeStacks, () =>
-            {
-                return capi.World.Collectibles.Where(obj => BannerLiquid.TryGet(obj, out BannerLiquid liquid) && liquid.IsDye).SelectMany(obj => obj.GetHandBookStacksArray(capi)).ToArray();
-            });
-
-            ObjectCacheUtil.GetOrCreate(capi, cacheKeyBleachStacks, () =>
-            {
-                return capi.World.Collectibles.Where(obj => BannerLiquid.TryGet(obj, out BannerLiquid liquid) && liquid.IsBleach).SelectMany(obj => obj.GetHandBookStacksArray(capi)).ToArray();
-            });
-        }
-    }
-
-    public override void Dispose()
-    {
-        if (capi != null)
-        {
-            ObjectCacheUtil.Delete(capi, cacheKeyBannerStacks);
-            ObjectCacheUtil.Delete(capi, cacheKeyBookStacks);
-            ObjectCacheUtil.Delete(capi, cacheKeyWrenchStacks);
-            ObjectCacheUtil.Delete(capi, cacheKeyDyeStacks);
-            ObjectCacheUtil.Delete(capi, cacheKeyBleachStacks);
         }
     }
 

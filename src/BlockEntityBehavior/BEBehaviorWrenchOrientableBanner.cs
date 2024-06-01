@@ -1,10 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
-using Vintagestory.API.Util;
 using Vintagestory.GameContent;
 
 namespace Flags;
@@ -69,24 +67,5 @@ public class BEBehaviorWrenchOrientableBanner : BlockEntityBehavior, IWrenchOrie
         be.GetOrCreateCollisionBoxes(true);
         be.GetOrCreateSelectionBoxes(true);
         be.MarkDirty(redrawOnClient: true);
-    }
-
-    public WorldInteraction[] GetPlacedBlockInteractionHelp(IWorldAccessor world, BlockSelection selection, IPlayer forPlayer)
-    {
-        if (selection.IsProtected(world, forPlayer, EnumBlockAccessFlags.BuildOrBreak))
-        {
-            return Array.Empty<WorldInteraction>();
-        }
-
-        return new WorldInteraction[]
-        {
-            new()
-            {
-                ActionLangCode = langCodeSwapModel,
-                MouseButton = EnumMouseButton.Left,
-                HotKeyCodes = new[] { "shift", "ctrl" },
-                Itemstacks = ObjectCacheUtil.TryGet<ItemStack[]>(world.Api as ICoreClientAPI, cacheKeyWrenchStacks)
-            }
-        };
     }
 }

@@ -56,6 +56,8 @@ public static class Constants
     public const string cacheKeyDyeStacks = $"{modDomain}DyeStacks";
     public const string cacheKeyBleachStacks = $"{modDomain}BleachStacks";
     public const string cacheKeyBannerStacks = $"{modDomain}BannerStacks";
+    public const string cacheKeyRotatableBannerInteractions = $"{modDomain}RotatableBannerInteractions";
+    public const string cacheKeyWrenchableBannerInteractions = $"{modDomain}WrenchableBannerInteractions";
 
     public const string attributeTitle = "title";
     public const string attributeBanner = "banner";

@@ -4,7 +4,6 @@ using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
-using Vintagestory.API.Util;
 
 namespace Flags;
 
@@ -90,38 +89,6 @@ public class BEBehaviorRotatableBanner : BlockEntityBehavior, IRotatableBanner
                 RotateZ += rotInterval * (float)dir;
                 break;
         }
-    }
-
-    public WorldInteraction[] GetPlacedBlockInteractionHelp(IWorldAccessor world, BlockSelection selection, IPlayer forPlayer)
-    {
-        if (selection.IsProtected(world, forPlayer, EnumBlockAccessFlags.BuildOrBreak))
-        {
-            return Array.Empty<WorldInteraction>();
-        }
-
-        return new WorldInteraction[]
-        {
-            new()
-            {
-                ActionLangCode = langCodeRotateBy22_5,
-                MouseButton = EnumMouseButton.Left,
-                Itemstacks = ObjectCacheUtil.TryGet<ItemStack[]>(world.Api as ICoreClientAPI, cacheKeyWrenchStacks)
-            },
-            new()
-            {
-                ActionLangCode = langCodeRotateByAxisBy90,
-                MouseButton = EnumMouseButton.Left,
-                HotKeyCodes = new[] { "shift" },
-                Itemstacks = ObjectCacheUtil.TryGet<ItemStack[]>(world.Api as ICoreClientAPI, cacheKeyWrenchStacks)
-            },
-            new()
-            {
-                ActionLangCode = langCodeClearRotationsXZ,
-                MouseButton = EnumMouseButton.Left,
-                HotKeyCodes = new[] { "ctrl" },
-                Itemstacks = ObjectCacheUtil.TryGet<ItemStack[]>(world.Api as ICoreClientAPI, cacheKeyWrenchStacks)
-            },
-        };
     }
 
     public void OnTransformed(IWorldAccessor worldAccessor, ITreeAttribute tree, int degreeRotation, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping, EnumAxis? flipAxis)

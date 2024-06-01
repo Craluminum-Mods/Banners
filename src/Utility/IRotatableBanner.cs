@@ -15,5 +15,4 @@ public interface IRotatableBanner : IRotatable
     Cuboidf RotatedCuboid(Cuboidf cuboid);
     bool TryRotate(EntityAgent byEntity, BlockSelection blockSel, int dir);
     void RotateByAxis(int dir, EnumAxis axis, float rotInterval);
-    WorldInteraction[] GetPlacedBlockInteractionHelp(IWorldAccessor world, BlockSelection selection, IPlayer forPlayer);
 }

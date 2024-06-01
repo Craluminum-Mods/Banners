@@ -17,11 +17,7 @@ public class BlockBehaviorBannerContainableInteractions : BlockBehavior
         }
 
         handling = EnumHandling.Handled;
-        return ContainableInteractions(capi);
-    }
 
-    public WorldInteraction[] ContainableInteractions(ICoreClientAPI capi)
-    {
         return new WorldInteraction[] {
             new WorldInteraction()
             {
