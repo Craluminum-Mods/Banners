@@ -8,7 +8,7 @@
                 "type": "block",
                 "code": "game:banner-banner",
                 "attributes": { "type": "hansa-wall-fish" },
-                "returnedStack": { "type": "block", "code": "game:banner-banner", "attributes": { "type": "hansa-wall-fish" } }
+                "returnedStack": { "type": "block", "code": "game:banner-banner", "attributes": { "type": "hansa-wall-fish", "collected": true } }
             }
         },
         "shapeless": true,
@@ -24,7 +24,7 @@
                 "type": "block",
                 "code": "game:banner-banner",
                 "attributes": { "type": "hansa-wall-keys" },
-                "returnedStack": { "type": "block", "code": "game:banner-banner", "attributes": { "type": "hansa-wall-keys" } }
+                "returnedStack": { "type": "block", "code": "game:banner-banner", "attributes": { "type": "hansa-wall-keys", "collected": true } }
             }
         },
         "shapeless": true,
@@ -40,7 +40,7 @@
                 "type": "block",
                 "code": "game:banner-banner",
                 "attributes": { "type": "hansa-wall-largefish" },
-                "returnedStack": { "type": "block", "code": "game:banner-banner", "attributes": { "type": "hansa-wall-largefish" } }
+                "returnedStack": { "type": "block", "code": "game:banner-banner", "attributes": { "type": "hansa-wall-largefish", "collected": true } }
             }
         },
         "shapeless": true,
@@ -56,7 +56,7 @@
                 "type": "block",
                 "code": "game:banner-banner",
                 "attributes": { "type": "hansa-wall-ship" },
-                "returnedStack": { "type": "block", "code": "game:banner-banner", "attributes": { "type": "hansa-wall-ship" } }
+                "returnedStack": { "type": "block", "code": "game:banner-banner", "attributes": { "type": "hansa-wall-ship", "collected": true } }
             }
         },
         "shapeless": true,
@@ -72,7 +72,7 @@
                 "type": "block",
                 "code": "game:banner-banner",
                 "attributes": { "type": "hansa-wall-town" },
-                "returnedStack": { "type": "block", "code": "game:banner-banner", "attributes": { "type": "hansa-wall-town" } }
+                "returnedStack": { "type": "block", "code": "game:banner-banner", "attributes": { "type": "hansa-wall-town", "collected": true } }
             }
         },
         "shapeless": true,
@@ -89,7 +89,7 @@
                 "type": "block",
                 "code": "game:banner-banner",
                 "attributes": { "type": "hansa-ground-fish" },
-                "returnedStack": { "type": "block", "code": "game:banner-banner", "attributes": { "type": "hansa-ground-fish" } }
+                "returnedStack": { "type": "block", "code": "game:banner-banner", "attributes": { "type": "hansa-ground-fish", "collected": true } }
             }
         },
         "shapeless": true,
@@ -106,7 +106,7 @@
                 "type": "block",
                 "code": "game:banner-banner",
                 "attributes": { "type": "hansa-ground-keys" },
-                "returnedStack": { "type": "block", "code": "game:banner-banner", "attributes": { "type": "hansa-ground-keys" } }
+                "returnedStack": { "type": "block", "code": "game:banner-banner", "attributes": { "type": "hansa-ground-keys", "collected": true } }
             }
         },
         "shapeless": true,
@@ -123,7 +123,7 @@
                 "type": "block",
                 "code": "game:banner-banner",
                 "attributes": { "type": "hansa-ground-largefish" },
-                "returnedStack": { "type": "block", "code": "game:banner-banner", "attributes": { "type": "hansa-ground-largefish" } }
+                "returnedStack": { "type": "block", "code": "game:banner-banner", "attributes": { "type": "hansa-ground-largefish", "collected": true } }
             }
         },
         "shapeless": true,
@@ -140,7 +140,7 @@
                 "type": "block",
                 "code": "game:banner-banner",
                 "attributes": { "type": "hansa-ground-ship" },
-                "returnedStack": { "type": "block", "code": "game:banner-banner", "attributes": { "type": "hansa-ground-ship" } }
+                "returnedStack": { "type": "block", "code": "game:banner-banner", "attributes": { "type": "hansa-ground-ship", "collected": true } }
             }
         },
         "shapeless": true,
@@ -157,7 +157,7 @@
                 "type": "block",
                 "code": "game:banner-banner",
                 "attributes": { "type": "hansa-ground-town" },
-                "returnedStack": { "type": "block", "code": "game:banner-banner", "attributes": { "type": "hansa-ground-town" } }
+                "returnedStack": { "type": "block", "code": "game:banner-banner", "attributes": { "type": "hansa-ground-town", "collected": true } }
             }
         },
         "shapeless": true,
