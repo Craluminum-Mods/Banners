@@ -6,7 +6,7 @@ using Vintagestory.Server;
 namespace Flags;
 
 /// <summary>
-/// Using patch because there is no way to handle single hit of the block
+/// Patch to handle single hit of the block
 /// </summary>
 public static class ServerSystemBlockSimulation_HandleBlockPlaceOrBreak_Patch
 {
@@ -33,8 +33,8 @@ public static class ServerSystemBlockSimulation_HandleBlockPlaceOrBreak_Patch
         }
         catch (System.Exception e)
         {
-            client?.Player?.Entity?.World?.Logger.Error(e);
             client?.Player?.Entity?.World?.Logger.Error("[Flags] Not able to get banner from BannerContainable block");
+            client?.Player?.Entity?.World?.Logger.Error(e);
         }
     }
 }

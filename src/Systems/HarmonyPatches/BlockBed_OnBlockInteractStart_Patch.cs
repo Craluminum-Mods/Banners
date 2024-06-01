@@ -4,7 +4,7 @@ using Vintagestory.GameContent;
 namespace Flags;
 
 /// <summary>
-/// Using patch because BlockBed doesn't call base.OnBlockInteractStart
+/// Patch because BlockBed doesn't call base.OnBlockInteractStart
 /// </summary>
 public static class BlockBed_OnBlockInteractStart_Patch
 {
