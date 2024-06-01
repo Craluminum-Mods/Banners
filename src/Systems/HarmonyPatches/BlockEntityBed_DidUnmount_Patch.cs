@@ -29,22 +29,21 @@ public static class BlockEntityBed_DidUnmount_Patch
             return instructions;
         }
         List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
-        try
-        {
-            int baseCallIndex = codes.FindIndex(c => c.opcode == OpCodes.Call && (c.operand?.ToString()?.Contains("OnBlockRemoved") ?? false));
 
-            baseCallIndex--;
+        int baseCallIndex = codes.FindIndex(c => c.opcode == OpCodes.Call && (c.operand?.ToString()?.Contains("OnBlockRemoved") ?? false));
 
-            codes.RemoveRange(baseCallIndex, 2);
-            Label endLabel = il.DefineLabel();
-            codes[^1].labels.Add(endLabel);
+        baseCallIndex--;
 
-            LocalBuilder currentItemVar = il.DeclareLocal(typeof(long));
-            LocalBuilder countVar = il.DeclareLocal(typeof(int));
-            LocalBuilder indexVar = il.DeclareLocal(typeof(int));
-            Label loopStartLabel = il.DefineLabel();
-            codes.InsertRange(
-                baseCallIndex, new CodeInstruction[] {
+        codes.RemoveRange(baseCallIndex, 2);
+        Label endLabel = il.DefineLabel();
+        codes[^1].labels.Add(endLabel);
+
+        LocalBuilder currentItemVar = il.DeclareLocal(typeof(long));
+        LocalBuilder countVar = il.DeclareLocal(typeof(int));
+        LocalBuilder indexVar = il.DeclareLocal(typeof(int));
+        Label loopStartLabel = il.DefineLabel();
+        codes.InsertRange(
+            baseCallIndex, new CodeInstruction[] {
                 new(OpCodes.Ldarg_0),
                 new(OpCodes.Ldfld, typeof(BlockEntity).GetField("TickHandlers", BindingFlags.Instance | BindingFlags.NonPublic)),
                 new(OpCodes.Brfalse_S, endLabel),
@@ -79,17 +78,9 @@ public static class BlockEntityBed_DidUnmount_Patch
 
                 new(OpCodes.Br, loopStartLabel)
 
-                });
-        }
-        catch (Exception e)
-        {
-            HarmonyPatches.api?.Logger.Error("[Flags] Failed to fix 'bed drops banner upon waking up' bug");
-            HarmonyPatches.api?.Logger.Error(e);
-            return instructions;
-        }
+            });
 
         Applied = true;
-        HarmonyPatches.api?.Logger.Debug("[Flags] Successfully fixed 'bed drops banner upon waking up' bug");
         return codes.AsEnumerable();
     }
 }
