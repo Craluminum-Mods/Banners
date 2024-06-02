@@ -51,6 +51,15 @@
     "pattern-hansa_ship": "Ганза (Корабль)",
     "pattern-hansa_town": "Ганза (Город)",
 
+    "pattern-checker2x4": "Клетчатый 2x4",
+    "pattern-checker2x4i": "Клетчатый 2x4 (инвертированный)",
+    "pattern-checker4x8": "Клетчатый 4x8",
+    "pattern-checker4x8i": "Клетчатый 4x8 (инвертированный)",
+    "pattern-checker5x10": "Клетчатый 5x10",
+    "pattern-checker5x10i": "Клетчатый 5x10 (инвертированный)",
+    "pattern-checker8x16": "Клетчатый 8x16",
+    "pattern-checker8x16i": "Клетчатый 8x16 (инвертированный)",
+
     "blockhelp-banner-addlayer": "Добавить узор (требуется узор в левой руке)",
     "blockhelp-banner-removelayer": "Удалить последний узор",
     "blockhelp-banner-copylayers": "Копировать узоры",

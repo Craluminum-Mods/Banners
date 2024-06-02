@@ -36,6 +36,8 @@
             "bark": { "base": "game:block/wood/bark/aged" },
             "string": { "base": "game:block/cloth/banner/magnolia" },
 
+            // mc patterns
+
             "topsymbol-b": { "base": "game:block/cloth/linen/{color}" },
             "botsymbol-b": { "base": "game:block/cloth/linen/{color}" },
 
@@ -123,6 +125,16 @@
             "topsymbol-bri": { "base": "flags:block/banner/pattern/bricks/{color}" },
             "botsymbol-bri": { "base": "flags:block/banner/pattern/bricks/{color}" },
 
+            // TODO: gradients
+
+            // "topsymbol-gra": { "base": "flags:block/banner/pattern/gradient/{color}" },
+            // "botsymbol-gra": { "base": "flags:block/banner/pattern/gradient/{color}" },
+
+            // "topsymbol-gru": { "base": "flags:block/banner/pattern/gradient_up/{color}" },
+            // "botsymbol-gru": { "base": "flags:block/banner/pattern/gradient_up/{color}" },
+
+            // rare patterns
+
             "topsymbol-hansa_fish": { "base": "flags:block/banner/pattern/hansa/fish/{color}-top" },
             "botsymbol-hansa_fish": { "base": "flags:block/banner/pattern/hansa/fish/{color}-bot" },
 
@@ -136,23 +148,33 @@
             "botsymbol-hansa_ship": { "base": "flags:block/banner/pattern/hansa/ship/{color}-bot" },
 
             "topsymbol-hansa_town": { "base": "flags:block/banner/pattern/hansa/town/{color}-top" },
-            "botsymbol-hansa_town": { "base": "flags:block/banner/pattern/hansa/town/{color}-bot" }
+            "botsymbol-hansa_town": { "base": "flags:block/banner/pattern/hansa/town/{color}-bot" },
 
-            // TODO: gradients
-            // "topsymbol-gra": { "base": "flags:block/banner/pattern/gradient/{color}" },
-            // "botsymbol-gra": { "base": "flags:block/banner/pattern/gradient/{color}" },
+            // 0.26.0 patterns
 
-            // "topsymbol-gru": { "base": "flags:block/banner/pattern/gradient_up/{color}" },
-            // "botsymbol-gru": { "base": "flags:block/banner/pattern/gradient_up/{color}" },
+            "topsymbol-checker2x4": { "base": "flags:block/banner/pattern/checker2x4/{color}" },
+            "botsymbol-checker2x4": { "base": "flags:block/banner/pattern/checker2x4/{color}" },
 
-            // TODO: new patterns
-            // checker pattern with 4 squares per face (ver. 1)
-            // "topsymbol-chk": { "base": "flags:block/banner/pattern/checker/{color}" },
-            // "botsymbol-chk": { "base": "flags:block/banner/pattern/checker/{color}" }
+            "topsymbol-checker2x4i": { "base": "flags:block/banner/pattern/checker2x4_inverted/{color}" },
+            "botsymbol-checker2x4i": { "base": "flags:block/banner/pattern/checker2x4_inverted/{color}" },
 
-            // inverted checker pattern with 4 squares per face (ver. 2)
-            // "topsymbol-chki": { "base": "flags:block/banner/pattern/checker_inverted/{color}" },
-            // "botsymbol-chki": { "base": "flags:block/banner/pattern/checker_inverted/{color}" }
+            "topsymbol-checker4x8": { "base": "flags:block/banner/pattern/checker4x8/{color}" },
+            "botsymbol-checker4x8": { "base": "flags:block/banner/pattern/checker4x8/{color}" },
+
+            "topsymbol-checker4x8i": { "base": "flags:block/banner/pattern/checker4x8_inverted/{color}" },
+            "botsymbol-checker4x8i": { "base": "flags:block/banner/pattern/checker4x8_inverted/{color}" },
+
+            "topsymbol-checker5x10": { "base": "flags:block/banner/pattern/checker5x10/{color}" },
+            "botsymbol-checker5x10": { "base": "flags:block/banner/pattern/checker5x10_inverted/{color}" },
+
+            "topsymbol-checker5x10i": { "base": "flags:block/banner/pattern/checker5x10_inverted/{color}" },
+            "botsymbol-checker5x10i": { "base": "flags:block/banner/pattern/checker5x10/{color}" },
+
+            "topsymbol-checker8x16": { "base": "flags:block/banner/pattern/checker8x16/{color}" },
+            "botsymbol-checker8x16": { "base": "flags:block/banner/pattern/checker8x16/{color}" },
+
+            "topsymbol-checker8x16i": { "base": "flags:block/banner/pattern/checker8x16_inverted/{color}" },
+            "botsymbol-checker8x16i": { "base": "flags:block/banner/pattern/checker8x16_inverted/{color}" }
         },
         "selectionBoxes": {
             "normal-wall": [{ "x1": 0, "y1": 0, "z1": 0, "x2": 1, "y2": 1, "z2": 0.125 }],
@@ -181,6 +203,7 @@
         {
             "tabs": ["general", "decorative", "flags"],
             "stacks": [
+                // base colors
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "blue" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "brown" } } } },
@@ -193,7 +216,7 @@
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "red" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "white" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "yellow" } } } },
-
+                // mc patterns
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-bs": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-ts": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-ls": "black" } } } },
@@ -227,11 +250,22 @@
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-cbo": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-bri": "black" } } } },
 
+                // rare patterns
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-hansa_fish": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-hansa_keys": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-hansa_largefish": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-hansa_ship": "black" } } } },
-                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-hansa_town": "black" } } } }
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-hansa_town": "black" } } } },
+
+                // 0.26.0 patterns
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-checker2x4": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-checker2x4i": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-checker4x8": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-checker4x8i": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-checker5x10": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-checker5x10i": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-checker8x16": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-checker8x16i": "black" } } } }
             ]
         }
     ],

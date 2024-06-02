@@ -51,6 +51,15 @@
     "pattern-hansa_ship": "Ганза (Корабель)",
     "pattern-hansa_town": "Ганза (Місто)",
 
+    "pattern-checker2x4": "Клітинчастий 2x4",
+    "pattern-checker2x4i": "Клітинчастий 2x4 (інвертований)",
+    "pattern-checker4x8": "Клітинчастий 4x8",
+    "pattern-checker4x8i": "Клітинчастий 4x8 (інвертований)",
+    "pattern-checker5x10": "Клітинчастий 5x10",
+    "pattern-checker5x10i": "Клітинчастий 5x10 (інвертований)",
+    "pattern-checker8x16": "Клітинчастий 8x16",
+    "pattern-checker8x16i": "Клітинчастий 8x16 (інвертований)",
+
     "blockhelp-banner-addlayer": "Додати шар (потрібен візерунок в лівій руці)",
     "blockhelp-banner-removelayer": "Видалити останній шар",
     "blockhelp-banner-copylayers": "Копіювати шари",

@@ -51,6 +51,15 @@
     "pattern-hansa_ship": "Hansa (Ship)",
     "pattern-hansa_town": "Hansa (Town)",
 
+    "pattern-checker2x4": "Сheckered 2x4",
+    "pattern-checker2x4i": "Сheckered 2x4 (inverted)",
+    "pattern-checker4x8": "Сheckered 4x8",
+    "pattern-checker4x8i": "Сheckered 4x8 (inverted)",
+    "pattern-checker5x10": "Сheckered 5x10",
+    "pattern-checker5x10i": "Сheckered 5x10 (inverted)",
+    "pattern-checker8x16": "Сheckered 8x16",
+    "pattern-checker8x16i": "Сheckered 8x16 (inverted)",
+
     "blockhelp-banner-addlayer": "Add pattern (requires pattern in left hand)",
     "blockhelp-banner-removelayer": "Remove last pattern",
     "blockhelp-banner-copylayers": "Copy patterns",
