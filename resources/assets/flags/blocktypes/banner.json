@@ -127,13 +127,11 @@
             "topsymbol-bri": { "base": "flags:block/banner/pattern/bricks/{color}" },
             "botsymbol-bri": { "base": "flags:block/banner/pattern/bricks/{color}" },
 
-            // TODO: gradients
+            "topsymbol-gra": { "base": "flags:block/banner/pattern/gradient/{color}-top" },
+            "botsymbol-gra": { "base": "flags:block/banner/pattern/gradient/{color}-bot" },
 
-            // "topsymbol-gra": { "base": "flags:block/banner/pattern/gradient/{color}" },
-            // "botsymbol-gra": { "base": "flags:block/banner/pattern/gradient/{color}" },
-
-            // "topsymbol-gru": { "base": "flags:block/banner/pattern/gradient_up/{color}" },
-            // "botsymbol-gru": { "base": "flags:block/banner/pattern/gradient_up/{color}" },
+            "topsymbol-gru": { "base": "flags:block/banner/pattern/gradient_up/{color}-top" },
+            "botsymbol-gru": { "base": "flags:block/banner/pattern/gradient_up/{color}-bot" },
 
             // #########################
             // ### Patterns (0.26.0) ###
@@ -277,6 +275,8 @@
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-bo": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-cbo": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-bri": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-gra": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-gru": "black" } } } },
 
                 // #########################
                 // ### Patterns (0.26.0) ###

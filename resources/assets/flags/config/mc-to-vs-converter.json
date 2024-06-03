@@ -81,6 +81,8 @@
         "bo": "bo",
         "cbo": "cbo",
         "bri": "bri",
+        "gra": "gra",
+        "gru": "gru",
         "*": "error"
     }
 }

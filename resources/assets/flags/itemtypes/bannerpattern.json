@@ -65,6 +65,8 @@
             "placeholder-bo": { "base": "flags:item/bannerpattern/pattern/border" },
             "placeholder-cbo": { "base": "flags:item/bannerpattern/pattern/curly_border" },
             "placeholder-bri": { "base": "flags:item/bannerpattern/pattern/bricks" },
+            "placeholder-gra": { "base": "flags:item/bannerpattern/pattern/gradient" },
+            "placeholder-gru": { "base": "flags:item/bannerpattern/pattern/gradient_up" },
 
             // #######################
             // ### Patterns (Rare) ###
@@ -140,6 +142,8 @@
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "bo" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "cbo" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "bri" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "gra" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "gru" } } },
 
                 // #########################
                 // ### Patterns (0.26.0) ###

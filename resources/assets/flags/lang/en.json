@@ -45,6 +45,8 @@
     "pattern-bo": "Border",
     "pattern-cbo": "Curly Border",
     "pattern-bri": "Brick",
+    "pattern-gra": "Gradient",
+    "pattern-gru": "Gradient upside-down",
     "pattern-hansa_fish": "Hansa (Fish)",
     "pattern-hansa_keys": "Hansa (Keys)",
     "pattern-hansa_largefish": "Hansa (Large fish)",
