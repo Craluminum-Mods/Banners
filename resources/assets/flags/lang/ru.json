@@ -61,10 +61,10 @@
     "pattern-checker8x16i": "Клетчатый 8x16 (инвертированный)",
     "pattern-ssh": "Малые (горизонтальные) полосы",
     "pattern-yang_b": "Ян (внизу)",
-    "pattern-yang_m": "Ян (в середине)",
+    "pattern-yang_m": "Ян (посередине)",
     "pattern-yang_t": "Ян (вверху)",
     "pattern-yin_b": "Инь (внизу)",
-    "pattern-yin_m": "Инь (в середине)",
+    "pattern-yin_m": "Инь (посередине)",
     "pattern-yin_t": "Инь (вверху)",
 
     "blockhelp-banner-addlayer": "Добавить узор (требуется узор в левой руке)",

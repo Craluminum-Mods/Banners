@@ -36,7 +36,9 @@
             "bark": { "base": "game:block/wood/bark/aged" },
             "string": { "base": "game:block/cloth/banner/magnolia" },
 
-            // mc patterns
+            // #####################
+            // ### Patterns (MC) ###
+            // #####################
 
             "topsymbol-b": { "base": "game:block/cloth/linen/{color}" },
             "botsymbol-b": { "base": "game:block/cloth/linen/{color}" },
@@ -133,24 +135,9 @@
             // "topsymbol-gru": { "base": "flags:block/banner/pattern/gradient_up/{color}" },
             // "botsymbol-gru": { "base": "flags:block/banner/pattern/gradient_up/{color}" },
 
-            // rare patterns
-
-            "topsymbol-hansa_fish": { "base": "flags:block/banner/pattern/hansa/fish/{color}-top" },
-            "botsymbol-hansa_fish": { "base": "flags:block/banner/pattern/hansa/fish/{color}-bot" },
-
-            "topsymbol-hansa_keys": { "base": "flags:block/banner/pattern/hansa/keys/{color}-top" },
-            "botsymbol-hansa_keys": { "base": "flags:block/banner/pattern/hansa/keys/{color}-bot" },
-
-            "topsymbol-hansa_largefish": { "base": "flags:block/banner/pattern/hansa/largefish/{color}-top" },
-            "botsymbol-hansa_largefish": { "base": "flags:block/banner/pattern/hansa/largefish/{color}-bot" },
-
-            "topsymbol-hansa_ship": { "base": "flags:block/banner/pattern/hansa/ship/{color}-top" },
-            "botsymbol-hansa_ship": { "base": "flags:block/banner/pattern/hansa/ship/{color}-bot" },
-
-            "topsymbol-hansa_town": { "base": "flags:block/banner/pattern/hansa/town/{color}-top" },
-            "botsymbol-hansa_town": { "base": "flags:block/banner/pattern/hansa/town/{color}-bot" },
-
-            // 0.26.0 patterns
+            // #########################
+            // ### Patterns (0.26.0) ###
+            // #########################
 
             "topsymbol-checker2x4": { "base": "flags:block/banner/pattern/checker2x4/{color}" },
             "botsymbol-checker2x4": { "base": "flags:block/banner/pattern/checker2x4/{color}" },
@@ -191,7 +178,25 @@
             "topsymbol-yin_m": { "base": "flags:block/banner/pattern/yinyang_yin_middle/{color}-top" },
             "botsymbol-yin_m": { "base": "flags:block/banner/pattern/yinyang_yin_middle/{color}-bot" },
 
-            "topsymbol-yin_t": { "base": "flags:block/banner/pattern/yinyang_yin/{color}" }
+
+            // #######################
+            // ### Patterns (Rare) ###
+            // #######################
+
+            "topsymbol-hansa_fish": { "base": "flags:block/banner/pattern/hansa/fish/{color}-top" },
+            "botsymbol-hansa_fish": { "base": "flags:block/banner/pattern/hansa/fish/{color}-bot" },
+
+            "topsymbol-hansa_keys": { "base": "flags:block/banner/pattern/hansa/keys/{color}-top" },
+            "botsymbol-hansa_keys": { "base": "flags:block/banner/pattern/hansa/keys/{color}-bot" },
+
+            "topsymbol-hansa_largefish": { "base": "flags:block/banner/pattern/hansa/largefish/{color}-top" },
+            "botsymbol-hansa_largefish": { "base": "flags:block/banner/pattern/hansa/largefish/{color}-bot" },
+
+            "topsymbol-hansa_ship": { "base": "flags:block/banner/pattern/hansa/ship/{color}-top" },
+            "botsymbol-hansa_ship": { "base": "flags:block/banner/pattern/hansa/ship/{color}-bot" },
+
+            "topsymbol-hansa_town": { "base": "flags:block/banner/pattern/hansa/town/{color}-top" },
+            "botsymbol-hansa_town": { "base": "flags:block/banner/pattern/hansa/town/{color}-bot" }
         },
         "selectionBoxes": {
             "normal-wall": [{ "x1": 0, "y1": 0, "z1": 0, "x2": 1, "y2": 1, "z2": 0.125 }],
@@ -220,7 +225,10 @@
         {
             "tabs": ["general", "decorative", "flags"],
             "stacks": [
-                // base colors
+                // ###################
+                // ### Base Colors ###
+                // ###################
+
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "blue" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "brown" } } } },
@@ -233,7 +241,11 @@
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "red" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "white" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "yellow" } } } },
-                // mc patterns
+
+                // #####################
+                // ### Patterns (MC) ###
+                // #####################
+
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-bs": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-ts": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-ls": "black" } } } },
@@ -267,14 +279,10 @@
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-cbo": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-bri": "black" } } } },
 
-                // rare patterns
-                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-hansa_fish": "black" } } } },
-                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-hansa_keys": "black" } } } },
-                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-hansa_largefish": "black" } } } },
-                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-hansa_ship": "black" } } } },
-                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-hansa_town": "black" } } } },
+                // #########################
+                // ### Patterns (0.26.0) ###
+                // #########################
 
-                // 0.26.0 patterns
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-checker2x4": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-checker2x4i": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-checker4x8": "black" } } } },
@@ -289,7 +297,17 @@
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-yang_t": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-yin_b": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-yin_m": "black" } } } },
-                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-yin_t": "black" } } } }
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-yin_t": "black" } } } },
+
+                // #######################
+                // ### Patterns (Rare) ###
+                // #######################
+
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-hansa_fish": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-hansa_keys": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-hansa_largefish": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-hansa_ship": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-hansa_town": "black" } } } }
             ]
         }
     ],

@@ -1,6 +1,10 @@
 {
     "_comment": "https://minecraft.wiki/w/Banner/DV",
-    // mc color id to vs color
+
+    // ###############################
+    // ### MC color id to VS color ###
+    // ###############################
+
     "IdsToColors": {
         "0": "white", //"#FFFFFF"
         "1": "orange", //"#D87F33"
@@ -20,7 +24,11 @@
         "15": "black", //"#191919"
         "*": "white"
     },
-    // mc color to vs color
+
+    // ############################
+    // ### MC color to VS color ###
+    // ############################
+
     "BaseColorsToColors": {
         "white": "white",
         "orange": "orange",

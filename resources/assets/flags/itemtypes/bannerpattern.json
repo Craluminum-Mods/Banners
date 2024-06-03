@@ -29,6 +29,10 @@
             "labelbase": { "base": "game:block/cloth/linen/white" },
             "placeholder": { "base": "game:block/transparent" },
 
+            // #####################
+            // ### Patterns (MC) ###
+            // #####################
+
             "placeholder-bs": { "base": "flags:item/bannerpattern/pattern/stripe_bottom" },
             "placeholder-ts": { "base": "flags:item/bannerpattern/pattern/stripe_top" },
             "placeholder-ls": { "base": "flags:item/bannerpattern/pattern/stripe_left" },
@@ -62,14 +66,20 @@
             "placeholder-cbo": { "base": "flags:item/bannerpattern/pattern/curly_border" },
             "placeholder-bri": { "base": "flags:item/bannerpattern/pattern/bricks" },
 
-            // rare ptterns
+            // #######################
+            // ### Patterns (Rare) ###
+            // #######################
+
             "placeholder-hansa_fish": { "base": "flags:item/bannerpattern/pattern/hansa/fish" },
             "placeholder-hansa_keys": { "base": "flags:item/bannerpattern/pattern/hansa/keys" },
             "placeholder-hansa_largefish": { "base": "flags:item/bannerpattern/pattern/hansa/largefish" },
             "placeholder-hansa_ship": { "base": "flags:item/bannerpattern/pattern/hansa/ship" },
             "placeholder-hansa_town": { "base": "flags:item/bannerpattern/pattern/hansa/town" },
 
-            // 0.26.0 patterns
+            // #########################
+            // ### Patterns (0.26.0) ###
+            // #########################
+
             "placeholder-checker2x4": { "base": "flags:item/bannerpattern/pattern/checker2x4" },
             "placeholder-checker2x4i": { "base": "flags:item/bannerpattern/pattern/checker2x4_inverted" },
             "placeholder-checker4x8": { "base": "flags:item/bannerpattern/pattern/checker4x8" },
@@ -95,7 +105,10 @@
         {
             "tabs": ["general", "items", "flags"],
             "stacks": [
-                // mc patterns
+                // #####################
+                // ### Patterns (MC) ###
+                // #####################
+
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "bs" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "ts" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "ls" } } },
@@ -128,13 +141,11 @@
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "bo" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "cbo" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "bri" } } },
-                // rare patterns
-                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_fish" } } },
-                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_keys" } } },
-                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_largefish" } } },
-                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_ship" } } },
-                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_town" } } },
-                // 0.26.0 patterns
+
+                // #########################
+                // ### Patterns (0.26.0) ###
+                // #########################
+
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "checker2x4" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "checker2x4i" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "checker4x8" } } },
@@ -150,6 +161,16 @@
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "yin_b" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "yin_m" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "yin_t" } } },
+
+                // #######################
+                // ### Patterns (Rare) ###
+                // #######################
+
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_fish" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_keys" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_largefish" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_ship" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_town" } } }
             ]
         }
     ],
