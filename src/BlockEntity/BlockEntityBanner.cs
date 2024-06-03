@@ -98,7 +98,7 @@ public class BlockEntityBanner : BlockEntity
     public override void GetBlockInfo(IPlayer forPlayer, StringBuilder sb)
     {
         base.GetBlockInfo(forPlayer, sb);
-        sb.AppendLine(langCodePatternGroups.Localize(string.Join(commaSeparator, BannerBlock.PatternGroups.Select(group => group))));
+        sb.AppendLine(langCodePatternGroups.Localize(string.Join(commaSeparator, BannerBlock.PatternGroups.Select(group => $"{langCodePatternGroup}{group}".Localize()))));
         BannerProps.GetDescription(sb, BannerBlock.ShowDebugInfo);
     }
 
