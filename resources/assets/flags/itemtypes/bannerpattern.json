@@ -94,7 +94,10 @@
             "placeholder-yang_t": { "base": "flags:item/bannerpattern/pattern/yinyang_yang_top" },
             "placeholder-yin_b": { "base": "flags:item/bannerpattern/pattern/yinyang_yin_bottom" },
             "placeholder-yin_m": { "base": "flags:item/bannerpattern/pattern/yinyang_yin_middle" },
-            "placeholder-yin_t": { "base": "flags:item/bannerpattern/pattern/yinyang_yin_top" }
+            "placeholder-yin_t": { "base": "flags:item/bannerpattern/pattern/yinyang_yin_top" },
+
+            "placeholder-rt_b": { "base": "flags:item/bannerpattern/pattern/regular_triangle_bot_mid" },
+            "placeholder-rt_t": { "base": "flags:item/bannerpattern/pattern/regular_triangle_top_mid" }
         }
     },
     "shape": { "base": "flags:item/bannerpattern" },
@@ -161,6 +164,8 @@
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "yin_b" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "yin_m" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "yin_t" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "rt_b" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "rt_t" } } },
 
                 // #######################
                 // ### Patterns (Rare) ###

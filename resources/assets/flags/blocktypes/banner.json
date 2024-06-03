@@ -178,6 +178,13 @@
             "topsymbol-yin_m": { "base": "flags:block/banner/pattern/yinyang_yin_middle/{color}-top" },
             "botsymbol-yin_m": { "base": "flags:block/banner/pattern/yinyang_yin_middle/{color}-bot" },
 
+            "topsymbol-yin_t": { "base": "flags:block/banner/pattern/yinyang_yin/{color}" },
+
+            "topsymbol-rt_b": { "base": "flags:block/banner/pattern/regular_triangle_bottom_middle/{color}-top" },
+            "botsymbol-rt_b": { "base": "flags:block/banner/pattern/regular_triangle_bottom_middle/{color}-bot" },
+
+            "topsymbol-rt_t": { "base": "flags:block/banner/pattern/regular_triangle_top_middle/{color}-top" },
+            "botsymbol-rt_t": { "base": "flags:block/banner/pattern/regular_triangle_top_middle/{color}-bot" },
 
             // #######################
             // ### Patterns (Rare) ###
@@ -292,6 +299,8 @@
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-checker8x16": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-checker8x16i": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-ssh": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-rt_b": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-rt_t": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-yang_b": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-yang_m": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-yang_t": "black" } } } },

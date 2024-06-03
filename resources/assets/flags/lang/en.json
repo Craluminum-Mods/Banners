@@ -66,6 +66,8 @@
     "pattern-yin_b": "Yin (bottom)",
     "pattern-yin_m": "Yin (middle)",
     "pattern-yin_t": "Yin (top)",
+    "pattern-rt_b": "Center Bottom Regular Triangle",
+    "pattern-rt_t": "Center Top Regular Triangle",
 
     "blockhelp-banner-addlayer": "Add pattern (requires pattern in left hand)",
     "blockhelp-banner-removelayer": "Remove last pattern",
