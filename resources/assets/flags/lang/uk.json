@@ -60,6 +60,12 @@
     "pattern-checker8x16": "Клітинчастий 8x16",
     "pattern-checker8x16i": "Клітинчастий 8x16 (інвертований)",
     "pattern-ssh": "Малі (горизонтальні) смуги",
+    "pattern-yang_bot": "Ян (внизу)",
+    "pattern-yang_mid": "Ян (посередині)",
+    "pattern-yang_top": "Ян (вгорі)",
+    "pattern-yin_bot": "Інь (внизу)",
+    "pattern-yin_mid": "Інь (посередині)",
+    "pattern-yin_top": "Інь (вгорі)",
 
     "blockhelp-banner-addlayer": "Додати шар (потрібен візерунок в лівій руці)",
     "blockhelp-banner-removelayer": "Видалити останній шар",

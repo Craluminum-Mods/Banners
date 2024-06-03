@@ -78,7 +78,13 @@
             "placeholder-checker5x10i": { "base": "flags:item/bannerpattern/pattern/checker5x10_inverted" },
             "placeholder-checker8x16": { "base": "flags:item/bannerpattern/pattern/checker8x16" },
             "placeholder-checker8x16i": { "base": "flags:item/bannerpattern/pattern/checker8x16_inverted" },
-            "placeholder-ssh": { "base": "flags:item/bannerpattern/pattern/small_stripes_horizontal" }
+            "placeholder-ssh": { "base": "flags:item/bannerpattern/pattern/small_stripes_horizontal" },
+            "placeholder-yang_bot": { "base": "flags:item/bannerpattern/pattern/yinyang_yang_bottom" },
+            "placeholder-yang_mid": { "base": "flags:item/bannerpattern/pattern/yinyang_yang_middle" },
+            "placeholder-yang_top": { "base": "flags:item/bannerpattern/pattern/yinyang_yang_top" },
+            "placeholder-yin_bot": { "base": "flags:item/bannerpattern/pattern/yinyang_yin_bottom" },
+            "placeholder-yin_mid": { "base": "flags:item/bannerpattern/pattern/yinyang_yin_middle" },
+            "placeholder-yin_top": { "base": "flags:item/bannerpattern/pattern/yinyang_yin_top" }
         }
     },
     "shape": { "base": "flags:item/bannerpattern" },
@@ -137,7 +143,13 @@
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "checker5x10i" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "checker8x16" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "checker8x16i" } } },
-                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "ssh" } } }
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "ssh" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "yang_bot" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "yang_mid" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "yang_top" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "yin_bot" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "yin_mid" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "yin_top" } } }
             ]
         }
     ],

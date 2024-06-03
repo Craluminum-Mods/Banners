@@ -60,6 +60,12 @@
     "pattern-checker8x16": "Сheckered 8x16",
     "pattern-checker8x16i": "Сheckered 8x16 (inverted)",
     "pattern-ssh": "Small (Horizontal) Stripes",
+    "pattern-yang_bot": "Yang (bottom)",
+    "pattern-yang_mid": "Yang (middle)",
+    "pattern-yang_top": "Yang (top)",
+    "pattern-yin_bot": "Yin (bottom)",
+    "pattern-yin_mid": "Yin (middle)",
+    "pattern-yin_top": "Yin (top)",
 
     "blockhelp-banner-addlayer": "Add pattern (requires pattern in left hand)",
     "blockhelp-banner-removelayer": "Remove last pattern",

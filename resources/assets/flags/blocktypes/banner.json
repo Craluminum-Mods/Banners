@@ -22,8 +22,8 @@
             "bed-vanilla-woodaged": { "base": "flags:block/bannercontainable/bed/vanilla-woodaged" }
         },
         "ignoredTextureCodesForOverlays": {
-            "topsymbol": ["hhb", "bs", "bl", "br", "bt", "bts"],
-            "botsymbol": ["hh", "ts", "tl", "tr", "tt", "tts"]
+            "topsymbol": ["hhb", "bs", "bl", "br", "bt", "bts", "yang_bot", "yin_bot"],
+            "botsymbol": ["hh", "ts", "tl", "tr", "tt", "tts", "yang_top", "yin_top"]
         },
         "textureCodesForOverlays": ["topsymbol", "botsymbol"],
         "textures": {
@@ -177,7 +177,21 @@
             "botsymbol-checker8x16i": { "base": "flags:block/banner/pattern/checker8x16_inverted/{color}" },
 
             "topsymbol-ssh": { "base": "flags:block/banner/pattern/small_stripes_horizontal/{color}" },
-            "botsymbol-ssh": { "base": "flags:block/banner/pattern/small_stripes_horizontal/{color}" }
+            "botsymbol-ssh": { "base": "flags:block/banner/pattern/small_stripes_horizontal/{color}" },
+
+            "botsymbol-yang_bot": { "base": "flags:block/banner/pattern/yinyang_yang/{color}" },
+
+            "topsymbol-yang_mid": { "base": "flags:block/banner/pattern/yinyang_yang_middle/{color}-top" },
+            "botsymbol-yang_mid": { "base": "flags:block/banner/pattern/yinyang_yang_middle/{color}-bot" },
+
+            "topsymbol-yang_top": { "base": "flags:block/banner/pattern/yinyang_yang/{color}" },
+
+            "botsymbol-yin_bot": { "base": "flags:block/banner/pattern/yinyang_yin/{color}" },
+
+            "topsymbol-yin_mid": { "base": "flags:block/banner/pattern/yinyang_yin_middle/{color}-top" },
+            "botsymbol-yin_mid": { "base": "flags:block/banner/pattern/yinyang_yin_middle/{color}-bot" },
+
+            "topsymbol-yin_top": { "base": "flags:block/banner/pattern/yinyang_yin/{color}" }
         },
         "selectionBoxes": {
             "normal-wall": [{ "x1": 0, "y1": 0, "z1": 0, "x2": 1, "y2": 1, "z2": 0.125 }],
@@ -269,7 +283,13 @@
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-checker5x10i": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-checker8x16": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-checker8x16i": "black" } } } },
-                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-ssh": "black" } } } }
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-ssh": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-yang_bot": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-yang_mid": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-yang_top": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-yin_bot": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-yin_mid": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-yin_top": "black" } } } }
             ]
         }
     ],
