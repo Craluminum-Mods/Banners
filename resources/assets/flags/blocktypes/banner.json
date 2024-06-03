@@ -174,7 +174,10 @@
             "botsymbol-checker8x16": { "base": "flags:block/banner/pattern/checker8x16/{color}" },
 
             "topsymbol-checker8x16i": { "base": "flags:block/banner/pattern/checker8x16_inverted/{color}" },
-            "botsymbol-checker8x16i": { "base": "flags:block/banner/pattern/checker8x16_inverted/{color}" }
+            "botsymbol-checker8x16i": { "base": "flags:block/banner/pattern/checker8x16_inverted/{color}" },
+
+            "topsymbol-ssh": { "base": "flags:block/banner/pattern/small_stripes_horizontal/{color}" },
+            "botsymbol-ssh": { "base": "flags:block/banner/pattern/small_stripes_horizontal/{color}" }
         },
         "selectionBoxes": {
             "normal-wall": [{ "x1": 0, "y1": 0, "z1": 0, "x2": 1, "y2": 1, "z2": 0.125 }],
@@ -265,7 +268,8 @@
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-checker5x10": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-checker5x10i": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-checker8x16": "black" } } } },
-                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-checker8x16i": "black" } } } }
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-checker8x16i": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-ssh": "black" } } } }
             ]
         }
     ],

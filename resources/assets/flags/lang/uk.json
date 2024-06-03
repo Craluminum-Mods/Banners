@@ -59,6 +59,7 @@
     "pattern-checker5x10i": "Клітинчастий 5x10 (інвертований)",
     "pattern-checker8x16": "Клітинчастий 8x16",
     "pattern-checker8x16i": "Клітинчастий 8x16 (інвертований)",
+    "pattern-ssh": "Малі (горизонтальні) смуги",
 
     "blockhelp-banner-addlayer": "Додати шар (потрібен візерунок в лівій руці)",
     "blockhelp-banner-removelayer": "Видалити останній шар",

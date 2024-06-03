@@ -59,6 +59,7 @@
     "pattern-checker5x10i": "Клетчатый 5x10 (инвертированный)",
     "pattern-checker8x16": "Клетчатый 8x16",
     "pattern-checker8x16i": "Клетчатый 8x16 (инвертированный)",
+    "pattern-ssh": "Малые (горизонтальные) полосы",
 
     "blockhelp-banner-addlayer": "Добавить узор (требуется узор в левой руке)",
     "blockhelp-banner-removelayer": "Удалить последний узор",

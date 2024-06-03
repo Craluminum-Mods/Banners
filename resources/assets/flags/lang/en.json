@@ -59,6 +59,7 @@
     "pattern-checker5x10i": "Сheckered 5x10 (inverted)",
     "pattern-checker8x16": "Сheckered 8x16",
     "pattern-checker8x16i": "Сheckered 8x16 (inverted)",
+    "pattern-ssh": "Small (Horizontal) Stripes",
 
     "blockhelp-banner-addlayer": "Add pattern (requires pattern in left hand)",
     "blockhelp-banner-removelayer": "Remove last pattern",
