@@ -82,21 +82,21 @@
             // ### Patterns (0.26.0) ###
             // #########################
 
-            "placeholder-checker2x4": { "base": "flags:item/bannerpattern/pattern/checkered/2x4" },
-            "placeholder-checker2x4i": { "base": "flags:item/bannerpattern/pattern/checkered/2x4_inverted" },
-            "placeholder-checker4x8": { "base": "flags:item/bannerpattern/pattern/checkered/4x8" },
-            "placeholder-checker4x8i": { "base": "flags:item/bannerpattern/pattern/checkered/4x8_inverted" },
-            "placeholder-checker5x10": { "base": "flags:item/bannerpattern/pattern/checkered/5x10" },
-            "placeholder-checker5x10i": { "base": "flags:item/bannerpattern/pattern/checkered/5x10_inverted" },
-            "placeholder-checker8x16": { "base": "flags:item/bannerpattern/pattern/checkered/8x16" },
-            "placeholder-checker8x16i": { "base": "flags:item/bannerpattern/pattern/checkered/8x16_inverted" },
-            "placeholder-ssh": { "base": "flags:item/bannerpattern/pattern/small_stripes_horizontal" },
-            "placeholder-yang": { "base": "flags:item/bannerpattern/pattern/yinyang/yang" },
-            "placeholder-yin": { "base": "flags:item/bannerpattern/pattern/yinyang/yin" },
-            "placeholder-rt_b": { "base": "flags:item/bannerpattern/pattern/regular_triangle/bot" },
-            "placeholder-rt_t": { "base": "flags:item/bannerpattern/pattern/regular_triangle/top" },
-            "placeholder-crescent_left": { "base": "flags:item/bannerpattern/pattern/crescent/left" },
-            "placeholder-crescent_right": { "base": "flags:item/bannerpattern/pattern/crescent/right" }
+            "placeholder-checker2x4": { "base": "flags:item/bannerpattern/pattern/other/checkered/2x4" },
+            "placeholder-checker2x4i": { "base": "flags:item/bannerpattern/pattern/other/checkered/2x4_inverted" },
+            "placeholder-checker4x8": { "base": "flags:item/bannerpattern/pattern/other/checkered/4x8" },
+            "placeholder-checker4x8i": { "base": "flags:item/bannerpattern/pattern/other/checkered/4x8_inverted" },
+            "placeholder-checker5x10": { "base": "flags:item/bannerpattern/pattern/other/checkered/5x10" },
+            "placeholder-checker5x10i": { "base": "flags:item/bannerpattern/pattern/other/checkered/5x10_inverted" },
+            "placeholder-checker8x16": { "base": "flags:item/bannerpattern/pattern/other/checkered/8x16" },
+            "placeholder-checker8x16i": { "base": "flags:item/bannerpattern/pattern/other/checkered/8x16_inverted" },
+            "placeholder-ssh": { "base": "flags:item/bannerpattern/pattern/other/small_stripes_horizontal" },
+            "placeholder-yang": { "base": "flags:item/bannerpattern/pattern/other/yinyang/yang" },
+            "placeholder-yin": { "base": "flags:item/bannerpattern/pattern/other/yinyang/yin" },
+            "placeholder-rt_b": { "base": "flags:item/bannerpattern/pattern/other/regular_triangle/bot" },
+            "placeholder-rt_t": { "base": "flags:item/bannerpattern/pattern/other/regular_triangle/top" },
+            "placeholder-crescent_left": { "base": "flags:item/bannerpattern/pattern/other/crescent/left" },
+            "placeholder-crescent_right": { "base": "flags:item/bannerpattern/pattern/other/crescent/right" }
         }
     },
     "shape": { "base": "flags:item/bannerpattern" },

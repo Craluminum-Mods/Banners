@@ -137,50 +137,50 @@
             // ### Patterns (0.26.0) ###
             // #########################
 
-            "topsymbol-checker2x4": { "base": "flags:block/banner/pattern/checkered/2x4/{color}" },
-            "botsymbol-checker2x4": { "base": "flags:block/banner/pattern/checkered/2x4/{color}" },
+            "topsymbol-checker2x4": { "base": "flags:block/banner/pattern/other/checkered/2x4/{color}" },
+            "botsymbol-checker2x4": { "base": "flags:block/banner/pattern/other/checkered/2x4/{color}" },
 
-            "topsymbol-checker2x4i": { "base": "flags:block/banner/pattern/checkered/2x4_inverted/{color}" },
-            "botsymbol-checker2x4i": { "base": "flags:block/banner/pattern/checkered/2x4_inverted/{color}" },
+            "topsymbol-checker2x4i": { "base": "flags:block/banner/pattern/other/checkered/2x4_inverted/{color}" },
+            "botsymbol-checker2x4i": { "base": "flags:block/banner/pattern/other/checkered/2x4_inverted/{color}" },
 
-            "topsymbol-checker4x8": { "base": "flags:block/banner/pattern/checkered/4x8/{color}" },
-            "botsymbol-checker4x8": { "base": "flags:block/banner/pattern/checkered/4x8/{color}" },
+            "topsymbol-checker4x8": { "base": "flags:block/banner/pattern/other/checkered/4x8/{color}" },
+            "botsymbol-checker4x8": { "base": "flags:block/banner/pattern/other/checkered/4x8/{color}" },
 
-            "topsymbol-checker4x8i": { "base": "flags:block/banner/pattern/checkered/4x8_inverted/{color}" },
-            "botsymbol-checker4x8i": { "base": "flags:block/banner/pattern/checkered/4x8_inverted/{color}" },
+            "topsymbol-checker4x8i": { "base": "flags:block/banner/pattern/other/checkered/4x8_inverted/{color}" },
+            "botsymbol-checker4x8i": { "base": "flags:block/banner/pattern/other/checkered/4x8_inverted/{color}" },
 
-            "topsymbol-checker5x10": { "base": "flags:block/banner/pattern/checkered/5x10/{color}" },
-            "botsymbol-checker5x10": { "base": "flags:block/banner/pattern/checkered/5x10_inverted/{color}" },
+            "topsymbol-checker5x10": { "base": "flags:block/banner/pattern/other/checkered/5x10/{color}" },
+            "botsymbol-checker5x10": { "base": "flags:block/banner/pattern/other/checkered/5x10_inverted/{color}" },
 
-            "topsymbol-checker5x10i": { "base": "flags:block/banner/pattern/checkered/5x10_inverted/{color}" },
-            "botsymbol-checker5x10i": { "base": "flags:block/banner/pattern/checkered/5x10/{color}" },
+            "topsymbol-checker5x10i": { "base": "flags:block/banner/pattern/other/checkered/5x10_inverted/{color}" },
+            "botsymbol-checker5x10i": { "base": "flags:block/banner/pattern/other/checkered/5x10/{color}" },
 
-            "topsymbol-checker8x16": { "base": "flags:block/banner/pattern/checkered/8x16/{color}" },
-            "botsymbol-checker8x16": { "base": "flags:block/banner/pattern/checkered/8x16/{color}" },
+            "topsymbol-checker8x16": { "base": "flags:block/banner/pattern/other/checkered/8x16/{color}" },
+            "botsymbol-checker8x16": { "base": "flags:block/banner/pattern/other/checkered/8x16/{color}" },
 
-            "topsymbol-checker8x16i": { "base": "flags:block/banner/pattern/checkered/8x16_inverted/{color}" },
-            "botsymbol-checker8x16i": { "base": "flags:block/banner/pattern/checkered/8x16_inverted/{color}" },
+            "topsymbol-checker8x16i": { "base": "flags:block/banner/pattern/other/checkered/8x16_inverted/{color}" },
+            "botsymbol-checker8x16i": { "base": "flags:block/banner/pattern/other/checkered/8x16_inverted/{color}" },
 
-            "topsymbol-ssh": { "base": "flags:block/banner/pattern/small_stripes_horizontal/{color}" },
-            "botsymbol-ssh": { "base": "flags:block/banner/pattern/small_stripes_horizontal/{color}" },
+            "topsymbol-ssh": { "base": "flags:block/banner/pattern/other/small_stripes_horizontal/{color}" },
+            "botsymbol-ssh": { "base": "flags:block/banner/pattern/other/small_stripes_horizontal/{color}" },
 
-            "topsymbol-yang": { "base": "flags:block/banner/pattern/yinyang/yang/{color}-top" },
-            "botsymbol-yang": { "base": "flags:block/banner/pattern/yinyang/yang/{color}-bot" },
+            "topsymbol-yang": { "base": "flags:block/banner/pattern/other/yinyang/yang/{color}-top" },
+            "botsymbol-yang": { "base": "flags:block/banner/pattern/other/yinyang/yang/{color}-bot" },
 
-            "topsymbol-yin": { "base": "flags:block/banner/pattern/yinyang/yin/{color}-top" },
-            "botsymbol-yin": { "base": "flags:block/banner/pattern/yinyang/yin/{color}-bot" },
+            "topsymbol-yin": { "base": "flags:block/banner/pattern/other/yinyang/yin/{color}-top" },
+            "botsymbol-yin": { "base": "flags:block/banner/pattern/other/yinyang/yin/{color}-bot" },
 
-            "topsymbol-rt_b": { "base": "flags:block/banner/pattern/regular_triangle/bot/{color}-top" },
-            "botsymbol-rt_b": { "base": "flags:block/banner/pattern/regular_triangle/bot/{color}-bot" },
+            "topsymbol-rt_b": { "base": "flags:block/banner/pattern/other/regular_triangle/bot/{color}-top" },
+            "botsymbol-rt_b": { "base": "flags:block/banner/pattern/other/regular_triangle/bot/{color}-bot" },
 
-            "topsymbol-rt_t": { "base": "flags:block/banner/pattern/regular_triangle/top/{color}-top" },
-            "botsymbol-rt_t": { "base": "flags:block/banner/pattern/regular_triangle/top/{color}-bot" },
+            "topsymbol-rt_t": { "base": "flags:block/banner/pattern/other/regular_triangle/top/{color}-top" },
+            "botsymbol-rt_t": { "base": "flags:block/banner/pattern/other/regular_triangle/top/{color}-bot" },
 
-            "topsymbol-crescent_left": { "base": "flags:block/banner/pattern/crescent/left/{color}-top" },
-            "botsymbol-crescent_left": { "base": "flags:block/banner/pattern/crescent/left/{color}-bot" },
+            "topsymbol-crescent_left": { "base": "flags:block/banner/pattern/other/crescent/left/{color}-top" },
+            "botsymbol-crescent_left": { "base": "flags:block/banner/pattern/other/crescent/left/{color}-bot" },
 
-            "topsymbol-crescent_right": { "base": "flags:block/banner/pattern/crescent/right/{color}-top" },
-            "botsymbol-crescent_right": { "base": "flags:block/banner/pattern/crescent/right/{color}-bot" },
+            "topsymbol-crescent_right": { "base": "flags:block/banner/pattern/other/crescent/right/{color}-top" },
+            "botsymbol-crescent_right": { "base": "flags:block/banner/pattern/other/crescent/right/{color}-bot" },
 
             // #######################
             // ### Patterns (Rare) ###
