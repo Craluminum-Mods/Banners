@@ -43,163 +43,163 @@
             "topsymbol-b": { "base": "game:block/cloth/linen/{color}" },
             "botsymbol-b": { "base": "game:block/cloth/linen/{color}" },
 
-            "botsymbol-bs": { "base": "flags:block/banner/pattern/stripe_bottom/{color}" },
+            "botsymbol-bs": { "base": "flags:block/banner/pattern/mc/stripe_bottom/{color}" },
 
-            "topsymbol-ts": { "base": "flags:block/banner/pattern/stripe_top/{color}" },
+            "topsymbol-ts": { "base": "flags:block/banner/pattern/mc/stripe_top/{color}" },
 
-            "topsymbol-ls": { "base": "flags:block/banner/pattern/stripe_left/{color}" },
-            "botsymbol-ls": { "base": "flags:block/banner/pattern/stripe_left/{color}" },
+            "topsymbol-ls": { "base": "flags:block/banner/pattern/mc/stripe_left/{color}" },
+            "botsymbol-ls": { "base": "flags:block/banner/pattern/mc/stripe_left/{color}" },
 
-            "topsymbol-rs": { "base": "flags:block/banner/pattern/stripe_right/{color}" },
-            "botsymbol-rs": { "base": "flags:block/banner/pattern/stripe_right/{color}" },
+            "topsymbol-rs": { "base": "flags:block/banner/pattern/mc/stripe_right/{color}" },
+            "botsymbol-rs": { "base": "flags:block/banner/pattern/mc/stripe_right/{color}" },
 
-            "topsymbol-cs": { "base": "flags:block/banner/pattern/stripe_center/{color}" },
-            "botsymbol-cs": { "base": "flags:block/banner/pattern/stripe_center/{color}" },
+            "topsymbol-cs": { "base": "flags:block/banner/pattern/mc/stripe_center/{color}" },
+            "botsymbol-cs": { "base": "flags:block/banner/pattern/mc/stripe_center/{color}" },
 
-            "topsymbol-ms": { "base": "flags:block/banner/pattern/stripe_middle/{color}-top" },
-            "botsymbol-ms": { "base": "flags:block/banner/pattern/stripe_middle/{color}-bot" },
+            "topsymbol-ms": { "base": "flags:block/banner/pattern/mc/stripe_middle/{color}-top" },
+            "botsymbol-ms": { "base": "flags:block/banner/pattern/mc/stripe_middle/{color}-bot" },
 
-            "topsymbol-drs": { "base": "flags:block/banner/pattern/stripe_downright/{color}-top" },
-            "botsymbol-drs": { "base": "flags:block/banner/pattern/stripe_downright/{color}-bot" },
+            "topsymbol-drs": { "base": "flags:block/banner/pattern/mc/stripe_downright/{color}-top" },
+            "botsymbol-drs": { "base": "flags:block/banner/pattern/mc/stripe_downright/{color}-bot" },
 
-            "topsymbol-dls": { "base": "flags:block/banner/pattern/stripe_downleft/{color}-top" },
-            "botsymbol-dls": { "base": "flags:block/banner/pattern/stripe_downleft/{color}-bot" },
+            "topsymbol-dls": { "base": "flags:block/banner/pattern/mc/stripe_downleft/{color}-top" },
+            "botsymbol-dls": { "base": "flags:block/banner/pattern/mc/stripe_downleft/{color}-bot" },
 
-            "topsymbol-ss": { "base": "flags:block/banner/pattern/small_stripes/{color}" },
-            "botsymbol-ss": { "base": "flags:block/banner/pattern/small_stripes/{color}" },
+            "topsymbol-ss": { "base": "flags:block/banner/pattern/mc/small_stripes/{color}" },
+            "botsymbol-ss": { "base": "flags:block/banner/pattern/mc/small_stripes/{color}" },
 
-            "topsymbol-cr": { "base": "flags:block/banner/pattern/cross/{color}-top" },
-            "botsymbol-cr": { "base": "flags:block/banner/pattern/cross/{color}-bot" },
+            "topsymbol-cr": { "base": "flags:block/banner/pattern/mc/cross/{color}-top" },
+            "botsymbol-cr": { "base": "flags:block/banner/pattern/mc/cross/{color}-bot" },
 
-            "topsymbol-sc": { "base": "flags:block/banner/pattern/straight_cross/{color}-top" },
-            "botsymbol-sc": { "base": "flags:block/banner/pattern/straight_cross/{color}-bot" },
+            "topsymbol-sc": { "base": "flags:block/banner/pattern/mc/straight_cross/{color}-top" },
+            "botsymbol-sc": { "base": "flags:block/banner/pattern/mc/straight_cross/{color}-bot" },
 
-            "topsymbol-ld": { "base": "flags:block/banner/pattern/diagonal_left/{color}-top" },
-            "botsymbol-ld": { "base": "flags:block/banner/pattern/diagonal_left/{color}-bot" },
+            "topsymbol-ld": { "base": "flags:block/banner/pattern/mc/diagonal_left/{color}-top" },
+            "botsymbol-ld": { "base": "flags:block/banner/pattern/mc/diagonal_left/{color}-bot" },
 
-            "topsymbol-rud": { "base": "flags:block/banner/pattern/diagonal_right/{color}-top" },
-            "botsymbol-rud": { "base": "flags:block/banner/pattern/diagonal_right/{color}-bot" },
+            "topsymbol-rud": { "base": "flags:block/banner/pattern/mc/diagonal_right/{color}-top" },
+            "botsymbol-rud": { "base": "flags:block/banner/pattern/mc/diagonal_right/{color}-bot" },
 
-            "topsymbol-lud": { "base": "flags:block/banner/pattern/diagonal_up_left/{color}-top" },
-            "botsymbol-lud": { "base": "flags:block/banner/pattern/diagonal_up_left/{color}-bot" },
+            "topsymbol-lud": { "base": "flags:block/banner/pattern/mc/diagonal_up_left/{color}-top" },
+            "botsymbol-lud": { "base": "flags:block/banner/pattern/mc/diagonal_up_left/{color}-bot" },
 
-            "topsymbol-rd": { "base": "flags:block/banner/pattern/diagonal_up_right/{color}-top" },
-            "botsymbol-rd": { "base": "flags:block/banner/pattern/diagonal_up_right/{color}-bot" },
+            "topsymbol-rd": { "base": "flags:block/banner/pattern/mc/diagonal_up_right/{color}-top" },
+            "botsymbol-rd": { "base": "flags:block/banner/pattern/mc/diagonal_up_right/{color}-bot" },
 
-            "topsymbol-vh": { "base": "flags:block/banner/pattern/half_vertical/{color}" },
-            "botsymbol-vh": { "base": "flags:block/banner/pattern/half_vertical/{color}" },
+            "topsymbol-vh": { "base": "flags:block/banner/pattern/mc/half_vertical/{color}" },
+            "botsymbol-vh": { "base": "flags:block/banner/pattern/mc/half_vertical/{color}" },
 
-            "topsymbol-vhr": { "base": "flags:block/banner/pattern/half_vertical_right/{color}" },
-            "botsymbol-vhr": { "base": "flags:block/banner/pattern/half_vertical_right/{color}" },
+            "topsymbol-vhr": { "base": "flags:block/banner/pattern/mc/half_vertical_right/{color}" },
+            "botsymbol-vhr": { "base": "flags:block/banner/pattern/mc/half_vertical_right/{color}" },
 
             "topsymbol-hh": { "base": "game:block/cloth/linen/{color}" },
 
             "botsymbol-hhb": { "base": "game:block/cloth/linen/{color}" },
 
-            "botsymbol-bl": { "base": "flags:block/banner/pattern/square_bottom_left/{color}" },
+            "botsymbol-bl": { "base": "flags:block/banner/pattern/mc/square_bottom_left/{color}" },
 
-            "botsymbol-br": { "base": "flags:block/banner/pattern/square_bottom_right/{color}" },
+            "botsymbol-br": { "base": "flags:block/banner/pattern/mc/square_bottom_right/{color}" },
 
-            "topsymbol-tl": { "base": "flags:block/banner/pattern/square_top_left/{color}" },
+            "topsymbol-tl": { "base": "flags:block/banner/pattern/mc/square_top_left/{color}" },
 
-            "topsymbol-tr": { "base": "flags:block/banner/pattern/square_top_right/{color}" },
+            "topsymbol-tr": { "base": "flags:block/banner/pattern/mc/square_top_right/{color}" },
 
-            "botsymbol-bt": { "base": "flags:block/banner/pattern/triangle_bottom/{color}" },
+            "botsymbol-bt": { "base": "flags:block/banner/pattern/mc/triangle_bottom/{color}" },
 
-            "topsymbol-tt": { "base": "flags:block/banner/pattern/triangle_top/{color}" },
+            "topsymbol-tt": { "base": "flags:block/banner/pattern/mc/triangle_top/{color}" },
 
-            "botsymbol-bts": { "base": "flags:block/banner/pattern/triangles_bottom/{color}" },
+            "botsymbol-bts": { "base": "flags:block/banner/pattern/mc/triangles_bottom/{color}" },
 
-            "topsymbol-tts": { "base": "flags:block/banner/pattern/triangles_top/{color}" },
+            "topsymbol-tts": { "base": "flags:block/banner/pattern/mc/triangles_top/{color}" },
 
-            "topsymbol-mc": { "base": "flags:block/banner/pattern/circle/{color}-top" },
-            "botsymbol-mc": { "base": "flags:block/banner/pattern/circle/{color}-bot" },
+            "topsymbol-mc": { "base": "flags:block/banner/pattern/mc/circle/{color}-top" },
+            "botsymbol-mc": { "base": "flags:block/banner/pattern/mc/circle/{color}-bot" },
 
-            "topsymbol-mr": { "base": "flags:block/banner/pattern/rhombus/{color}-top" },
-            "botsymbol-mr": { "base": "flags:block/banner/pattern/rhombus/{color}-bot" },
+            "topsymbol-mr": { "base": "flags:block/banner/pattern/mc/rhombus/{color}-top" },
+            "botsymbol-mr": { "base": "flags:block/banner/pattern/mc/rhombus/{color}-bot" },
 
-            "topsymbol-bo": { "base": "flags:block/banner/pattern/border/{color}-top" },
-            "botsymbol-bo": { "base": "flags:block/banner/pattern/border/{color}-bot" },
+            "topsymbol-bo": { "base": "flags:block/banner/pattern/mc/border/{color}-top" },
+            "botsymbol-bo": { "base": "flags:block/banner/pattern/mc/border/{color}-bot" },
 
-            "topsymbol-cbo": { "base": "flags:block/banner/pattern/curly_border/{color}-top" },
-            "botsymbol-cbo": { "base": "flags:block/banner/pattern/curly_border/{color}-bot" },
+            "topsymbol-cbo": { "base": "flags:block/banner/pattern/mc/curly_border/{color}-top" },
+            "botsymbol-cbo": { "base": "flags:block/banner/pattern/mc/curly_border/{color}-bot" },
 
-            "topsymbol-bri": { "base": "flags:block/banner/pattern/bricks/{color}" },
-            "botsymbol-bri": { "base": "flags:block/banner/pattern/bricks/{color}" },
+            "topsymbol-bri": { "base": "flags:block/banner/pattern/mc/bricks/{color}" },
+            "botsymbol-bri": { "base": "flags:block/banner/pattern/mc/bricks/{color}" },
 
-            "topsymbol-gra": { "base": "flags:block/banner/pattern/gradient/{color}-top" },
-            "botsymbol-gra": { "base": "flags:block/banner/pattern/gradient/{color}-bot" },
+            "topsymbol-gra": { "base": "flags:block/banner/pattern/mc/gradient/{color}-top" },
+            "botsymbol-gra": { "base": "flags:block/banner/pattern/mc/gradient/{color}-bot" },
 
-            "topsymbol-gru": { "base": "flags:block/banner/pattern/gradient_up/{color}-top" },
-            "botsymbol-gru": { "base": "flags:block/banner/pattern/gradient_up/{color}-bot" },
+            "topsymbol-gru": { "base": "flags:block/banner/pattern/mc/gradient_up/{color}-top" },
+            "botsymbol-gru": { "base": "flags:block/banner/pattern/mc/gradient_up/{color}-bot" },
 
             // #########################
             // ### Patterns (0.26.0) ###
             // #########################
 
-            "topsymbol-checker2x4": { "base": "flags:block/banner/pattern/checker2x4/{color}" },
-            "botsymbol-checker2x4": { "base": "flags:block/banner/pattern/checker2x4/{color}" },
+            "topsymbol-checker2x4": { "base": "flags:block/banner/pattern/checkered/2x4/{color}" },
+            "botsymbol-checker2x4": { "base": "flags:block/banner/pattern/checkered/2x4/{color}" },
 
-            "topsymbol-checker2x4i": { "base": "flags:block/banner/pattern/checker2x4_inverted/{color}" },
-            "botsymbol-checker2x4i": { "base": "flags:block/banner/pattern/checker2x4_inverted/{color}" },
+            "topsymbol-checker2x4i": { "base": "flags:block/banner/pattern/checkered/2x4_inverted/{color}" },
+            "botsymbol-checker2x4i": { "base": "flags:block/banner/pattern/checkered/2x4_inverted/{color}" },
 
-            "topsymbol-checker4x8": { "base": "flags:block/banner/pattern/checker4x8/{color}" },
-            "botsymbol-checker4x8": { "base": "flags:block/banner/pattern/checker4x8/{color}" },
+            "topsymbol-checker4x8": { "base": "flags:block/banner/pattern/checkered/4x8/{color}" },
+            "botsymbol-checker4x8": { "base": "flags:block/banner/pattern/checkered/4x8/{color}" },
 
-            "topsymbol-checker4x8i": { "base": "flags:block/banner/pattern/checker4x8_inverted/{color}" },
-            "botsymbol-checker4x8i": { "base": "flags:block/banner/pattern/checker4x8_inverted/{color}" },
+            "topsymbol-checker4x8i": { "base": "flags:block/banner/pattern/checkered/4x8_inverted/{color}" },
+            "botsymbol-checker4x8i": { "base": "flags:block/banner/pattern/checkered/4x8_inverted/{color}" },
 
-            "topsymbol-checker5x10": { "base": "flags:block/banner/pattern/checker5x10/{color}" },
-            "botsymbol-checker5x10": { "base": "flags:block/banner/pattern/checker5x10_inverted/{color}" },
+            "topsymbol-checker5x10": { "base": "flags:block/banner/pattern/checkered/5x10/{color}" },
+            "botsymbol-checker5x10": { "base": "flags:block/banner/pattern/checkered/5x10_inverted/{color}" },
 
-            "topsymbol-checker5x10i": { "base": "flags:block/banner/pattern/checker5x10_inverted/{color}" },
-            "botsymbol-checker5x10i": { "base": "flags:block/banner/pattern/checker5x10/{color}" },
+            "topsymbol-checker5x10i": { "base": "flags:block/banner/pattern/checkered/5x10_inverted/{color}" },
+            "botsymbol-checker5x10i": { "base": "flags:block/banner/pattern/checkered/5x10/{color}" },
 
-            "topsymbol-checker8x16": { "base": "flags:block/banner/pattern/checker8x16/{color}" },
-            "botsymbol-checker8x16": { "base": "flags:block/banner/pattern/checker8x16/{color}" },
+            "topsymbol-checker8x16": { "base": "flags:block/banner/pattern/checkered/8x16/{color}" },
+            "botsymbol-checker8x16": { "base": "flags:block/banner/pattern/checkered/8x16/{color}" },
 
-            "topsymbol-checker8x16i": { "base": "flags:block/banner/pattern/checker8x16_inverted/{color}" },
-            "botsymbol-checker8x16i": { "base": "flags:block/banner/pattern/checker8x16_inverted/{color}" },
+            "topsymbol-checker8x16i": { "base": "flags:block/banner/pattern/checkered/8x16_inverted/{color}" },
+            "botsymbol-checker8x16i": { "base": "flags:block/banner/pattern/checkered/8x16_inverted/{color}" },
 
             "topsymbol-ssh": { "base": "flags:block/banner/pattern/small_stripes_horizontal/{color}" },
             "botsymbol-ssh": { "base": "flags:block/banner/pattern/small_stripes_horizontal/{color}" },
 
-            "topsymbol-yang": { "base": "flags:block/banner/pattern/yinyang_yang_middle/{color}-top" },
-            "botsymbol-yang": { "base": "flags:block/banner/pattern/yinyang_yang_middle/{color}-bot" },
+            "topsymbol-yang": { "base": "flags:block/banner/pattern/yinyang/yang/{color}-top" },
+            "botsymbol-yang": { "base": "flags:block/banner/pattern/yinyang/yang/{color}-bot" },
 
-            "topsymbol-yin": { "base": "flags:block/banner/pattern/yinyang_yin_middle/{color}-top" },
-            "botsymbol-yin": { "base": "flags:block/banner/pattern/yinyang_yin_middle/{color}-bot" },
+            "topsymbol-yin": { "base": "flags:block/banner/pattern/yinyang/yin/{color}-top" },
+            "botsymbol-yin": { "base": "flags:block/banner/pattern/yinyang/yin/{color}-bot" },
 
-            "topsymbol-rt_b": { "base": "flags:block/banner/pattern/regular_triangle_bottom_middle/{color}-top" },
-            "botsymbol-rt_b": { "base": "flags:block/banner/pattern/regular_triangle_bottom_middle/{color}-bot" },
+            "topsymbol-rt_b": { "base": "flags:block/banner/pattern/regular_triangle/bot/{color}-top" },
+            "botsymbol-rt_b": { "base": "flags:block/banner/pattern/regular_triangle/bot/{color}-bot" },
 
-            "topsymbol-rt_t": { "base": "flags:block/banner/pattern/regular_triangle_top_middle/{color}-top" },
-            "botsymbol-rt_t": { "base": "flags:block/banner/pattern/regular_triangle_top_middle/{color}-bot" },
+            "topsymbol-rt_t": { "base": "flags:block/banner/pattern/regular_triangle/top/{color}-top" },
+            "botsymbol-rt_t": { "base": "flags:block/banner/pattern/regular_triangle/top/{color}-bot" },
 
-            "topsymbol-crescent_left": { "base": "flags:block/banner/pattern/crescent_left/{color}-top" },
-            "botsymbol-crescent_left": { "base": "flags:block/banner/pattern/crescent_left/{color}-bot" },
+            "topsymbol-crescent_left": { "base": "flags:block/banner/pattern/crescent/left/{color}-top" },
+            "botsymbol-crescent_left": { "base": "flags:block/banner/pattern/crescent/left/{color}-bot" },
 
-            "topsymbol-crescent_right": { "base": "flags:block/banner/pattern/crescent_right/{color}-top" },
-            "botsymbol-crescent_right": { "base": "flags:block/banner/pattern/crescent_right/{color}-bot" },
+            "topsymbol-crescent_right": { "base": "flags:block/banner/pattern/crescent/right/{color}-top" },
+            "botsymbol-crescent_right": { "base": "flags:block/banner/pattern/crescent/right/{color}-bot" },
 
             // #######################
             // ### Patterns (Rare) ###
             // #######################
 
-            "topsymbol-hansa_fish": { "base": "flags:block/banner/pattern/hansa/fish/{color}-top" },
-            "botsymbol-hansa_fish": { "base": "flags:block/banner/pattern/hansa/fish/{color}-bot" },
+            "topsymbol-hansa_fish": { "base": "flags:block/banner/pattern/vs/hansa/fish/{color}-top" },
+            "botsymbol-hansa_fish": { "base": "flags:block/banner/pattern/vs/hansa/fish/{color}-bot" },
 
-            "topsymbol-hansa_keys": { "base": "flags:block/banner/pattern/hansa/keys/{color}-top" },
-            "botsymbol-hansa_keys": { "base": "flags:block/banner/pattern/hansa/keys/{color}-bot" },
+            "topsymbol-hansa_keys": { "base": "flags:block/banner/pattern/vs/hansa/keys/{color}-top" },
+            "botsymbol-hansa_keys": { "base": "flags:block/banner/pattern/vs/hansa/keys/{color}-bot" },
 
-            "topsymbol-hansa_largefish": { "base": "flags:block/banner/pattern/hansa/largefish/{color}-top" },
-            "botsymbol-hansa_largefish": { "base": "flags:block/banner/pattern/hansa/largefish/{color}-bot" },
+            "topsymbol-hansa_largefish": { "base": "flags:block/banner/pattern/vs/hansa/largefish/{color}-top" },
+            "botsymbol-hansa_largefish": { "base": "flags:block/banner/pattern/vs/hansa/largefish/{color}-bot" },
 
-            "topsymbol-hansa_ship": { "base": "flags:block/banner/pattern/hansa/ship/{color}-top" },
-            "botsymbol-hansa_ship": { "base": "flags:block/banner/pattern/hansa/ship/{color}-bot" },
+            "topsymbol-hansa_ship": { "base": "flags:block/banner/pattern/vs/hansa/ship/{color}-top" },
+            "botsymbol-hansa_ship": { "base": "flags:block/banner/pattern/vs/hansa/ship/{color}-bot" },
 
-            "topsymbol-hansa_town": { "base": "flags:block/banner/pattern/hansa/town/{color}-top" },
-            "botsymbol-hansa_town": { "base": "flags:block/banner/pattern/hansa/town/{color}-bot" }
+            "topsymbol-hansa_town": { "base": "flags:block/banner/pattern/vs/hansa/town/{color}-top" },
+            "botsymbol-hansa_town": { "base": "flags:block/banner/pattern/vs/hansa/town/{color}-bot" }
         },
         "selectionBoxes": {
             "normal-wall": [{ "x1": 0, "y1": 0, "z1": 0, "x2": 1, "y2": 1, "z2": 0.125 }],
