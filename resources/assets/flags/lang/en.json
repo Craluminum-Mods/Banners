@@ -66,6 +66,8 @@
     "pattern-yin": "Yin",
     "pattern-rt_b": "Center Bottom Regular Triangle",
     "pattern-rt_t": "Center Top Regular Triangle",
+    "pattern-crescent_left": "Left Crescent",
+    "pattern-crescent_right": "Right Crescent",
 
     "blockhelp-banner-addlayer": "Add pattern (requires pattern in left hand)",
     "blockhelp-banner-removelayer": "Remove last pattern",

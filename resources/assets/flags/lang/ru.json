@@ -66,6 +66,8 @@
     "pattern-yin": "Инь",
     "pattern-rt_b": "Нижний правильный треугольник (посередине)",
     "pattern-rt_t": "Верхний правильный треугольник (посередине)",
+    "pattern-crescent_left": "Левый полумесяц",
+    "pattern-crescent_right": "Правый полумесяц",
 
     "blockhelp-banner-addlayer": "Добавить узор (требуется узор в левой руке)",
     "blockhelp-banner-removelayer": "Удалить последний узор",

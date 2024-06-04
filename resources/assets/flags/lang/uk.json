@@ -66,6 +66,8 @@
     "pattern-yin": "Інь",
     "pattern-rt_b": "Нижній правильний трикутник (посередині)",
     "pattern-rt_t": "Верхній правильний трикутник (посередині)",
+    "pattern-crescent_left": "Лівий півмісяць",
+    "pattern-crescent_right": "Правий півмісяць",
 
     "blockhelp-banner-addlayer": "Додати шар (потрібен візерунок в лівій руці)",
     "blockhelp-banner-removelayer": "Видалити останній шар",

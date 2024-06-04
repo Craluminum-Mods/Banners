@@ -93,9 +93,10 @@
             "placeholder-ssh": { "base": "flags:item/bannerpattern/pattern/small_stripes_horizontal" },
             "placeholder-yang": { "base": "flags:item/bannerpattern/pattern/yinyang_yang_middle" },
             "placeholder-yin": { "base": "flags:item/bannerpattern/pattern/yinyang_yin_middle" },
-
             "placeholder-rt_b": { "base": "flags:item/bannerpattern/pattern/regular_triangle_bot_mid" },
-            "placeholder-rt_t": { "base": "flags:item/bannerpattern/pattern/regular_triangle_top_mid" }
+            "placeholder-rt_t": { "base": "flags:item/bannerpattern/pattern/regular_triangle_top_mid" },
+            "placeholder-crescent_left": { "base": "flags:item/bannerpattern/pattern/crescent_left" },
+            "placeholder-crescent_right": { "base": "flags:item/bannerpattern/pattern/crescent_right" }
         }
     },
     "shape": { "base": "flags:item/bannerpattern" },
@@ -162,6 +163,8 @@
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "yin" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "rt_b" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "rt_t" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "crescent_left" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "crescent_right" } } },
 
                 // #######################
                 // ### Patterns (Rare) ###

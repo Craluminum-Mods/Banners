@@ -176,6 +176,12 @@
             "topsymbol-rt_t": { "base": "flags:block/banner/pattern/regular_triangle_top_middle/{color}-top" },
             "botsymbol-rt_t": { "base": "flags:block/banner/pattern/regular_triangle_top_middle/{color}-bot" },
 
+            "topsymbol-crescent_left": { "base": "flags:block/banner/pattern/crescent_left/{color}-top" },
+            "botsymbol-crescent_left": { "base": "flags:block/banner/pattern/crescent_left/{color}-bot" },
+
+            "topsymbol-crescent_right": { "base": "flags:block/banner/pattern/crescent_right/{color}-top" },
+            "botsymbol-crescent_right": { "base": "flags:block/banner/pattern/crescent_right/{color}-bot" },
+
             // #######################
             // ### Patterns (Rare) ###
             // #######################
@@ -295,6 +301,8 @@
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-rt_t": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-yang": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-yin": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-crescent_left": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-crescent_right": "black" } } } },
 
                 // #######################
                 // ### Patterns (Rare) ###
