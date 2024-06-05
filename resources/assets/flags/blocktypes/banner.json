@@ -134,7 +134,7 @@
             "botsymbol-gru": { "base": "flags:block/banner/pattern/mc/gradient_up/{color}-bot" },
 
             // #########################
-            // ### Patterns (0.26.0) ###
+            // ### Patterns (Other) ###
             // #########################
 
             "topsymbol-checker2x4": { "base": "flags:block/banner/pattern/other/checkered/2x4/{color}" },
@@ -182,6 +182,36 @@
             "topsymbol-crescent_right": { "base": "flags:block/banner/pattern/other/crescent/right/{color}-top" },
             "botsymbol-crescent_right": { "base": "flags:block/banner/pattern/other/crescent/right/{color}-bot" },
 
+            "topsymbol-circle_large": { "base": "flags:block/banner/pattern/other/circle_large/{color}-top" },
+            "botsymbol-circle_large": { "base": "flags:block/banner/pattern/other/circle_large/{color}-bot" },
+
+            "topsymbol-globe": { "base": "flags:block/banner/pattern/other/globe/{color}-top" },
+            "botsymbol-globe": { "base": "flags:block/banner/pattern/other/globe/{color}-bot" },
+
+            "topsymbol-fleur_de_lis": { "base": "flags:block/banner/pattern/other/fleur_de_lis/{color}-top" },
+            "botsymbol-fleur_de_lis": { "base": "flags:block/banner/pattern/other/fleur_de_lis/{color}-bot" },
+
+            "topsymbol-flower": { "base": "flags:block/banner/pattern/other/flower/{color}-top" },
+            "botsymbol-flower": { "base": "flags:block/banner/pattern/other/flower/{color}-bot" },
+
+            "topsymbol-moby_dick": { "base": "flags:block/banner/pattern/other/moby_dick/{color}-top" },
+            "botsymbol-moby_dick": { "base": "flags:block/banner/pattern/other/moby_dick/{color}-bot" },
+
+            "topsymbol-sad_catfish": { "base": "flags:block/banner/pattern/other/sad_catfish/{color}-top" },
+            "botsymbol-sad_catfish": { "base": "flags:block/banner/pattern/other/sad_catfish/{color}-bot" },
+
+            "topsymbol-skull": { "base": "flags:block/banner/pattern/other/skull/{color}-top" },
+            "botsymbol-skull": { "base": "flags:block/banner/pattern/other/skull/{color}-bot" },
+
+            "topsymbol-suit_clubs": { "base": "flags:block/banner/pattern/other/suit_clubs/{color}-top" },
+            "botsymbol-suit_clubs": { "base": "flags:block/banner/pattern/other/suit_clubs/{color}-bot" },
+
+            "topsymbol-suit_hearts": { "base": "flags:block/banner/pattern/other/suit_hearts/{color}-top" },
+            "botsymbol-suit_hearts": { "base": "flags:block/banner/pattern/other/suit_hearts/{color}-bot" },
+
+            "topsymbol-suit_spades": { "base": "flags:block/banner/pattern/other/suit_spades/{color}-top" },
+            "botsymbol-suit_spades": { "base": "flags:block/banner/pattern/other/suit_spades/{color}-bot" },
+
             // #######################
             // ### Patterns (Rare) ###
             // #######################
@@ -199,7 +229,32 @@
             "botsymbol-hansa_ship": { "base": "flags:block/banner/pattern/vs/hansa/ship/{color}-bot" },
 
             "topsymbol-hansa_town": { "base": "flags:block/banner/pattern/vs/hansa/town/{color}-top" },
-            "botsymbol-hansa_town": { "base": "flags:block/banner/pattern/vs/hansa/town/{color}-bot" }
+            "botsymbol-hansa_town": { "base": "flags:block/banner/pattern/vs/hansa/town/{color}-bot" },
+
+            // #####################
+            // ### Patterns (VS) ###
+            // #####################
+
+            "topsymbol-vs_cookie": { "base": "flags:block/banner/pattern/vs/cookie/{color}-top" },
+            "botsymbol-vs_cookie": { "base": "flags:block/banner/pattern/vs/cookie/{color}-bot" },
+
+            "topsymbol-vs_drifter": { "base": "flags:block/banner/pattern/vs/drifter/{color}-top" },
+            "botsymbol-vs_drifter": { "base": "flags:block/banner/pattern/vs/drifter/{color}-bot" },
+
+            "topsymbol-vs_eidolon": { "base": "flags:block/banner/pattern/vs/eidolon/{color}-top" },
+            "botsymbol-vs_eidolon": { "base": "flags:block/banner/pattern/vs/eidolon/{color}-bot" },
+
+            "topsymbol-vs_elk": { "base": "flags:block/banner/pattern/vs/elk/{color}-top" },
+            "botsymbol-vs_elk": { "base": "flags:block/banner/pattern/vs/elk/{color}-bot" },
+
+            "topsymbol-vs_falx_left": { "base": "flags:block/banner/pattern/vs/falx/left/{color}-top" },
+            "botsymbol-vs_falx_left": { "base": "flags:block/banner/pattern/vs/falx/left/{color}-bot" },
+
+            "topsymbol-vs_falx_right": { "base": "flags:block/banner/pattern/vs/falx/right/{color}-top" },
+            "botsymbol-vs_falx_right": { "base": "flags:block/banner/pattern/vs/falx/right/{color}-bot" },
+
+            "topsymbol-vs_logo": { "base": "flags:block/banner/pattern/vs/logo/{color}-top" },
+            "botsymbol-vs_logo": { "base": "flags:block/banner/pattern/vs/logo/{color}-bot" }
         },
         "selectionBoxes": {
             "normal-wall": [{ "x1": 0, "y1": 0, "z1": 0, "x2": 1, "y2": 1, "z2": 0.125 }],
@@ -284,9 +339,9 @@
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-gra": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-gru": "black" } } } },
 
-                // #########################
-                // ### Patterns (0.26.0) ###
-                // #########################
+                // ########################
+                // ### Patterns (Other) ###
+                // ########################
 
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-checker2x4": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-checker2x4i": "black" } } } },
@@ -303,6 +358,16 @@
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-yin": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-crescent_left": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-crescent_right": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-circle_large": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-globe": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-fleur_de_lis": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-flower": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-moby_dick": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-sad_catfish": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-skull": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-suit_clubs": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-suit_hearts": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-suit_spades": "black" } } } },
 
                 // #######################
                 // ### Patterns (Rare) ###
@@ -312,7 +377,19 @@
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-hansa_keys": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-hansa_largefish": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-hansa_ship": "black" } } } },
-                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-hansa_town": "black" } } } }
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-hansa_town": "black" } } } },
+
+                // #####################
+                // ### Patterns (VS) ###
+                // #####################
+
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-vs_cookie": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-vs_drifter": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-vs_eidolon": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-vs_elk": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-vs_falx_left": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-vs_falx_right": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-vs_logo": "black" } } } }
             ]
         }
     ],

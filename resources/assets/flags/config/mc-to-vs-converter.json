@@ -83,6 +83,11 @@
         "bri": "bri",
         "gra": "gra",
         "gru": "gru",
+        "cre": "sad_catfish",
+        "sku": "skull",
+        "flo": "flower",
+        "moj": "moby_dick",
+        "glb": "globe",
         "*": "error"
     }
 }

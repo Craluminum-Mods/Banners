@@ -78,9 +78,9 @@
             "placeholder-hansa_ship": { "base": "flags:item/bannerpattern/pattern/vs/hansa/ship" },
             "placeholder-hansa_town": { "base": "flags:item/bannerpattern/pattern/vs/hansa/town" },
 
-            // #########################
-            // ### Patterns (0.26.0) ###
-            // #########################
+            // ########################
+            // ### Patterns (Other) ###
+            // ########################
 
             "placeholder-checker2x4": { "base": "flags:item/bannerpattern/pattern/other/checkered/2x4" },
             "placeholder-checker2x4i": { "base": "flags:item/bannerpattern/pattern/other/checkered/2x4_inverted" },
@@ -96,7 +96,29 @@
             "placeholder-rt_b": { "base": "flags:item/bannerpattern/pattern/other/regular_triangle/bot" },
             "placeholder-rt_t": { "base": "flags:item/bannerpattern/pattern/other/regular_triangle/top" },
             "placeholder-crescent_left": { "base": "flags:item/bannerpattern/pattern/other/crescent/left" },
-            "placeholder-crescent_right": { "base": "flags:item/bannerpattern/pattern/other/crescent/right" }
+            "placeholder-crescent_right": { "base": "flags:item/bannerpattern/pattern/other/crescent/right" },
+            "placeholder-circle_large": { "base": "flags:item/bannerpattern/pattern/other/circle_large" },
+            "placeholder-globe": { "base": "flags:item/bannerpattern/pattern/other/globe" },
+            "placeholder-fleur_de_lis": { "base": "flags:item/bannerpattern/pattern/other/fleur_de_lis" },
+            "placeholder-flower": { "base": "flags:item/bannerpattern/pattern/other/flower" },
+            "placeholder-moby_dick": { "base": "flags:item/bannerpattern/pattern/other/moby_dick" },
+            "placeholder-sad_catfish": { "base": "flags:item/bannerpattern/pattern/other/sad_catfish" },
+            "placeholder-skull": { "base": "flags:item/bannerpattern/pattern/other/skull" },
+            "placeholder-suit_clubs": { "base": "flags:item/bannerpattern/pattern/other/suit_clubs" },
+            "placeholder-suit_hearts": { "base": "flags:item/bannerpattern/pattern/other/suit_hearts" },
+            "placeholder-suit_spades": { "base": "flags:item/bannerpattern/pattern/other/suit_spades" },
+
+            // #####################
+            // ### Patterns (VS) ###
+            // #####################
+
+            "placeholder-vs_cookie": { "base": "flags:item/bannerpattern/pattern/vs/cookie" },
+            "placeholder-vs_drifter": { "base": "flags:item/bannerpattern/pattern/vs/drifter" },
+            "placeholder-vs_eidolon": { "base": "flags:item/bannerpattern/pattern/vs/eidolon" },
+            "placeholder-vs_elk": { "base": "flags:item/bannerpattern/pattern/vs/elk" },
+            "placeholder-vs_falx_left": { "base": "flags:item/bannerpattern/pattern/vs/falx/left" },
+            "placeholder-vs_falx_right": { "base": "flags:item/bannerpattern/pattern/vs/falx/right" },
+            "placeholder-vs_logo": { "base": "flags:item/bannerpattern/pattern/vs/logo" }
         }
     },
     "shape": { "base": "flags:item/bannerpattern" },
@@ -146,9 +168,9 @@
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "gra" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "gru" } } },
 
-                // #########################
-                // ### Patterns (0.26.0) ###
-                // #########################
+                // ########################
+                // ### Patterns (Other) ###
+                // ########################
 
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "checker2x4" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "checker2x4i" } } },
@@ -165,6 +187,16 @@
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "rt_t" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "crescent_left" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "crescent_right" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "circle_large" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "globe" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "fleur_de_lis" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "flower" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "moby_dick" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "sad_catfish" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "skull" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "suit_clubs" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "suit_hearts" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "suit_spades" } } },
 
                 // #######################
                 // ### Patterns (Rare) ###
@@ -174,7 +206,19 @@
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_keys" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_largefish" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_ship" } } },
-                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_town" } } }
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_town" } } },
+
+                // #####################
+                // ### Patterns (VS) ###
+                // #####################
+
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "vs_cookie" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "vs_drifter" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "vs_eidolon" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "vs_elk" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "vs_falx_left" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "vs_falx_right" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "vs_logo" } } }
             ]
         }
     ],
