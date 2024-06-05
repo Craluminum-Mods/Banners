@@ -107,6 +107,8 @@
             "placeholder-suit_clubs": { "base": "flags:item/bannerpattern/pattern/other/suit_clubs" },
             "placeholder-suit_hearts": { "base": "flags:item/bannerpattern/pattern/other/suit_hearts" },
             "placeholder-suit_spades": { "base": "flags:item/bannerpattern/pattern/other/suit_spades" },
+            "placeholder-lion_left": { "base": "flags:item/bannerpattern/pattern/other/lion/left" },
+            "placeholder-lion_right": { "base": "flags:item/bannerpattern/pattern/other/lion/right" },
 
             // #####################
             // ### Patterns (VS) ###
@@ -197,6 +199,8 @@
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "suit_clubs" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "suit_hearts" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "suit_spades" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "lion_left" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "lion_right" } } },
 
                 // #######################
                 // ### Patterns (Rare) ###

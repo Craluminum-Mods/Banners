@@ -85,6 +85,8 @@
     "pattern-vs_falx_left": "Falx (left)",
     "pattern-vs_falx_right": "Falx (right)",
     "pattern-vs_logo": "Vintage Story",
+    "pattern-lion_left": "Lion (left)",
+    "pattern-lion_right": "Lion (right)",
 
     "blockhelp-banner-addlayer": "Add pattern (requires pattern in left hand)",
     "blockhelp-banner-removelayer": "Remove last pattern",

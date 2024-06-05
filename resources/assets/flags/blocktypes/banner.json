@@ -212,6 +212,12 @@
             "topsymbol-suit_spades": { "base": "flags:block/banner/pattern/other/suit_spades/{color}-top" },
             "botsymbol-suit_spades": { "base": "flags:block/banner/pattern/other/suit_spades/{color}-bot" },
 
+            "topsymbol-lion_left": { "base": "flags:block/banner/pattern/other/lion/left/{color}-top" },
+            "botsymbol-lion_left": { "base": "flags:block/banner/pattern/other/lion/left/{color}-bot" },
+
+            "topsymbol-lion_right": { "base": "flags:block/banner/pattern/other/lion/right/{color}-top" },
+            "botsymbol-lion_right": { "base": "flags:block/banner/pattern/other/lion/right/{color}-bot" },
+
             // #######################
             // ### Patterns (Rare) ###
             // #######################
@@ -368,6 +374,8 @@
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-suit_clubs": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-suit_hearts": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-suit_spades": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-lion_left": "black" } } } },
+                { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-lion_right": "black" } } } },
 
                 // #######################
                 // ### Patterns (Rare) ###
