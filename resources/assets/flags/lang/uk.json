@@ -104,7 +104,8 @@
     "ingameerror-banner-patterngroups": "Групи візерунків не збігаються",
 
     "command-nobanner": "В активній руці немає прапора",
-    "command-generatetextures": "Текстури для прапора успішно згенеровані",
+    "command-generatetextures": "Успішно згенеровано {0} текстур для прапора",
+    "command-generatetextures-error": "Не знайдено жодної текстури з градаціями сірого",
     "command-generatetextures-desc": "Генерує текстури для прапора з текстур, визначених в json атрибутах прапору. Накладає кольорові текстури тканини на вказану текстуру і зберігає нові текстури у папці {0}",
     "command-genbannermc": "Прапор успішно згенерований",
     "command-genbannermc-desc": "Генерує прапор з синтаксису Minecraft",

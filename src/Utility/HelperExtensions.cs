@@ -29,12 +29,12 @@ public static class HelperExtensions
         }
     }
 
-    public static string Localize(this string input, params string[] args)
+    public static string Localize(this string input, params object[] args)
     {
         return Lang.Get(input, args);
     }
 
-    public static string LocalizeM(this string input, params string[] args)
+    public static string LocalizeM(this string input, params object[] args)
     {
         return Lang.GetMatching(input, args);
     }

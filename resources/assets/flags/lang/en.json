@@ -104,7 +104,8 @@
     "ingameerror-banner-patterngroups": "Pattern groups don't match",
 
     "command-nobanner": "Active hand is missing banner",
-    "command-generatetextures": "Textures were sucessfully generated for banner",
+    "command-generatetextures": "{0} textures were sucessfully generated for banner",
+    "command-generatetextures-error": "No grayscale texture found",
     "command-generatetextures-desc": "Generates textures for banner from textures defined in banner's json attributes. Overlays colored cloth textures on top of grayscale texture and saves new textures to {0} folder",
     "command-genbannermc": "Successfully generated banner",
     "command-genbannermc-desc": "Generates banner from Minecraft syntax",

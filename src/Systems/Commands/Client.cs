@@ -18,8 +18,7 @@ public class Client : ModSystem
             .WithAlias("gentex")
             .WithDesc($"{modDomain}:command-generatetextures-desc".Localize(OutputFolder))
             .WithArgs(
-            parsers.Bool("replace"),
-            parsers.Word("texture color", new string[] { defaultColor }))
+            parsers.OptionalBool("replace"))
             .HandleWith(GenerateTextures)
         .EndSub();
     }
@@ -27,14 +26,10 @@ public class Client : ModSystem
     public static TextCommandResult GenerateTextures(TextCommandCallingArgs args)
     {
         bool replaceExisting = args?[0].ToString().ToBool() ?? false;
-        string textureColor = args.LastArg.ToString();
         ItemSlot slot = args.Caller.Player.Entity.RightHandItemSlot;
         ICoreClientAPI capi = args.Caller.Player.Entity.Api as ICoreClientAPI;
-        if (slot?.Itemstack?.Collectible is not BlockBanner blockBanner)
-        {
-            return TextCommandResult.Error($"{modDomain}:command-nobanner".Localize());
-        }
-        blockBanner.DebugPregenerateTextures(capi, replaceExisting, textureColor);
-        return TextCommandResult.Success($"{modDomain}:command-generatetextures".Localize());
+        return slot?.Itemstack?.Collectible is BlockBanner blockBanner
+            ? blockBanner.DebugPregenerateTextures(capi, replaceExisting)
+            : TextCommandResult.Error($"{modDomain}:command-nobanner".Localize());
     }
 }

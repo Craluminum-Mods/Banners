@@ -104,7 +104,8 @@
     "ingameerror-banner-patterngroups": "Группы узоров не совпадают",
 
     "command-nobanner": "В активной руке нет флага",
-    "command-generatetextures": "Текстуры для флага успешно сгенерированы",
+    "command-generatetextures": "Успешно сгенерировано {0} текстур для флага",
+    "command-generatetextures-error": "Не найдено ни одной текстуры з градациями серого",
     "command-generatetextures-desc": "Генерирует текстуры для флага из текстур, определенных в json атрибутах флага. Накладывает цветные текстуры ткани на указанную текстуру и сохраняет новые текстуры в папке {0}",
     "command-genbannermc": "Флаг успешно сгенерирован",
     "command-genbannermc-desc": "Генерирует флаг из синтаксиса Minecraft",

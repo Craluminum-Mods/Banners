@@ -167,8 +167,9 @@ public static class BannerExtensions
         ctex.BlendedOverlays = ctex.BlendedOverlays.Append(new BlendedOverlayTexture() { Base = overlayTexture.Base, BlendMode = EnumColorBlendMode.Normal });
     }
 
-    public static void DebugPregenerateTextures(this BlockBanner blockBanner, ICoreClientAPI capi, bool replaceExisting = false, string grayscaleColor = defaultColor)
+    public static TextCommandResult DebugPregenerateTextures(this BlockBanner blockBanner, ICoreClientAPI capi, bool replaceExisting = false, string grayscaleColor = defaultColor)
     {
+        int amount = 0;
         foreach ((string key, CompositeTexture tex) in blockBanner.CustomTextures)
         {
             if (blockBanner.IgnoreForGeneratingTextures.Contains(key) || (!replaceExisting && capi.Assets.Exists(tex.Base)))
@@ -230,8 +231,12 @@ public static class BannerExtensions
                 if (replaceExisting || !File.Exists(newFilePath))
                 {
                     layerBmp.Save(newFilePath);
+                    amount++;
                 }
             }
         }
+        return amount > 0
+            ? TextCommandResult.Success($"{modDomain}:command-generatetextures".Localize(amount.ToString()))
+            : TextCommandResult.Error($"{modDomain}:command-generatetextures-error".Localize());
     }
 }
