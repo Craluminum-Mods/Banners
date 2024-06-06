@@ -106,7 +106,7 @@ public class BlockEntityBanner : BlockEntity
     {
         if (forceNew || CustomSelectionBoxes == null)
         {
-            Cuboidf[] _selectionBoxes = (BannerBlock.CustomSelectionBoxes.TryGetValue(BannerProps.Placement, out Cuboidf[] boxes) || BannerBlock.CustomSelectionBoxes.TryGetValue(Wildcard, out boxes))
+            Cuboidf[] _selectionBoxes = BannerBlock.CustomSelectionBoxes.TryGetValueOrWildcard(BannerProps.Placement, out Cuboidf[] boxes)
             ? boxes
             : Block.SelectionBoxes;
 
@@ -126,7 +126,7 @@ public class BlockEntityBanner : BlockEntity
     {
         if (forceNew || CustomCollisionBoxes == null)
         {
-            Cuboidf[] _collisionBoxes = (BannerBlock.CustomCollisionBoxes.TryGetValue(BannerProps.Placement, out Cuboidf[] boxes) || BannerBlock.CustomCollisionBoxes.TryGetValue(Wildcard, out boxes))
+            Cuboidf[] _collisionBoxes = BannerBlock.CustomCollisionBoxes.TryGetValueOrWildcard(BannerProps.Placement, out Cuboidf[] boxes)
             ? boxes
             : Block.CollisionBoxes;
 

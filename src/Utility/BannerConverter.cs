@@ -44,7 +44,7 @@ public class BannerConverter
             return TextCommandResult.Error($"{modDomain}:command-genbannermc-invalidsyntax".Localize());
         }
 
-        if (!BaseColorsToColors.TryGetValue(mcBaseColor, out string vsBaseColor) && !BaseColorsToColors.TryGetValue(Wildcard, out vsBaseColor))
+        if (!BaseColorsToColors.TryGetValueOrWildcard(mcBaseColor, out string vsBaseColor))
         {
             return TextCommandResult.Error($"{modDomain}:command-genbannermc-invalidsyntax".Localize());
         }
@@ -67,13 +67,13 @@ public class BannerConverter
 
     private string GetPattern(JsonObject pattern)
     {
-        _ = Patterns.TryGetValue(pattern["Pattern"].AsString(), out string value) || Patterns.TryGetValue(Wildcard, out value);
+        _ = Patterns.TryGetValueOrWildcard(pattern["Pattern"].AsString(), out string value) ;
         return value;
     }
 
     private string GetColor(JsonObject pattern)
     {
-        _ = IdsToColors.TryGetValue(pattern["Color"].AsInt().ToString(), out string value) || IdsToColors.TryGetValue(Wildcard, out value);
+        _ = IdsToColors.TryGetValueOrWildcard(pattern["Color"].AsInt().ToString(), out string value);
         return value;
     }
 }

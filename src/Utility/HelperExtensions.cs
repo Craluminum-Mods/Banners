@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
+using Vintagestory.API.MathTools;
 
 namespace Flags;
 
@@ -53,5 +55,10 @@ public static class HelperExtensions
     public static ItemStack[] GetHandBookStacksArray(this CollectibleObject obj, ICoreClientAPI capi)
     {
         return obj.GetHandBookStacks(capi)?.ToArray() ?? System.Array.Empty<ItemStack>();
+    }
+
+    public static bool TryGetValueOrWildcard<T>(this Dictionary<string, T> dict, string key, out T value)
+    {
+        return dict.TryGetValue(key, out value) || dict.TryGetValue(Wildcard, out value);
     }
 }

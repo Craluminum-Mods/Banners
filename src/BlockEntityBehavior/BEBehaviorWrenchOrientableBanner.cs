@@ -45,8 +45,8 @@ public class BEBehaviorWrenchOrientableBanner : BlockEntityBehavior, IWrenchOrie
 
         }
         else if (sneak && sprint
-        && (PlacementBaseCodes?.TryGetValue(BannerProps.Placement, out string baseCode) == true || PlacementBaseCodes?.TryGetValue(Wildcard, out baseCode) == true)
-        && (Placements?.TryGetValue(baseCode, out List<string> possibleTypes) == true || Placements?.TryGetValue(Wildcard, out possibleTypes) == true))
+        && PlacementBaseCodes?.TryGetValueOrWildcard(BannerProps.Placement, out string baseCode) == true
+        && Placements?.TryGetValueOrWildcard(baseCode, out List<string> possibleTypes) == true)
         {
             using List<string>.Enumerator types = possibleTypes.GetEnumerator();
             while (types.MoveNext())
