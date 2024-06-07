@@ -13,11 +13,6 @@ public static class BannerPatternExtensions
         ICoreClientAPI capi = api as ICoreClientAPI;
         Dictionary<string, MeshData> Meshes = ObjectCacheUtil.GetOrCreate(capi, cacheKeyItemBannerPatternMeshes, () => new Dictionary<string, MeshData>());
 
-        if (string.IsNullOrEmpty(properties.Type))
-        {
-            properties.SetType(item.DefaultType);
-        }
-
         string key = $"{item.Code}-{properties}";
         if (!Meshes.TryGetValue(key, out MeshData mesh))
         {
@@ -46,7 +41,7 @@ public static class BannerPatternExtensions
 
     public static void GetInventoryMesh(this ItemBannerPattern item, ICoreClientAPI capi, ItemStack stack, ItemRenderInfo renderinfo)
     {
-        BannerPatternProperties properties = BannerPatternProperties.FromStack(stack, item);
+        BannerPatternProperties properties = BannerPatternProperties.FromStack(stack);
         string key = $"{item.Code}-{properties}";
         if (!item.InvMeshes.TryGetValue(key, out MultiTextureMeshRef meshref))
         {

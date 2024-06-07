@@ -11,7 +11,6 @@ public class ItemBannerPattern : ItemRollableFixed
 {
     public List<string> PatternGroups { get; protected set; } = new();
 
-    public string DefaultType { get; protected set; }
     public Dictionary<string, CompositeTexture> CustomTextures { get; protected set; } = new();
     public List<string> TextureCodesForOverlays { get; protected set; } = new();
 
@@ -40,8 +39,6 @@ public class ItemBannerPattern : ItemRollableFixed
     public void LoadTypes()
     {
         PatternGroups = Attributes[attributePatternGroups].AsObject<List<string>>();
-
-        DefaultType = Attributes[attributeDefaultType].AsString();
         CustomTextures = Attributes[attributeTextures].AsObject<Dictionary<string, CompositeTexture>>();
         TextureCodesForOverlays = Attributes[attributeTextureCodesForOverlays].AsObject<List<string>>();
     }

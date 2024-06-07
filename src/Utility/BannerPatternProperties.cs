@@ -7,15 +7,10 @@ namespace Flags;
 
 public class BannerPatternProperties
 {
-    public string Type { get; protected set; }
+    public string Type { get; protected set; } = string.Empty;
     public List<string> UnlockedTypes { get; protected set; } = new();
 
     public string UnlockedTypesAsString => string.Join(unlockedSeparator, UnlockedTypes).TrimStart(unlockedSeparator);
-
-    public BannerPatternProperties(string defaultType)
-    {
-        Type = !string.IsNullOrEmpty(defaultType) ? defaultType : Type;
-    }
 
     public string GetTextureCode(string oldTextureCode)
     {
@@ -35,10 +30,9 @@ public class BannerPatternProperties
         tree.GetOrAddTreeAttribute(attributeBannerPattern).SetString(attributeUnlockedTypes, UnlockedTypesAsString);
     }
 
-    public static BannerPatternProperties FromStack(ItemStack stack, ItemBannerPattern item = null)
+    public static BannerPatternProperties FromStack(ItemStack stack)
     {
-        string defaultType = item?.DefaultType ?? (stack.Collectible as ItemBannerPattern)?.DefaultType;
-        return new BannerPatternProperties(defaultType).FromTreeAttribute(stack.Attributes);
+        return new BannerPatternProperties().FromTreeAttribute(stack.Attributes);
     }
 
     public void SetType(string type)

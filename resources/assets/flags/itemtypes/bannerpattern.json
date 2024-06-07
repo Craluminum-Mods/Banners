@@ -23,11 +23,11 @@
             "origin": { "x": 0.5, "y": 0, "z": 0.5 },
             "scale": 0.8
         },
-        "defaultType": "bs",
         "textureCodesForOverlays": ["placeholder"],
         "textures": {
             "labelbase": { "base": "game:block/cloth/linen/white" },
             "placeholder": { "base": "game:block/transparent" },
+            "placeholder-": { "base": "flags:item/bannerpattern/pattern/blank" },
 
             // #####################
             // ### Patterns (MC) ###
