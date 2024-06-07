@@ -10,7 +10,7 @@ public class BannerPatternProperties
     public string Type { get; protected set; } = string.Empty;
     public List<string> UnlockedTypes { get; protected set; } = new();
 
-    public string UnlockedTypesAsString => string.Join(unlockedSeparator, UnlockedTypes).TrimStart(unlockedSeparator);
+    public string UnlockedTypesAsString => string.Join(unlockedSeparator, UnlockedTypes).TrimStart(unlockedSeparator) ?? "";
 
     public string GetTextureCode(string oldTextureCode)
     {
@@ -26,7 +26,7 @@ public class BannerPatternProperties
 
     public void ToTreeAttribute(ITreeAttribute tree)
     {
-        tree.GetOrAddTreeAttribute(attributeBannerPattern).SetString(attributeType, Type);
+        tree.GetOrAddTreeAttribute(attributeBannerPattern).SetString(attributeType, Type ?? "");
         tree.GetOrAddTreeAttribute(attributeBannerPattern).SetString(attributeUnlockedTypes, UnlockedTypesAsString);
     }
 
@@ -43,6 +43,19 @@ public class BannerPatternProperties
     public void SetUnlockedTypes(params string[] types)
     {
         UnlockedTypes.AddRange(types.Where(type => !UnlockedTypes.Contains(type)));
+        UnlockedTypes = UnlockedTypes.Distinct().Order().ToList();
+    }
+
+    public void MergeTypes(BannerPatternProperties otherProps)
+    {
+        if (!string.IsNullOrEmpty(otherProps.Type))
+        {
+            SetUnlockedTypes(otherProps.Type);
+        }
+        if (otherProps.UnlockedTypes != null && otherProps.UnlockedTypes.Any())
+        {
+            SetUnlockedTypes(otherProps.UnlockedTypes.ToArray());
+        }
     }
 
     public bool IsUnlocked(string type)

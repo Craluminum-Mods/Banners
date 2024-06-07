@@ -70,6 +70,14 @@ public class PatternToolMode
             slot.MarkDirty();
             return true;
         }
+        else if (byStack?.Collectible is ItemBannerPattern)
+        {
+            BannerPatternProperties otherProps = BannerPatternProperties.FromStack(byStack);
+            props.MergeTypes(otherProps);
+            props.ToTreeAttribute(slot.Itemstack.Attributes);
+            slot.MarkDirty();
+            return true;
+        }
         return false;
     }
 
@@ -103,6 +111,6 @@ public class Unlockable
         return stack != null && !string.IsNullOrEmpty(Code)
             && new AssetLocation(Code) == stack.Collectible.Code
             && Type == stack.Class
-            && HasAttributes.All(x => stack.Attributes.GetAsString(x.Key) == x.Value);
+            && (HasAttributes == null || (HasAttributes != null && HasAttributes.All(x => stack.Attributes.GetAsString(x.Key) == x.Value)));
     }
 }
