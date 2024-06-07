@@ -8,6 +8,7 @@ public static class Constants
 {
     public const int bannerCodeMaxElements = 2;
     public const int defaultLayersLimit = 14;
+    public const int lastPatternDisplayAmount = 8;
 
     public const float DegreesToRadians = (float)Math.PI / 180f;
     public const float RadiansToDegrees = 180f / (float)Math.PI;

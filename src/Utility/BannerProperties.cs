@@ -47,12 +47,15 @@ public class BannerProperties
 
     public void GetDescription(StringBuilder dsc, bool withDebugInfo = false)
     {
-        foreach (BannerLayer layer in GetOrderedLayers())
+        IOrderedEnumerable<BannerLayer> layers = GetOrderedLayers();
+        dsc.AppendLine(layers.First().Name);
+        if (lastPatternDisplayAmount < layers.Skip(1).Count())
         {
-            if (withDebugInfo)
-            {
-                dsc.Append(layer).Append('\t');
-            }
+            dsc.AppendLine("...");
+        }
+        foreach (BannerLayer layer in layers.Skip(1).TakeLast(lastPatternDisplayAmount))
+        {
+            if (withDebugInfo) dsc.Append(layer).Append('\t');
             dsc.AppendLine(layer.Name);
         }
     }
