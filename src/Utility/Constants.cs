@@ -30,6 +30,7 @@ public static class Constants
     public const string langCodeEmpty = "Empty";
     public const string langCodeColor = "color-";
     public const string langCodePattern = $"{modDomain}:pattern-";
+    public const string langCodePatternDesc = $"{modDomain}:patterndesc-";
     public const string langCodeBannerLiquidType = $"{modDomain}:banner-liquid-type";
     public const string langCodeBannerColorType = $"{modDomain}:banner-liquid-color";
     public const string langCodePatternGroup = $"{modDomain}:patterngroup-";

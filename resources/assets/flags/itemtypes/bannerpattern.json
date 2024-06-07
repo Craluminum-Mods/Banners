@@ -4,6 +4,9 @@
     "attributes": {
         "patternGroups": ["basic"],
         "rolledShape": "game:item/lore/scroll-unbound",
+        "handbook": {
+            "extraSections": [{ "title": "flags:item-handbooktitle-bannerpattern", "text": "flags:item-handbooktext-bannerpattern" }]
+        },
         "scrollrackable": true,
         "displaycaseable": true,
         "shelvable": true,
@@ -68,16 +71,6 @@
             "placeholder-gra": { "base": "flags:item/bannerpattern/pattern/mc/gradient" },
             "placeholder-gru": { "base": "flags:item/bannerpattern/pattern/mc/gradient_up" },
 
-            // ##########################
-            // ### Rare Patterns (VS) ###
-            // ##########################
-
-            "placeholder-hansa_fish": { "base": "flags:item/bannerpattern/pattern/vs/hansa/fish" },
-            "placeholder-hansa_keys": { "base": "flags:item/bannerpattern/pattern/vs/hansa/keys" },
-            "placeholder-hansa_largefish": { "base": "flags:item/bannerpattern/pattern/vs/hansa/largefish" },
-            "placeholder-hansa_ship": { "base": "flags:item/bannerpattern/pattern/vs/hansa/ship" },
-            "placeholder-hansa_town": { "base": "flags:item/bannerpattern/pattern/vs/hansa/town" },
-
             // ########################
             // ### Patterns (Other) ###
             // ########################
@@ -114,6 +107,12 @@
             // ### Patterns (VS) ###
             // #####################
 
+            "placeholder-hansa_fish": { "base": "flags:item/bannerpattern/pattern/vs/hansa/fish" },
+            "placeholder-hansa_keys": { "base": "flags:item/bannerpattern/pattern/vs/hansa/keys" },
+            "placeholder-hansa_largefish": { "base": "flags:item/bannerpattern/pattern/vs/hansa/largefish" },
+            "placeholder-hansa_ship": { "base": "flags:item/bannerpattern/pattern/vs/hansa/ship" },
+            "placeholder-hansa_town": { "base": "flags:item/bannerpattern/pattern/vs/hansa/town" },
+
             "placeholder-vs_cookie": { "base": "flags:item/bannerpattern/pattern/vs/cookie" },
             "placeholder-vs_drifter": { "base": "flags:item/bannerpattern/pattern/vs/drifter" },
             "placeholder-vs_eidolon": { "base": "flags:item/bannerpattern/pattern/vs/eidolon" },
@@ -131,6 +130,8 @@
         {
             "tabs": ["general", "items", "flags"],
             "stacks": [
+                { "type": "item", "code": "bannerpattern" },
+
                 // #####################
                 // ### Patterns (MC) ###
                 // #####################
@@ -174,6 +175,15 @@
                 // ### Patterns (Other) ###
                 // ########################
 
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "ssh" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "rt_b" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "rt_t" } } },
+                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "circle_large" } } },
+
+                // #############################
+                // ### Rare Patterns (Other) ###
+                // #############################
+
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "checker2x4" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "checker2x4i" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "checker4x8" } } },
@@ -182,14 +192,10 @@
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "checker5x10i" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "checker8x16" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "checker8x16i" } } },
-                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "ssh" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "yang" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "yin" } } },
-                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "rt_b" } } },
-                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "rt_t" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "crescent_left" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "crescent_right" } } },
-                { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "circle_large" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "globe" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "fleur_de_lis" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "flower" } } },
@@ -212,10 +218,6 @@
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_ship" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_town" } } },
 
-                // #####################
-                // ### Patterns (VS) ###
-                // #####################
-
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "vs_cookie" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "vs_drifter" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "vs_eidolon" } } },
@@ -236,6 +238,7 @@
                 "defaultName": "flags:item-bannerpattern"
             }
         },
+        { "name": "Flags.BannerPatternDescription" },
         {
             "name": "Flags.BannerPatternToolModes",
             "properties": {
