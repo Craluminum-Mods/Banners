@@ -1,0 +1,31 @@
+[
+    {
+        "op": "addeach",
+        "path": "/attributes/tradeProps/selling/list/-",
+        "value": [
+            { "code": "flags:bannerpattern", "type": "item", "attributes": { "bannerpattern": { "type": "hansa_fish" } }, "stacksize": 1, "stock": { "avg": 1, "var": 0.25 }, "price": { "avg": 10, "var": 2.5 } },
+            { "code": "flags:bannerpattern", "type": "item", "attributes": { "bannerpattern": { "type": "hansa_keys" } }, "stacksize": 1, "stock": { "avg": 1, "var": 0.25 }, "price": { "avg": 10, "var": 2.5 } },
+            { "code": "flags:bannerpattern", "type": "item", "attributes": { "bannerpattern": { "type": "hansa_largefish" } }, "stacksize": 1, "stock": { "avg": 1, "var": 0.25 }, "price": { "avg": 10, "var": 2.5 } },
+            { "code": "flags:bannerpattern", "type": "item", "attributes": { "bannerpattern": { "type": "hansa_ship" } }, "stacksize": 1, "stock": { "avg": 1, "var": 0.25 }, "price": { "avg": 10, "var": 2.5 } },
+            { "code": "flags:bannerpattern", "type": "item", "attributes": { "bannerpattern": { "type": "hansa_town" } }, "stacksize": 1, "stock": { "avg": 1, "var": 0.25 }, "price": { "avg": 10, "var": 2.5 } },
+
+            { "code": "flags:bannerpattern", "type": "item", "attributes": { "bannerpattern": { "type": "checker2x4", "unlockedTypes": "checker2x4-checker2x4i" } }, "stacksize": 1, "stock": { "avg": 1, "var": 0.25 }, "price": { "avg": 10, "var": 2.5 } },
+            { "code": "flags:bannerpattern", "type": "item", "attributes": { "bannerpattern": { "type": "checker4x8", "unlockedTypes": "checker4x8-checker4x8i" } }, "stacksize": 1, "stock": { "avg": 1, "var": 0.25 }, "price": { "avg": 10, "var": 2.5 } },
+            { "code": "flags:bannerpattern", "type": "item", "attributes": { "bannerpattern": { "type": "checker5x10", "unlockedTypes": "checker5x10-checker5x10i" } }, "stacksize": 1, "stock": { "avg": 1, "var": 0.25 }, "price": { "avg": 10, "var": 2.5 } },
+            { "code": "flags:bannerpattern", "type": "item", "attributes": { "bannerpattern": { "type": "checker8x16", "unlockedTypes": "checker8x16-checker8x16i" } }, "stacksize": 1, "stock": { "avg": 1, "var": 0.25 }, "price": { "avg": 10, "var": 2.5 } },
+
+            { "code": "flags:bannerpattern", "type": "item", "attributes": { "bannerpattern": { "type": "suit_clubs" } }, "stacksize": 1, "stock": { "avg": 1, "var": 0.25 }, "price": { "avg": 10, "var": 2.5 } },
+            { "code": "flags:bannerpattern", "type": "item", "attributes": { "bannerpattern": { "type": "suit_hearts" } }, "stacksize": 1, "stock": { "avg": 1, "var": 0.25 }, "price": { "avg": 10, "var": 2.5 } },
+            { "code": "flags:bannerpattern", "type": "item", "attributes": { "bannerpattern": { "type": "suit_spades" } }, "stacksize": 1, "stock": { "avg": 1, "var": 0.25 }, "price": { "avg": 10, "var": 2.5 } },
+
+            { "code": "flags:bannerpattern", "type": "item", "attributes": { "bannerpattern": { "type": "vs_cookie" } }, "stacksize": 1, "stock": { "avg": 1, "var": 0.25 }, "price": { "avg": 10, "var": 2.5 } },
+            { "code": "flags:bannerpattern", "type": "item", "attributes": { "bannerpattern": { "type": "vs_drifter" } }, "stacksize": 1, "stock": { "avg": 1, "var": 0.25 }, "price": { "avg": 10, "var": 2.5 } },
+            { "code": "flags:bannerpattern", "type": "item", "attributes": { "bannerpattern": { "type": "vs_eidolon" } }, "stacksize": 1, "stock": { "avg": 1, "var": 0.25 }, "price": { "avg": 20, "var": 2.5 } },
+            { "code": "flags:bannerpattern", "type": "item", "attributes": { "bannerpattern": { "type": "vs_elk" } }, "stacksize": 1, "stock": { "avg": 1, "var": 0.25 }, "price": { "avg": 10, "var": 2.5 } },
+            { "code": "flags:bannerpattern", "type": "item", "attributes": { "bannerpattern": { "type": "vs_falx_left", "unlockedTypes": "vs_falx_left-vs_falx_right" } }, "stacksize": 1, "stock": { "avg": 1, "var": 0.25 }, "price": { "avg": 10, "var": 2.5 } },
+            { "code": "flags:bannerpattern", "type": "item", "attributes": { "bannerpattern": { "type": "vs_logo" } }, "stacksize": 1, "stock": { "avg": 1, "var": 0.25 }, "price": { "avg": 10, "var": 2.5 } }
+        ],
+        "file": "game:entities/humanoid/trader-treasurehunter.json",
+        "side": "Server"
+    }
+]

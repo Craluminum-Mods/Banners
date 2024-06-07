@@ -1,0 +1,14 @@
+[
+    {
+        "op": "addeach",
+        "path": "/attributes/tradeProps/selling/list/-",
+        "value": [
+            { "code": "flags:bannerpattern", "type": "item", "attributes": { "bannerpattern": { "type": "flower" } }, "stacksize": 1, "stock": { "avg": 1, "var": 0.25 }, "price": { "avg": 10, "var": 2.5 } },
+
+            { "code": "flags:bannerpattern", "type": "item", "attributes": { "bannerpattern": { "type": "vs_elk" } }, "stacksize": 1, "stock": { "avg": 1, "var": 0.25 }, "price": { "avg": 10, "var": 2.5 } },
+            { "code": "flags:bannerpattern", "type": "item", "attributes": { "bannerpattern": { "type": "vs_falx_left", "unlockedTypes": "vs_falx_left-vs_falx_right" } }, "stacksize": 1, "stock": { "avg": 1, "var": 0.25 }, "price": { "avg": 10, "var": 2.5 } }
+        ],
+        "file": "game:entities/humanoid/trader-survivalgoods.json",
+        "side": "Server"
+    }
+]
