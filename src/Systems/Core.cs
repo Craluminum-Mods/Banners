@@ -26,6 +26,7 @@ public class Core : ModSystem
         api.RegisterItemClass("Flags.ItemRollableFixed", typeof(ItemRollableFixed));
         api.RegisterItemClass("Flags.ItemBannerPattern", typeof(ItemBannerPattern));
         api.RegisterCollectibleBehaviorClass("Flags.BannerPatternName", typeof(CollectibleBehaviorBannerPatternName));
+        api.RegisterCollectibleBehaviorClass("Flags.BannerPatternToolModes", typeof(CollectibleBehaviorBannerPatternToolModes));
         api.RegisterCollectibleBehaviorClass("Flags.BannerLiquidDescription", typeof(CollectibleBehaviorBannerLiquidDescription));
         api.Logger.Event("started '{0}' mod", Mod.Info.Name);
     }

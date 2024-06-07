@@ -3,15 +3,17 @@
 
     "block-banner": "Banner",
     "item-bannerpattern": "Banner Pattern",
-    "blank": "Blank",
+    "itemdesc-bannerpattern": "Use <hk>toolmodeselect</hk> key (Tool Mode) to change pattern.",
     "banner-liquid-type": "Banner liquid type: {0}",
     "banner-liquid-color": "Banner liquid color: {0}",
     "Dye": "Dye",
     "Bleach": "Bleach",
     "bannercontainable-contained-banner": "Contains banner: {0}",
+    "discoverable-pattern": "Rare Unknown Pattern (Can be found)",
 
     "patterngroups": "Pattern groups: {0}",
     "patterngroup-basic": "Basic",
+    "pattern-": "Blank",
     "pattern-b": "Base",
     "pattern-bs": "Bottom Stripe",
     "pattern-ts": "Top Stripe",
@@ -98,6 +100,7 @@
     "blockhelp-banner-clear-rotations-xz": "Clear rotations for the X and Z axes",
     "blockhelp-bannercontainable-add": "Add banner",
     "blockhelp-bannercontainable-remove": "Remove banner",
+    "heldhelp-bannerpattern-set": "Select pattern",
 
     "ingameerror-banner-copylayers": "Not able to copy from banner because both have patterns or base colors don't match",
     "ingameerror-banner-rename": "Not able to rename banner because book or paper has no title",

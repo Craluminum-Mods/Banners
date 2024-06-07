@@ -3,15 +3,17 @@
 
     "block-banner": "Прапор",
     "item-bannerpattern": "Візерунок для прапора",
-    "blank": "Пустий",
+    "itemdesc-bannerpattern": "Використовуйте клавішу <hk>toolmodeselect</hk> (режим інструменту) для зміни візерунка.",
     "banner-liquid-type": "Тип рідини для прапора: {0}",
     "banner-liquid-color": "Колір рідини для прапора: {0}",
     "Dye": "Фарба",
     "Bleach": "Відбілювач",
     "bannercontainable-contained-banner": "Містить прапор: {0}",
+    "discoverable-pattern": "Рідкісний невідомий візерунок (може бути знайдений)",
 
     "patterngroups": "Групи візерунків: {0}",
     "patterngroup-basic": "Основний",
+    "pattern-": "Пустий",
     "pattern-b": "Основа",
     "pattern-bs": "Нижня смуга",
     "pattern-ts": "Верхня смуга",
@@ -98,6 +100,7 @@
     "blockhelp-banner-clear-rotations-xz": "Скинути повороти по осям X і Z",
     "blockhelp-bannercontainable-add": "Додати прапор",
     "blockhelp-bannercontainable-remove": "Видалити прапор",
+    "heldhelp-bannerpattern-set": "Обрати візерунок",
 
     "ingameerror-banner-copylayers": "Неможливо скопіювати з прапора, оскільки обидва мають візерунки або базові кольори не збігаються",
     "ingameerror-banner-rename": "Неможливо перейменувати прапор, оскільки книга або папір не має заголовка",

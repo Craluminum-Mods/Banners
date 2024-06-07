@@ -3,15 +3,17 @@
 
     "block-banner": "Флаг",
     "item-bannerpattern": "Узор для флага",
-    "blank": "Пустой",
+    "itemdesc-bannerpattern": "Для изменения узора используйте клавишу <hk>toolmodeselect</hk> (режим инструмента).",
     "banner-liquid-type": "Тип жидкости для флага: {0}",
     "banner-liquid-color": "Цвет жидкости для флага: {0}",
     "Dye": "Краска",
     "Bleach": "Отбеливатель",
     "bannercontainable-contained-banner": "Содержит флаг: {0}",
+    "discoverable-pattern": "Редкий неизвестный узор (может быть найден)",
 
     "patterngroups": "Группы узоров: {0}",
     "patterngroup-basic": "Базовый",
+    "pattern-": "Пустой",
     "pattern-b": "Основа",
     "pattern-bs": "Нижняя полоса",
     "pattern-ts": "Верхняя полоса",
@@ -98,6 +100,7 @@
     "blockhelp-banner-clear-rotations-xz": "Сбросить повороты по осям X и Z",
     "blockhelp-bannercontainable-add": "Добавить флаг",
     "blockhelp-bannercontainable-remove": "Удалить флаг",
+    "heldhelp-bannerpattern-set": "Выбрать узор",
 
     "ingameerror-banner-copylayers": "Невозможно скопировать с флага, так как у обоих есть узоры или базовые цвета не совпадают",
     "ingameerror-banner-rename": "Невозможно переименовать флаг, так как книга или бумага не имеет заголовка",

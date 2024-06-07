@@ -14,6 +14,7 @@ public static class Constants
     public const float Radians90 = (float)Math.PI / 2f;
     public const float Radians22_5 = (float)Math.PI / 8f;
 
+    public const char unlockedSeparator = '-';
     public const char layerSeparator = '|';
     public const string commaSeparator = ", ";
 
@@ -44,6 +45,8 @@ public static class Constants
     public const string langCodeBannerContainableContainedBanner = $"{modDomain}:bannercontainable-contained-banner";
     public const string langCodeBannerContainableContainedBannerAdd = $"{modDomain}:blockhelp-bannercontainable-add";
     public const string langCodeBannerContainableContainedBannerRemove = $"{modDomain}:blockhelp-bannercontainable-remove";
+    public const string langCodeBannerBannerPatternSet = $"{modDomain}:heldhelp-bannerpattern-set";
+    public const string langCodePatternLocked = $"{modDomain}:discoverable-pattern";
 
     public const string cacheKeyBlockBannerMeshes = $"{modDomain}BlockBannerMeshes";
     public const string cacheKeyBlockBannerInvMeshes = $"{modDomain}BlockBannerMeshesInventory";
@@ -58,6 +61,7 @@ public static class Constants
     public const string cacheKeyBannerStacks = $"{modDomain}BannerStacks";
     public const string cacheKeyRotatableBannerInteractions = $"{modDomain}RotatableBannerInteractions";
     public const string cacheKeyWrenchableBannerInteractions = $"{modDomain}WrenchableBannerInteractions";
+    public const string cacheKeyQuestionTexture = $"{modDomain}QuestionTexture";
 
     public const string attributeTitle = "title";
     public const string attributeBanner = "banner";
@@ -99,6 +103,11 @@ public static class Constants
     public const string attributeExcludeFaces = "excludeFaces";
     public const string attributeShapeKey = "shapeKey";
     public const string attributeRotationsByFace = "rotationsByFace";
+    public const string attributeToolModes = "toolModes";
+    public const string attributeUnlockedTypes = "unlockedTypes";
+
+    public const string hotkeyToolmodeSelect = "toolmodeselect";
+    public const string eventKeepOpenToolmodeDialog = "keepopentoolmodedlg";
 
     public const string bannerContainableInvClassName = "flags-bannercontainable";
 

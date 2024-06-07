@@ -68,9 +68,9 @@
             "placeholder-gra": { "base": "flags:item/bannerpattern/pattern/mc/gradient" },
             "placeholder-gru": { "base": "flags:item/bannerpattern/pattern/mc/gradient_up" },
 
-            // #######################
-            // ### Patterns (Rare) ###
-            // #######################
+            // ##########################
+            // ### Rare Patterns (VS) ###
+            // ##########################
 
             "placeholder-hansa_fish": { "base": "flags:item/bannerpattern/pattern/vs/hansa/fish" },
             "placeholder-hansa_keys": { "base": "flags:item/bannerpattern/pattern/vs/hansa/keys" },
@@ -202,9 +202,9 @@
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "lion_left" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "lion_right" } } },
 
-                // #######################
-                // ### Patterns (Rare) ###
-                // #######################
+                // ##########################
+                // ### Rare Patterns (VS) ###
+                // ##########################
 
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_fish" } } },
                 { "type": "item", "code": "bannerpattern", "attributes": { "bannerpattern": { "type": "hansa_keys" } } },
@@ -234,6 +234,120 @@
                 "parts": ["flags:item-bannerpattern", " (", "flags:pattern-pattern_placeholder", ")"],
                 "replacePart": "pattern_placeholder",
                 "defaultName": "flags:item-bannerpattern"
+            }
+        },
+        {
+            "name": "Flags.BannerPatternToolModes",
+            "properties": {
+                "toolModes": [
+                    { "Pattern": "bs" },
+                    { "Pattern": "ts" },
+                    { "Pattern": "ls" },
+                    { "Pattern": "rs" },
+                    { "Pattern": "cs" },
+                    { "Pattern": "ms" },
+                    { "Pattern": "drs" },
+                    { "Pattern": "dls" },
+                    { "Pattern": "ss" },
+                    { "Pattern": "cr" },
+                    { "Pattern": "sc" },
+                    { "Pattern": "ld" },
+                    { "Pattern": "rud" },
+                    { "Pattern": "lud" },
+                    { "Pattern": "rd" },
+                    { "Pattern": "vh" },
+                    { "Pattern": "vhr" },
+                    { "Pattern": "hh", "Linebreak": true },
+                    { "Pattern": "hhb" },
+                    { "Pattern": "bl" },
+                    { "Pattern": "br" },
+                    { "Pattern": "tl" },
+                    { "Pattern": "tr" },
+                    { "Pattern": "bt" },
+                    { "Pattern": "tt" },
+                    { "Pattern": "bts" },
+                    { "Pattern": "tts" },
+                    { "Pattern": "mc" },
+                    { "Pattern": "mr" },
+                    { "Pattern": "bo" },
+                    { "Pattern": "cbo" },
+                    { "Pattern": "bri" },
+                    { "Pattern": "gra" },
+                    { "Pattern": "gru" },
+
+                    { "Pattern": "ssh", "Linebreak": true },
+                    { "Pattern": "rt_b" },
+                    { "Pattern": "rt_t" },
+                    { "Pattern": "circle_large" },
+                    { "Pattern": "checker2x4", "Unlockable": [] },
+                    { "Pattern": "checker2x4i", "Unlockable": [] },
+                    { "Pattern": "checker4x8", "Unlockable": [] },
+                    { "Pattern": "checker4x8i", "Unlockable": [] },
+                    { "Pattern": "checker5x10", "Unlockable": [] },
+                    { "Pattern": "checker5x10i", "Unlockable": [] },
+                    { "Pattern": "checker8x16", "Unlockable": [] },
+                    { "Pattern": "checker8x16i", "Unlockable": [] },
+                    { "Pattern": "yang", "Unlockable": [] },
+                    { "Pattern": "yin", "Unlockable": [] },
+                    { "Pattern": "crescent_left", "Unlockable": [] },
+                    { "Pattern": "crescent_right", "Unlockable": [] },
+                    { "Pattern": "globe", "Unlockable": [] },
+                    { "Pattern": "fleur_de_lis", "Unlockable": [], "Linebreak": true },
+                    { "Pattern": "flower", "Unlockable": [] },
+                    { "Pattern": "moby_dick", "Unlockable": [] },
+                    { "Pattern": "sad_catfish", "Unlockable": [] },
+                    { "Pattern": "skull", "Unlockable": [] },
+                    { "Pattern": "suit_clubs", "Unlockable": [] },
+                    { "Pattern": "suit_hearts", "Unlockable": [] },
+                    { "Pattern": "suit_spades", "Unlockable": [] },
+                    { "Pattern": "lion_left", "Unlockable": [] },
+                    { "Pattern": "lion_right", "Unlockable": [] },
+
+                    { "Pattern": "vs_cookie", "Unlockable": [], "Linebreak": true },
+                    { "Pattern": "vs_drifter", "Unlockable": [] },
+                    { "Pattern": "vs_eidolon", "Unlockable": [] },
+                    { "Pattern": "vs_elk", "Unlockable": [] },
+                    { "Pattern": "vs_falx_left", "Unlockable": [] },
+                    { "Pattern": "vs_falx_right", "Unlockable": [] },
+                    { "Pattern": "vs_logo", "Unlockable": [] },
+
+                    {
+                        "Pattern": "hansa_fish",
+                        "Unlockable": [
+                            { "type": "block", "code": "game:banner-banner", "HasAttributes": { "type": "hansa-wall-fish" } },
+                            { "type": "block", "code": "game:banner-banner", "HasAttributes": { "type": "hansa-ground-fish" } }
+                        ],
+                        "Linebreak": true
+                    },
+                    {
+                        "Pattern": "hansa_keys",
+                        "Unlockable": [
+                            { "type": "block", "code": "game:banner-banner", "HasAttributes": { "type": "hansa-wall-keys" } },
+                            { "type": "block", "code": "game:banner-banner", "HasAttributes": { "type": "hansa-ground-keys" } }
+                        ]
+                    },
+                    {
+                        "Pattern": "hansa_largefish",
+                        "Unlockable": [
+                            { "type": "block", "code": "game:banner-banner", "HasAttributes": { "type": "hansa-wall-largefish" } },
+                            { "type": "block", "code": "game:banner-banner", "HasAttributes": { "type": "hansa-ground-largefish" } }
+                        ]
+                    },
+                    {
+                        "Pattern": "hansa_ship",
+                        "Unlockable": [
+                            { "type": "block", "code": "game:banner-banner", "HasAttributes": { "type": "hansa-wall-ship" } },
+                            { "type": "block", "code": "game:banner-banner", "HasAttributes": { "type": "hansa-ground-ship" } }
+                        ]
+                    },
+                    {
+                        "Pattern": "hansa_town",
+                        "Unlockable": [
+                            { "type": "block", "code": "game:banner-banner", "HasAttributes": { "type": "hansa-wall-town" } },
+                            { "type": "block", "code": "game:banner-banner", "HasAttributes": { "type": "hansa-ground-town" } }
+                        ]
+                    }
+                ]
             }
         }
     ],

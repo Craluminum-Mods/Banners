@@ -218,9 +218,9 @@
             "topsymbol-lion_right": { "base": "flags:block/banner/pattern/other/lion/right/{color}-top" },
             "botsymbol-lion_right": { "base": "flags:block/banner/pattern/other/lion/right/{color}-bot" },
 
-            // #######################
-            // ### Patterns (Rare) ###
-            // #######################
+            // ##########################
+            // ### Rare Patterns (VS) ###
+            // ##########################
 
             "topsymbol-hansa_fish": { "base": "flags:block/banner/pattern/vs/hansa/fish/{color}-top" },
             "botsymbol-hansa_fish": { "base": "flags:block/banner/pattern/vs/hansa/fish/{color}-bot" },
@@ -377,9 +377,9 @@
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-lion_left": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-lion_right": "black" } } } },
 
-                // #######################
-                // ### Patterns (Rare) ###
-                // #######################
+                // ##########################
+                // ### Rare Patterns (VS) ###
+                // ##########################
 
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-hansa_fish": "black" } } } },
                 { "type": "block", "code": "banner", "attributes": { "banner": { "layers": { "0-b": "plain", "1-hansa_keys": "black" } } } },

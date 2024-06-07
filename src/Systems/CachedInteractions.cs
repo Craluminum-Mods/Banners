@@ -86,6 +86,11 @@ public class CachedInteractions : ModSystem
                 Itemstacks = ObjectCacheUtil.TryGet<ItemStack[]>(capi, cacheKeyWrenchStacks)
             };
         });
+
+        ObjectCacheUtil.GetOrCreate(capi, cacheKeyQuestionTexture, () =>
+        {
+            return capi.DrawLetterIcon("?", "#FFFF00");
+        });
     }
 
     public override void Dispose()
@@ -97,5 +102,8 @@ public class CachedInteractions : ModSystem
         ObjectCacheUtil.Delete(capi, cacheKeyBleachStacks);
         ObjectCacheUtil.Delete(capi, cacheKeyRotatableBannerInteractions);
         ObjectCacheUtil.Delete(capi, cacheKeyWrenchableBannerInteractions);
+
+        ObjectCacheUtil.TryGet<LoadedTexture>(capi, cacheKeyQuestionTexture)?.Dispose();
+        ObjectCacheUtil.Delete(capi, cacheKeyQuestionTexture);
     }
 }

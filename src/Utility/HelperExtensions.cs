@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Cairo;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
@@ -55,6 +56,42 @@ public static class HelperExtensions
     public static ItemStack[] GetHandBookStacksArray(this CollectibleObject obj, ICoreClientAPI capi)
     {
         return obj.GetHandBookStacks(capi)?.ToArray() ?? System.Array.Empty<ItemStack>();
+    }
+
+    public static RenderSkillItemDelegate RenderItemStack(this ItemStack stack, ICoreClientAPI capi, bool showStackSize = false)
+    {
+        return (AssetLocation code, float dt, double posX, double posY) =>
+        {
+            double size = GuiElementPassiveItemSlot.unscaledSlotSize + GuiElementItemSlotGridBase.unscaledSlotPadding;
+            double scsize = GuiElement.scaled(size - 5);
+
+            capi.Render.RenderItemstackToGui(
+                new DummySlot(stack),
+                posX + (scsize / 2),
+                posY + (scsize / 2),
+                100,
+                (float)GuiElement.scaled(GuiElementPassiveItemSlot.unscaledItemSize),
+                ColorUtil.WhiteArgb,
+                showStackSize: showStackSize);
+        };
+    }
+
+    public static LoadedTexture DrawLetterIcon(this ICoreClientAPI capi, string letter, string hexColor)
+    {
+        if (capi == null)
+        {
+            return null;
+        }
+        int isize = (int)GuiElement.scaled(48.0);
+        return capi.Gui.Icons.GenTexture(isize, isize, delegate (Context ctx, ImageSurface surface)
+        {
+            CairoFont cairoFont = CairoFont.WhiteMediumText().WithColor(new double[4] { 1.0, 1.0, 1.0, 1.0 });
+            cairoFont.SetupContext(ctx);
+            ctx.SetSourceRGBA(ColorUtil.Hex2Doubles(hexColor));
+            TextExtents textExtents = cairoFont.GetTextExtents(letter);
+            double num = cairoFont.GetFontExtents().Ascent + GuiElement.scaled(2.0);
+            capi.Gui.Text.DrawTextLine(ctx, cairoFont, letter, ((double)isize - textExtents.Width) / 2.0, ((double)isize - num) / 2.0);
+        });
     }
 
     public static bool TryGetValueOrWildcard<T>(this Dictionary<string, T> dict, string key, out T value)
