@@ -105,6 +105,7 @@ public static class Constants
     public const string attributeRotationsByFace = "rotationsByFace";
     public const string attributeToolModes = "toolModes";
     public const string attributeUnlockedTypes = "unlockedTypes";
+    public const string attributeEnabled = "enabled";
 
     public const string hotkeyToolmodeSelect = "toolmodeselect";
     public const string eventKeepOpenToolmodeDialog = "keepopentoolmodedlg";

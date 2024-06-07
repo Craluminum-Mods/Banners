@@ -8,7 +8,7 @@
                 "properties": { "enabledByType": { "*-head-*": true } }
             }
         ],
-        "file": "game:blocktypes/wood/bed.json",
+        "file": "wildcrafttree:blocktypes/wood/bed.json",
         "side": "Server"
     },
     {
@@ -26,11 +26,7 @@
                         // "UP": 4,
                         // "DOWN": 5,
                         "excludeFaces": [0, 1, 2, 3, 5],
-                        "shapeKeyByType": {
-                            "*-wood-*": "bed-vanilla-wood",
-                            "*-hay-*": "bed-vanilla-hay",
-                            "*-woodaged-*": "bed-vanilla-woodaged"
-                        },
+                        "shapeKey": "bed-vanilla-wood",
                         "rotationsByFace": {
                             "up": {
                                 "yByType": {
@@ -45,7 +41,7 @@
                 }
             ]
         },
-        "file": "game:blocktypes/wood/bed.json",
+        "file": "wildcrafttree:blocktypes/wood/bed.json",
         "side": "Server"
     }
 ]

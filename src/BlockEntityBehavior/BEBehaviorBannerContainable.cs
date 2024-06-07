@@ -5,7 +5,6 @@ using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using System.Linq;
-using Vintagestory.API.Config;
 
 namespace Flags;
 
@@ -67,7 +66,7 @@ public class BEBehaviorBannerContainable : BlockEntityBehavior, IBlockEntityCont
 
     public override void OnBlockBroken(IPlayer byPlayer = null)
     {
-        if (Api.Side.IsServer())
+        if (Api?.Side.IsServer() == true)
         {
             DropContents();
         }
@@ -75,7 +74,7 @@ public class BEBehaviorBannerContainable : BlockEntityBehavior, IBlockEntityCont
 
     public override void OnBlockRemoved()
     {
-        if (Api.Side.IsServer())
+        if (Api?.Side.IsServer() == true)
         {
             DropContents();
         }

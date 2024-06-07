@@ -19,6 +19,8 @@ public static class BlockBed_OnBlockInteractStart_Patch
     {
         if (blockSel != null
             && byPlayer?.Entity?.ActiveHandItemSlot?.Itemstack?.Collectible is BlockBanner
+            && world.BlockAccessor.TryGetBlockBehavior(blockSel, out BlockBehaviorBannerContainableInteractions behavior)
+            && behavior.Enabled
             && !blockSel.IsProtected(world, byPlayer, EnumBlockAccessFlags.BuildOrBreak)
             && world.BlockAccessor.TryGetBEBehavior(blockSel, out BEBehaviorBannerContainable bebehavior)
             && bebehavior.TryPut(byPlayer.Entity.ActiveHandItemSlot, blockSel))

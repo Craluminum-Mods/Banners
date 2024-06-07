@@ -53,6 +53,17 @@ public static class HelperExtensions
         return behavior != null;
     }
 
+    public static bool TryGetBlockBehavior<T>(this IBlockAccessor blockAccessor, BlockSelection blockSel, out T behavior) where T : BlockBehavior
+    {
+        if (blockSel == null)
+        {
+            behavior = null;
+            return false;
+        }
+        behavior = blockAccessor.GetBlock(blockSel.Position)?.GetBehavior<T>();
+        return behavior != null;
+    }
+
     public static ItemStack[] GetHandBookStacksArray(this CollectibleObject obj, ICoreClientAPI capi)
     {
         return obj.GetHandBookStacks(capi)?.ToArray() ?? System.Array.Empty<ItemStack>();
