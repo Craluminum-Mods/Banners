@@ -309,7 +309,7 @@
                     { "Pattern": "vs_cookie", "Unlockable": [], "Linebreak": true },
                     { "Pattern": "vs_drifter", "Unlockable": [] },
                     { "Pattern": "vs_eidolon", "Unlockable": [] },
-                    { "Pattern": "vs_elk", "Unlockable": [] },
+                    { "Pattern": "vs_elk", "Unlockable": [{ "type": "block", "code": "game:painting-elk-north" }] },
                     { "Pattern": "vs_falx_left", "Unlockable": [] },
                     { "Pattern": "vs_falx_right", "Unlockable": [] },
                     { "Pattern": "vs_logo", "Unlockable": [] },
