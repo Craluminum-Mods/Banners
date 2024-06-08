@@ -40,14 +40,14 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         {
             return false;
         }
-        if (!itemPattern.PatternGroups.Any(groups1 => blockEntity.BannerBlock.PatternGroups.Any(groups2 => groups1 == groups2)))
+        if (!blockEntity.BannerBlock.MatchesPatternGroups(itemPattern))
         {
-            (byPlayer.Entity.World.Api as ICoreClientAPI)?.TriggerIngameError(this, IngameError.BannerPatternGroups, IngameError.BannerPatternGroups.Localize());
+            byPlayer.IngameError(this, IngameError.BannerPatternGroups, IngameError.BannerPatternGroups.Localize());
             return false;
         }
         if (activeSlot.Itemstack.StackSize > 1 && !byPlayer.IsCreative())
         {
-            (byPlayer.Entity.World.Api as ICoreClientAPI)?.TriggerIngameError(this, IngameError.LiquidContainerOneMax, IngameError.LiquidContainerOneMax.Localize());
+            byPlayer.IngameError(this, IngameError.LiquidContainerOneMax, IngameError.LiquidContainerOneMax.Localize());
             return false;
         }
         if (!BannerLiquid.TryGet(activeSlot.Itemstack, blockContainer, out BannerLiquid liquidProps) || !liquidProps.IsDye)
@@ -62,13 +62,13 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
 
         if (!liquidProps.CanTakeLiquid(activeSlot.Itemstack, blockContainer) && !byPlayer.IsCreative())
         {
-            (byPlayer.Entity.World.Api as ICoreClientAPI)?.TriggerIngameError(this, IngameError.BannerNotEnoughDye, IngameError.BannerNotEnoughDye.Localize(liquidProps.LitresPerUse));
+            byPlayer.IngameError(this, IngameError.BannerNotEnoughDye, IngameError.BannerNotEnoughDye.Localize(liquidProps.LitresPerUse));
             return false;
         }
 
         if (!blockEntity.BannerProps.AddLayer(new BannerLayer(pattern, liquidProps), world, byPlayer))
         {
-            (byPlayer.Entity.World.Api as ICoreClientAPI)?.TriggerIngameError(this, IngameError.LayersLimitReached, IngameError.LayersLimitReached.Localize(BannerProperties.GetLayersLimit(world)));
+            byPlayer.IngameError(this, IngameError.LayersLimitReached, IngameError.LayersLimitReached.Localize(BannerProperties.GetLayersLimit(world)));
             return false;
         }
 
@@ -89,7 +89,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         }
         if (activeSlot.Itemstack.StackSize > 1 && !byPlayer.IsCreative())
         {
-            (byPlayer.Entity.World.Api as ICoreClientAPI)?.TriggerIngameError(this, IngameError.LiquidContainerOneMax, IngameError.LiquidContainerOneMax.Localize());
+            byPlayer.IngameError(this, IngameError.LiquidContainerOneMax, IngameError.LiquidContainerOneMax.Localize());
             return false;
         }
         if (!BannerLiquid.TryGet(activeSlot.Itemstack, blockContainer, out BannerLiquid liquidProps) || !liquidProps.IsBleach)
@@ -98,7 +98,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         }
         if (!liquidProps.CanTakeLiquid(activeSlot.Itemstack, blockContainer) && !byPlayer.IsCreative())
         {
-            (byPlayer.Entity.World.Api as ICoreClientAPI)?.TriggerIngameError(this, IngameError.BannerNotEnoughBleach, IngameError.BannerNotEnoughBleach.Localize(liquidProps.LitresPerUse));
+            byPlayer.IngameError(this, IngameError.BannerNotEnoughBleach, IngameError.BannerNotEnoughBleach.Localize(liquidProps.LitresPerUse));
             return false;
         }
 
@@ -122,16 +122,16 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         {
             return false;
         }
-        if (!blockBanner.PatternGroups.Any(groups1 => blockEntity.BannerBlock.PatternGroups.Any(groups2 => groups1 == groups2)))
+        if (!blockEntity.BannerBlock.MatchesPatternGroups(blockBanner))
         {
-            (byPlayer.Entity.World.Api as ICoreClientAPI)?.TriggerIngameError(this, IngameError.BannerPatternGroups, IngameError.BannerPatternGroups.Localize());
+            byPlayer.IngameError(this, IngameError.BannerPatternGroups, IngameError.BannerPatternGroups.Localize());
             return false;
         }
         if (blockEntity.BannerProps.CopyFrom(activeSlot.Itemstack, copyLayers: true) || blockEntity.BannerProps.CopyTo(activeSlot.Itemstack, copyLayers: true))
         {
             return true;
         }
-        (byPlayer.Entity.World.Api as ICoreClientAPI)?.TriggerIngameError(this, IngameError.BannerCopyLayers, IngameError.BannerCopyLayers.Localize());
+        byPlayer.IngameError(this, IngameError.BannerCopyLayers, IngameError.BannerCopyLayers.Localize());
         return false;
     }
 
@@ -148,7 +148,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
 
         if (string.IsNullOrEmpty(newName))
         {
-            (byPlayer.Entity.World.Api as ICoreClientAPI)?.TriggerIngameError(this, IngameError.BannerRename, IngameError.BannerRename.Localize());
+            byPlayer.IngameError(this, IngameError.BannerRename, IngameError.BannerRename.Localize());
             return false;
         }
 

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Cairo;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
@@ -113,5 +114,20 @@ public static class HelperExtensions
     public static bool IsCreative(this IPlayer byPlayer)
     {
         return byPlayer != null && byPlayer.WorldData.CurrentGameMode == EnumGameMode.Creative;
+    }
+
+    public static void IngameError(this IPlayer byPlayer, object sender, string errorCode, string text)
+    {
+        (byPlayer.Entity.World.Api as ICoreClientAPI)?.TriggerIngameError(sender, errorCode, text);
+    }
+
+    public static bool MatchesPatternGroups(this BlockBanner block, ItemBannerPattern item)
+    {
+        return block.PatternGroups.Any(item.PatternGroups.Contains);
+    }
+
+    public static bool MatchesPatternGroups(this BlockBanner block, BlockBanner otherBlock)
+    {
+        return block.PatternGroups.Any(otherBlock.PatternGroups.Contains);
     }
 }
