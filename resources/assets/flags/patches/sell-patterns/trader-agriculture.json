@@ -3,8 +3,7 @@
         "op": "addeach",
         "path": "/attributes/tradeProps/selling/list/-",
         "value": [
-            { "code": "flags:bannerpattern", "type": "item", "attributes": { "bannerpattern": { "type": "yang" } }, "stacksize": 1, "stock": { "avg": 1, "var": 0.25 }, "price": { "avg": 10, "var": 2.5 } },
-            { "code": "flags:bannerpattern", "type": "item", "attributes": { "bannerpattern": { "type": "yin" } }, "stacksize": 1, "stock": { "avg": 1, "var": 0.25 }, "price": { "avg": 10, "var": 2.5 } },
+            { "code": "flags:bannerpattern", "type": "item", "attributes": { "bannerpattern": { "type": "yin", "unlockedTypes": "yang" } }, "stacksize": 1, "stock": { "avg": 1, "var": 0.25 }, "price": { "avg": 10, "var": 2.5 } },
             { "code": "flags:bannerpattern", "type": "item", "attributes": { "bannerpattern": { "type": "crescent_left", "unlockedTypes": "crescent_left-crescent_right" } }, "stacksize": 1, "stock": { "avg": 1, "var": 0.25 }, "price": { "avg": 10, "var": 2.5 } },
             { "code": "flags:bannerpattern", "type": "item", "attributes": { "bannerpattern": { "type": "globe" } }, "stacksize": 1, "stock": { "avg": 1, "var": 0.25 }, "price": { "avg": 10, "var": 2.5 } },
 
