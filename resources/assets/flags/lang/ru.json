@@ -147,6 +147,8 @@
     "ingameerror-banner-copylayers": "Невозможно скопировать с флага, так как у обоих есть узоры или базовые цвета не совпадают",
     "ingameerror-banner-rename": "Невозможно переименовать флаг, так как книга или бумага не имеет заголовка",
     "ingameerror-banner-patterngroups": "Группы узоров не совпадают",
+    "ingameerror-banner-notenoughdye": "Недостаточно краски, требуется {0}л",
+    "ingameerror-banner-notenoughbleach": "Недостаточно отбеливателя, требуется {0}л",
 
     "command-nobanner": "В активной руке нет флага",
     "command-generatetextures": "Успешно сгенерировано {0} текстур для флага",

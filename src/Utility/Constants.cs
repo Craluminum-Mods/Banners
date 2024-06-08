@@ -128,5 +128,7 @@ public static class Constants
         public const string BannerCopyLayers = $"{modDomain}:ingameerror-banner-copylayers";
         public const string BannerRename = $"{modDomain}:ingameerror-banner-rename";
         public const string BannerPatternGroups = $"{modDomain}:ingameerror-banner-patterngroups";
+        public const string BannerNotEnoughDye = $"{modDomain}:ingameerror-banner-notenoughdye";
+        public const string BannerNotEnoughBleach = $"{modDomain}:ingameerror-banner-notenoughbleach";
     }
 }

@@ -147,6 +147,8 @@
     "ingameerror-banner-copylayers": "Not able to copy from banner because both have patterns or base colors don't match",
     "ingameerror-banner-rename": "Not able to rename banner because book or paper has no title",
     "ingameerror-banner-patterngroups": "Pattern groups don't match",
+    "ingameerror-banner-notenoughdye": "Not enough dye, {0}L required",
+    "ingameerror-banner-notenoughbleach": "Not enough bleach, {0}L required",
 
     "command-nobanner": "Active hand is missing banner",
     "command-generatetextures": "{0} textures were sucessfully generated for banner",

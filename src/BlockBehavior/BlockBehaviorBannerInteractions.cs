@@ -54,12 +54,23 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         {
             return false;
         }
-        if (!blockEntity.BannerProps.AddLayer(new BannerLayer(pattern, liquidProps), world, byPlayer))
+
+        if (!liquidProps.CanTakeLiquid(activeSlot.Itemstack, blockContainer) && !byPlayer.IsCreative())
         {
+            (byPlayer.Entity.World.Api as ICoreClientAPI)?.TriggerIngameError(this, IngameError.BannerNotEnoughDye, IngameError.BannerNotEnoughDye.Localize(liquidProps.LitresPerUse));
             return false;
         }
 
-        liquidProps.TryTakeLiquid(activeSlot.Itemstack, blockContainer);
+        if (!blockEntity.BannerProps.AddLayer(new BannerLayer(pattern, liquidProps), world, byPlayer))
+        {
+            (byPlayer.Entity.World.Api as ICoreClientAPI)?.TriggerIngameError(this, IngameError.BannerLimitReached, IngameError.BannerLimitReached.Localize(BannerProperties.GetLayersLimit(world)));
+            return false;
+        }
+
+        if (!byPlayer.IsCreative())
+        {
+            liquidProps.TryTakeLiquid(activeSlot.Itemstack, blockContainer);
+        }
         return true;
     }
 
@@ -75,13 +86,23 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         {
             return false;
         }
-        if (blockEntity.BannerProps.RemoveLastLayer())
+
+        if (!liquidProps.CanTakeLiquid(activeSlot.Itemstack, blockContainer) && !byPlayer.IsCreative())
         {
-            liquidProps.TryTakeLiquid(activeSlot.Itemstack, blockContainer);
-            return true;
+            (byPlayer.Entity.World.Api as ICoreClientAPI)?.TriggerIngameError(this, IngameError.BannerNotEnoughBleach, IngameError.BannerNotEnoughBleach.Localize(liquidProps.LitresPerUse));
+            return false;
         }
 
-        return false;
+        if (!blockEntity.BannerProps.RemoveLastLayer())
+        {
+            return false;
+        }
+
+        if (!byPlayer.IsCreative())
+        {
+            liquidProps.TryTakeLiquid(activeSlot.Itemstack, blockContainer);
+        }
+        return true;
     }
 
     public bool CopyLayers(IPlayer byPlayer, BlockEntityBanner blockEntity)

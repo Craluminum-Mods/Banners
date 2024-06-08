@@ -21,9 +21,14 @@ public class BannerLiquid
     public bool IsDye => Type == EnumBannerLiquid.Dye && !string.IsNullOrEmpty(Color);
     public bool IsBleach => Type == EnumBannerLiquid.Bleach;
 
+    public bool CanTakeLiquid(ItemStack containerStack, BlockLiquidContainerTopOpened blockContainer)
+    {
+        return blockContainer.GetCurrentLitres(containerStack) >= LitresPerUse / (float)containerStack.StackSize;
+    }
+
     public ItemStack TryTakeLiquid(ItemStack containerStack, BlockLiquidContainerTopOpened blockContainer)
     {
-        return blockContainer.TryTakeLiquid(containerStack, LitresPerUse);
+        return blockContainer.TryTakeLiquid(containerStack, LitresPerUse / (float)containerStack.StackSize);
     }
 
     public static bool TryGet(ItemStack fromStack, BlockLiquidContainerTopOpened container, out BannerLiquid props)
