@@ -14,6 +14,7 @@
     "Bleach": "Відбілювач",
     "bannercontainable-contained-banner": "Містить прапор: {0}",
     "discoverable-pattern": "Рідкісний невідомий візерунок (може бути знайдений)",
+    "unlocked-patterns": "<font color=\"#FF9900\">Розблоковані візерунки:</font> {0}",
 
     "patterngroups": "Групи візерунків: {0}",
     "patterngroup-basic": "Основний",

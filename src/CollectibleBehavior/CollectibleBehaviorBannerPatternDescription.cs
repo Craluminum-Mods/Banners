@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
@@ -16,6 +18,12 @@ public class CollectibleBehaviorBannerPatternDescription : CollectibleBehavior
             if (Lang.HasTranslation(descLangCode))
             {
                 dsc.Append(descLangCode.Localize() + '\n');
+            }
+            IEnumerable<string> unlockedTypes = props.UnlockedTypes.Where(x => !string.IsNullOrEmpty(x));
+            if (unlockedTypes.Any())
+            {
+                string types = string.Join(commaSeparator, unlockedTypes.Select(type => $"{langCodePattern}{type}".Localize()));
+                dsc.AppendLine(langCodeUnlockedPatterns.Localize(types));
             }
         }
     }

@@ -14,6 +14,7 @@
     "Bleach": "Отбеливатель",
     "bannercontainable-contained-banner": "Содержит флаг: {0}",
     "discoverable-pattern": "Редкий неизвестный узор (может быть найден)",
+    "unlocked-patterns": "<font color=\"#FF9900\">Разблокированные узоры:</font> {0}",
 
     "patterngroups": "Группы узоров: {0}",
     "patterngroup-basic": "Базовый",

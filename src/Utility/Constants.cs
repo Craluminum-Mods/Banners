@@ -49,6 +49,7 @@ public static class Constants
     public const string langCodeBannerContainableContainedBannerRemove = $"{modDomain}:blockhelp-bannercontainable-remove";
     public const string langCodeBannerBannerPatternSet = $"{modDomain}:heldhelp-bannerpattern-set";
     public const string langCodePatternLocked = $"{modDomain}:discoverable-pattern";
+    public const string langCodeUnlockedPatterns = $"{modDomain}:unlocked-patterns";
 
     public const string cacheKeyBlockBannerMeshes = $"{modDomain}BlockBannerMeshes";
     public const string cacheKeyBlockBannerInvMeshes = $"{modDomain}BlockBannerMeshesInventory";
