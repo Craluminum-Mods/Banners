@@ -41,7 +41,7 @@ public class CollectibleBehaviorBannerPatternToolModes : CollectibleBehavior
             PatternToolMode.TryUnlockAll(ToolModes, slot, mouseslot.Itemstack);
             byPlayer.Entity.World.Api.Event.PushEvent(eventKeepOpenToolmodeDialog);
         }
-        else if (ToolModes[index].IsUnlocked(slot) || byPlayer.WorldData.CurrentGameMode is EnumGameMode.Creative)
+        else if (ToolModes[index].IsUnlocked(slot) || byPlayer.IsCreative())
         {
             ToolModes[index].SetPattern(slot.Itemstack);
         }

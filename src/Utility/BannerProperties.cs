@@ -33,7 +33,7 @@ public class BannerProperties
 
     public bool AddLayer(BannerLayer layer, IWorldAccessor world, IPlayer player = null)
     {
-        if (world.Config.GetAsInt(worldConfigLayersLimit) + 1 <= Layers.Count && player?.WorldData.CurrentGameMode != EnumGameMode.Creative)
+        if (world.Config.GetAsInt(worldConfigLayersLimit) + 1 <= Layers.Count && !player.IsCreative())
         {
             return false;
         }

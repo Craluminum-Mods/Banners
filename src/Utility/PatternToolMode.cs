@@ -16,7 +16,7 @@ public class PatternToolMode
     {
         ItemStack newStack = slot.Itemstack.Clone();
         SetPattern(newStack);
-        bool unlocked = IsUnlocked(slot) || capi.World.Player.WorldData.CurrentGameMode is EnumGameMode.Creative;
+        bool unlocked = IsUnlocked(slot) || capi.World.Player.IsCreative();
 
         SkillItem toolMode = new SkillItem()
         {

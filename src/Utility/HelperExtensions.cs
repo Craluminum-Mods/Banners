@@ -24,7 +24,7 @@ public static class HelperExtensions
         int lastIndexOfSymbol = input.LastIndexOf(symbol);
         if (lastIndexOfSymbol >= 0)
         {
-            return input.Substring(0, lastIndexOfSymbol);
+            return input[..lastIndexOfSymbol];
         }
         else
         {
@@ -108,5 +108,10 @@ public static class HelperExtensions
     public static bool TryGetValueOrWildcard<T>(this Dictionary<string, T> dict, string key, out T value)
     {
         return dict.TryGetValue(key, out value) || dict.TryGetValue(Wildcard, out value);
+    }
+
+    public static bool IsCreative(this IPlayer byPlayer)
+    {
+        return byPlayer != null && byPlayer.WorldData.CurrentGameMode == EnumGameMode.Creative;
     }
 }
