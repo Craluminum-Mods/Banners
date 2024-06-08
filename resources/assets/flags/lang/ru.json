@@ -149,6 +149,7 @@
     "ingameerror-banner-patterngroups": "Группы узоров не совпадают",
     "ingameerror-banner-notenoughdye": "Недостаточно краски, требуется {0}л",
     "ingameerror-banner-notenoughbleach": "Недостаточно отбеливателя, требуется {0}л",
+    "ingameerror-layers-limitreached": "Достигнуто максимальное количество слоев ({0})!",
 
     "command-nobanner": "В активной руке нет флага",
     "command-generatetextures": "Успешно сгенерировано {0} текстур для флага",

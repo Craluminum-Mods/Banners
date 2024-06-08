@@ -33,11 +33,16 @@ public class BannerProperties
 
     public bool AddLayer(BannerLayer layer, IWorldAccessor world, IPlayer player = null)
     {
-        if (world.Config.GetAsInt(worldConfigLayersLimit) + 1 <= Layers.Count && !player.IsCreative())
+        if (GetLayersLimit(world) + 1 <= Layers.Count && !player.IsCreative())
         {
             return false;
         }
         return Layers.TryAdd(layer.AttributeKey(Layers.Count.ToString()), layer.AttributeValue());
+    }
+
+    public static int GetLayersLimit(IWorldAccessor world)
+    {
+        return world.Config.GetAsInt(worldConfigLayersLimit);
     }
 
     public bool RemoveLastLayer()

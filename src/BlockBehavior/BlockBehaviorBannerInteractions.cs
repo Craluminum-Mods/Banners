@@ -63,7 +63,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
 
         if (!blockEntity.BannerProps.AddLayer(new BannerLayer(pattern, liquidProps), world, byPlayer))
         {
-            (byPlayer.Entity.World.Api as ICoreClientAPI)?.TriggerIngameError(this, IngameError.BannerLimitReached, IngameError.BannerLimitReached.Localize(BannerProperties.GetLayersLimit(world)));
+            (byPlayer.Entity.World.Api as ICoreClientAPI)?.TriggerIngameError(this, IngameError.LayersLimitReached, IngameError.LayersLimitReached.Localize(BannerProperties.GetLayersLimit(world)));
             return false;
         }
 

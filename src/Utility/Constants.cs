@@ -130,5 +130,6 @@ public static class Constants
         public const string BannerPatternGroups = $"{modDomain}:ingameerror-banner-patterngroups";
         public const string BannerNotEnoughDye = $"{modDomain}:ingameerror-banner-notenoughdye";
         public const string BannerNotEnoughBleach = $"{modDomain}:ingameerror-banner-notenoughbleach";
+        public const string LayersLimitReached = $"{modDomain}:ingameerror-layers-limitreached";
     }
 }

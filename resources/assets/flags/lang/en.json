@@ -149,6 +149,7 @@
     "ingameerror-banner-patterngroups": "Pattern groups don't match",
     "ingameerror-banner-notenoughdye": "Not enough dye, {0}L required",
     "ingameerror-banner-notenoughbleach": "Not enough bleach, {0}L required",
+    "ingameerror-layers-limitreached": "Maximum number of layers reached ({0})!",
 
     "command-nobanner": "Active hand is missing banner",
     "command-generatetextures": "{0} textures were sucessfully generated for banner",
