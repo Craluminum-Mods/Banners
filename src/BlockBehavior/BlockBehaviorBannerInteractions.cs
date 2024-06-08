@@ -45,6 +45,11 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
             (byPlayer.Entity.World.Api as ICoreClientAPI)?.TriggerIngameError(this, IngameError.BannerPatternGroups, IngameError.BannerPatternGroups.Localize());
             return false;
         }
+        if (activeSlot.Itemstack.StackSize > 1)
+        {
+            (byPlayer.Entity.World.Api as ICoreClientAPI)?.TriggerIngameError(this, IngameError.LiquidContainerOneMax, IngameError.LiquidContainerOneMax.Localize());
+            return false;
+        }
         if (!BannerLiquid.TryGet(activeSlot.Itemstack, blockContainer, out BannerLiquid liquidProps) || !liquidProps.IsDye)
         {
             return false;
@@ -82,11 +87,15 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         {
             return false;
         }
+        if (activeSlot.Itemstack.StackSize > 1)
+        {
+            (byPlayer.Entity.World.Api as ICoreClientAPI)?.TriggerIngameError(this, IngameError.LiquidContainerOneMax, IngameError.LiquidContainerOneMax.Localize());
+            return false;
+        }
         if (!BannerLiquid.TryGet(activeSlot.Itemstack, blockContainer, out BannerLiquid liquidProps) || !liquidProps.IsBleach)
         {
             return false;
         }
-
         if (!liquidProps.CanTakeLiquid(activeSlot.Itemstack, blockContainer) && !byPlayer.IsCreative())
         {
             (byPlayer.Entity.World.Api as ICoreClientAPI)?.TriggerIngameError(this, IngameError.BannerNotEnoughBleach, IngameError.BannerNotEnoughBleach.Localize(liquidProps.LitresPerUse));

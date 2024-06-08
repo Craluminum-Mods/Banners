@@ -150,6 +150,7 @@
     "ingameerror-banner-notenoughdye": "Недостатньо фарби, потрібно {0}л",
     "ingameerror-banner-notenoughbleach": "Недостатньо відбілювача, потрібно {0}л",
     "ingameerror-layers-limitreached": "Досягнуто максимальну кількість шарів ({0})!",
+    "ingameerror-liquidcontainer-onemax": "Дозволяється використовувати лише одну ємність для рідини",
 
     "command-nobanner": "В активній руці немає прапора",
     "command-generatetextures": "Успішно згенеровано {0} текстур для прапора",
