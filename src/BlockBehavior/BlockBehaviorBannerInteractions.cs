@@ -45,7 +45,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
             (byPlayer.Entity.World.Api as ICoreClientAPI)?.TriggerIngameError(this, IngameError.BannerPatternGroups, IngameError.BannerPatternGroups.Localize());
             return false;
         }
-        if (activeSlot.Itemstack.StackSize > 1)
+        if (activeSlot.Itemstack.StackSize > 1 && !byPlayer.IsCreative())
         {
             (byPlayer.Entity.World.Api as ICoreClientAPI)?.TriggerIngameError(this, IngameError.LiquidContainerOneMax, IngameError.LiquidContainerOneMax.Localize());
             return false;
@@ -87,7 +87,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         {
             return false;
         }
-        if (activeSlot.Itemstack.StackSize > 1)
+        if (activeSlot.Itemstack.StackSize > 1 && !byPlayer.IsCreative())
         {
             (byPlayer.Entity.World.Api as ICoreClientAPI)?.TriggerIngameError(this, IngameError.LiquidContainerOneMax, IngameError.LiquidContainerOneMax.Localize());
             return false;
