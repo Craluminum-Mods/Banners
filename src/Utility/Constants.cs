@@ -9,6 +9,7 @@ public static class Constants
     public const int bannerCodeMaxElements = 2;
     public const int defaultLayersLimit = 14;
     public const int lastPatternDisplayAmount = 8;
+    public const int cutoutsDisplayAmount = 4;
 
     public const float DegreesToRadians = (float)Math.PI / 180f;
     public const float RadiansToDegrees = 180f / (float)Math.PI;
@@ -50,6 +51,7 @@ public static class Constants
     public const string langCodeBannerBannerPatternSet = $"{modDomain}:heldhelp-bannerpattern-set";
     public const string langCodePatternLocked = $"{modDomain}:discoverable-pattern";
     public const string langCodeUnlockedPatterns = $"{modDomain}:unlocked-patterns";
+    public const string langCodeCutouts = $"{modDomain}:cutouts";
 
     public const string cacheKeyBlockBannerMeshes = $"{modDomain}BlockBannerMeshes";
     public const string cacheKeyBlockBannerInvMeshes = $"{modDomain}BlockBannerMeshesInventory";
@@ -69,6 +71,7 @@ public static class Constants
     public const string attributeTitle = "title";
     public const string attributeBanner = "banner";
     public const string attributeLayers = "layers";
+    public const string attributeCutouts = "cutouts";
     public const string attributeName = "name";
     public const string attributePlacement = "placement";
     public const string attributeBannerPattern = "bannerpattern";

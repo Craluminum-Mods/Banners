@@ -14,6 +14,8 @@ public class BannerProperties
     public string Placement { get; protected set; }
     public Dictionary<string, string> Layers { get; protected set; } = new();
 
+    public Cutouts Cutouts { get; protected set; } = new();
+
     public string BaseColor => GetOrderedLayers()?.FirstOrDefault()?.Color;
 
     public BannerProperties(string defaultPlacement)
@@ -53,22 +55,27 @@ public class BannerProperties
     public void GetDescription(StringBuilder dsc, bool withDebugInfo = false)
     {
         IOrderedEnumerable<BannerLayer> layers = GetOrderedLayers();
-        dsc.AppendLine(layers.First().Name);
-        if (lastPatternDisplayAmount < layers.Skip(1).Count())
+        if (layers.Any())
         {
-            dsc.AppendLine("...");
+            dsc.AppendLine(layers.First().Name);
+            if (lastPatternDisplayAmount < layers.Skip(1).Count())
+            {
+                dsc.AppendLine("...");
+            }
+            foreach (BannerLayer layer in layers.Skip(1).TakeLast(lastPatternDisplayAmount))
+            {
+                if (withDebugInfo) dsc.Append(layer).Append('\t');
+                dsc.AppendLine(layer.Name);
+            }
         }
-        foreach (BannerLayer layer in layers.Skip(1).TakeLast(lastPatternDisplayAmount))
-        {
-            if (withDebugInfo) dsc.Append(layer).Append('\t');
-            dsc.AppendLine(layer.Name);
-        }
+        Cutouts.GetDescription(dsc, withDebugInfo);
     }
 
     public BannerProperties FromTreeAttribute(ITreeAttribute tree)
     {
         ITreeAttribute bannerTree = GetBannerTree(tree);
         LayersFromTree(bannerTree);
+        Cutouts.FromTreeAttribute(bannerTree);
         Name = bannerTree.GetString(attributeName, Name);
         Placement = bannerTree.GetString(attributePlacement, Placement);
         return this;
@@ -78,6 +85,7 @@ public class BannerProperties
     {
         ITreeAttribute bannerTree = GetBannerTree(tree);
         LayersToTree(bannerTree);
+        Cutouts.ToTreeAttribute(bannerTree);
 
         if (!string.IsNullOrEmpty(Name))
         {
@@ -120,30 +128,31 @@ public class BannerProperties
         ToTreeAttribute(stack.Attributes, false);
     }
 
-    public bool CopyFrom(ItemStack fromStack, bool copyLayers = false)
+    public bool CopyFrom(ItemStack fromStack, bool copyLayers = false, bool copyCutouts = false)
     {
-        BannerProperties fromProps = FromStack(fromStack);
         bool any = false;
         if (copyLayers)
         {
             any = TryCopyLayersFrom(fromStack);
         }
-        if (copyLayers && fromProps.Layers.Count > 1 && Layers.Count == 1 && SameBaseColors(fromProps))
-        {
-            LayersFromTree(GetBannerTree(fromStack.Attributes));
-            return true;
-        }
+        // if (copyCutouts)
+        // {
+        //     any = Cutouts.CopyFrom(fromStack);
+        // }
         return any;
     }
 
-    public bool CopyTo(ItemStack toStack, bool copyLayers = false)
+    public bool CopyTo(ItemStack toStack, bool copyLayers = false, bool copyCutouts = false)
     {
-        BannerProperties toProps = FromStack(toStack);
         bool any = false;
         if (copyLayers)
         {
             any = TryCopyLayersTo(toStack);
         }
+        // if (copyCutouts)
+        // {
+        //     any = Cutouts.CopyTo(toStack);
+        // }
         return any;
     }
 
@@ -212,9 +221,7 @@ public class BannerProperties
             result.Append(string.Join(layerSeparator, Layers.Select(x => $"{x.Key}-{x.Value}")));
             result.Append(')');
         }
+        result.Append(Cutouts.ToString());
         return result.ToString();
-    }
-}
-
     }
 }

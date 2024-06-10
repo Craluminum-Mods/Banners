@@ -19,7 +19,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
             return base.OnBlockInteractStart(world, byPlayer, blockSel, ref handling);
         }
 
-        if (AddLayer(world, byPlayer, blockEntity) || RemoveLayer(byPlayer, blockEntity) || CopyLayers(byPlayer, blockEntity) || Rename(byPlayer, blockEntity))
+        if (AddLayer(world, byPlayer, blockEntity) || RemoveLayer(byPlayer, blockEntity) || AddCutout(byPlayer, blockEntity) || RemoveCutout(byPlayer, blockEntity) || CopyLayers(byPlayer, blockEntity) || Rename(byPlayer, blockEntity))
         {
             blockEntity.MarkDirty(true);
             byPlayer.Entity.RightHandItemSlot.MarkDirty();
@@ -114,6 +114,41 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         return true;
     }
 
+    public bool AddCutout(IPlayer byPlayer, BlockEntityBanner blockEntity)
+    {
+        ItemSlot activeSlot = byPlayer.Entity.RightHandItemSlot;
+        ItemSlot offHandSlot = byPlayer.Entity.LeftHandItemSlot;
+
+        if (offHandSlot?.Itemstack?.Collectible is not ItemBannerPattern itemPattern || activeSlot?.Itemstack?.Collectible is not ItemShears)
+        {
+            return false;
+        }
+        if (!blockEntity.BannerBlock.MatchesPatternGroups(itemPattern))
+        {
+            byPlayer.IngameError(this, IngameError.BannerPatternGroups, IngameError.BannerPatternGroups.Localize());
+            return false;
+        }
+
+        string pattern = BannerPatternProperties.FromStack(offHandSlot.Itemstack).Type;
+        if (string.IsNullOrEmpty(pattern))
+        {
+            return false;
+        }
+
+        return blockEntity.BannerProps.Cutouts.TryAdd(new BannerLayer().WithPattern(pattern));
+    }
+
+    public bool RemoveCutout(IPlayer byPlayer, BlockEntityBanner blockEntity)
+    {
+        ItemSlot activeSlot = byPlayer.Entity.RightHandItemSlot;
+        ItemSlot offHandSlot = byPlayer.Entity.LeftHandItemSlot;
+        if (!offHandSlot.Empty || activeSlot?.Itemstack?.Collectible is not ItemShears)
+        {
+            return false;
+        }
+        return blockEntity.BannerProps.Cutouts.TryRemoveLast();
+    }
+
     public bool CopyLayers(IPlayer byPlayer, BlockEntityBanner blockEntity)
     {
         ItemSlot activeSlot = byPlayer.Entity.RightHandItemSlot;
@@ -127,6 +162,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
             byPlayer.IngameError(this, IngameError.BannerPatternGroups, IngameError.BannerPatternGroups.Localize());
             return false;
         }
+        // if (blockEntity.BannerProps.CopyFrom(activeSlot.Itemstack, copyLayers: true, copyCutouts: true) || blockEntity.BannerProps.CopyTo(activeSlot.Itemstack, copyLayers: true, copyCutouts: true))
         if (blockEntity.BannerProps.CopyFrom(activeSlot.Itemstack, copyLayers: true) || blockEntity.BannerProps.CopyTo(activeSlot.Itemstack, copyLayers: true))
         {
             return true;

@@ -130,6 +130,11 @@ public static class BannerExtensions
                 {
                     block.ApplyOverlay(capi, textureCode, ctex, layer);
                 }
+
+                foreach (BannerLayer layer in properties.Cutouts.GetOrdered(textureCode))
+                {
+                    block.ApplyOverlay(capi, textureCode, ctex, layer, EnumColorBlendMode.ColorBurn);
+                }
             }
 
             ctex.Bake(capi.Assets);
@@ -138,7 +143,7 @@ public static class BannerExtensions
         return texSource;
     }
 
-    public static void ApplyOverlay(this BlockBanner block, ICoreClientAPI capi, string textureCode, CompositeTexture ctex, BannerLayer layer)
+    public static void ApplyOverlay(this BlockBanner block, ICoreClientAPI capi, string textureCode, CompositeTexture ctex, BannerLayer layer, EnumColorBlendMode blendMode = EnumColorBlendMode.Normal)
     {
         if ((block.IgnoredTextureCodes.TryGetValue(textureCode, out List<string> ignoredTextureCodes) && ignoredTextureCodes.Contains(layer.Pattern)) == true)
         {
@@ -148,23 +153,23 @@ public static class BannerExtensions
         if (!block.CustomTextures.TryGetValue(layer.TextureCode, out CompositeTexture _overlayTexture) || _overlayTexture == null)
         {
             capi.Logger.Error("[Flags] Block {0} defines an overlay texture key '{1}', but no matching texture found", block.Code, layer.TextureCode);
-            ctex.BlendedOverlays = ctex.BlendedOverlays.Append(new BlendedOverlayTexture() { Base = AssetLocation.Create(textureUnknown), BlendMode = EnumColorBlendMode.Normal });
+            ctex.BlendedOverlays = ctex.BlendedOverlays.Append(new BlendedOverlayTexture() { Base = AssetLocation.Create(textureUnknown), BlendMode = blendMode });
             return;
         }
 
         CompositeTexture overlayTexture = _overlayTexture.Clone();
-        overlayTexture.FillPlaceholder(textureCodeColor, layer.Color);
+        overlayTexture.FillPlaceholder(textureCodeColor, layer.Color ?? "black");
         overlayTexture.FillPlaceholder(textureCodePattern, layer.Pattern);
 
         AssetLocation logCode = overlayTexture.Base.Clone().WithPathPrefixOnce(prefixTextures).WithPathAppendixOnce(appendixPng);
         if (!capi.Assets.Exists(logCode))
         {
-            capi.Logger.Error("[Flags] Block {0} defines an overlay texture key '{1}' with path '{2}' for color '{3}', but no matching texture found", block.Code, layer.TextureCode, logCode.ToString(), layer.Color);
-            ctex.BlendedOverlays = ctex.BlendedOverlays.Append(new BlendedOverlayTexture() { Base = AssetLocation.Create(textureUnknown), BlendMode = EnumColorBlendMode.Normal });
+            capi.Logger.Error("[Flags] Block {0} defines an overlay texture key '{1}' with path '{2}' for color '{3}', but no matching texture found", block.Code, layer.TextureCode, logCode.ToString(), layer.Color ?? "black");
+            ctex.BlendedOverlays = ctex.BlendedOverlays.Append(new BlendedOverlayTexture() { Base = AssetLocation.Create(textureUnknown), BlendMode = blendMode });
             return;
         }
 
-        ctex.BlendedOverlays = ctex.BlendedOverlays.Append(new BlendedOverlayTexture() { Base = overlayTexture.Base, BlendMode = EnumColorBlendMode.Normal });
+        ctex.BlendedOverlays = ctex.BlendedOverlays.Append(new BlendedOverlayTexture() { Base = overlayTexture.Base, BlendMode = blendMode });
     }
 
     public static TextCommandResult DebugPregenerateTextures(this BlockBanner blockBanner, ICoreClientAPI capi, bool replaceExisting = false, string grayscaleColor = defaultColor)
