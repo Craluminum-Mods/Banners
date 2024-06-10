@@ -12,7 +12,7 @@
     "banner-liquid-color": "Колір рідини для прапора: {0}",
     "Dye": "Фарба",
     "Bleach": "Відбілювач",
-    "bannercontainable-contained-banner": "Містить прапор: {0}",
+    "bannercontainable-contained-banner": "<font color=\"#FFF999\">Містить прапор:</font> {0}",
     "discoverable-pattern": "Рідкісний невідомий візерунок (може бути знайдений)",
     "unlocked-patterns": "<font color=\"#FF9900\">Розблоковані візерунки:</font> {0}",
     "patterns": "<font color=\"#BBBBBB\">Візерунки:</font>",

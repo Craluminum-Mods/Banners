@@ -126,9 +126,9 @@ public class BEBehaviorBannerContainable : BlockEntityBehavior, IBlockEntityCont
     public override void GetBlockInfo(IPlayer forPlayer, StringBuilder dsc)
     {
         int faceIndex = forPlayer.CurrentBlockSelection.Face.Index;
-        if (Api is ICoreClientAPI && !ExcludeFaces.Contains(faceIndex))
+        if (Api is ICoreClientAPI && !ExcludeFaces.Contains(faceIndex) && !inv[faceIndex].Empty)
         {
-            dsc.AppendLine(langCodeBannerContainableContainedBanner.Localize(!inv[faceIndex].Empty ? inv[faceIndex].Itemstack.GetName() : langCodeEmpty.Localize()));
+            dsc.AppendLine(langCodeBannerContainableContainedBanner.Localize(inv[faceIndex].Itemstack.GetName()));
             dsc.AppendLine(".");
         }
     }

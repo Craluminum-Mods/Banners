@@ -12,7 +12,7 @@
     "banner-liquid-color": "Цвет жидкости для флага: {0}",
     "Dye": "Краска",
     "Bleach": "Отбеливатель",
-    "bannercontainable-contained-banner": "Содержит флаг: {0}",
+    "bannercontainable-contained-banner": "<font color=\"#FFF999\">Содержит флаг:</font> {0}",
     "discoverable-pattern": "Редкий неизвестный узор (может быть найден)",
     "unlocked-patterns": "<font color=\"#FF9900\">Разблокированные узоры:</font> {0}",
     "patterns": "<font color=\"#BBBBBB\">Узоры:</font>",

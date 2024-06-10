@@ -12,7 +12,7 @@
     "banner-liquid-color": "Banner liquid color: {0}",
     "Dye": "Dye",
     "Bleach": "Bleach",
-    "bannercontainable-contained-banner": "Contains banner: {0}",
+    "bannercontainable-contained-banner": "<font color=\"#FFF999\">Contains banner:</font> {0}",
     "discoverable-pattern": "Rare Unknown Pattern (Can be found)",
     "unlocked-patterns": "<font color=\"#FF9900\">Unlocked Patterns:</font> {0}",
     "patterns": "<font color=\"#BBBBBB\">Patterns:</font>",
