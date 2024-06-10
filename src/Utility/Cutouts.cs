@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.Util;
 
@@ -60,33 +61,33 @@ public class Cutouts
         }
     }
 
-    // public bool CopyTo(ItemStack toStack)
-    // {
-    //     BannerProperties toProps = BannerProperties.FromStack(toStack);
-    //     if (Elements.Count > 1 && !toProps.Cutouts.Elements.Any())
-    //     {
-    //         ToTreeAttribute(BannerProperties.GetBannerTree(toStack.Attributes));
-    //         return true;
-    //     }
-    //     return false;
-    // }
+    public bool CopyFrom(ItemStack fromStack)
+    {
+        BannerProperties fromProps = BannerProperties.FromStack(fromStack);
+        if (fromProps.Cutouts.Elements.Count > 1 && !Elements.Any())
+        {
+            FromTreeAttribute(BannerProperties.GetBannerTree(fromStack.Attributes));
+            return true;
+        }
+        return false;
+    }
 
-    // public bool CopyFrom(ItemStack fromStack)
-    // {
-    //     BannerProperties fromProps = BannerProperties.FromStack(fromStack);
-    //     if (fromProps.Cutouts.Elements.Count > 1 && !Elements.Any())
-    //     {
-    //         FromTreeAttribute(BannerProperties.GetBannerTree(fromStack.Attributes));
-    //         return true;
-    //     }
-    //     return false;
-    // }
+    public bool CopyTo(ItemStack toStack)
+    {
+        BannerProperties toProps = BannerProperties.FromStack(toStack);
+        if (Elements.Count > 1 && !toProps.Cutouts.Elements.Any())
+        {
+            ToTreeAttribute(BannerProperties.GetBannerTree(toStack.Attributes));
+            return true;
+        }
+        return false;
+    }
 
     public void FromTreeAttribute(ITreeAttribute bannerTree)
     {
         ITreeAttribute cutoutsTree = bannerTree.GetOrAddTreeAttribute(attributeCutouts);
 
-        foreach (string key in cutoutsTree.Select(x => x.Key).Where(x => !Elements.Contains(x)))
+        foreach (string key in cutoutsTree.Select(x => x.Key).Where(key => !Elements.Contains(key)))
         {
             Elements.Add(key);
         }
@@ -98,7 +99,7 @@ public class Cutouts
 
         foreach (string key in Elements)
         {
-            cutoutsTree.SetString(key, null);
+            cutoutsTree.SetString(key, "");
         }
     }
 

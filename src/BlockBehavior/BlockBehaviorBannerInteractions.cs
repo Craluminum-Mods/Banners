@@ -162,8 +162,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
             byPlayer.IngameError(this, IngameError.BannerPatternGroups, IngameError.BannerPatternGroups.Localize());
             return false;
         }
-        // if (blockEntity.BannerProps.CopyFrom(activeSlot.Itemstack, copyLayers: true, copyCutouts: true) || blockEntity.BannerProps.CopyTo(activeSlot.Itemstack, copyLayers: true, copyCutouts: true))
-        if (blockEntity.BannerProps.CopyFrom(activeSlot.Itemstack, copyLayers: true) || blockEntity.BannerProps.CopyTo(activeSlot.Itemstack, copyLayers: true))
+        if (blockEntity.BannerProps.CopyFrom(activeSlot.Itemstack, copyLayers: true, copyCutouts: true) || blockEntity.BannerProps.CopyTo(activeSlot.Itemstack, copyLayers: true, copyCutouts: true))
         {
             return true;
         }

@@ -94,7 +94,7 @@ public class Patterns
     {
         ITreeAttribute patternsTree = bannerTree.GetOrAddTreeAttribute(attributeLayers);
 
-        foreach (string key in patternsTree.Select(x => x.Key).Where(x => !Elements.ContainsKey(x)))
+        foreach (string key in patternsTree.Select(x => x.Key).Where(key => !Elements.ContainsKey(key)))
         {
             Elements.Add(key, patternsTree.GetString(key));
         }

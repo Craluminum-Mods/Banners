@@ -66,10 +66,11 @@ public class BannerProperties
     {
         bool any = false;
         if (copyLayers) any = Patterns.CopyFrom(fromStack);
-        // if (copyCutouts)
-        // {
-        //     any = Cutouts.CopyFrom(fromStack);
-        // }
+        if (copyCutouts) any = Cutouts.CopyFrom(fromStack);
+        if (any)
+        {
+            FromTreeAttribute(fromStack.Attributes);
+        }
         return any;
     }
 
@@ -77,10 +78,11 @@ public class BannerProperties
     {
         bool any = false;
         if (copyLayers) any = Patterns.CopyTo(toStack);
-        // if (copyCutouts)
-        // {
-        //     any = Cutouts.CopyTo(toStack);
-        // }
+        if (copyCutouts) any = Cutouts.CopyTo(toStack);
+        if (any)
+        {
+            ToTreeAttribute(toStack.Attributes);
+        }
         return any;
     }
 
