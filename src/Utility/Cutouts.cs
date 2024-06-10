@@ -49,11 +49,11 @@ public class Cutouts
 
         dsc.AppendLine(langCodeCutouts.Localize());
         IOrderedEnumerable<BannerLayer> cutouts = GetOrdered();
-        if (cutoutsDisplayAmount < cutouts.Skip(1).Count())
+        if (cutoutsDisplayAmount < cutouts.Count())
         {
             dsc.AppendLine("...");
         }
-        foreach (BannerLayer cutout in cutouts.Skip(1).TakeLast(cutoutsDisplayAmount))
+        foreach (BannerLayer cutout in cutouts.TakeLast(cutoutsDisplayAmount))
         {
             if (withDebugInfo) dsc.Append(cutout).Append('\t');
             dsc.Append('\t');
