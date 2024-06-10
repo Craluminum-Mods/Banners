@@ -27,7 +27,7 @@ public class BannerProperties
     public IOrderedEnumerable<BannerLayer> GetOrderedLayers(string textureCode = null)
     {
         return Layers
-            .Select(x => new BannerLayer(x.Key, x.Value, textureCode))
+            .Select(x => BannerLayer.FromLayer(x.Key).WithColor(x.Value).WithTextureCode(textureCode))
             .OrderBy(x => x.Priority.ToInt());
     }
 
@@ -123,20 +123,47 @@ public class BannerProperties
     public bool CopyFrom(ItemStack fromStack, bool copyLayers = false)
     {
         BannerProperties fromProps = FromStack(fromStack);
+        bool any = false;
+        if (copyLayers)
+        {
+            any = TryCopyLayersFrom(fromStack);
+        }
         if (copyLayers && fromProps.Layers.Count > 1 && Layers.Count == 1 && SameBaseColors(fromProps))
         {
             LayersFromTree(GetBannerTree(fromStack.Attributes));
             return true;
         }
-        return false;
+        return any;
     }
 
     public bool CopyTo(ItemStack toStack, bool copyLayers = false)
     {
         BannerProperties toProps = FromStack(toStack);
-        if (copyLayers && Layers.Count > 1 && toProps.Layers.Count == 1 && SameBaseColors(toProps))
+        bool any = false;
+        if (copyLayers)
+        {
+            any = TryCopyLayersTo(toStack);
+        }
+        return any;
+    }
+
+    public bool TryCopyLayersTo(ItemStack toStack)
+    {
+        BannerProperties toProps = FromStack(toStack);
+        if (Layers.Count > 1 && toProps.Layers.Count == 1 && SameBaseColors(toProps))
         {
             LayersToTree(GetBannerTree(toStack.Attributes));
+            return true;
+        }
+        return false;
+    }
+
+    public bool TryCopyLayersFrom(ItemStack fromStack)
+    {
+        BannerProperties fromProps = FromStack(fromStack);
+        if (fromProps.Layers.Count > 1 && Layers.Count == 1 && SameBaseColors(fromProps))
+        {
+            LayersFromTree(GetBannerTree(fromStack.Attributes));
             return true;
         }
         return false;
@@ -174,8 +201,20 @@ public class BannerProperties
 
     public override string ToString()
     {
-        return Layers.Any()
-            ? $"{Name}-{Placement}-{string.Join(layerSeparator, Layers.Select(x => $"{x.Key}-{x.Value}"))}"
-            : $"{Name}-{Placement}";
+        StringBuilder result = new StringBuilder();
+        result.Append(Name);
+        result.Append('-');
+        result.Append(Placement);
+        if (Layers.Any())
+        {
+            result.Append('-');
+            result.Append('(');
+            result.Append(string.Join(layerSeparator, Layers.Select(x => $"{x.Key}-{x.Value}")));
+            result.Append(')');
+        }
+        return result.ToString();
+    }
+}
+
     }
 }

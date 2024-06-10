@@ -66,7 +66,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
             return false;
         }
 
-        if (!blockEntity.BannerProps.AddLayer(new BannerLayer(pattern, liquidProps), world, byPlayer))
+        if (!blockEntity.BannerProps.AddLayer(new BannerLayer().WithPattern(pattern).WithColor(liquidProps.Color), world, byPlayer))
         {
             byPlayer.IngameError(this, IngameError.LayersLimitReached, IngameError.LayersLimitReached.Localize(BannerProperties.GetLayersLimit(world)));
             return false;

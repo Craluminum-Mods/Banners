@@ -50,11 +50,10 @@ public class BannerConverter
         }
 
         BannerProperties bannerProperties = new BannerProperties(blockBanner.DefaultPlacement);
-        bannerProperties.AddLayer(new BannerLayer("0-b", vsBaseColor), byPlayer.Entity.World);
-        foreach (BannerLayer layer in fromObject["BlockEntityTag"]["Patterns"].AsArray().Select((pattern, index) => new BannerLayer(
-            layer: $"{index}-{GetPattern(pattern)}",
-            color: GetColor(pattern)
-            )))
+        bannerProperties.AddLayer(BannerLayer.FromLayer("0-b").WithColor(vsBaseColor), byPlayer.Entity.World);
+        foreach (BannerLayer layer in fromObject["BlockEntityTag"]["Patterns"].AsArray().Select((pattern, index) => BannerLayer
+            .FromLayer(layer: $"{index}-{GetPattern(pattern)}")
+            .WithColor(color: GetColor(pattern))))
         {
             bannerProperties.AddLayer(layer, byPlayer.Entity.World, byPlayer);
         }
@@ -67,7 +66,7 @@ public class BannerConverter
 
     private string GetPattern(JsonObject pattern)
     {
-        _ = Patterns.TryGetValueOrWildcard(pattern["Pattern"].AsString(), out string value) ;
+        _ = Patterns.TryGetValueOrWildcard(pattern["Pattern"].AsString(), out string value);
         return value;
     }
 

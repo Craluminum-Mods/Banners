@@ -7,27 +7,44 @@ public class BannerLayer
     public string Color { get; protected set; }
     public string OldTextureCode { get; protected set; }
 
-    private string LocalizedPattern => $"{langCodePattern}{Pattern}".Localize();
-    private string LocalizedColor => $"{langCodeColor}{Color}".Localize();
+    public string LocalizedPattern => $"{langCodePattern}{Pattern}".Localize();
+    public string LocalizedColor => $"{langCodeColor}{Color}".Localize();
 
     public string Name => $"{LocalizedPattern} ({LocalizedColor})";
     public string TextureCode => $"{OldTextureCode}-{Pattern}";
 
-    public BannerLayer(string layer, string color, string oldTextureCode = null)
+    public static BannerLayer FromLayer(string layer)
     {
+        BannerLayer _layer = new();
         string[] values = layer.Split("-");
-        if (values.Length != bannerCodeMaxElements) return;
-
-        Priority = values[0];
-        Pattern = values[1];
-        Color = color;
-        OldTextureCode = oldTextureCode;
+        if (values.Length != bannerCodeMaxElements) return _layer;
+        _layer.WithPriority(values[0]);
+        _layer.WithPattern(values[1]);
+        return _layer;
     }
 
-    public BannerLayer(string pattern, BannerLiquid liquid)
+    public BannerLayer WithPriority(string priority)
+    {
+        Priority = priority;
+        return this;
+    }
+
+    public BannerLayer WithPattern(string pattern)
     {
         Pattern = pattern;
-        Color = liquid.Color;
+        return this;
+    }
+
+    public BannerLayer WithColor(string color)
+    {
+        Color = color;
+        return this;
+    }
+
+    public BannerLayer WithTextureCode(string oldTextureCode)
+    {
+        OldTextureCode = oldTextureCode;
+        return this;
     }
 
     public string AttributeKey(string priority = null)
