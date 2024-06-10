@@ -2,3 +2,6 @@ obj
 bin
 icons
 .VSCodeCounter
+blockAtlas-*
+itemAtlas-*
+entityAtlas-*
