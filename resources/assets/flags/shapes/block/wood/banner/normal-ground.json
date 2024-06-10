@@ -8,11 +8,11 @@
 	"textureSizes": {
 	},
 	"textures": {
-        "botsymbol": "block/cloth/banner/hansa/ship-bottom",
 		"botsides": "block/cloth/banner/cadet-grey",
+		"botsymbol": "block/cloth/banner/hansa/ship-bottom",
 		"topsymbol": "block/cloth/banner/hansa/ship-top",
-		"topsides": "block/cloth/banner/mahogany",
 		"string": "block/cloth/banner/magnolia",
+		"topsides": "block/cloth/banner/mahogany",
 		"lead": "block/metal/plate/lead",
 		"bark": "block/wood/bark/aged",
 		"oak": "block/wood/debarked/oak"
@@ -186,10 +186,8 @@
 							"rotationOrigin": [ 5.3, -6.3, 0.9 ],
 							"rotationZ": -18.0,
 							"faces": {
-								"north": { "texture": "#topsymbol", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "windMode": [9,-1,-1,9], "windData": [0,1,1,0]},
-								"east": { "texture": "#topsides", "uv": [ 0.0, 0.0, 0.5, 16.0 ], "windMode": [9,-1,-1,9], "windData": [0,1,1,0] },
-								"south": { "texture": "#topsymbol", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "windMode": [9,9,-1,-1], "windData": [1,1,2,2]},
-								"west": { "texture": "#topsides", "uv": [ 0.0, 0.0, 0.5, 16.0 ], "windMode": [9,9,-1,-1], "windData": [0,0,1,1] }
+								"north": { "texture": "#topsymbol", "uv": [ 16.0, 0.0, 0.0, 16.0 ], "autoUv": false, "windMode": [9,-1,-1,9], "windData": [0,1,1,0] },
+								"south": { "texture": "#topsymbol", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "windMode": [9,9,-1,-1], "windData": [1,1,2,2] }
 							},
 							"children": [
 								{
@@ -198,11 +196,8 @@
 									"to": [ 16.0, 0.0, 0.2 ],
 									"rotationOrigin": [ 0.0, -16.0, 0.0 ],
 									"faces": {
-										"north": { "texture": "#botsymbol", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "windMode": [9,9,9,9], "windData": [0,1,1,0]},
-										"east": { "texture": "#botsides", "uv": [ 0.0, 0.0, 0.5, 16.0 ], "windMode": [9,9,9,9], "windData": [0,1,1,0]},
-										"south": { "texture": "#botsymbol", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "windMode": [9,9,9,9], "windData": [0,0,1,1]},
-										"west": { "texture": "#botsides", "uv": [ 0.0, 0.0, 0.5, 16.0 ], "windMode": [9,9,9,9], "windData": [0,0,1,1]},
-										"down": { "texture": "#botsides", "uv": [ 0.0, 0.0, 16.0, 0.5 ], "windMode": [9,9,9,9] }
+										"north": { "texture": "#botsymbol", "uv": [ 16.0, 0.0, 0.0, 16.0 ], "autoUv": false, "windMode": [9,9,9,9], "windData": [0,1,1,0] },
+										"south": { "texture": "#botsymbol", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "windMode": [9,9,9,9], "windData": [0,0,1,1] }
 									}
 								},
 								{
