@@ -15,6 +15,7 @@
     "bannercontainable-contained-banner": "Contains banner: {0}",
     "discoverable-pattern": "Rare Unknown Pattern (Can be found)",
     "unlocked-patterns": "<font color=\"#FF9900\">Unlocked Patterns:</font> {0}",
+    "patterns": "<font color=\"#BBBBBB\">Patterns:</font>",
     "cutouts": "<font color=\"#FF99FF\">Cutouts:</font>",
 
     "patterngroups": "Pattern groups: {0}",

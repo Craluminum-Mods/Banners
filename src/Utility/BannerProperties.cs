@@ -54,9 +54,11 @@ public class BannerProperties
 
     public void GetDescription(StringBuilder dsc, bool withDebugInfo = false)
     {
-        IOrderedEnumerable<BannerLayer> layers = GetOrderedLayers();
-        if (layers.Any())
+        if (Layers.Any())
         {
+            dsc.AppendLine(langCodePatterns.Localize());
+            IOrderedEnumerable<BannerLayer> layers = GetOrderedLayers();
+            dsc.Append('\t');
             dsc.AppendLine(layers.First().Name);
             if (lastPatternDisplayAmount < layers.Skip(1).Count())
             {
@@ -65,6 +67,7 @@ public class BannerProperties
             foreach (BannerLayer layer in layers.Skip(1).TakeLast(lastPatternDisplayAmount))
             {
                 if (withDebugInfo) dsc.Append(layer).Append('\t');
+                dsc.Append('\t');
                 dsc.AppendLine(layer.Name);
             }
         }

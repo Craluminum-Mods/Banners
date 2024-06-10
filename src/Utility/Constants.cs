@@ -51,6 +51,7 @@ public static class Constants
     public const string langCodeBannerBannerPatternSet = $"{modDomain}:heldhelp-bannerpattern-set";
     public const string langCodePatternLocked = $"{modDomain}:discoverable-pattern";
     public const string langCodeUnlockedPatterns = $"{modDomain}:unlocked-patterns";
+    public const string langCodePatterns = $"{modDomain}:patterns";
     public const string langCodeCutouts = $"{modDomain}:cutouts";
 
     public const string cacheKeyBlockBannerMeshes = $"{modDomain}BlockBannerMeshes";

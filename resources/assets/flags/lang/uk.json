@@ -15,6 +15,7 @@
     "bannercontainable-contained-banner": "Містить прапор: {0}",
     "discoverable-pattern": "Рідкісний невідомий візерунок (може бути знайдений)",
     "unlocked-patterns": "<font color=\"#FF9900\">Розблоковані візерунки:</font> {0}",
+    "patterns": "<font color=\"#BBBBBB\">Візерунки:</font>",
     "cutouts": "<font color=\"#FF99FF\">Вирізки:</font>",
 
     "patterngroups": "Групи візерунків: {0}",
