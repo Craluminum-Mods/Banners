@@ -43,7 +43,7 @@ public class BlockBehaviorBannerName : BlockBehavior
         {
             newName = !string.IsNullOrEmpty(props.Name)
                 ? props.Name
-                : string.Join(string.Empty, Parts.Select(x => x.Replace(ReplacePart, props.BaseColor).LocalizeM()));
+                : string.Join(string.Empty, Parts.Select(x => x.Replace(ReplacePart, props.Patterns.BaseColor).LocalizeM()));
 
             sb.Clear();
             sb.Append(newName);

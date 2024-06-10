@@ -50,12 +50,12 @@ public class BannerConverter
         }
 
         BannerProperties bannerProperties = new BannerProperties(blockBanner.DefaultPlacement);
-        bannerProperties.AddLayer(BannerLayer.FromLayer("0-b").WithColor(vsBaseColor), byPlayer.Entity.World);
+        bannerProperties.Patterns.TryAdd(BannerLayer.FromLayer("0-b").WithColor(vsBaseColor), byPlayer.Entity.World);
         foreach (BannerLayer layer in fromObject["BlockEntityTag"]["Patterns"].AsArray().Select((pattern, index) => BannerLayer
             .FromLayer(layer: $"{index}-{GetPattern(pattern)}")
             .WithColor(color: GetColor(pattern))))
         {
-            bannerProperties.AddLayer(layer, byPlayer.Entity.World, byPlayer);
+            bannerProperties.Patterns.TryAdd(layer, byPlayer.Entity.World, byPlayer);
         }
 
         slot.Itemstack.Attributes.RemoveAttribute(attributeBanner);

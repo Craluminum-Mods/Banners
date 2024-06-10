@@ -66,9 +66,9 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
             return false;
         }
 
-        if (!blockEntity.BannerProps.AddLayer(new BannerLayer().WithPattern(pattern).WithColor(liquidProps.Color), world, byPlayer))
+        if (!blockEntity.BannerProps.Patterns.TryAdd(new BannerLayer().WithPattern(pattern).WithColor(liquidProps.Color), world, byPlayer))
         {
-            byPlayer.IngameError(this, IngameError.LayersLimitReached, IngameError.LayersLimitReached.Localize(BannerProperties.GetLayersLimit(world)));
+            byPlayer.IngameError(this, IngameError.LayersLimitReached, IngameError.LayersLimitReached.Localize(Patterns.GetLayersLimit(world)));
             return false;
         }
 
@@ -102,7 +102,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
             return false;
         }
 
-        if (!blockEntity.BannerProps.RemoveLastLayer())
+        if (!blockEntity.BannerProps.Patterns.TryRemoveLast())
         {
             return false;
         }
@@ -211,7 +211,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         foreach (ItemStack stack in ObjectCacheUtil.TryGet<ItemStack[]>(capi, cacheKeyBannerStacks))
         {
             BannerProperties stackProps = BannerProperties.FromStack(stack);
-            if (blockEntity.BannerProps.SameBaseColors(stackProps) && stackProps.Layers.Count == 1)
+            if (blockEntity.BannerProps.Patterns.SameBaseColors(stackProps) && stackProps.Patterns.Elements.Count == 1)
             {
                 bannerStacks = bannerStacks.Append(stack);
             }

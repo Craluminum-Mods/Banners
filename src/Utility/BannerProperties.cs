@@ -1,10 +1,6 @@
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using System.Text;
 using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
-using Vintagestory.API.Util;
 
 namespace Flags;
 
@@ -12,11 +8,9 @@ public class BannerProperties
 {
     public string Name { get; protected set; }
     public string Placement { get; protected set; }
-    public Dictionary<string, string> Layers { get; protected set; } = new();
 
+    public Patterns Patterns { get; protected set; } = new();
     public Cutouts Cutouts { get; protected set; } = new();
-
-    public string BaseColor => GetOrderedLayers()?.FirstOrDefault()?.Color;
 
     public BannerProperties(string defaultPlacement)
     {
@@ -26,58 +20,16 @@ public class BannerProperties
         }
     }
 
-    public IOrderedEnumerable<BannerLayer> GetOrderedLayers(string textureCode = null)
-    {
-        return Layers
-            .Select(x => BannerLayer.FromLayer(x.Key).WithColor(x.Value).WithTextureCode(textureCode))
-            .OrderBy(x => x.Priority.ToInt());
-    }
-
-    public bool AddLayer(BannerLayer layer, IWorldAccessor world, IPlayer player = null)
-    {
-        if (GetLayersLimit(world) + 1 <= Layers.Count && !player.IsCreative())
-        {
-            return false;
-        }
-        return Layers.TryAdd(layer.AttributeKey(Layers.Count.ToString()), layer.AttributeValue());
-    }
-
-    public static int GetLayersLimit(IWorldAccessor world)
-    {
-        return world.Config.GetAsInt(worldConfigLayersLimit);
-    }
-
-    public bool RemoveLastLayer()
-    {
-        return Layers.Count > 1 && Layers.Remove(GetOrderedLayers().Last().AttributeKey());
-    }
-
     public void GetDescription(StringBuilder dsc, bool withDebugInfo = false)
     {
-        if (Layers.Any())
-        {
-            dsc.AppendLine(langCodePatterns.Localize());
-            IOrderedEnumerable<BannerLayer> layers = GetOrderedLayers();
-            dsc.Append('\t');
-            dsc.AppendLine(layers.First().Name);
-            if (lastPatternDisplayAmount < layers.Skip(1).Count())
-            {
-                dsc.AppendLine("...");
-            }
-            foreach (BannerLayer layer in layers.Skip(1).TakeLast(lastPatternDisplayAmount))
-            {
-                if (withDebugInfo) dsc.Append(layer).Append('\t');
-                dsc.Append('\t');
-                dsc.AppendLine(layer.Name);
-            }
-        }
+        Patterns.GetDescription(dsc, withDebugInfo);
         Cutouts.GetDescription(dsc, withDebugInfo);
     }
 
     public BannerProperties FromTreeAttribute(ITreeAttribute tree)
     {
         ITreeAttribute bannerTree = GetBannerTree(tree);
-        LayersFromTree(bannerTree);
+        Patterns.FromTreeAttribute(bannerTree);
         Cutouts.FromTreeAttribute(bannerTree);
         Name = bannerTree.GetString(attributeName, Name);
         Placement = bannerTree.GetString(attributePlacement, Placement);
@@ -87,9 +39,8 @@ public class BannerProperties
     public void ToTreeAttribute(ITreeAttribute tree, bool setPlacement = true)
     {
         ITreeAttribute bannerTree = GetBannerTree(tree);
-        LayersToTree(bannerTree);
+        Patterns.ToTreeAttribute(bannerTree);
         Cutouts.ToTreeAttribute(bannerTree);
-
         if (!string.IsNullOrEmpty(Name))
         {
             bannerTree.SetString(attributeName, Name);
@@ -97,26 +48,6 @@ public class BannerProperties
         if (setPlacement)
         {
             SetPlacement(tree, Placement);
-        }
-    }
-
-    public void LayersFromTree(ITreeAttribute bannerTree)
-    {
-        ITreeAttribute layersTree = bannerTree.GetOrAddTreeAttribute(attributeLayers);
-
-        foreach (string key in layersTree.Select(x => x.Key).Where(x => !Layers.ContainsKey(x)))
-        {
-            Layers.Add(key, layersTree.GetString(key));
-        }
-    }
-
-    public void LayersToTree(ITreeAttribute bannerTree)
-    {
-        ITreeAttribute layersTree = bannerTree.GetOrAddTreeAttribute(attributeLayers);
-
-        foreach ((string key, string val) in Layers)
-        {
-            layersTree.SetString(key, val);
         }
     }
 
@@ -134,10 +65,7 @@ public class BannerProperties
     public bool CopyFrom(ItemStack fromStack, bool copyLayers = false, bool copyCutouts = false)
     {
         bool any = false;
-        if (copyLayers)
-        {
-            any = TryCopyLayersFrom(fromStack);
-        }
+        if (copyLayers) any = Patterns.CopyFrom(fromStack);
         // if (copyCutouts)
         // {
         //     any = Cutouts.CopyFrom(fromStack);
@@ -148,42 +76,12 @@ public class BannerProperties
     public bool CopyTo(ItemStack toStack, bool copyLayers = false, bool copyCutouts = false)
     {
         bool any = false;
-        if (copyLayers)
-        {
-            any = TryCopyLayersTo(toStack);
-        }
+        if (copyLayers) any = Patterns.CopyTo(toStack);
         // if (copyCutouts)
         // {
         //     any = Cutouts.CopyTo(toStack);
         // }
         return any;
-    }
-
-    public bool TryCopyLayersTo(ItemStack toStack)
-    {
-        BannerProperties toProps = FromStack(toStack);
-        if (Layers.Count > 1 && toProps.Layers.Count == 1 && SameBaseColors(toProps))
-        {
-            LayersToTree(GetBannerTree(toStack.Attributes));
-            return true;
-        }
-        return false;
-    }
-
-    public bool TryCopyLayersFrom(ItemStack fromStack)
-    {
-        BannerProperties fromProps = FromStack(fromStack);
-        if (fromProps.Layers.Count > 1 && Layers.Count == 1 && SameBaseColors(fromProps))
-        {
-            LayersFromTree(GetBannerTree(fromStack.Attributes));
-            return true;
-        }
-        return false;
-    }
-
-    public bool SameBaseColors(BannerProperties properties)
-    {
-        return BaseColor == properties.BaseColor;
     }
 
     public void SetPlacement(string placement)
@@ -217,13 +115,7 @@ public class BannerProperties
         result.Append(Name);
         result.Append('-');
         result.Append(Placement);
-        if (Layers.Any())
-        {
-            result.Append('-');
-            result.Append('(');
-            result.Append(string.Join(layerSeparator, Layers.Select(x => $"{x.Key}-{x.Value}")));
-            result.Append(')');
-        }
+        result.Append(Patterns.ToString());
         result.Append(Cutouts.ToString());
         return result.ToString();
     }

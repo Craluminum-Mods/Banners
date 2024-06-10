@@ -126,7 +126,7 @@ public static class BannerExtensions
 
             if (block.TextureCodesForOverlays.Contains(textureCode))
             {
-                foreach (BannerLayer layer in properties.GetOrderedLayers(textureCode))
+                foreach (BannerLayer layer in properties.Patterns.GetOrdered(textureCode))
                 {
                     block.ApplyOverlay(capi, textureCode, ctex, layer);
                 }
