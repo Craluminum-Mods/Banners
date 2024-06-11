@@ -92,7 +92,7 @@ public class Patterns
 
     public void FromTreeAttribute(ITreeAttribute bannerTree)
     {
-        ITreeAttribute patternsTree = bannerTree.GetOrAddTreeAttribute(attributeLayers);
+        ITreeAttribute patternsTree = GetPatternsTree(bannerTree);
 
         foreach (string key in patternsTree.Select(x => x.Key).Where(key => !Elements.ContainsKey(key)))
         {
@@ -102,13 +102,13 @@ public class Patterns
 
     public void ToTreeAttribute(ITreeAttribute bannerTree)
     {
-        ITreeAttribute patternsTree = bannerTree.GetOrAddTreeAttribute(attributeLayers);
-
         foreach ((string key, string val) in Elements)
         {
-            patternsTree.SetString(key, val);
+            GetPatternsTree(bannerTree).SetString(key, val);
         }
     }
+
+    public static ITreeAttribute GetPatternsTree(ITreeAttribute tree) => tree.GetOrAddTreeAttribute(attributeLayers);
 
     public override string ToString()
     {

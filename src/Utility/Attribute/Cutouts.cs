@@ -85,23 +85,18 @@ public class Cutouts
 
     public void FromTreeAttribute(ITreeAttribute bannerTree)
     {
-        ITreeAttribute cutoutsTree = bannerTree.GetOrAddTreeAttribute(attributeCutouts);
-
-        foreach (string key in cutoutsTree.Select(x => x.Key).Where(key => !Elements.Contains(key)))
-        {
-            Elements.Add(key);
-        }
+        Elements.AddRange(GetCutoutsTree(bannerTree).Select(x => x.Key).Where(key => !Elements.Contains(key)));
     }
 
     public void ToTreeAttribute(ITreeAttribute bannerTree)
     {
-        ITreeAttribute cutoutsTree = bannerTree.GetOrAddTreeAttribute(attributeCutouts);
-
         foreach (string key in Elements)
         {
-            cutoutsTree.SetString(key, "");
+            GetCutoutsTree(bannerTree).SetString(key, "");
         }
     }
+
+    public static ITreeAttribute GetCutoutsTree(ITreeAttribute tree) => tree.GetOrAddTreeAttribute(attributeCutouts);
 
     public override string ToString()
     {

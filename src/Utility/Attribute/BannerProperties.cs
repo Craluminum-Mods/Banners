@@ -114,10 +114,7 @@ public class BannerProperties
         tree.GetOrAddTreeAttribute(attributeBanner).RemoveAttribute(attributePlacement);
     }
 
-    public static ITreeAttribute GetBannerTree(ITreeAttribute tree)
-    {
-        return tree.GetOrAddTreeAttribute(attributeBanner);
-    }
+    public static ITreeAttribute GetBannerTree(ITreeAttribute tree) => tree.GetOrAddTreeAttribute(attributeBanner);
 
     public override string ToString()
     {
