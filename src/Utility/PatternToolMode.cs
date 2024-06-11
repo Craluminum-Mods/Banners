@@ -10,7 +10,7 @@ public class PatternToolMode
 {
     public string Pattern { get; set; }
     public bool Linebreak { get; set; }
-    public Unlockable[] Unlockable { get; set; } = null;
+    public UnlockableBy[] Unlockable { get; set; } = null;
 
     public SkillItem GetToolMode(ICoreClientAPI capi, ItemSlot slot)
     {
@@ -98,19 +98,19 @@ public class PatternToolMode
     {
         return Unlockable == null || (Unlockable != null && BannerPatternProperties.FromStack(slot.Itemstack).IsUnlocked(Pattern));
     }
-}
 
-public class Unlockable
-{
-    public string Code { get; set; }
-    public EnumItemClass Type { get; set; }
-    public Dictionary<string, string> HasAttributes { get; set; } = new();
-
-    public bool Matches(ItemStack stack)
+    public class UnlockableBy
     {
-        return stack != null && !string.IsNullOrEmpty(Code)
-            && new AssetLocation(Code) == stack.Collectible.Code
-            && Type == stack.Class
-            && (HasAttributes == null || (HasAttributes != null && HasAttributes.All(x => stack.Attributes.GetAsString(x.Key) == x.Value)));
+        public string Code { get; set; }
+        public EnumItemClass Type { get; set; }
+        public Dictionary<string, string> HasAttributes { get; set; } = new();
+
+        public bool Matches(ItemStack stack)
+        {
+            return stack != null && !string.IsNullOrEmpty(Code)
+                && new AssetLocation(Code) == stack.Collectible.Code
+                && Type == stack.Class
+                && (HasAttributes == null || (HasAttributes != null && HasAttributes.All(x => stack.Attributes.GetAsString(x.Key) == x.Value)));
+        }
     }
 }
