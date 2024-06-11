@@ -27,12 +27,7 @@ public class CollectibleBehaviorBannerPatternToolModes : CollectibleBehavior
 
     public override void SetToolMode(ItemSlot slot, IPlayer byPlayer, BlockSelection blockSelection, int index)
     {
-        if (slot.Empty) return;
-
-        if (ToolModes.Count <= index)
-        {
-            return;
-        }
+        if (slot.Empty || ToolModes.Count <= index) return;
 
         PatternToolMode.TryUnlockAll(ToolModes, slot, null, skipStack: true);
 
