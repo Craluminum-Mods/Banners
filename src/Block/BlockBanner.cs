@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -102,6 +103,13 @@ public class BlockBanner : Block
         base.GetHeldItemInfo(inSlot, sb, world, withDebugInfo);
         sb.AppendLine(langCodePatternGroups.Localize(string.Join(commaSeparator, PatternGroups.Select(group => $"{langCodePatternGroup}{group}".Localize()))));
         BannerProperties.FromStack(inSlot.Itemstack, this).GetDescription(sb, ShowDebugInfo);
+    }
+
+    public override bool Equals(ItemStack thisStack, ItemStack otherStack, params string[] ignoreAttributeSubTrees)
+    {
+        ignoreAttributeSubTrees ??= Array.Empty<string>();
+        ignoreAttributeSubTrees = ignoreAttributeSubTrees.Append(BannersIgnoreAttributeSubTrees);
+        return base.Equals(thisStack, otherStack, ignoreAttributeSubTrees);
     }
 
     public override ItemStack[] GetDrops(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, float dropQuantityMultiplier = 1f)

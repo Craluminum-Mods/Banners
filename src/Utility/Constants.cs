@@ -55,6 +55,8 @@ public static class Constants
     public const string langCodeCutouts = $"{modDomain}:cutouts";
     public const string langCodeAddCutout = $"{modDomain}:blockhelp-banner-addcutout";
     public const string langCodeRemoveCutout = $"{modDomain}:blockhelp-banner-removecutout";
+    public const string langCodeSetToolmode = "heldhelp-settoolmode";
+    public const string langCodeToolMode = $"{modDomain}:toolmode-";
 
     public const string cacheKeyBlockBannerMeshes = $"{modDomain}BlockBannerMeshes";
     public const string cacheKeyBlockBannerInvMeshes = $"{modDomain}BlockBannerMeshesInventory";
@@ -71,6 +73,7 @@ public static class Constants
     public const string cacheKeyRotatableBannerInteractions = $"{modDomain}RotatableBannerInteractions";
     public const string cacheKeyWrenchableBannerInteractions = $"{modDomain}WrenchableBannerInteractions";
     public const string cacheKeyQuestionTexture = $"{modDomain}QuestionTexture";
+    public const string cacheKeyBannerToolModeTextures = $"{modDomain}BannerToolModeTextures";
 
     public const string attributeTitle = "title";
     public const string attributeBanner = "banner";
@@ -130,6 +133,8 @@ public static class Constants
     public const string pathConverter = "flags:config/mc-to-vs-converter.json";
     public const string outputFolderName = "Banners";
     public static string OutputFolder => Path.Combine(GamePaths.Cache, outputFolderName);
+
+    public static string[] BannersIgnoreAttributeSubTrees => new string[] { attributeToolModes };
 
     public class IngameError
     {

@@ -1,0 +1,12 @@
+Textures/Icons
+
+resources/assets/flags/textures/icons/axis*.svg - https://www.svgrepo.com/svg/258055/axis
+resources/assets/flags/textures/icons/delete.svg - https://www.svgrepo.com/svg/502614/delete
+resources/assets/flags/textures/icons/hand*.svg - https://www.svgrepo.com/svg/438606/hand
+resources/assets/flags/textures/icons/map*.svg - https://www.svgrepo.com/svg/6161/map
+resources/assets/flags/textures/icons/paintbrush*.svg - https://www.svgrepo.com/svg/164230/paintbrush
+resources/assets/flags/textures/icons/rotation*.svg - https://www.svgrepo.com/svg/479359/rotation-lock-3
+resources/assets/flags/textures/icons/save.svg - https://www.svgrepo.com/svg/12687/save
+resources/assets/flags/textures/icons/wind*.svg - https://www.svgrepo.com/svg/472091/wind-02
+
+640x640 as default, 384x384 as subicon (on 640px icon)

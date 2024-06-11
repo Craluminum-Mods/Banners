@@ -430,7 +430,74 @@
                 "defaultName": "flags:block-banner"
             }
         },
-        { "name": "Flags.BannerInteractions" }
+        { "name": "Flags.BannerInteractions" },
+        {
+            "name": "Flags.BannerToolModes",
+            "properties": {
+                "defaultValues": {
+                    "displayonmap": "off",
+                    "pickup": "off",
+                    "wind": "on",
+                    "axis": "free",
+                    "editmode": "on",
+                    "saverotations": "off"
+                },
+                "toolModes": [
+                    {
+                        "icon": "flags:textures/icons/toolmode/map-off.svg",
+                        "condition": { "key": "displayonmap", "isValue": "off", "setValue": "on", "default": true }
+                    },
+                    {
+                        "icon": "flags:textures/icons/toolmode/map-on.svg",
+                        "condition": { "key": "displayonmap", "isValue": "on", "setValue": "forgroup" }
+                    },
+                    {
+                        "icon": "flags:textures/icons/toolmode/map-on-friends.svg",
+                        "condition": { "key": "displayonmap", "isValue": "forgroup", "setValue": "off" }
+                    },
+                    {
+                        "icon": "flags:textures/icons/toolmode/hand-off.svg",
+                        "condition": { "key": "pickup", "isValue": "off", "setValue": "on", "default": true }
+                    },
+                    {
+                        "icon": "flags:textures/icons/toolmode/hand-on.svg",
+                        "condition": { "key": "pickup", "isValue": "on", "setValue": "off" }
+                    },
+                    {
+                        "icon": "flags:textures/icons/toolmode/wind-on.svg",
+                        "condition": { "key": "wind", "isValue": "on", "setValue": "off", "default": true }
+                    },
+                    {
+                        "icon": "flags:textures/icons/toolmode/wind-off.svg",
+                        "condition": { "key": "wind", "isValue": "off", "setValue": "on" }
+                    },
+                    {
+                        "icon": "flags:textures/icons/toolmode/axis-unlocked.svg",
+                        "condition": { "key": "axis", "isValue": "free", "setValue": "lock", "default": true }
+                    },
+                    {
+                        "icon": "flags:textures/icons/toolmode/axis-locked.svg",
+                        "condition": { "key": "axis", "isValue": "lock", "setValue": "free" }
+                    },
+                    {
+                        "icon": "flags:textures/icons/toolmode/paintbrush-unlocked.svg",
+                        "condition": { "key": "editmode", "isValue": "on", "setValue": "off", "default": true }
+                    },
+                    {
+                        "icon": "flags:textures/icons/toolmode/paintbrush-locked.svg",
+                        "condition": { "key": "editmode", "isValue": "off", "setValue": "on" }
+                    },
+                    {
+                        "icon": "flags:textures/icons/toolmode/rotation-delete.svg",
+                        "condition": { "key": "saverotations", "isValue": "off", "setValue": "on", "default": true }
+                    },
+                    {
+                        "icon": "flags:textures/icons/toolmode/rotation-save.svg",
+                        "condition": { "key": "saverotations", "isValue": "on", "setValue": "off" }
+                    }
+                ]
+            }
+        }
     ],
     "maxStackSize": 16,
     "blockmaterial": "Wood",
