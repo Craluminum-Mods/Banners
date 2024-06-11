@@ -38,7 +38,7 @@ public static class Constants
     public const string langCodePatternGroup = $"{modDomain}:patterngroup-";
     public const string langCodePatternGroups = $"{modDomain}:patterngroups";
     public const string langCodeAddLayer = $"{modDomain}:blockhelp-banner-addlayer";
-    public const string langCodeRemovelayer = $"{modDomain}:blockhelp-banner-removelayer";
+    public const string langCodeRemoveLayer = $"{modDomain}:blockhelp-banner-removelayer";
     public const string langCodeCopyLayers = $"{modDomain}:blockhelp-banner-copylayers";
     public const string langCodeRename = $"{modDomain}:blockhelp-banner-rename";
     public const string langCodeSwapModel = $"{modDomain}:blockhelp-banner-swapmodel";
@@ -53,6 +53,8 @@ public static class Constants
     public const string langCodeUnlockedPatterns = $"{modDomain}:unlocked-patterns";
     public const string langCodePatterns = $"{modDomain}:patterns";
     public const string langCodeCutouts = $"{modDomain}:cutouts";
+    public const string langCodeAddCutout = $"{modDomain}:blockhelp-banner-addcutout";
+    public const string langCodeRemoveCutout = $"{modDomain}:blockhelp-banner-removecutout";
 
     public const string cacheKeyBlockBannerMeshes = $"{modDomain}BlockBannerMeshes";
     public const string cacheKeyBlockBannerInvMeshes = $"{modDomain}BlockBannerMeshesInventory";
@@ -65,6 +67,7 @@ public static class Constants
     public const string cacheKeyDyeStacks = $"{modDomain}DyeStacks";
     public const string cacheKeyBleachStacks = $"{modDomain}BleachStacks";
     public const string cacheKeyBannerStacks = $"{modDomain}BannerStacks";
+    public const string cacheKeyShearsStacks = $"{modDomain}ShearsStacks";
     public const string cacheKeyRotatableBannerInteractions = $"{modDomain}RotatableBannerInteractions";
     public const string cacheKeyWrenchableBannerInteractions = $"{modDomain}WrenchableBannerInteractions";
     public const string cacheKeyQuestionTexture = $"{modDomain}QuestionTexture";

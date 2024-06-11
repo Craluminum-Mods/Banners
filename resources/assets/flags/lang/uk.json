@@ -137,6 +137,8 @@
 
     "blockhelp-banner-addlayer": "Додати шар (потрібен візерунок в лівій руці)",
     "blockhelp-banner-removelayer": "Видалити останній шар",
+    "blockhelp-banner-addcutout": "Додати вирізку (потрібен візерунок в лівій руці)",
+    "blockhelp-banner-removecutout": "Видалити останню вирізку",
     "blockhelp-banner-copylayers": "Копіювати шари",
     "blockhelp-banner-rename": "Перейменувати (потрібна книга/папір з заголовком)",
     "blockhelp-banner-swapmodel": "Переключити на наступну модель",

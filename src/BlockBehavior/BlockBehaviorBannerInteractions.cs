@@ -237,9 +237,21 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
             },
             new WorldInteraction()
             {
-                ActionLangCode =  langCodeRemovelayer,
+                ActionLangCode =  langCodeRemoveLayer,
                 MouseButton = EnumMouseButton.Right,
                 Itemstacks = ObjectCacheUtil.TryGet<ItemStack[]>(capi, cacheKeyBleachStacks)
+            },
+            new WorldInteraction()
+            {
+                ActionLangCode = langCodeAddCutout,
+                MouseButton = EnumMouseButton.Right,
+                Itemstacks = ObjectCacheUtil.TryGet<ItemStack[]>(capi, cacheKeyShearsStacks)
+            },
+            new WorldInteraction()
+            {
+                ActionLangCode =  langCodeRemoveCutout,
+                MouseButton = EnumMouseButton.Right,
+                Itemstacks = ObjectCacheUtil.TryGet<ItemStack[]>(capi, cacheKeyShearsStacks)
             },
             new WorldInteraction()
             {

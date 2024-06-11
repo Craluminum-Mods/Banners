@@ -49,6 +49,11 @@ public class CachedInteractions : ModSystem
             return capi.World.Collectibles.Where(obj => BannerLiquid.TryGet(obj, out BannerLiquid liquid) && liquid.IsBleach).SelectMany(obj => obj.GetHandBookStacksArray(capi)).ToArray();
         });
 
+        ObjectCacheUtil.GetOrCreate(capi, cacheKeyShearsStacks, () =>
+        {
+            return capi.World.Collectibles.Where(obj => obj is ItemShears && obj is not ItemScythe).SelectMany(obj => obj.GetHandBookStacksArray(capi)).ToArray();
+        });
+
         ObjectCacheUtil.GetOrCreate(capi, cacheKeyRotatableBannerInteractions, () =>
         {
             return new WorldInteraction[]
@@ -100,6 +105,7 @@ public class CachedInteractions : ModSystem
         ObjectCacheUtil.Delete(capi, cacheKeyWrenchStacks);
         ObjectCacheUtil.Delete(capi, cacheKeyDyeStacks);
         ObjectCacheUtil.Delete(capi, cacheKeyBleachStacks);
+        ObjectCacheUtil.Delete(capi, cacheKeyShearsStacks);
         ObjectCacheUtil.Delete(capi, cacheKeyRotatableBannerInteractions);
         ObjectCacheUtil.Delete(capi, cacheKeyWrenchableBannerInteractions);
 

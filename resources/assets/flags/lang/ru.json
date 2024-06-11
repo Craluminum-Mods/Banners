@@ -137,6 +137,8 @@
 
     "blockhelp-banner-addlayer": "Добавить узор (требуется узор в левой руке)",
     "blockhelp-banner-removelayer": "Удалить последний узор",
+    "blockhelp-banner-addcutout": "Добавить вырез (требуется узор в левой руке)",
+    "blockhelp-banner-removecutout": "Удалить последний вырез",
     "blockhelp-banner-copylayers": "Копировать узоры",
     "blockhelp-banner-rename": "Переименовать (требуется книга/бумага с заголовком)",
     "blockhelp-banner-swapmodel": "Переключить на следующую модель",

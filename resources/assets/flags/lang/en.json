@@ -137,6 +137,8 @@
 
     "blockhelp-banner-addlayer": "Add pattern (requires pattern in left hand)",
     "blockhelp-banner-removelayer": "Remove last pattern",
+    "blockhelp-banner-addcutout": "Add cutout (requires pattern in left hand)",
+    "blockhelp-banner-removecutout": "Remove last cutout",
     "blockhelp-banner-copylayers": "Copy patterns",
     "blockhelp-banner-rename": "Rename (requires book/paper with title)",
     "blockhelp-banner-swapmodel": "Switch to next model",
