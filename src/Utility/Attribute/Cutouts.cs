@@ -64,7 +64,7 @@ public class Cutouts
     public bool CopyFrom(ItemStack fromStack)
     {
         BannerProperties fromProps = BannerProperties.FromStack(fromStack);
-        if (fromProps.Cutouts.Elements.Count > 1 && !Elements.Any())
+        if (fromProps.Cutouts.Elements.Any() && !Elements.Any())
         {
             FromTreeAttribute(BannerProperties.GetBannerTree(fromStack.Attributes));
             return true;
@@ -75,7 +75,7 @@ public class Cutouts
     public bool CopyTo(ItemStack toStack)
     {
         BannerProperties toProps = BannerProperties.FromStack(toStack);
-        if (Elements.Count > 1 && !toProps.Cutouts.Elements.Any())
+        if (Elements.Any() && !toProps.Cutouts.Elements.Any())
         {
             ToTreeAttribute(BannerProperties.GetBannerTree(toStack.Attributes));
             return true;

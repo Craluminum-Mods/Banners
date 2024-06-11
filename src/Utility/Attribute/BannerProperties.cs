@@ -64,26 +64,34 @@ public class BannerProperties
 
     public bool CopyFrom(ItemStack fromStack, bool copyLayers = false, bool copyCutouts = false)
     {
-        bool any = false;
-        if (copyLayers) any = Patterns.CopyFrom(fromStack);
-        if (copyCutouts) any = Cutouts.CopyFrom(fromStack);
-        if (any)
+        bool layersSuccess = copyLayers;
+        bool cutoutsSuccess = copyCutouts;
+
+        if (copyLayers) layersSuccess = Patterns.CopyFrom(fromStack);
+        if (copyCutouts) cutoutsSuccess = Cutouts.CopyFrom(fromStack);
+
+        if (layersSuccess || cutoutsSuccess)
         {
             FromTreeAttribute(fromStack.Attributes);
         }
-        return any;
+
+        return layersSuccess || cutoutsSuccess;
     }
 
     public bool CopyTo(ItemStack toStack, bool copyLayers = false, bool copyCutouts = false)
     {
-        bool any = false;
-        if (copyLayers) any = Patterns.CopyTo(toStack);
-        if (copyCutouts) any = Cutouts.CopyTo(toStack);
-        if (any)
+        bool layersSuccess = copyLayers;
+        bool cutoutsSuccess = copyCutouts;
+
+        if (copyLayers) layersSuccess = Patterns.CopyTo(toStack);
+        if (copyCutouts) cutoutsSuccess = Cutouts.CopyTo(toStack);
+
+        if (layersSuccess || cutoutsSuccess)
         {
             ToTreeAttribute(toStack.Attributes);
         }
-        return any;
+
+        return layersSuccess || cutoutsSuccess;
     }
 
     public void SetPlacement(string placement)

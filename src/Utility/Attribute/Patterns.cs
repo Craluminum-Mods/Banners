@@ -63,23 +63,23 @@ public class Patterns
         }
     }
 
-    public bool CopyTo(ItemStack toStack)
-    {
-        BannerProperties toProps = BannerProperties.FromStack(toStack);
-        if (Elements.Count > 1 && toProps.Patterns.Elements.Count == 1 && SameBaseColors(toProps))
-        {
-            ToTreeAttribute(BannerProperties.GetBannerTree(toStack.Attributes));
-            return true;
-        }
-        return false;
-    }
-
     public bool CopyFrom(ItemStack fromStack)
     {
         BannerProperties fromProps = BannerProperties.FromStack(fromStack);
         if (fromProps.Patterns.Elements.Count > 1 && Elements.Count == 1 && SameBaseColors(fromProps))
         {
             FromTreeAttribute(BannerProperties.GetBannerTree(fromStack.Attributes));
+            return true;
+        }
+        return false;
+    }
+
+    public bool CopyTo(ItemStack toStack)
+    {
+        BannerProperties toProps = BannerProperties.FromStack(toStack);
+        if (Elements.Count > 1 && toProps.Patterns.Elements.Count == 1 && SameBaseColors(toProps))
+        {
+            ToTreeAttribute(BannerProperties.GetBannerTree(toStack.Attributes));
             return true;
         }
         return false;
