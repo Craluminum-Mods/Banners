@@ -76,6 +76,8 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         {
             liquidProps.TryTakeLiquid(activeSlot.Itemstack, blockContainer);
         }
+
+        byPlayer.DoLiquidMovedEffects(blockContainer.GetContent(activeSlot.Itemstack), 1000, BlockLiquidContainerBase.EnumLiquidDirection.Pour);
         return true;
     }
 
@@ -111,6 +113,8 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         {
             liquidProps.TryTakeLiquid(activeSlot.Itemstack, blockContainer);
         }
+
+        byPlayer.DoLiquidMovedEffects(blockContainer.GetContent(activeSlot.Itemstack), 1000, BlockLiquidContainerBase.EnumLiquidDirection.Pour);
         return true;
     }
 
