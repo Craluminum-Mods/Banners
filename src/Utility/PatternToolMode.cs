@@ -4,7 +4,7 @@ using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Util;
 
-namespace Flags.ToolModes;
+namespace Flags.ToolModes.BannerPattern;
 
 public class PatternToolMode
 {
@@ -109,7 +109,7 @@ public class Unlockable
     public bool Matches(ItemStack stack)
     {
         return stack != null && !string.IsNullOrEmpty(Code)
-            && new AssetLocation(Code) == stack.Collectible.Code
+            && AssetLocation.Create(Code).Equals(stack.Collectible.Code)
             && Type == stack.Class
             && (HasAttributes == null || (HasAttributes != null && HasAttributes.All(x => stack.Attributes.GetAsString(x.Key) == x.Value)));
     }

@@ -1,4 +1,4 @@
-using Flags.ToolModes;
+using Flags.ToolModes.BannerPattern;
 using System;
 using System.Collections.Generic;
 using System.Linq;
