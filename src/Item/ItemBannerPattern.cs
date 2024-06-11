@@ -14,6 +14,7 @@ public class ItemBannerPattern : ItemRollableFixed
     public Dictionary<string, CompositeTexture> CustomTextures { get; protected set; } = new();
     public List<string> TextureCodesForOverlays { get; protected set; } = new();
 
+    public Dictionary<string, MeshData> Meshes => ObjectCacheUtil.GetOrCreate(api, cacheKeyItemBannerPatternMeshes, () => new Dictionary<string, MeshData>());
     public Dictionary<string, MultiTextureMeshRef> InvMeshes => ObjectCacheUtil.GetOrCreate(api, cacheKeyItemBannerPatternMeshesInv, () => new Dictionary<string, MultiTextureMeshRef>());
 
     public override void OnLoaded(ICoreAPI api)
@@ -29,6 +30,10 @@ public class ItemBannerPattern : ItemRollableFixed
         CustomTextures.Clear();
         TextureCodesForOverlays.Clear();
 
+        foreach (MeshData mesh in Meshes.Values)
+        {
+            mesh.Dispose();
+        }
         foreach (MultiTextureMeshRef meshRef in InvMeshes.Values)
         {
             meshRef.Dispose();

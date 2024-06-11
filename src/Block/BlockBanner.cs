@@ -31,6 +31,8 @@ public class BlockBanner : Block
     public List<string> Colors { get; protected set; } = new();
     public List<string> IgnoreForGeneratingTextures { get; protected set; } = new();
 
+    public Dictionary<string, MeshData> Meshes => ObjectCacheUtil.GetOrCreate(api, cacheKeyBlockBannerMeshes, () => new Dictionary<string, MeshData>());
+    public Dictionary<string, MeshData> ContainableMeshes => ObjectCacheUtil.GetOrCreate(api, cacheKeyBlockBannerContainableMeshes, () => new Dictionary<string, MeshData>());
     public Dictionary<string, MultiTextureMeshRef> InvMeshes => ObjectCacheUtil.GetOrCreate(api, cacheKeyBlockBannerInvMeshes, () => new Dictionary<string, MultiTextureMeshRef>());
 
     public override void OnLoaded(ICoreAPI api)
@@ -53,10 +55,21 @@ public class BlockBanner : Block
         CustomSelectionBoxes.Clear();
         CustomCollisionBoxes.Clear();
 
+        foreach (MeshData mesh in Meshes.Values)
+        {
+            mesh.Dispose();
+        }
+        foreach (MeshData mesh in ContainableMeshes.Values)
+        {
+            mesh.Dispose();
+        }
         foreach (MultiTextureMeshRef meshRef in InvMeshes.Values)
         {
             meshRef.Dispose();
         }
+
+        ObjectCacheUtil.Delete(api, cacheKeyBlockBannerMeshes);
+        ObjectCacheUtil.Delete(api, cacheKeyBlockBannerContainableMeshes);
         ObjectCacheUtil.Delete(api, cacheKeyBlockBannerInvMeshes);
     }
 

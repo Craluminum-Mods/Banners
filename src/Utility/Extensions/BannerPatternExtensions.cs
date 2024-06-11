@@ -1,7 +1,5 @@
-using System.Collections.Generic;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
-using Vintagestory.API.Util;
 using Vintagestory.GameContent;
 
 namespace Flags;
@@ -11,12 +9,10 @@ public static class BannerPatternExtensions
     public static MeshData GetOrCreateMesh(this ItemBannerPattern item, ICoreAPI api, BannerPatternProperties properties)
     {
         ICoreClientAPI capi = api as ICoreClientAPI;
-        Dictionary<string, MeshData> Meshes = ObjectCacheUtil.GetOrCreate(capi, cacheKeyItemBannerPatternMeshes, () => new Dictionary<string, MeshData>());
 
         string key = $"{item.Code}-{properties}";
-        if (!Meshes.TryGetValue(key, out MeshData mesh))
+        if (!item.Meshes.TryGetValue(key, out MeshData mesh))
         {
-            mesh = new MeshData(4, 3);
             CompositeShape rcshape = item.Shape;
             if (rcshape == null)
             {
@@ -34,7 +30,7 @@ public static class BannerPatternExtensions
                 return mesh;
             }
             capi.Tesselator.TesselateShape("Banner pattern item", shape, out mesh, texSource);
-            Meshes[key] = mesh;
+            item.Meshes[key] = mesh;
         }
         return mesh;
     }

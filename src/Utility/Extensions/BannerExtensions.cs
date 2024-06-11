@@ -18,7 +18,6 @@ public static class BannerExtensions
     public static MeshData GetOrCreateMesh(this BlockBanner block, ICoreAPI api, BannerProperties properties, ITexPositionSource overrideTexturesource = null)
     {
         ICoreClientAPI capi = api as ICoreClientAPI;
-        Dictionary<string, MeshData> Meshes = ObjectCacheUtil.GetOrCreate(capi, cacheKeyBlockBannerMeshes, () => new Dictionary<string, MeshData>());
 
         if (string.IsNullOrEmpty(properties.Placement))
         {
@@ -27,9 +26,8 @@ public static class BannerExtensions
 
         string key = $"{block.Code}-{properties}";
 
-        if (overrideTexturesource != null || !Meshes.TryGetValue(key, out MeshData mesh))
+        if (overrideTexturesource != null || !block.Meshes.TryGetValue(key, out MeshData mesh))
         {
-            mesh = new MeshData(4, 3);
             if (!block.CustomShapes.TryGetValue(properties.Placement, out CompositeShape rcshape))
             {
                 capi.Tesselator.TesselateBlock(block, out mesh);
@@ -57,7 +55,7 @@ public static class BannerExtensions
             }
             if (overrideTexturesource == null)
             {
-                Meshes[key] = mesh;
+                block.Meshes[key] = mesh;
             }
         }
         return mesh;
@@ -66,14 +64,12 @@ public static class BannerExtensions
     public static MeshData GetOrCreateContainableMesh(this BlockBanner block, ICoreAPI api, ItemStack stack, string shapeKey, Vec3f rotation)
     {
         ICoreClientAPI capi = api as ICoreClientAPI;
-        Dictionary<string, MeshData> Meshes = ObjectCacheUtil.GetOrCreate(capi, cacheKeyBlockBannerContainableMeshes, () => new Dictionary<string, MeshData>());
 
         BannerProperties properties = BannerProperties.FromStack(stack);
         string key = $"{block.Code}-{properties}-{shapeKey}-{rotation}";
 
-        if (!Meshes.TryGetValue(key, out MeshData mesh))
+        if (!block.ContainableMeshes.TryGetValue(key, out MeshData mesh))
         {
-            mesh = new MeshData(4, 3);
             if (!block.CustomShapesContainable.TryGetValueOrWildcard(shapeKey, out CompositeShape rcshape))
             {
                 capi.Tesselator.TesselateBlock(block, out mesh);
@@ -99,7 +95,7 @@ public static class BannerExtensions
                 capi.Logger.Error("[Flags] Can't create shape for block {0} for BannerContainable key '{1}' because of broken textures", block.Code, shapeKey);
                 return mesh;
             }
-            Meshes[key] = mesh;
+            block.ContainableMeshes[key] = mesh;
         }
         return mesh;
     }
