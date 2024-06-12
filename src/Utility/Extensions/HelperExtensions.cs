@@ -43,6 +43,8 @@ public static class HelperExtensions
         return Lang.GetMatching(input, args);
     }
 
+    public static bool HasTranslation(this string key) => Lang.HasTranslation(key);
+
     public static bool TryGetBEBehavior<T>(this IBlockAccessor blockAccessor, BlockSelection blockSel, out T behavior) where T : BlockEntityBehavior
     {
         if (blockSel == null)

@@ -51,7 +51,7 @@ public class BannerModes
         dsc.AppendLine(langCodeBannerModes.Localize());
         foreach ((string key, string value) in Elements)
         {
-            if (!Lang.HasTranslation(LangCode(key)))
+            if (!LangCode(key).HasTranslation())
             {
                 continue;
             }

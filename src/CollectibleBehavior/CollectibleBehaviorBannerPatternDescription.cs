@@ -15,7 +15,7 @@ public class CollectibleBehaviorBannerPatternDescription : CollectibleBehavior
         if (!inSlot.Empty && TryGetProperties(out BannerPatternProperties props, inSlot.Itemstack))
         {
             string descLangCode = $"{langCodePatternDesc}{props.Type}";
-            if (Lang.HasTranslation(descLangCode))
+            if (descLangCode.HasTranslation())
             {
                 dsc.Append(descLangCode.Localize() + '\n');
             }
