@@ -444,23 +444,23 @@
             "properties": {
                 "toolModes": [
                     {
-                        "icon": "flags:textures/icons/toolmode/map-off.svg",
+                        "icon": "flags:textures/icons/toolmode/displayonmap-off.svg",
                         "condition": { "key": "displayonmap", "isValue": "off", "setValue": "on", "default": true }
                     },
                     {
-                        "icon": "flags:textures/icons/toolmode/map-on.svg",
-                        "condition": { "key": "displayonmap", "isValue": "on", "setValue": "forgroup" }
+                        "icon": "flags:textures/icons/toolmode/displayonmap-on.svg",
+                        "condition": { "key": "displayonmap", "isValue": "on", "setValue": "group" }
                     },
                     {
-                        "icon": "flags:textures/icons/toolmode/map-on-friends.svg",
-                        "condition": { "key": "displayonmap", "isValue": "forgroup", "setValue": "off" }
+                        "icon": "flags:textures/icons/toolmode/displayonmap-group.svg",
+                        "condition": { "key": "displayonmap", "isValue": "group", "setValue": "off" }
                     },
                     {
-                        "icon": "flags:textures/icons/toolmode/hand-off.svg",
+                        "icon": "flags:textures/icons/toolmode/pickup-off.svg",
                         "condition": { "key": "pickup", "isValue": "off", "setValue": "on", "default": true }
                     },
                     {
-                        "icon": "flags:textures/icons/toolmode/hand-on.svg",
+                        "icon": "flags:textures/icons/toolmode/pickup-on.svg",
                         "condition": { "key": "pickup", "isValue": "on", "setValue": "off" }
                     },
                     {
@@ -472,27 +472,27 @@
                         "condition": { "key": "wind", "isValue": "off", "setValue": "on" }
                     },
                     {
-                        "icon": "flags:textures/icons/toolmode/axis-unlocked.svg",
+                        "icon": "flags:textures/icons/toolmode/axis-free.svg",
                         "condition": { "key": "axis", "isValue": "free", "setValue": "lock", "default": true }
                     },
                     {
-                        "icon": "flags:textures/icons/toolmode/axis-locked.svg",
+                        "icon": "flags:textures/icons/toolmode/axis-lock.svg",
                         "condition": { "key": "axis", "isValue": "lock", "setValue": "free" }
                     },
                     {
-                        "icon": "flags:textures/icons/toolmode/paintbrush-unlocked.svg",
+                        "icon": "flags:textures/icons/toolmode/editmode-on.svg",
                         "condition": { "key": "editmode", "isValue": "on", "setValue": "off", "default": true }
                     },
                     {
-                        "icon": "flags:textures/icons/toolmode/paintbrush-locked.svg",
+                        "icon": "flags:textures/icons/toolmode/editmode-off.svg",
                         "condition": { "key": "editmode", "isValue": "off", "setValue": "on" }
                     },
                     {
-                        "icon": "flags:textures/icons/toolmode/rotation-delete.svg",
+                        "icon": "flags:textures/icons/toolmode/saverotations-off.svg",
                         "condition": { "key": "saverotations", "isValue": "off", "setValue": "on", "default": true }
                     },
                     {
-                        "icon": "flags:textures/icons/toolmode/rotation-save.svg",
+                        "icon": "flags:textures/icons/toolmode/saverotations-on.svg",
                         "condition": { "key": "saverotations", "isValue": "on", "setValue": "off" }
                     }
                 ]

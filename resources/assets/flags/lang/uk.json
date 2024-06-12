@@ -136,8 +136,8 @@
     "patterndesc-lion_right": "<font color=\"#FFFF00\">Рідкісний візерунок</font>",
 
     "toolmode-displayonmap-off-on": "Відображення на карті. Поточне: Вимкнено. Наступне: Усі",
-    "toolmode-displayonmap-on-forgroup": "Відображення на карті. Поточне: Усі. Наступне: Група",
-    "toolmode-displayonmap-forgroup-off": "Відображення на карті. Поточне: Група. Наступне: Вимкнено",
+    "toolmode-displayonmap-on-group": "Відображення на карті. Поточне: Усі. Наступне: Група",
+    "toolmode-displayonmap-group-off": "Відображення на карті. Поточне: Група. Наступне: Вимкнено",
     "toolmode-wind-on-off": "Вплив вітру. Поточне: Увімкнено. Наступне: Вимкнено",
     "toolmode-wind-off-on": "Вплив вітру. Поточне: Вимкнено. Наступне: Увімкнено",
     "toolmode-axis-free-lock": "Обертання осей. Поточне: Вільно. Наступне: Заблоковано",

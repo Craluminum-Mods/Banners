@@ -136,8 +136,8 @@
     "patterndesc-lion_right": "<font color=\"#FFFF00\">Редкий узор</font>",
 
     "toolmode-displayonmap-off-on": "Отображение на карте. Текущее: Отключено. Следующее: Все",
-    "toolmode-displayonmap-on-forgroup": "Отображение на карте. Текущее: Все. Следующее: Группа",
-    "toolmode-displayonmap-forgroup-off": "Отображение на карте. Текущее: Группа. Следующее: Отключено",
+    "toolmode-displayonmap-on-group": "Отображение на карте. Текущее: Все. Следующее: Группа",
+    "toolmode-displayonmap-group-off": "Отображение на карте. Текущее: Группа. Следующее: Отключено",
     "toolmode-wind-on-off": "Влияние ветра. Текущее: Включено. Следующее: Отключено",
     "toolmode-wind-off-on": "Влияние ветра. Текущее: Отключено. Следующее: Включено",
     "toolmode-axis-free-lock": "Оси вращения. Текущее: Свободно. Следующее: Заблокировано",

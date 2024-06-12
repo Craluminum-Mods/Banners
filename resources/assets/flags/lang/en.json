@@ -136,8 +136,8 @@
     "patterndesc-lion_right": "<font color=\"#FFFF00\">Rare Pattern</font>",
 
     "toolmode-displayonmap-off-on": "Display on map. Current: Disabled. Next: Everyone",
-    "toolmode-displayonmap-on-forgroup": "Display on map. Current: Everyone. Next: Group",
-    "toolmode-displayonmap-forgroup-off": "Display on map. Current: Group. Next: Disabled",
+    "toolmode-displayonmap-on-group": "Display on map. Current: Everyone. Next: Group",
+    "toolmode-displayonmap-group-off": "Display on map. Current: Group. Next: Disabled",
     "toolmode-wind-on-off": "Affected by wind. Current: Enabled. Next: Disabled",
     "toolmode-wind-off-on": "Affected by wind. Current: Disabled. Next: Enabled",
     "toolmode-axis-free-lock": "Axis rotations. Current: Free. Next: Locked",
