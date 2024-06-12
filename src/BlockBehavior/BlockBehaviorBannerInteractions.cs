@@ -40,6 +40,9 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         {
             return false;
         }
+
+        if (!blockEntity.IsEditModeEnabled(byPlayer)) return false;
+
         if (!blockEntity.BannerBlock.MatchesPatternGroups(itemPattern))
         {
             byPlayer.IngameError(this, IngameError.BannerPatternGroups, IngameError.BannerPatternGroups.Localize());
@@ -89,6 +92,9 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         {
             return false;
         }
+
+        if (!blockEntity.IsEditModeEnabled(byPlayer)) return false;
+
         if (activeSlot.Itemstack.StackSize > 1 && !byPlayer.IsCreative())
         {
             byPlayer.IngameError(this, IngameError.LiquidContainerOneMax, IngameError.LiquidContainerOneMax.Localize());
@@ -127,6 +133,9 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         {
             return false;
         }
+
+        if (!blockEntity.IsEditModeEnabled(byPlayer)) return false;
+
         if (!blockEntity.BannerBlock.MatchesPatternGroups(itemPattern))
         {
             byPlayer.IngameError(this, IngameError.BannerPatternGroups, IngameError.BannerPatternGroups.Localize());
@@ -150,6 +159,9 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         {
             return false;
         }
+
+        if (!blockEntity.IsEditModeEnabled(byPlayer)) return false;
+
         return blockEntity.BannerProps.Cutouts.TryRemoveLast();
     }
 
@@ -166,7 +178,14 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
             byPlayer.IngameError(this, IngameError.BannerPatternGroups, IngameError.BannerPatternGroups.Localize());
             return false;
         }
-        if (blockEntity.BannerProps.CopyFrom(activeSlot.Itemstack, copyLayers: true, copyCutouts: true) || blockEntity.BannerProps.CopyTo(activeSlot.Itemstack, copyLayers: true, copyCutouts: true))
+        if (blockEntity.BannerProps.CopyTo(activeSlot.Itemstack, copyLayers: true, copyCutouts: true))
+        {
+            return true;
+        }
+
+        if (!blockEntity.IsEditModeEnabled(byPlayer)) return false;
+
+        if (blockEntity.BannerProps.CopyFrom(activeSlot.Itemstack, copyLayers: true, copyCutouts: true))
         {
             return true;
         }
@@ -182,6 +201,8 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         {
             return false;
         }
+
+        if (!blockEntity.IsEditModeEnabled(byPlayer)) return false;
 
         string newName = activeSlot.Itemstack.Attributes.GetString(attributeTitle);
 
@@ -227,39 +248,39 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
             Itemstacks = bannerStacks
         });
 
-        interactions.AddRange(new List<WorldInteraction>()
+        if (blockEntity.IsEditModeEnabled())
         {
-            new WorldInteraction()
+            interactions.Add(new WorldInteraction()
             {
                 ActionLangCode = langCodeAddLayer,
                 MouseButton = EnumMouseButton.Right,
                 Itemstacks = ObjectCacheUtil.TryGet<ItemStack[]>(capi, cacheKeyDyeStacks)
-            },
-            new WorldInteraction()
+            });
+            interactions.Add(new WorldInteraction()
             {
-                ActionLangCode =  langCodeRemoveLayer,
+                ActionLangCode = langCodeRemoveLayer,
                 MouseButton = EnumMouseButton.Right,
                 Itemstacks = ObjectCacheUtil.TryGet<ItemStack[]>(capi, cacheKeyBleachStacks)
-            },
-            new WorldInteraction()
+            });
+            interactions.Add(new WorldInteraction()
             {
                 ActionLangCode = langCodeAddCutout,
                 MouseButton = EnumMouseButton.Right,
                 Itemstacks = ObjectCacheUtil.TryGet<ItemStack[]>(capi, cacheKeyShearsStacks)
-            },
-            new WorldInteraction()
+            });
+            interactions.Add(new WorldInteraction()
             {
-                ActionLangCode =  langCodeRemoveCutout,
+                ActionLangCode = langCodeRemoveCutout,
                 MouseButton = EnumMouseButton.Right,
                 Itemstacks = ObjectCacheUtil.TryGet<ItemStack[]>(capi, cacheKeyShearsStacks)
-            },
-            new WorldInteraction()
+            });
+            interactions.Add(new WorldInteraction()
             {
                 ActionLangCode = langCodeRename,
                 MouseButton = EnumMouseButton.Right,
                 Itemstacks = ObjectCacheUtil.TryGet<ItemStack[]>(capi, cacheKeyBookStacks)
-            }
-        });
+            });
+        }
 
         IRotatableBanner rotatableBanner = blockEntity.Block.GetInterface<IRotatableBanner>(capi.World, selection.Position);
         BEBehaviorWrenchOrientableBanner wrenchableBanner = blockEntity.GetBehavior<BEBehaviorWrenchOrientableBanner>();

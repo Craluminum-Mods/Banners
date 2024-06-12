@@ -132,4 +132,18 @@ public static class HelperExtensions
     {
         return block.PatternGroups.Any(otherBlock.PatternGroups.Contains);
     }
+
+    public static bool IsEditModeEnabled(this BlockEntityBanner blockEntity, IPlayer player = null, bool printError = true)
+    {
+        BannerModes modes = blockEntity.BannerProps.Modes;
+        if (modes[BannerMode.EditMode_Off])
+        {
+            if (printError)
+            {
+                player?.IngameError(blockEntity, modes.ErrorCode(BannerMode.EditMode_Off.Key), modes.ErrorCode(BannerMode.EditMode_Off.Key).Localize());
+            }
+            return false;
+        }
+        return modes[BannerMode.EditMode_On];
+    }
 }

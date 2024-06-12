@@ -55,6 +55,12 @@ public class BEBehaviorRotatableBanner : BlockEntityBehavior, IRotatableBanner
         bool sneak = byEntity.Controls.Sneak;
         bool sprint = byEntity.Controls.Sprint;
 
+        // doesn't work client side
+        // if (byEntity.World.BlockAccessor.GetBlockEntity(blockSel.Position) is BlockEntityBanner blockEntity && !blockEntity.IsEditModeEnabled((byEntity as EntityPlayer)?.Player))
+        // {
+        //     return false;
+        // }
+
         if (sneak && !sprint)
         {
             RotateByAxis(dir, blockSel.Face.Axis, Radians90);

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Vintagestory.API.Client;
@@ -34,6 +35,9 @@ public class BEBehaviorWrenchOrientableBanner : BlockEntityBehavior, IWrenchOrie
         {
             return;
         }
+
+        // doesn't work client side
+        // if (!be.IsEditModeEnabled(byPlayer)) return;
 
         bool sneak = byEntity.Controls.Sneak;
         bool sprint = byEntity.Controls.Sprint;

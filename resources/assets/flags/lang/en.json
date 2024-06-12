@@ -178,13 +178,14 @@
     "blockhelp-bannercontainable-remove": "Remove banner",
     "heldhelp-bannerpattern-set": "Select pattern",
 
-    "ingameerror-banner-copylayers": "Not able to copy from banner because both have patterns or base colors don't match",
-    "ingameerror-banner-rename": "Not able to rename banner because book or paper has no title",
+    "ingameerror-banner-copylayers": "Unable to copy from banner because both have patterns or base colors don't match",
+    "ingameerror-banner-rename": "Unable to rename banner because book or paper has no title",
     "ingameerror-banner-patterngroups": "Pattern groups don't match",
     "ingameerror-banner-notenoughdye": "Not enough dye, {0}L required",
     "ingameerror-banner-notenoughbleach": "Not enough bleach, {0}L required",
     "ingameerror-layers-limitreached": "Maximum number of layers reached ({0})!",
     "ingameerror-liquidcontainer-onemax": "Only one liquid container is allowed",
+    "ingameerror-editmode-off": "Unable to edit banner because edit mode was disabled",
 
     "command-nobanner": "Active hand is missing banner",
     "command-generatetextures": "{0} textures were sucessfully generated for banner",

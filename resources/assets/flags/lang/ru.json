@@ -185,6 +185,7 @@
     "ingameerror-banner-notenoughbleach": "Недостаточно отбеливателя, требуется {0}л",
     "ingameerror-layers-limitreached": "Достигнуто максимальное количество слоев ({0})!",
     "ingameerror-liquidcontainer-onemax": "Разрешается использовать только одну емкость с жидкостью",
+    "ingameerror-editmode-off": "Невозможно отредактировать флаг, потому что режим редактирования отключен",
 
     "command-nobanner": "В активной руке нет флага",
     "command-generatetextures": "Успешно сгенерировано {0} текстур для флага",

@@ -185,6 +185,7 @@
     "ingameerror-banner-notenoughbleach": "Недостатньо відбілювача, потрібно {0}л",
     "ingameerror-layers-limitreached": "Досягнуто максимальну кількість шарів ({0})!",
     "ingameerror-liquidcontainer-onemax": "Дозволяється використовувати лише одну ємність для рідини",
+    "ingameerror-editmode-off": "Неможливо відредагувати прапор, оскільки режим редагування було вимкнено",
 
     "command-nobanner": "В активній руці немає прапора",
     "command-generatetextures": "Успішно згенеровано {0} текстур для прапора",
