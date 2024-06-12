@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Text;
 using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
@@ -9,35 +10,39 @@ public class BannerProperties
     public string Name { get; protected set; }
     public string Placement { get; protected set; }
 
+    public BannerToolModes ToolModes { get; protected set; } = new();
+
     public Patterns Patterns { get; protected set; } = new();
     public Cutouts Cutouts { get; protected set; } = new();
-
-    public BannerProperties(string defaultPlacement)
-    {
-        if (!string.IsNullOrEmpty(defaultPlacement))
-        {
-            Placement ??= defaultPlacement;
-        }
-    }
 
     public void GetDescription(StringBuilder dsc, bool withDebugInfo = false)
     {
         Patterns.GetDescription(dsc, withDebugInfo);
         Cutouts.GetDescription(dsc, withDebugInfo);
+        ToolModes.GetDescription(dsc, withDebugInfo);
     }
 
-    public BannerProperties FromTreeAttribute(ITreeAttribute tree)
+    public BannerProperties FromTreeAttribute(ITreeAttribute tree, string defaultType, Dictionary<string, string> defaultToolModes)
     {
+        ToolModes.FromTreeAttribute(tree, defaultToolModes);
+
         ITreeAttribute bannerTree = GetBannerTree(tree);
         Patterns.FromTreeAttribute(bannerTree);
         Cutouts.FromTreeAttribute(bannerTree);
         Name = bannerTree.GetString(attributeName, Name);
         Placement = bannerTree.GetString(attributePlacement, Placement);
+
+        if (!string.IsNullOrEmpty(defaultType))
+        {
+            Placement ??= defaultType;
+        }
         return this;
     }
 
     public void ToTreeAttribute(ITreeAttribute tree, bool setPlacement = true)
     {
+        ToolModes.ToTreeAttribute(tree);
+
         ITreeAttribute bannerTree = GetBannerTree(tree);
         Patterns.ToTreeAttribute(bannerTree);
         Cutouts.ToTreeAttribute(bannerTree);
@@ -51,10 +56,11 @@ public class BannerProperties
         }
     }
 
-    public static BannerProperties FromStack(ItemStack stack, BlockBanner blockBanner = null)
+    public static BannerProperties FromStack(ItemStack stack)
     {
-        string defaultType = blockBanner?.DefaultPlacement ?? (stack.Collectible as BlockBanner)?.DefaultPlacement;
-        return new BannerProperties(defaultType).FromTreeAttribute(stack.Attributes);
+        return new BannerProperties().FromTreeAttribute(stack.Attributes,
+            defaultType: (stack.Collectible as BlockBanner).DefaultPlacement,
+            defaultToolModes: (stack.Collectible as BlockBanner).DefaultToolModes);
     }
 
     public void ToStack(ItemStack stack)
@@ -72,7 +78,9 @@ public class BannerProperties
 
         if (layersSuccess || cutoutsSuccess)
         {
-            FromTreeAttribute(fromStack.Attributes);
+            FromTreeAttribute(fromStack.Attributes,
+                defaultType: (fromStack.Collectible as BlockBanner).DefaultPlacement,
+                defaultToolModes: (fromStack.Collectible as BlockBanner).DefaultToolModes);
         }
 
         return layersSuccess || cutoutsSuccess;
@@ -124,6 +132,7 @@ public class BannerProperties
         result.Append(Placement);
         result.Append(Patterns.ToString());
         result.Append(Cutouts.ToString());
+        // result.Append(ToolModes.ToString());
         return result.ToString();
     }
 }

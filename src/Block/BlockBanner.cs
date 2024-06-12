@@ -32,6 +32,8 @@ public class BlockBanner : Block
     public List<string> Colors { get; protected set; } = new();
     public List<string> IgnoreForGeneratingTextures { get; protected set; } = new();
 
+    public Dictionary<string, string> DefaultToolModes { get; protected set; } = new();
+
     public Dictionary<string, MeshData> Meshes => ObjectCacheUtil.GetOrCreate(api, cacheKeyBlockBannerMeshes, () => new Dictionary<string, MeshData>());
     public Dictionary<string, MeshData> ContainableMeshes => ObjectCacheUtil.GetOrCreate(api, cacheKeyBlockBannerContainableMeshes, () => new Dictionary<string, MeshData>());
     public Dictionary<string, MultiTextureMeshRef> InvMeshes => ObjectCacheUtil.GetOrCreate(api, cacheKeyBlockBannerInvMeshes, () => new Dictionary<string, MultiTextureMeshRef>());
@@ -96,13 +98,15 @@ public class BlockBanner : Block
         TopTexturePrefix = Attributes[attributeTopTexturePrefix].AsString();
         Colors = Attributes[attributeColors].AsObject<List<string>>();
         IgnoreForGeneratingTextures = Attributes[attributeIgnoredTextureCodesForGeneratingTextures].AsObject<List<string>>();
+
+        DefaultToolModes = Attributes[attributeDefaultToolModes].AsObject<Dictionary<string, string>>();
     }
 
     public override void GetHeldItemInfo(ItemSlot inSlot, StringBuilder sb, IWorldAccessor world, bool withDebugInfo)
     {
         base.GetHeldItemInfo(inSlot, sb, world, withDebugInfo);
         sb.AppendLine(langCodePatternGroups.Localize(string.Join(commaSeparator, PatternGroups.Select(group => $"{langCodePatternGroup}{group}".Localize()))));
-        BannerProperties.FromStack(inSlot.Itemstack, this).GetDescription(sb, ShowDebugInfo);
+        BannerProperties.FromStack(inSlot.Itemstack).GetDescription(sb, ShowDebugInfo);
     }
 
     public override bool Equals(ItemStack thisStack, ItemStack otherStack, params string[] ignoreAttributeSubTrees)

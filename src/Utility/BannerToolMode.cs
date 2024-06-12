@@ -57,17 +57,29 @@ public class Condition
 
     public bool Matches(ItemSlot slot)
     {
-        if (slot?.Itemstack?.Attributes == null)
+        if (slot?.Itemstack?.Attributes == null || slot.Itemstack.Collectible is not BlockBanner)
         {
             return false;
         }
 
-        string currentValue = slot.Itemstack.Attributes.GetOrAddTreeAttribute(attributeToolModes).GetString(Key, Default ? IsValue : null);
+        if (BannerProperties.FromStack(slot.Itemstack).ToolModes.TryGetValue(Key, out string currentValue))
+        {
+            return currentValue == IsValue;
+        }
+
+        currentValue = Default ? IsValue : null;
         return currentValue == IsValue;
     }
 
     public void SetAttribute(ItemSlot slot)
     {
-        slot.Itemstack.Attributes.GetOrAddTreeAttribute(attributeToolModes).SetString(Key, SetValue);
+        if (slot.Itemstack.Collectible is not BlockBanner)
+        {
+            return;
+        }
+
+        BannerProperties props = BannerProperties.FromStack(slot.Itemstack);
+        props.ToolModes.SetValue(Key, SetValue);
+        props.ToStack(slot.Itemstack);
     }
 }

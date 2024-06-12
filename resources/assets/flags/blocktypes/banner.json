@@ -274,6 +274,14 @@
         "defaultPlacement": "compact-wall",
         "defaultHorizontalPlacement": "compact-wall",
         "defaultVerticalPlacement": "compact-groundsimple",
+        "defaultToolModes": {
+            "displayonmap": "off",
+            "pickup": "off",
+            "wind": "on",
+            "axis": "free",
+            "editmode": "on",
+            "saverotations": "off"
+        },
 
         // "showDebugInfo": true,
         // all of these attributes below are used only to pregenerate textures with command
@@ -434,14 +442,6 @@
         {
             "name": "Flags.BannerToolModes",
             "properties": {
-                "defaultValues": {
-                    "displayonmap": "off",
-                    "pickup": "off",
-                    "wind": "on",
-                    "axis": "free",
-                    "editmode": "on",
-                    "saverotations": "off"
-                },
                 "toolModes": [
                     {
                         "icon": "flags:textures/icons/toolmode/map-off.svg",

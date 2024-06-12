@@ -10,7 +10,7 @@ namespace Flags;
 
 public class BlockEntityBanner : BlockEntity
 {
-    public BannerProperties BannerProps { get; protected set; } = new BannerProperties(defaultPlacement: null);
+    public BannerProperties BannerProps { get; protected set; } = new BannerProperties();
     public BlockBanner BannerBlock => Block as BlockBanner;
 
     public Cuboidf[] CustomSelectionBoxes { get; protected set; }
@@ -60,7 +60,9 @@ public class BlockEntityBanner : BlockEntity
         base.OnBlockPlaced(byItemStack);
         if (byItemStack?.Attributes != null)
         {
-            BannerProps.FromTreeAttribute(byItemStack.Attributes);
+            BannerProps.FromTreeAttribute(byItemStack.Attributes,
+                defaultType: BannerBlock.DefaultPlacement,
+                defaultToolModes: BannerBlock.DefaultToolModes);
             BannerProperties.ClearPlacement(byItemStack.Attributes);
         }
         Init();
@@ -75,7 +77,9 @@ public class BlockEntityBanner : BlockEntity
     public override void FromTreeAttributes(ITreeAttribute tree, IWorldAccessor world)
     {
         base.FromTreeAttributes(tree, world);
-        BannerProps.FromTreeAttribute(tree);
+        BannerProps.FromTreeAttribute(tree,
+            defaultType: BannerBlock.DefaultPlacement,
+            defaultToolModes: BannerBlock.DefaultToolModes);
         Init();
     }
 

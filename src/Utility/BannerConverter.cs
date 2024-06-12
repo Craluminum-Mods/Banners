@@ -49,7 +49,7 @@ public class BannerConverter
             return TextCommandResult.Error($"{modDomain}:command-genbannermc-invalidsyntax".Localize());
         }
 
-        BannerProperties bannerProperties = new BannerProperties(blockBanner.DefaultPlacement);
+        BannerProperties bannerProperties = new BannerProperties();
         bannerProperties.Patterns.TryAdd(BannerLayer.FromLayer("0-b").WithColor(vsBaseColor), byPlayer.Entity.World);
         foreach (BannerLayer layer in fromObject["BlockEntityTag"]["Patterns"].AsArray().Select((pattern, index) => BannerLayer
             .FromLayer(layer: $"{index}-{GetPattern(pattern)}")

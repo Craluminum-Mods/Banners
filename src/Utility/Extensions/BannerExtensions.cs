@@ -102,7 +102,7 @@ public static class BannerExtensions
 
     public static void GetInventoryMesh(this BlockBanner block, ICoreClientAPI capi, ItemStack stack, ItemRenderInfo renderinfo)
     {
-        BannerProperties properties = BannerProperties.FromStack(stack, block);
+        BannerProperties properties = BannerProperties.FromStack(stack);
         string key = $"{block.Code}-{properties}";
         if (!block.InvMeshes.TryGetValue(key, out MultiTextureMeshRef meshref))
         {
