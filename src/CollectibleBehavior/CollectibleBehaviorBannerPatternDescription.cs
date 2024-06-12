@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Vintagestory.API.Common;
-using Vintagestory.API.Config;
 
 namespace Flags;
 

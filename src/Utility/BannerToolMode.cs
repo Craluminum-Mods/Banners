@@ -18,7 +18,7 @@ public class BannerToolMode
 
     public SkillItem GetToolMode(ICoreClientAPI capi)
     {
-        SkillItem toolMode = new SkillItem()
+        SkillItem skillItem = new SkillItem()
         {
             Code = AssetLocation.Create(Name),
             Name = Name.LocalizeM(),
@@ -31,20 +31,20 @@ public class BannerToolMode
             if (!string.IsNullOrEmpty(Color))
             {
                 color = ColorUtil.Hex2Int(Color);
-                toolMode.TexturePremultipliedAlpha = true;
+                skillItem.TexturePremultipliedAlpha = true;
             }
             else
             {
-                toolMode.TexturePremultipliedAlpha = false;
+                skillItem.TexturePremultipliedAlpha = false;
             }
-            toolMode.WithIcon(capi, capi.Gui.LoadSvgWithPadding(AssetLocation.Create(Icon), 48, 48, 5, color));
+            skillItem.WithIcon(capi, capi.Gui.LoadSvgWithPadding(AssetLocation.Create(Icon), 48, 48, 5, color));
         }
-        return toolMode;
+        return skillItem;
     }
 
-    public static SkillItem[] GetToolModes(ICoreClientAPI capi, ItemSlot slot, IEnumerable<BannerToolMode> toolModes)
+    public static SkillItem[] GetToolModes(ICoreClientAPI capi, ItemSlot slot, IEnumerable<BannerToolMode> modes)
     {
-        return toolModes.Where(x => x.Condition.Matches(slot)).Select(x => x.GetToolMode(capi)).ToArray();
+        return modes.Where(x => x.Condition.Matches(slot)).Select(x => x.GetToolMode(capi)).ToArray();
     }
 }
 
@@ -62,7 +62,7 @@ public class Condition
             return false;
         }
 
-        if (BannerProperties.FromStack(slot.Itemstack).ToolModes.TryGetValue(Key, out string currentValue))
+        if (BannerProperties.FromStack(slot.Itemstack).Modes.TryGetValue(Key, out string currentValue))
         {
             return currentValue == IsValue;
         }
@@ -79,7 +79,7 @@ public class Condition
         }
 
         BannerProperties props = BannerProperties.FromStack(slot.Itemstack);
-        props.ToolModes.SetValue(Key, SetValue);
+        props.Modes.SetValue(Key, SetValue);
         props.ToStack(slot.Itemstack);
     }
 }

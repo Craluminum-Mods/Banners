@@ -48,9 +48,9 @@ public class PatternToolMode
         }
     }
 
-    public static SkillItem[] GetToolModes(ICoreClientAPI capi, ItemSlot slot, IEnumerable<PatternToolMode> toolModes)
+    public static SkillItem[] GetToolModes(ICoreClientAPI capi, ItemSlot slot, IEnumerable<PatternToolMode> modes)
     {
-        return toolModes?.Select(x => x.GetToolMode(capi, slot)).ToArray();
+        return modes?.Select(x => x.GetToolMode(capi, slot)).ToArray();
     }
 
     public void SetPattern(ItemStack stack)
@@ -81,10 +81,10 @@ public class PatternToolMode
         return false;
     }
 
-    public static bool TryUnlockAll(IEnumerable<PatternToolMode> toolModes, ItemSlot slot, ItemStack byStack, bool skipStack = false)
+    public static bool TryUnlockAll(IEnumerable<PatternToolMode> modes, ItemSlot slot, ItemStack byStack, bool skipStack = false)
     {
         bool any = false;
-        foreach (PatternToolMode toolMode in toolModes.Where(toolMode => !toolMode.IsUnlocked(slot)))
+        foreach (PatternToolMode toolMode in modes.Where(toolMode => !toolMode.IsUnlocked(slot)))
         {
             if (toolMode.TryUnlock(slot, byStack, skipStack))
             {

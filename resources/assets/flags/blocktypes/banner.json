@@ -274,7 +274,7 @@
         "defaultPlacement": "compact-wall",
         "defaultHorizontalPlacement": "compact-wall",
         "defaultVerticalPlacement": "compact-groundsimple",
-        "defaultToolModes": {
+        "defaultModes": {
             "displayonmap": "off",
             "pickup": "off",
             "wind": "on",

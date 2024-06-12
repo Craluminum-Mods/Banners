@@ -64,10 +64,10 @@ public class BannerModes
     /// <param name="mainTree">The main attribute tree that is not a “banner”</param>
     public void FromTreeAttribute(ITreeAttribute mainTree, Dictionary<string, string> defaultValues)
     {
-        ITreeAttribute toolModesTree = GetToolModes(mainTree);
-        foreach (string key in toolModesTree.Select(x => x.Key).Where(key => !Exists(key)))
+        ITreeAttribute modesTree = GetModes(mainTree);
+        foreach (string key in modesTree.Select(x => x.Key).Where(key => !Exists(key)))
         {
-            SetValue(key, toolModesTree.GetString(key));
+            SetValue(key, modesTree.GetString(key));
         }
 
         foreach ((string key, string value) in defaultValues)
@@ -84,11 +84,11 @@ public class BannerModes
     {
         foreach ((string key, string value) in Elements)
         {
-            GetToolModes(mainTree).SetString(key, value);
+            GetModes(mainTree).SetString(key, value);
         }
     }
 
-    public static ITreeAttribute GetToolModes(ITreeAttribute tree) => tree.GetOrAddTreeAttribute(attributeBannerToolModes);
+    public static ITreeAttribute GetModes(ITreeAttribute tree) => tree.GetOrAddTreeAttribute(attributeBannerToolModes);
 
     public override string ToString()
     {

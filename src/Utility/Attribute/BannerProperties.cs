@@ -10,7 +10,7 @@ public class BannerProperties
     public string Name { get; protected set; }
     public string Placement { get; protected set; }
 
-    public BannerModes ToolModes { get; protected set; } = new();
+    public BannerModes Modes { get; protected set; } = new();
 
     public Patterns Patterns { get; protected set; } = new();
     public Cutouts Cutouts { get; protected set; } = new();
@@ -21,13 +21,13 @@ public class BannerProperties
         Cutouts.GetDescription(dsc, withDebugInfo);
         // if (forPlayer != null && forPlayer.Entity.Controls.ShiftKey)
         // {
-        ToolModes.GetDescription(dsc, withDebugInfo);
+        Modes.GetDescription(dsc, withDebugInfo);
         // }
     }
 
-    public BannerProperties FromTreeAttribute(ITreeAttribute tree, string defaultType, Dictionary<string, string> defaultToolModes)
+    public BannerProperties FromTreeAttribute(ITreeAttribute tree, string defaultType, Dictionary<string, string> defaultModes)
     {
-        ToolModes.FromTreeAttribute(tree, defaultToolModes);
+        Modes.FromTreeAttribute(tree, defaultModes);
 
         ITreeAttribute bannerTree = GetBannerTree(tree);
         Patterns.FromTreeAttribute(bannerTree);
@@ -44,7 +44,7 @@ public class BannerProperties
 
     public void ToTreeAttribute(ITreeAttribute tree, bool setPlacement = true)
     {
-        ToolModes.ToTreeAttribute(tree);
+        Modes.ToTreeAttribute(tree);
 
         ITreeAttribute bannerTree = GetBannerTree(tree);
         Patterns.ToTreeAttribute(bannerTree);
@@ -63,7 +63,7 @@ public class BannerProperties
     {
         return new BannerProperties().FromTreeAttribute(stack.Attributes,
             defaultType: (stack.Collectible as BlockBanner).DefaultPlacement,
-            defaultToolModes: (stack.Collectible as BlockBanner).DefaultToolModes);
+            defaultModes: (stack.Collectible as BlockBanner).DefaultModes);
     }
 
     public void ToStack(ItemStack stack)
@@ -83,7 +83,7 @@ public class BannerProperties
         {
             FromTreeAttribute(fromStack.Attributes,
                 defaultType: (fromStack.Collectible as BlockBanner).DefaultPlacement,
-                defaultToolModes: (fromStack.Collectible as BlockBanner).DefaultToolModes);
+                defaultModes: (fromStack.Collectible as BlockBanner).DefaultModes);
         }
 
         return layersSuccess || cutoutsSuccess;
@@ -135,7 +135,7 @@ public class BannerProperties
         result.Append(Placement);
         result.Append(Patterns.ToString());
         result.Append(Cutouts.ToString());
-        // result.Append(ToolModes.ToString());
+        // result.Append(Modes.ToString());
         return result.ToString();
     }
 }

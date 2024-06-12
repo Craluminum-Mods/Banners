@@ -32,7 +32,7 @@ public class BlockBanner : Block
     public List<string> Colors { get; protected set; } = new();
     public List<string> IgnoreForGeneratingTextures { get; protected set; } = new();
 
-    public Dictionary<string, string> DefaultToolModes { get; protected set; } = new();
+    public Dictionary<string, string> DefaultModes { get; protected set; } = new();
 
     public Dictionary<string, MeshData> Meshes => ObjectCacheUtil.GetOrCreate(api, cacheKeyBlockBannerMeshes, () => new Dictionary<string, MeshData>());
     public Dictionary<string, MeshData> ContainableMeshes => ObjectCacheUtil.GetOrCreate(api, cacheKeyBlockBannerContainableMeshes, () => new Dictionary<string, MeshData>());
@@ -99,7 +99,7 @@ public class BlockBanner : Block
         Colors = Attributes[attributeColors].AsObject<List<string>>();
         IgnoreForGeneratingTextures = Attributes[attributeIgnoredTextureCodesForGeneratingTextures].AsObject<List<string>>();
 
-        DefaultToolModes = Attributes[attributeDefaultToolModes].AsObject<Dictionary<string, string>>();
+        DefaultModes = Attributes[attributeDefaultModes].AsObject<Dictionary<string, string>>();
     }
 
     public override void GetHeldItemInfo(ItemSlot inSlot, StringBuilder sb, IWorldAccessor world, bool withDebugInfo)

@@ -62,7 +62,7 @@ public class BlockEntityBanner : BlockEntity
         {
             BannerProps.FromTreeAttribute(byItemStack.Attributes,
                 defaultType: BannerBlock.DefaultPlacement,
-                defaultToolModes: BannerBlock.DefaultToolModes);
+                defaultModes: BannerBlock.DefaultModes);
             BannerProperties.ClearPlacement(byItemStack.Attributes);
         }
         Init();
@@ -79,7 +79,7 @@ public class BlockEntityBanner : BlockEntity
         base.FromTreeAttributes(tree, world);
         BannerProps.FromTreeAttribute(tree,
             defaultType: BannerBlock.DefaultPlacement,
-            defaultToolModes: BannerBlock.DefaultToolModes);
+            defaultModes: BannerBlock.DefaultModes);
         Init();
     }
 
