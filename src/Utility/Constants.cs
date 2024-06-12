@@ -141,12 +141,14 @@ public static class Constants
 
     public class IngameError
     {
-        public const string BannerCopyLayers = $"{modDomain}:ingameerror-banner-copylayers";
-        public const string BannerRename = $"{modDomain}:ingameerror-banner-rename";
-        public const string BannerPatternGroups = $"{modDomain}:ingameerror-banner-patterngroups";
-        public const string BannerNotEnoughDye = $"{modDomain}:ingameerror-banner-notenoughdye";
-        public const string BannerNotEnoughBleach = $"{modDomain}:ingameerror-banner-notenoughbleach";
-        public const string LayersLimitReached = $"{modDomain}:ingameerror-layers-limitreached";
-        public const string LiquidContainerOneMax = $"{modDomain}:ingameerror-liquidcontainer-onemax";
+        public const string Prefix = $"{modDomain}:ingameerror-";
+
+        public const string BannerCopyLayers = $"{Prefix}banner-copylayers";
+        public const string BannerRename = $"{Prefix}:ingameerror-banner-rename";
+        public const string BannerPatternGroups = $"{Prefix}banner-patterngroups";
+        public const string BannerNotEnoughDye = $"{Prefix}banner-notenoughdye";
+        public const string BannerNotEnoughBleach = $"{Prefix}banner-notenoughbleach";
+        public const string LayersLimitReached = $"{Prefix}layers-limitreached";
+        public const string LiquidContainerOneMax = $"{Prefix}liquidcontainer-onemax";
     }
 }
