@@ -103,7 +103,7 @@ public class BlockEntityBanner : BlockEntity
     {
         base.GetBlockInfo(forPlayer, sb);
         sb.AppendLine(langCodePatternGroups.Localize(string.Join(commaSeparator, BannerBlock.PatternGroups.Select(group => $"{langCodePatternGroup}{group}".Localize()))));
-        BannerProps.GetDescription(sb, BannerBlock.ShowDebugInfo);
+        BannerProps.GetDescription(forPlayer, sb, BannerBlock.ShowDebugInfo);
     }
 
     public Cuboidf[] GetOrCreateSelectionBoxes(bool forceNew = false)

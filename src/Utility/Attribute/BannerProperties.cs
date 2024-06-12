@@ -10,16 +10,19 @@ public class BannerProperties
     public string Name { get; protected set; }
     public string Placement { get; protected set; }
 
-    public BannerToolModes ToolModes { get; protected set; } = new();
+    public BannerModes ToolModes { get; protected set; } = new();
 
     public Patterns Patterns { get; protected set; } = new();
     public Cutouts Cutouts { get; protected set; } = new();
 
-    public void GetDescription(StringBuilder dsc, bool withDebugInfo = false)
+    public void GetDescription(IPlayer forPlayer, StringBuilder dsc, bool withDebugInfo = false)
     {
         Patterns.GetDescription(dsc, withDebugInfo);
         Cutouts.GetDescription(dsc, withDebugInfo);
+        // if (forPlayer != null && forPlayer.Entity.Controls.ShiftKey)
+        // {
         ToolModes.GetDescription(dsc, withDebugInfo);
+        // }
     }
 
     public BannerProperties FromTreeAttribute(ITreeAttribute tree, string defaultType, Dictionary<string, string> defaultToolModes)

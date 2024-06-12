@@ -2,13 +2,16 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 
 namespace Flags;
 
-public class BannerToolModes
+public class BannerModes
 {
     public Dictionary<string, string> Elements { get; protected set; } = new();
+
+    public bool this[BannerMode mode] => TryGetValue(mode.Key, out string value) && value == mode.Value;
 
     public bool Exists(string key) => Elements.ContainsKey(key);
 
@@ -29,27 +32,22 @@ public class BannerToolModes
         return Elements.TryGetValue(key, out value);
     }
 
-    /// <summary>
-    /// For debug purposes only
-    /// </summary>
-    /// <param name="dsc"></param>
-    /// <param name="withDebugInfo"></param>
     public void GetDescription(StringBuilder dsc, bool withDebugInfo = false)
     {
-        if (!withDebugInfo)
+        if (!Elements.Any())
         {
             return;
         }
-
-        dsc.AppendLine("debug-tool-modes:");
-        if (!Elements.Any())
-        {
-            dsc.AppendLine("nothing...");
-        }
+        dsc.AppendLine(langCodeBannerModes.Localize());
         foreach ((string key, string value) in Elements)
         {
+            if (!Lang.HasTranslation($"{langCodeToolMode}{key}-{value}"))
+            {
+                continue;
+            }
+            if (withDebugInfo) dsc.Append($"{key}: {value}").Append('\t');
             dsc.Append('\t');
-            dsc.AppendLine($"{key}: {value}");
+            dsc.AppendLine($"{langCodeToolMode}{key}-{value}".Localize());
         }
     }
 
@@ -94,5 +92,31 @@ public class BannerToolModes
             result.Append(';');
         }
         return result.ToString();
+    }
+}
+
+public struct BannerMode
+{
+    public static readonly BannerMode DisplayOnMap_On = new BannerMode("displayonmap", "on");
+    public static readonly BannerMode DisplayOnMap_Off = new BannerMode("displayonmap", "off");
+    public static readonly BannerMode DisplayOnMap_Group = new BannerMode("displayonmap", "group");
+    public static readonly BannerMode PickUp_On = new BannerMode("pickup", "on");
+    public static readonly BannerMode PickUp_Off = new BannerMode("pickup", "off");
+    public static readonly BannerMode Wind_On = new BannerMode("wind", "on");
+    public static readonly BannerMode Wind_Of = new BannerMode("wind", "off");
+    public static readonly BannerMode Axis_Free = new BannerMode("axis", "free");
+    public static readonly BannerMode Axis_Lock = new BannerMode("axis", "lock");
+    public static readonly BannerMode EditMode_On = new BannerMode("editmode", "on");
+    public static readonly BannerMode EditMode_Off = new BannerMode("editmode", "off");
+    public static readonly BannerMode SaveRotations_On = new BannerMode("saverotations", "on");
+    public static readonly BannerMode SaveRotations_Off = new BannerMode("saverotations", "off");
+
+    public string Key { get; private set; }
+    public string Value { get; private set; }
+
+    public BannerMode(string key, string value)
+    {
+        Key = key;
+        Value = value;
     }
 }

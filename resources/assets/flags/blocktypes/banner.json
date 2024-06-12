@@ -442,6 +442,15 @@
         {
             "name": "Flags.BannerToolModes",
             "properties": {
+                /*
+                    Possible values:
+                    - axis              = free, lock
+                    - displayonmap      = on, off, group
+                    - editmode          = on, off
+                    - pickup            = on, off
+                    - saverotations     = on, off
+                    - wind              = on, off
+                */
                 "toolModes": [
                     {
                         "icon": "flags:textures/icons/toolmode/displayonmap-off.svg",

@@ -106,7 +106,7 @@ public class BlockBanner : Block
     {
         base.GetHeldItemInfo(inSlot, sb, world, withDebugInfo);
         sb.AppendLine(langCodePatternGroups.Localize(string.Join(commaSeparator, PatternGroups.Select(group => $"{langCodePatternGroup}{group}".Localize()))));
-        BannerProperties.FromStack(inSlot.Itemstack).GetDescription(sb, ShowDebugInfo);
+        BannerProperties.FromStack(inSlot.Itemstack).GetDescription((world as IClientWorldAccessor)?.Player, sb, ShowDebugInfo);
     }
 
     public override bool Equals(ItemStack thisStack, ItemStack otherStack, params string[] ignoreAttributeSubTrees)

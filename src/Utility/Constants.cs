@@ -53,6 +53,7 @@ public static class Constants
     public const string langCodeUnlockedPatterns = $"{modDomain}:unlocked-patterns";
     public const string langCodePatterns = $"{modDomain}:patterns";
     public const string langCodeCutouts = $"{modDomain}:cutouts";
+    public const string langCodeBannerModes = $"{modDomain}:banner-modes";
     public const string langCodeAddCutout = $"{modDomain}:blockhelp-banner-addcutout";
     public const string langCodeRemoveCutout = $"{modDomain}:blockhelp-banner-removecutout";
     public const string langCodeSetToolmode = "heldhelp-settoolmode";
