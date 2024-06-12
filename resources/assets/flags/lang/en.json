@@ -162,7 +162,7 @@
     "toolmode-wind-off": "Affected by wind: <font color=\"#ff8484\">Disabled</font>",
     "toolmode-wind-on": "Affected by wind: <font color=\"#84ff84\">Enabled</font>",
     // "toolmode-axis-free": "Axis rotations: <font color=\"#84ff84\">Free</font>",
-    // "toolmode-axis-lock": "Axis rotations: Locked",
+    // "toolmode-axis-lock": "Axis rotations: <font color=\"#ff8484\">Locked</font>",
 
     "blockhelp-banner-addlayer": "Add pattern (requires pattern in left hand)",
     "blockhelp-banner-removelayer": "Remove last pattern",
