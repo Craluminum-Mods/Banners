@@ -10,7 +10,7 @@ namespace Flags;
 
 public class Cutouts
 {
-    public List<string> Elements { get; protected set; } = new();
+    protected List<string> Elements { get; private set; } = new();
 
     public IOrderedEnumerable<BannerLayer> GetOrdered(string textureCode = null)
     {

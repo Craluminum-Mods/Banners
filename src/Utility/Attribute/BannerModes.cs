@@ -8,7 +8,7 @@ namespace Flags;
 
 public class BannerModes
 {
-    public Dictionary<string, string> Elements { get; protected set; } = new();
+    protected Dictionary<string, string> Elements { get; private set; } = new();
 
     public bool this[BannerMode mode] => TryGetValue(mode.Key, out string value) && value == mode.Value;
 
@@ -68,13 +68,9 @@ public class BannerModes
         {
             SetValue(key, modesTree.GetString(key));
         }
-
-        foreach ((string key, string value) in defaultValues)
+        foreach ((string key, string value) in defaultValues.Where(key => !Exists(key.Key)))
         {
-            if (!Exists(key))
-            {
-                SetValue(key, value);
-            }
+            SetValue(key, value);
         }
     }
 

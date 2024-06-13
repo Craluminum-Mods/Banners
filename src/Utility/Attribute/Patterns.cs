@@ -10,7 +10,9 @@ namespace Flags;
 
 public class Patterns
 {
-    public Dictionary<string, string> Elements { get; protected set; } = new();
+    protected Dictionary<string, string> Elements { get; private set; } = new();
+
+    public int Count => Elements.Count;
 
     public string BaseColor => GetOrdered()?.FirstOrDefault()?.Color;
 

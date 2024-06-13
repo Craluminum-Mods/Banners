@@ -117,12 +117,12 @@ public class BannerProperties
 
     public static void SetPlacement(ITreeAttribute tree, string placement)
     {
-        tree.GetOrAddTreeAttribute(attributeBanner).SetString(attributePlacement, placement);
+        GetBannerTree(tree).SetString(attributePlacement, placement);
     }
 
     public static void ClearPlacement(ITreeAttribute tree)
     {
-        tree.GetOrAddTreeAttribute(attributeBanner).RemoveAttribute(attributePlacement);
+        GetBannerTree(tree).RemoveAttribute(attributePlacement);
     }
 
     public static ITreeAttribute GetBannerTree(ITreeAttribute tree) => tree.GetOrAddTreeAttribute(attributeBanner);

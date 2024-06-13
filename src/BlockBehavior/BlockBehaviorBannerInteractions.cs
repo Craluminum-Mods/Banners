@@ -235,7 +235,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         foreach (ItemStack stack in ObjectCacheUtil.TryGet<ItemStack[]>(capi, cacheKeyBannerStacks))
         {
             BannerProperties stackProps = BannerProperties.FromStack(stack);
-            if (blockEntity.BannerProps.Patterns.SameBaseColors(stackProps) && stackProps.Patterns.Elements.Count == 1)
+            if (blockEntity.BannerProps.Patterns.SameBaseColors(stackProps) && stackProps.Patterns.Count == 1)
             {
                 bannerStacks = bannerStacks.Append(stack);
             }
@@ -280,18 +280,18 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
                 MouseButton = EnumMouseButton.Right,
                 Itemstacks = ObjectCacheUtil.TryGet<ItemStack[]>(capi, cacheKeyBookStacks)
             });
+            IRotatableBanner rotatableBanner = blockEntity.Block.GetInterface<IRotatableBanner>(capi.World, selection.Position);
+            BEBehaviorWrenchOrientableBanner wrenchableBanner = blockEntity.GetBehavior<BEBehaviorWrenchOrientableBanner>();
+            if (rotatableBanner != null)
+            {
+                interactions.AddRange(ObjectCacheUtil.TryGet<WorldInteraction[]>(capi, cacheKeyRotatableBannerInteractions));
+            }
+            if (wrenchableBanner != null)
+            {
+                interactions.Add(ObjectCacheUtil.TryGet<WorldInteraction>(capi, cacheKeyWrenchableBannerInteractions));
+            }
         }
 
-        IRotatableBanner rotatableBanner = blockEntity.Block.GetInterface<IRotatableBanner>(capi.World, selection.Position);
-        BEBehaviorWrenchOrientableBanner wrenchableBanner = blockEntity.GetBehavior<BEBehaviorWrenchOrientableBanner>();
-        if (rotatableBanner != null)
-        {
-            interactions.AddRange(ObjectCacheUtil.TryGet<WorldInteraction[]>(capi, cacheKeyRotatableBannerInteractions));
-        }
-        if (wrenchableBanner != null)
-        {
-            interactions.Add(ObjectCacheUtil.TryGet<WorldInteraction>(capi, cacheKeyWrenchableBannerInteractions));
-        }
         return interactions.ToArray();
     }
 }

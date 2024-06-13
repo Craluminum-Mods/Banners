@@ -58,7 +58,7 @@ public class BlockEntityBanner : BlockEntity
     public override void OnBlockPlaced(ItemStack byItemStack = null)
     {
         base.OnBlockPlaced(byItemStack);
-        if (byItemStack?.Attributes != null)
+        if (byItemStack != null)
         {
             BannerProps.FromTreeAttribute(byItemStack.Attributes,
                 defaultType: BannerBlock.DefaultPlacement,
