@@ -25,7 +25,7 @@ public class BEBehaviorWrenchOrientableBanner : BlockEntityBehavior, IWrenchOrie
 
     public void Rotate(EntityAgent byEntity, BlockSelection blockSel, int dir)
     {
-        if (Api.World.BlockAccessor.GetBlockEntity(Pos) is not BlockEntityBanner be)
+        if (Blockentity is not BlockEntityBanner be)
         {
             return;
         }
@@ -36,8 +36,7 @@ public class BEBehaviorWrenchOrientableBanner : BlockEntityBehavior, IWrenchOrie
             return;
         }
 
-        // doesn't work client side
-        // if (!be.IsEditModeEnabled(byPlayer)) return;
+        if (!be.IsEditModeEnabled(byPlayer)) return;
 
         bool sneak = byEntity.Controls.Sneak;
         bool sprint = byEntity.Controls.Sprint;

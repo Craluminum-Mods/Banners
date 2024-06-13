@@ -12,7 +12,6 @@ namespace Flags;
 public class BlockBehaviorBannerToolModes : BlockBehavior
 {
     private ICoreAPI api;
-    private SkillItem[] skillItems;
 
     public List<BannerToolMode> ToolModes { get; protected set; } = new();
     public List<LoadedTexture> CachedTextures => ObjectCacheUtil.GetOrCreate(api, cacheKeyBannerToolModeTextures, () => new List<LoadedTexture>(ToolModes.Count));
@@ -42,12 +41,11 @@ public class BlockBehaviorBannerToolModes : BlockBehavior
 
     public override void SetToolMode(ItemSlot slot, IPlayer byPlayer, BlockSelection blockSelection, int index)
     {
-        if (slot.Empty || skillItems == null || skillItems.Length <= index) return;
+        if (slot.Empty || ToolModes.Count <= index) return;
 
-        BannerToolMode matching = ToolModes.FirstOrDefault(x => x.Code == skillItems[index].Code, null);
-        if (matching?.Condition.Matches(slot) == true)
+        if (ToolModes[index].Condition.Matches(slot) == true)
         {
-            matching.Condition.SetAttribute(slot);
+            ToolModes[index].Condition.SetAttribute(slot);
         }
         slot.MarkDirty();
     }
@@ -59,10 +57,9 @@ public class BlockBehaviorBannerToolModes : BlockBehavior
             return null;
         }
 
-        SkillItem[] _skillItems = BannerToolMode.GetToolModes(capi, slot, ToolModes);
-
-        CachedTextures.AddRange(_skillItems.Where(toolMode => toolMode.Texture != null).Select(toolMode => toolMode.Texture));
-        return skillItems = _skillItems;
+        SkillItem[] skillItems = BannerToolMode.GetToolModes(capi, slot, ToolModes);
+        CachedTextures.AddRange(skillItems.Where(toolMode => toolMode.Texture != null).Select(toolMode => toolMode.Texture));
+        return skillItems;
     }
 
     public override WorldInteraction[] GetHeldInteractionHelp(ItemSlot inSlot, ref EnumHandling handling)

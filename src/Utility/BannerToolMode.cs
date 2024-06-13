@@ -16,8 +16,19 @@ public class BannerToolMode
     public string Name => $"{langCodeToolMode}{Condition.Key}-{Condition.IsValue}-{Condition.SetValue}";
     public AssetLocation Code => AssetLocation.Create(Name);
 
-    public SkillItem GetToolMode(ICoreClientAPI capi)
+    public SkillItem GetToolMode(ICoreClientAPI capi, ItemSlot slot)
     {
+        if (!Condition.Matches(slot))
+        {
+            return new SkillItem()
+            {
+                Enabled = false,
+                Code = AssetLocation.Create("skillitem-dummy"),
+                Name = "",
+                Linebreak = Linebreak
+            };
+        }
+
         SkillItem skillItem = new SkillItem()
         {
             Code = AssetLocation.Create(Name),
@@ -44,7 +55,7 @@ public class BannerToolMode
 
     public static SkillItem[] GetToolModes(ICoreClientAPI capi, ItemSlot slot, IEnumerable<BannerToolMode> modes)
     {
-        return modes.Where(x => x.Condition.Matches(slot)).Select(x => x.GetToolMode(capi)).ToArray();
+        return modes.Select(x => x.GetToolMode(capi, slot)).ToArray();
     }
 }
 
