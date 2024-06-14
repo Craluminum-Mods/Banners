@@ -118,7 +118,7 @@ public static class Constants
     public const string attributeShapeKey = "shapeKey";
     public const string attributeRotationsByFace = "rotationsByFace";
     public const string attributeToolModes = "toolModes";
-    public const string attributeBannerToolModes = "bannerToolModes";
+    public const string attributeBannerModes = "bannerModes";
     public const string attributeDefaultModes = "defaultModes";
     public const string attributeUnlockedTypes = "unlockedTypes";
     public const string attributeEnabled = "enabled";
@@ -137,7 +137,7 @@ public static class Constants
     public const string outputFolderName = "Banners";
     public static string OutputFolder => Path.Combine(GamePaths.Cache, outputFolderName);
 
-    public static string[] BannersIgnoreAttributeSubTrees => new string[] { attributeBannerToolModes };
+    public static string[] BannersIgnoreAttributeSubTrees => new string[] { attributeBannerModes };
 
     public class IngameError
     {

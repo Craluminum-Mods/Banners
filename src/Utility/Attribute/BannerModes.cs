@@ -83,7 +83,7 @@ public class BannerModes
         }
     }
 
-    public static ITreeAttribute GetModes(ITreeAttribute tree) => tree.GetOrAddTreeAttribute(attributeBannerToolModes);
+    public static ITreeAttribute GetModes(ITreeAttribute tree) => tree.GetOrAddTreeAttribute(attributeBannerModes);
 
     public override string ToString()
     {
