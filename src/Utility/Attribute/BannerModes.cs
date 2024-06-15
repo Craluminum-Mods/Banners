@@ -108,7 +108,7 @@ public struct BannerMode
     public static readonly BannerMode PickUp_On = new BannerMode("pickup", "on");
     public static readonly BannerMode PickUp_Off = new BannerMode("pickup", "off");
     public static readonly BannerMode Wind_On = new BannerMode("wind", "on");
-    public static readonly BannerMode Wind_Of = new BannerMode("wind", "off");
+    public static readonly BannerMode Wind_Off = new BannerMode("wind", "off");
     // public static readonly BannerMode Axis_Free = new BannerMode("axis", "free");
     // public static readonly BannerMode Axis_Lock = new BannerMode("axis", "lock");
     public static readonly BannerMode EditMode_On = new BannerMode("editmode", "on");

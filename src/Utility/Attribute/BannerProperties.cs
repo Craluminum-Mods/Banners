@@ -135,7 +135,7 @@ public class BannerProperties
         result.Append(Placement);
         result.Append(Patterns.ToString());
         result.Append(Cutouts.ToString());
-        // result.Append(Modes.ToString());
+        result.Append(Modes.ToString());
         return result.ToString();
     }
 }

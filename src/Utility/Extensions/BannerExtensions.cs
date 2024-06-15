@@ -53,6 +53,10 @@ public static class BannerExtensions
                 capi.Logger.Error("[Flags] Can't create shape for block {0} because of broken textures", block.Code);
                 return mesh;
             }
+            if (properties.Modes[BannerMode.Wind_Off])
+            {
+                mesh.ClearWindFlags();
+            }
             if (overrideTexturesource == null)
             {
                 block.Meshes[key] = mesh;
