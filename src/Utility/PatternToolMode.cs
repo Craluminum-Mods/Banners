@@ -55,14 +55,14 @@ public class PatternToolMode
 
     public void SetPattern(ItemStack stack)
     {
-        BannerPatternProperties props = BannerPatternProperties.FromStack(stack);
+        PatternProperties props = PatternProperties.FromStack(stack);
         props.SetType(Pattern);
         props.ToTreeAttribute(stack.Attributes);
     }
 
     public bool TryUnlock(ItemSlot slot, ItemStack byStack, bool skipStack = false)
     {
-        BannerPatternProperties props = BannerPatternProperties.FromStack(slot.Itemstack);
+        PatternProperties props = PatternProperties.FromStack(slot.Itemstack);
         if ((skipStack && props.Type == Pattern) || Unlockable.Any(x => x.Matches(byStack)))
         {
             props.SetUnlockedTypes(Pattern);
@@ -72,7 +72,7 @@ public class PatternToolMode
         }
         else if (byStack?.Collectible is ItemBannerPattern)
         {
-            BannerPatternProperties otherProps = BannerPatternProperties.FromStack(byStack);
+            PatternProperties otherProps = PatternProperties.FromStack(byStack);
             props.MergeTypes(otherProps);
             props.ToTreeAttribute(slot.Itemstack.Attributes);
             slot.MarkDirty();
@@ -96,7 +96,7 @@ public class PatternToolMode
 
     public bool IsUnlocked(ItemSlot slot)
     {
-        return Unlockable == null || (Unlockable != null && BannerPatternProperties.FromStack(slot.Itemstack).IsUnlocked(Pattern));
+        return Unlockable == null || (Unlockable != null && PatternProperties.FromStack(slot.Itemstack).IsUnlocked(Pattern));
     }
 }
 

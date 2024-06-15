@@ -6,7 +6,7 @@ namespace Flags;
 
 public static class BannerPatternExtensions
 {
-    public static MeshData GetOrCreateMesh(this ItemBannerPattern item, ICoreAPI api, BannerPatternProperties properties)
+    public static MeshData GetOrCreateMesh(this ItemBannerPattern item, ICoreAPI api, PatternProperties properties)
     {
         ICoreClientAPI capi = api as ICoreClientAPI;
 
@@ -37,7 +37,7 @@ public static class BannerPatternExtensions
 
     public static void GetInventoryMesh(this ItemBannerPattern item, ICoreClientAPI capi, ItemStack stack, ItemRenderInfo renderinfo)
     {
-        BannerPatternProperties properties = BannerPatternProperties.FromStack(stack);
+        PatternProperties properties = PatternProperties.FromStack(stack);
         string key = $"{item.Code}-{properties}";
         if (!item.InvMeshes.TryGetValue(key, out MultiTextureMeshRef meshref))
         {
@@ -47,7 +47,7 @@ public static class BannerPatternExtensions
         renderinfo.ModelRef = meshref;
     }
 
-    public static ITexPositionSource HandleTextures(this ItemBannerPattern item, BannerPatternProperties properties, ICoreClientAPI capi, Shape shape, string filenameForLogging = "")
+    public static ITexPositionSource HandleTextures(this ItemBannerPattern item, PatternProperties properties, ICoreClientAPI capi, Shape shape, string filenameForLogging = "")
     {
         ShapeTextureSource texSource = new ShapeTextureSource(capi, shape, filenameForLogging);
 
@@ -64,7 +64,7 @@ public static class BannerPatternExtensions
         return texSource;
     }
 
-    public static void ReplaceTexture(this ItemBannerPattern item, ICoreClientAPI capi, string textureCode, ref CompositeTexture ctex, BannerPatternProperties properties)
+    public static void ReplaceTexture(this ItemBannerPattern item, ICoreClientAPI capi, string textureCode, ref CompositeTexture ctex, PatternProperties properties)
     {
         if (!item.CustomTextures.TryGetValue(properties.GetTextureCode(textureCode), out CompositeTexture _newTexture) || _newTexture == null)
         {

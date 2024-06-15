@@ -11,7 +11,7 @@ public class CollectibleBehaviorBannerPatternDescription : CollectibleBehavior
 
     public override void GetHeldItemInfo(ItemSlot inSlot, StringBuilder dsc, IWorldAccessor world, bool withDebugInfo)
     {
-        if (!inSlot.Empty && TryGetProperties(out BannerPatternProperties props, inSlot.Itemstack))
+        if (!inSlot.Empty && TryGetProperties(out PatternProperties props, inSlot.Itemstack))
         {
             string descLangCode = $"{langCodePatternDesc}{props.Type}";
             if (descLangCode.HasTranslation())
@@ -27,9 +27,9 @@ public class CollectibleBehaviorBannerPatternDescription : CollectibleBehavior
         }
     }
 
-    protected static bool TryGetProperties(out BannerPatternProperties props, ItemStack stack)
+    protected static bool TryGetProperties(out PatternProperties props, ItemStack stack)
     {
-        props = BannerPatternProperties.FromStack(stack);
+        props = PatternProperties.FromStack(stack);
         return props != null;
     }
 }

@@ -105,7 +105,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         {
             return false;
         }
-        string pattern = BannerPatternProperties.FromStack(offHandSlot.Itemstack).Type;
+        string pattern = PatternProperties.FromStack(offHandSlot.Itemstack).Type;
         if (string.IsNullOrEmpty(pattern))
         {
             return false;
@@ -190,7 +190,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
             return false;
         }
 
-        string pattern = BannerPatternProperties.FromStack(offHandSlot.Itemstack).Type;
+        string pattern = PatternProperties.FromStack(offHandSlot.Itemstack).Type;
         if (string.IsNullOrEmpty(pattern))
         {
             return false;

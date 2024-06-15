@@ -5,7 +5,7 @@ using Vintagestory.API.Datastructures;
 
 namespace Flags;
 
-public class BannerPatternProperties
+public class PatternProperties
 {
     public string Type { get; protected set; } = string.Empty;
     public List<string> UnlockedTypes { get; protected set; } = new();
@@ -17,7 +17,7 @@ public class BannerPatternProperties
         return $"{oldTextureCode}-{Type}";
     }
 
-    public BannerPatternProperties FromTreeAttribute(ITreeAttribute tree)
+    public PatternProperties FromTreeAttribute(ITreeAttribute tree)
     {
         Type = tree.GetOrAddTreeAttribute(attributeBannerPattern).GetString(attributeType);
         UnlockedTypes = tree.GetOrAddTreeAttribute(attributeBannerPattern).GetAsString(attributeUnlockedTypes, string.Empty).Split(unlockedSeparator).ToList();
@@ -30,9 +30,9 @@ public class BannerPatternProperties
         tree.GetOrAddTreeAttribute(attributeBannerPattern).SetString(attributeUnlockedTypes, UnlockedTypesAsString);
     }
 
-    public static BannerPatternProperties FromStack(ItemStack stack)
+    public static PatternProperties FromStack(ItemStack stack)
     {
-        return new BannerPatternProperties().FromTreeAttribute(stack.Attributes);
+        return new PatternProperties().FromTreeAttribute(stack.Attributes);
     }
 
     public void SetType(string type)
@@ -46,7 +46,7 @@ public class BannerPatternProperties
         UnlockedTypes = UnlockedTypes.Distinct().Order().ToList();
     }
 
-    public void MergeTypes(BannerPatternProperties otherProps)
+    public void MergeTypes(PatternProperties otherProps)
     {
         if (!string.IsNullOrEmpty(otherProps.Type))
         {

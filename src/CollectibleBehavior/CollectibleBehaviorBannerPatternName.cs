@@ -36,7 +36,7 @@ public class CollectibleBehaviorBannerPatternName : CollectibleBehavior
             sb.Append(newName);
             return sb.ToString();
         }
-        else if (TryGetProperties(out BannerPatternProperties props, stack))
+        else if (TryGetProperties(out PatternProperties props, stack))
         {
             newName = string.Join(string.Empty, Parts.Select(x => x.Replace(ReplacePart, props.Type).LocalizeM()));
             sb.Clear();
@@ -46,9 +46,9 @@ public class CollectibleBehaviorBannerPatternName : CollectibleBehavior
         return newName;
     }
 
-    protected static bool TryGetProperties(out BannerPatternProperties props, ItemStack stack)
+    protected static bool TryGetProperties(out PatternProperties props, ItemStack stack)
     {
-        props = BannerPatternProperties.FromStack(stack);
+        props = PatternProperties.FromStack(stack);
         return props != null;
     }
 }
