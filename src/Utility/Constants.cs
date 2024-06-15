@@ -31,6 +31,8 @@ public static class Constants
 
     public const string langCodeEmpty = "Empty";
     public const string langCodeColor = "color-";
+    public const string langCodeSetToolmode = "heldhelp-settoolmode";
+    public const string langCodeRightClickPickUp = "blockhelp-behavior-rightclickpickup";
     public const string langCodePattern = $"{modDomain}:pattern-";
     public const string langCodePatternDesc = $"{modDomain}:patterndesc-";
     public const string langCodeBannerLiquidType = $"{modDomain}:banner-liquid-type";
@@ -56,7 +58,6 @@ public static class Constants
     public const string langCodeBannerModes = $"{modDomain}:banner-modes";
     public const string langCodeAddCutout = $"{modDomain}:blockhelp-banner-addcutout";
     public const string langCodeRemoveCutout = $"{modDomain}:blockhelp-banner-removecutout";
-    public const string langCodeSetToolmode = "heldhelp-settoolmode";
     public const string langCodeToolMode = $"{modDomain}:toolmode-";
 
     public const string cacheKeyBlockBannerMeshes = $"{modDomain}BlockBannerMeshes";

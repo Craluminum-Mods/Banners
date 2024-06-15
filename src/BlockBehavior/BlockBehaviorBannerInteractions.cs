@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
+using Vintagestory.API.Config;
+using Vintagestory.API.Datastructures;
 using Vintagestory.API.Util;
 using Vintagestory.GameContent;
 
@@ -19,6 +21,12 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
             return base.OnBlockInteractStart(world, byPlayer, blockSel, ref handling);
         }
 
+        if (blockEntity.BannerProps.Modes[BannerMode.PickUp_On] && PickUp(world, byPlayer, blockSel))
+        {
+            handling = EnumHandling.PreventDefault;
+            return true;
+        }
+
         if (AddLayer(world, byPlayer, blockEntity) || RemoveLayer(byPlayer, blockEntity) || AddCutout(byPlayer, blockEntity) || RemoveCutout(byPlayer, blockEntity) || CopyLayers(byPlayer, blockEntity) || Rename(byPlayer, blockEntity))
         {
             blockEntity.MarkDirty(true);
@@ -29,6 +37,46 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         }
 
         return base.OnBlockInteractStart(world, byPlayer, blockSel, ref handling);
+    }
+
+    public bool PickUp(IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel)
+    {
+        ItemStack[] dropStacks = new ItemStack[1] { block.OnPickBlock(world, blockSel.Position) };
+        ItemSlot activeSlot = byPlayer.InventoryManager.ActiveHotbarSlot;
+        bool heldSlotSuitable = activeSlot.Empty || (dropStacks.Length >= 1 && activeSlot.Itemstack.Equals(world, dropStacks[0], GlobalConstants.IgnoredStackAttributes));
+        if (!heldSlotSuitable || !world.Claims.TryAccess(byPlayer, blockSel.Position, EnumBlockAccessFlags.BuildOrBreak))
+        {
+            return false;
+        }
+        if (byPlayer.Entity.Controls.ShiftKey)
+        {
+            return false;
+        }
+        if (world.Side != EnumAppSide.Server || !BlockBehaviorReinforcable.AllowRightClickPickup(world, blockSel.Position, byPlayer))
+        {
+            return true;
+        }
+        bool blockToBreak = true;
+        foreach (ItemStack stack in dropStacks)
+        {
+            ItemStack origStack = stack.Clone();
+            if (!byPlayer.InventoryManager.TryGiveItemstack(stack, slotNotifyEffect: true))
+            {
+                world.SpawnItemEntity(stack, blockSel.Position.ToVec3d().AddCopy(0.5, 0.1, 0.5));
+            }
+            TreeAttribute tree = new TreeAttribute();
+            tree["itemstack"] = new ItemstackAttribute(origStack.Clone());
+            tree["byentityid"] = new LongAttribute(byPlayer.Entity.EntityId);
+            world.Api.Event.PushEvent("onitemcollected", tree);
+            if (blockToBreak)
+            {
+                blockToBreak = false;
+                world.BlockAccessor.SetBlock(0, blockSel.Position);
+                world.BlockAccessor.TriggerNeighbourBlockUpdate(blockSel.Position);
+            }
+            world.PlaySoundAt(block.GetSounds(world.BlockAccessor, blockSel.Position).Place, byPlayer);
+        }
+        return true;
     }
 
     public bool AddLayer(IWorldAccessor world, IPlayer byPlayer, BlockEntityBanner blockEntity)
@@ -239,6 +287,16 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
             {
                 bannerStacks = bannerStacks.Append(stack);
             }
+        }
+
+        if (blockEntity.BannerProps.Modes[BannerMode.PickUp_On])
+        {
+            interactions.Add(new WorldInteraction
+            {
+                ActionLangCode = langCodeRightClickPickUp,
+                MouseButton = EnumMouseButton.Right,
+                RequireFreeHand = true
+            });
         }
 
         interactions.Add(new WorldInteraction()
