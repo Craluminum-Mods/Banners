@@ -145,7 +145,7 @@ public class BlockBanner : Block
         if (place && world.BlockAccessor.GetBlockEntity(blockSel.Position) is BlockEntityBanner be)
         {
             IRotatableBanner rotatableBanner = GetInterface<IRotatableBanner>(world, blockSel.Position);
-            rotatableBanner?.RotateWhenPlaced(world, byPlayer, blockSel, byItemStack);
+            rotatableBanner?.RotateWhenPlaced(byPlayer, blockSel, byItemStack, be);
             if (blockSel.Face.IsHorizontal)
             {
                 BannerProperties.SetPlacement(byItemStack.Attributes, DefaultHorizontalPlacement);
@@ -162,9 +162,23 @@ public class BlockBanner : Block
     public override ItemStack OnPickBlock(IWorldAccessor world, BlockPos pos)
     {
         ItemStack stack = base.OnPickBlock(world, pos);
-        if (world.BlockAccessor.GetBlockEntity(pos) is BlockEntityBanner be)
+        if (world.BlockAccessor.GetBlockEntity(pos) is not BlockEntityBanner be)
         {
-            be.BannerProps.ToStack(stack);
+            return stack;
+        }
+
+        be.BannerProps.ToStack(stack);
+        if (!be.BannerProps.Modes[BannerMode.SaveRotations_On])
+        {
+            return stack;
+        }
+
+        IRotatableBanner rotatableBanner = GetInterface<IRotatableBanner>(world, pos);
+        if (rotatableBanner != null)
+        {
+            stack.Attributes.SetFloat(attributeRotX, rotatableBanner.RotateX);
+            stack.Attributes.SetFloat(attributeRotY, rotatableBanner.RotateY);
+            stack.Attributes.SetFloat(attributeRotZ, rotatableBanner.RotateZ);
         }
         return stack;
     }

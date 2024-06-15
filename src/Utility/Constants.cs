@@ -123,6 +123,9 @@ public static class Constants
     public const string attributeDefaultModes = "defaultModes";
     public const string attributeUnlockedTypes = "unlockedTypes";
     public const string attributeEnabled = "enabled";
+    public const string attributeRotX = "rotX";
+    public const string attributeRotY = "rotY";
+    public const string attributeRotZ = "rotZ";
 
     public const string hotkeyToolmodeSelect = "toolmodeselect";
     public const string eventKeepOpenToolmodeDialog = "keepopentoolmodedlg";

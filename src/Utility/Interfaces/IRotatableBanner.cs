@@ -10,7 +10,7 @@ public interface IRotatableBanner : IRotatable
     float RotateY { get; set; }
     float RotateZ { get; set; }
 
-    void RotateWhenPlaced(IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel, ItemStack byItemStack);
+    void RotateWhenPlaced(IPlayer byPlayer, BlockSelection blockSel, ItemStack byItemStack, BlockEntityBanner blockEntity);
     MeshData RotatedMesh(MeshData mesh);
     Cuboidf RotatedCuboid(Cuboidf cuboid);
     bool TryRotate(EntityAgent byEntity, BlockSelection blockSel, int dir);

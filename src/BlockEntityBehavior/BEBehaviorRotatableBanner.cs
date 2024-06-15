@@ -29,15 +29,21 @@ public class BEBehaviorRotatableBanner : BlockEntityBehavior, IRotatableBanner
         RotateZ = tree.GetFloat(attributeRotateZ);
     }
 
-    public void RotateWhenPlaced(IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel, ItemStack byItemStack)
+    public void RotateWhenPlaced(IPlayer byPlayer, BlockSelection blockSel, ItemStack byItemStack, BlockEntityBanner blockEntity)
     {
         float rotInterval = byPlayer.Entity.Controls.Sneak ? Radians22_5 : Radians90;
 
         BlockPos targetPos = blockSel.DidOffset ? blockSel.Position.AddCopy(blockSel.Face.Opposite) : blockSel.Position;
         float roundRad = (float)(int)Math.Round((float)Math.Atan2(byPlayer.Entity.Pos.X - ((double)targetPos.X + blockSel.HitPosition.X), (double)(float)byPlayer.Entity.Pos.Z - ((double)targetPos.Z + blockSel.HitPosition.Z)) / rotInterval) * rotInterval;
-        RotateX = 0;
-        RotateY = roundRad;
-        RotateZ = 0;
+
+        bool saveRotations = blockEntity.BannerProps.Modes[BannerMode.SaveRotations_On];
+        float rotX = byItemStack.Attributes.GetFloat(attributeRotX);
+        float rotY = byItemStack.Attributes.GetFloat(attributeRotY);
+        float rotZ = byItemStack.Attributes.GetFloat(attributeRotZ);
+
+        RotateX = saveRotations ? rotX : 0;
+        RotateY = saveRotations ? rotY : roundRad;
+        RotateZ = saveRotations ? rotZ : 0;
     }
 
     public MeshData RotatedMesh(MeshData blockMesh)
