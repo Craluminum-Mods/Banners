@@ -103,15 +103,15 @@ public class BannerModes
 
 public struct BannerMode
 {
-    public static readonly string DisplayOnMap = "displayonmap";
+    // public static readonly string DisplayOnMap = "displayonmap";
     public static readonly string PickUp = "pickup";
     public static readonly string Wind = "wind";
     public static readonly string EditMode = "editmode";
     public static readonly string SaveRotations = "saverotations";
 
-    public static readonly BannerMode DisplayOnMap_On = new BannerMode(DisplayOnMap, "on");
-    public static readonly BannerMode DisplayOnMap_Off = new BannerMode(DisplayOnMap, "off");
-    public static readonly BannerMode DisplayOnMap_Group = new BannerMode(DisplayOnMap, "group");
+    // public static readonly BannerMode DisplayOnMap_On = new BannerMode(DisplayOnMap, "on");
+    // public static readonly BannerMode DisplayOnMap_Off = new BannerMode(DisplayOnMap, "off");
+    // public static readonly BannerMode DisplayOnMap_Group = new BannerMode(DisplayOnMap, "group");
     public static readonly BannerMode PickUp_On = new BannerMode(PickUp, "on");
     public static readonly BannerMode PickUp_Off = new BannerMode(PickUp, "off");
     public static readonly BannerMode Wind_On = new BannerMode(Wind, "on");

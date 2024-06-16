@@ -275,7 +275,7 @@
         "defaultHorizontalPlacement": "compact-wall",
         "defaultVerticalPlacement": "compact-groundsimple",
         "defaultModes": {
-            "displayonmap": "off",
+            // "displayonmap": "off",
             "pickup": "off",
             "wind": "on",
             "editmode": "on",
@@ -443,25 +443,25 @@
             "properties": {
                 /*
                     Possible values:
-                    - displayonmap      = on, off, group
+                    - displayonmap       = on, off, group
                     - editmode          = on, off
                     - pickup            = on, off
                     - saverotations     = on, off
                     - wind              = on, off
                 */
                 "toolModes": [
-                    {
-                        "icon": "flags:textures/icons/toolmode/displayonmap-off.svg",
-                        "condition": { "key": "displayonmap", "isValue": "off", "setValue": "on", "default": true }
-                    },
-                    {
-                        "icon": "flags:textures/icons/toolmode/displayonmap-on.svg",
-                        "condition": { "key": "displayonmap", "isValue": "on", "setValue": "group" }
-                    },
-                    {
-                        "icon": "flags:textures/icons/toolmode/displayonmap-group.svg",
-                        "condition": { "key": "displayonmap", "isValue": "group", "setValue": "off" }
-                    },
+                    // {
+                    //     "icon": "flags:textures/icons/toolmode/displayonmap-off.svg",
+                    //     "condition": { "key": "displayonmap", "isValue": "off", "setValue": "on", "default": true }
+                    // },
+                    // {
+                    //     "icon": "flags:textures/icons/toolmode/displayonmap-on.svg",
+                    //     "condition": { "key": "displayonmap", "isValue": "on", "setValue": "group" }
+                    // },
+                    // {
+                    //     "icon": "flags:textures/icons/toolmode/displayonmap-group.svg",
+                    //     "condition": { "key": "displayonmap", "isValue": "group", "setValue": "off" }
+                    // },
                     {
                         "icon": "flags:textures/icons/toolmode/pickup-off.svg",
                         "condition": { "key": "pickup", "isValue": "off", "setValue": "on", "default": true },
