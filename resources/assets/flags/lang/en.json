@@ -147,8 +147,6 @@
     "toolmode-saverotations-on-off": "Save rotations. Current: Enabled. Next: Disabled",
     "toolmode-wind-off-on": "Affected by wind. Current: Disabled. Next: Enabled",
     "toolmode-wind-on-off": "Affected by wind. Current: Enabled. Next: Disabled",
-    // "toolmode-axis-free-lock": "Axis rotations. Current: Free. Next: Locked",
-    // "toolmode-axis-lock-free": "Axis rotations. Current: Locked. Next: Free",
 
     "toolmode-displayonmap-group": "Display on map: <font color=\"#99c9f9\">Group</font>",
     "toolmode-displayonmap-off": "Display on map: <font color=\"#ff8484\">Disabled</font>",
@@ -161,8 +159,6 @@
     "toolmode-saverotations-on": "Save rotations: <font color=\"#84ff84\">Enabled</font>",
     "toolmode-wind-off": "Affected by wind: <font color=\"#ff8484\">Disabled</font>",
     "toolmode-wind-on": "Affected by wind: <font color=\"#84ff84\">Enabled</font>",
-    // "toolmode-axis-free": "Axis rotations: <font color=\"#84ff84\">Free</font>",
-    // "toolmode-axis-lock": "Axis rotations: <font color=\"#ff8484\">Locked</font>",
 
     "blockhelp-banner-addlayer": "Add pattern (requires pattern in left hand)",
     "blockhelp-banner-removelayer": "Remove last pattern",

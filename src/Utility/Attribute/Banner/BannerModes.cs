@@ -11,6 +11,7 @@ public class BannerModes
     protected Dictionary<string, string> Elements { get; private set; } = new();
 
     public bool this[BannerMode mode] => TryGetValue(mode.Key, out string value) && value == mode.Value;
+    public string this[string key] => TryGetValue(key, out string value) ? value : "";
 
     public string LangCode(string key)
     {
@@ -102,19 +103,23 @@ public class BannerModes
 
 public struct BannerMode
 {
-    public static readonly BannerMode DisplayOnMap_On = new BannerMode("displayonmap", "on");
-    public static readonly BannerMode DisplayOnMap_Off = new BannerMode("displayonmap", "off");
-    public static readonly BannerMode DisplayOnMap_Group = new BannerMode("displayonmap", "group");
-    public static readonly BannerMode PickUp_On = new BannerMode("pickup", "on");
-    public static readonly BannerMode PickUp_Off = new BannerMode("pickup", "off");
-    public static readonly BannerMode Wind_On = new BannerMode("wind", "on");
-    public static readonly BannerMode Wind_Off = new BannerMode("wind", "off");
-    // public static readonly BannerMode Axis_Free = new BannerMode("axis", "free");
-    // public static readonly BannerMode Axis_Lock = new BannerMode("axis", "lock");
-    public static readonly BannerMode EditMode_On = new BannerMode("editmode", "on");
-    public static readonly BannerMode EditMode_Off = new BannerMode("editmode", "off");
-    public static readonly BannerMode SaveRotations_On = new BannerMode("saverotations", "on");
-    public static readonly BannerMode SaveRotations_Off = new BannerMode("saverotations", "off");
+    public static readonly string DisplayOnMap = "displayonmap";
+    public static readonly string PickUp = "pickup";
+    public static readonly string Wind = "wind";
+    public static readonly string EditMode = "editmode";
+    public static readonly string SaveRotations = "saverotations";
+
+    public static readonly BannerMode DisplayOnMap_On = new BannerMode(DisplayOnMap, "on");
+    public static readonly BannerMode DisplayOnMap_Off = new BannerMode(DisplayOnMap, "off");
+    public static readonly BannerMode DisplayOnMap_Group = new BannerMode(DisplayOnMap, "group");
+    public static readonly BannerMode PickUp_On = new BannerMode(PickUp, "on");
+    public static readonly BannerMode PickUp_Off = new BannerMode(PickUp, "off");
+    public static readonly BannerMode Wind_On = new BannerMode(Wind, "on");
+    public static readonly BannerMode Wind_Off = new BannerMode(Wind, "off");
+    public static readonly BannerMode EditMode_On = new BannerMode(EditMode, "on");
+    public static readonly BannerMode EditMode_Off = new BannerMode(EditMode, "off");
+    public static readonly BannerMode SaveRotations_On = new BannerMode(SaveRotations, "on");
+    public static readonly BannerMode SaveRotations_Off = new BannerMode(SaveRotations, "off");
 
     public string Key { get; private set; }
     public string Value { get; private set; }

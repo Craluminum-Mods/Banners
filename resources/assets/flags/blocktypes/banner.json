@@ -278,7 +278,6 @@
             "displayonmap": "off",
             "pickup": "off",
             "wind": "on",
-            // "axis": "free",
             "editmode": "on",
             "saverotations": "off"
         },
@@ -444,7 +443,6 @@
             "properties": {
                 /*
                     Possible values:
-                    - axis              = free, lock
                     - displayonmap      = on, off, group
                     - editmode          = on, off
                     - pickup            = on, off
@@ -482,14 +480,6 @@
                         "icon": "flags:textures/icons/toolmode/wind-off.svg",
                         "condition": { "key": "wind", "isValue": "off", "setValue": "on" }
                     },
-                    // {
-                    //     "icon": "flags:textures/icons/toolmode/axis-free.svg",
-                    //     "condition": { "key": "axis", "isValue": "free", "setValue": "lock", "default": true }
-                    // },
-                    // {
-                    //     "icon": "flags:textures/icons/toolmode/axis-lock.svg",
-                    //     "condition": { "key": "axis", "isValue": "lock", "setValue": "free" }
-                    // },
                     {
                         "icon": "flags:textures/icons/toolmode/editmode-on.svg",
                         "condition": { "key": "editmode", "isValue": "on", "setValue": "off", "default": true },

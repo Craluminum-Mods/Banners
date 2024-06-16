@@ -147,8 +147,6 @@
     "toolmode-saverotations-on-off": "Зберегти обертання. Поточне: Увімкнено. Наступне: Вимкнено",
     "toolmode-wind-off-on": "Вплив вітру. Поточне: Вимкнено. Наступне: Увімкнено",
     "toolmode-wind-on-off": "Вплив вітру. Поточне: Увімкнено. Наступне: Вимкнено",
-    // "toolmode-axis-free-lock": "Обертання осей. Поточне: Вільно. Наступне: Заблоковано",
-    // "toolmode-axis-lock-free": "Обертання осей. Поточне: Заблоковано. Наступне: Вільно",
 
     "toolmode-displayonmap-group": "Відображення на карті: <font color=\"#99c9f9\">Тільки для групи</font>",
     "toolmode-displayonmap-off": "Відображення на карті: <font color=\"#ff8484\">Вимкнено</font>",
@@ -161,8 +159,6 @@
     "toolmode-saverotations-on": "Зберегти обертання: <font color=\"#84ff84\">Увімкнено</font>",
     "toolmode-wind-off": "Вплив вітру: <font color=\"#ff8484\">Вимкнено</font>",
     "toolmode-wind-on": "Вплив вітру: <font color=\"#84ff84\">Увімкнено</font>",
-    // "toolmode-axis-free-lock": "Обертання осей: Вільно",
-    // "toolmode-axis-lock-free": "Обертання осей: Заблоковано",
 
     "blockhelp-banner-addlayer": "Додати шар (потрібен візерунок в лівій руці)",
     "blockhelp-banner-removelayer": "Видалити останній шар",

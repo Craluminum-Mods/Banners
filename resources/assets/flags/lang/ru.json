@@ -147,8 +147,6 @@
     "toolmode-saverotations-on-off": "Сохранить вращения. Текущее: Включено. Следующее: Отключено",
     "toolmode-wind-off-on": "Влияние ветра. Текущее: Отключено. Следующее: Включено",
     "toolmode-wind-on-off": "Влияние ветра. Текущее: Включено. Следующее: Отключено",
-    // "toolmode-axis-free-lock": "Оси вращения. Текущее: Свободно. Следующее: Заблокировано",
-    // "toolmode-axis-lock-free": "Оси вращения. Текущее: Заблокировано. Следующее: Свободно",
 
     "toolmode-displayonmap-group": "Отображение на карте: <font color=\"#99c9f9\">Для группы</font>",
     "toolmode-displayonmap-off": "Отображение на карте: <font color=\"#ff8484\">Отключено</font>",
@@ -161,8 +159,6 @@
     "toolmode-saverotations-on": "Сохранить вращения: <font color=\"#84ff84\">Включено</font>",
     "toolmode-wind-off": "Влияние ветра: <font color=\"#ff8484\">Отключено</font>",
     "toolmode-wind-on": "Влияние ветра: <font color=\"#84ff84\">Включено</font>",
-    // "toolmode-axis-free": "Оси вращения: Свободно",
-    // "toolmode-axis-lock": "Оси вращения: Заблокировано",
 
     "blockhelp-banner-addlayer": "Добавить узор (требуется узор в левой руке)",
     "blockhelp-banner-removelayer": "Удалить последний узор",
