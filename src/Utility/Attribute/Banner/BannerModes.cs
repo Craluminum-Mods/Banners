@@ -13,10 +13,7 @@ public class BannerModes
     public bool this[BannerMode mode] => TryGetValue(mode.Key, out string value) && value == mode.Value;
     public string this[string key] => TryGetValue(key, out string value) ? value : "";
 
-    public string LangCode(string key)
-    {
-        return TryGetValue(key, out string value) ? $"{langCodeToolMode}{key}-{value}" : "";
-    }
+    public static string LangCode(string key, string value) => $"{langCodeToolMode}{key}-{value}";
 
     public string ErrorCode(string key)
     {
@@ -51,13 +48,12 @@ public class BannerModes
         dsc.AppendLine(langCodeBannerModes.Localize());
         foreach ((string key, string value) in Elements)
         {
-            if (!LangCode(key).HasTranslation())
+            if ($"{langCodeToolMode}{key}".HasTranslation())
             {
-                continue;
+                if (withDebugInfo) dsc.Append($"{key}: {value}").Append('\t');
+                dsc.Append('\t');
+                dsc.AppendLine($"{langCodeToolMode}{key}".Localize($"{langCodeToolModeValue}{value}".Localize()));
             }
-            if (withDebugInfo) dsc.Append($"{key}: {value}").Append('\t');
-            dsc.Append('\t');
-            dsc.AppendLine(LangCode(key).Localize());
         }
     }
 

@@ -8,49 +8,42 @@ namespace Flags.ToolModes.Banner;
 
 public class BannerToolMode
 {
-    public Condition Condition { get; set; } = new();
+    public SetAttribute SetAttribute { get; set; } = new();
     public string Icon { get; set; }
     public string Color { get; set; }
     public bool Linebreak { get; set; }
 
-    public string Name => $"{langCodeToolMode}{Condition.Key}-{Condition.IsValue}-{Condition.SetValue}";
+    public string Name => BannerModes.LangCode(SetAttribute.Key, SetAttribute.Value);
+
     public AssetLocation Code => AssetLocation.Create(Name);
 
     public SkillItem GetToolMode(ICoreClientAPI capi, ItemSlot slot)
     {
-        if (!Condition.Matches(slot))
-        {
-            return new SkillItem()
-            {
-                Enabled = false,
-                Code = AssetLocation.Create("skillitem-dummy"),
-                Name = "",
-                Linebreak = Linebreak
-            };
-        }
-
         SkillItem skillItem = new SkillItem()
         {
             Code = AssetLocation.Create(Name),
             Name = Name.LocalizeM(),
             Linebreak = Linebreak,
+            TexturePremultipliedAlpha = !string.IsNullOrEmpty(Color)
         };
 
-        if (!string.IsNullOrEmpty(Icon) && capi.Assets.TryGet(AssetLocation.Create(Icon)) != null)
+        return string.IsNullOrEmpty(Icon) || capi.Assets.TryGet(AssetLocation.Create(Icon)) == null
+            ? skillItem
+            : skillItem.WithIcon(capi, capi.Gui.LoadSvgWithPadding(AssetLocation.Create(Icon), 48, 48, 5, color: GetColor(slot)));
+    }
+
+    public bool IconExists(ICoreClientAPI capi)
+    {
+        return !string.IsNullOrEmpty(Icon) && capi.Assets.Exists(AssetLocation.Create(Icon));
+    }
+
+    public int? GetColor(ItemSlot slot)
+    {
+        if (SetAttribute.Matches(slot))
         {
-            int? color = null;
-            if (!string.IsNullOrEmpty(Color))
-            {
-                color = ColorUtil.Hex2Int(Color);
-                skillItem.TexturePremultipliedAlpha = true;
-            }
-            else
-            {
-                skillItem.TexturePremultipliedAlpha = false;
-            }
-            skillItem.WithIcon(capi, capi.Gui.LoadSvgWithPadding(AssetLocation.Create(Icon), 48, 48, 5, color));
+            return string.IsNullOrEmpty(Color) ? null : ColorUtil.Hex2Int(Color);
         }
-        return skillItem;
+        else return IntColor.Gray;
     }
 
     public static SkillItem[] GetToolModes(ICoreClientAPI capi, ItemSlot slot, IEnumerable<BannerToolMode> modes)
@@ -59,11 +52,10 @@ public class BannerToolMode
     }
 }
 
-public class Condition
+public class SetAttribute
 {
     public string Key { get; set; }
-    public string IsValue { get; set; }
-    public string SetValue { get; set; }
+    public string Value { get; set; }
     public bool Default { get; set; }
 
     public bool Matches(ItemSlot slot)
@@ -75,14 +67,14 @@ public class Condition
 
         if (BannerProperties.FromStack(slot.Itemstack).Modes.TryGetValue(Key, out string currentValue))
         {
-            return currentValue == IsValue;
+            return currentValue == Value;
         }
 
-        currentValue = Default ? IsValue : null;
-        return currentValue == IsValue;
+        currentValue = Default ? Value : null;
+        return currentValue == Value;
     }
 
-    public void SetAttribute(ItemSlot slot)
+    public void Set(ItemSlot slot)
     {
         if (slot.Itemstack.Collectible is not BlockBanner)
         {
@@ -90,7 +82,8 @@ public class Condition
         }
 
         BannerProperties props = BannerProperties.FromStack(slot.Itemstack);
-        props.Modes.SetValue(Key, SetValue);
+        // props.Modes.SetValue(Key, SetValue);
+        props.Modes.SetValue(Key, Value);
         props.ToStack(slot.Itemstack);
     }
 }

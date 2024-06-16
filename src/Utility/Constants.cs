@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using Vintagestory.API.Config;
+using Vintagestory.API.MathTools;
 
 namespace Flags;
 
@@ -42,6 +43,7 @@ public static class Constants
     public const string langCodeAddLayer = $"{modDomain}:blockhelp-banner-addlayer";
     public const string langCodeRemoveLayer = $"{modDomain}:blockhelp-banner-removelayer";
     public const string langCodeCopyLayers = $"{modDomain}:blockhelp-banner-copylayers";
+    public const string langCodeCopyLayersFromPlaced = $"{modDomain}:blockhelp-banner-copylayers-placed-to-held";
     public const string langCodeRename = $"{modDomain}:blockhelp-banner-rename";
     public const string langCodeSwapModel = $"{modDomain}:blockhelp-banner-swapmodel";
     public const string langCodeRotateBy22_5 = $"{modDomain}:blockhelp-banner-rotate-22_5";
@@ -59,6 +61,7 @@ public static class Constants
     public const string langCodeAddCutout = $"{modDomain}:blockhelp-banner-addcutout";
     public const string langCodeRemoveCutout = $"{modDomain}:blockhelp-banner-removecutout";
     public const string langCodeToolMode = $"{modDomain}:toolmode-";
+    public const string langCodeToolModeValue = $"{modDomain}:toolmode-value-";
 
     public const string cacheKeyBlockBannerMeshes = $"{modDomain}BlockBannerMeshes";
     public const string cacheKeyBlockBannerInvMeshes = $"{modDomain}BlockBannerMeshesInventory";
@@ -154,5 +157,10 @@ public static class Constants
         public const string BannerNotEnoughBleach = $"{Prefix}banner-notenoughbleach";
         public const string LayersLimitReached = $"{Prefix}layers-limitreached";
         public const string LiquidContainerOneMax = $"{Prefix}liquidcontainer-onemax";
+    }
+
+    public class IntColor
+    {
+        public static readonly int Gray = ColorUtil.Hex2Int("#a9a9a9");
     }
 }

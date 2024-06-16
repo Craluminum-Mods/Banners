@@ -42,11 +42,7 @@ public class BlockBehaviorBannerToolModes : BlockBehavior
     public override void SetToolMode(ItemSlot slot, IPlayer byPlayer, BlockSelection blockSelection, int index)
     {
         if (slot.Empty || ToolModes.Count <= index) return;
-
-        if (ToolModes[index].Condition.Matches(slot) == true)
-        {
-            ToolModes[index].Condition.SetAttribute(slot);
-        }
+        ToolModes[index].SetAttribute.Set(slot);
         slot.MarkDirty();
     }
 

@@ -301,7 +301,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
 
         interactions.Add(new WorldInteraction()
         {
-            ActionLangCode = langCodeCopyLayers,
+            ActionLangCode = blockEntity.IsEditModeEnabled() ? langCodeCopyLayers : langCodeCopyLayersFromPlaced,
             MouseButton = EnumMouseButton.Right,
             Itemstacks = bannerStacks
         });
