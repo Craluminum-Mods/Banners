@@ -6,10 +6,11 @@ using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Util;
+using Vintagestory.GameContent;
 
 namespace Flags;
 
-public class BlockBanner : Block
+public class BlockBanner : Block, IContainedMeshSource
 {
     public List<string> PatternGroups { get; protected set; } = new();
 
@@ -210,5 +211,19 @@ public class BlockBanner : Block
     {
         base.OnBeforeRender(capi, itemstack, target, ref renderinfo);
         this.GetInventoryMesh(capi, itemstack, renderinfo);
+    }
+
+    public MeshData GenMesh(ItemStack itemstack, ITextureAtlasAPI targetAtlas, BlockPos atBlockPos)
+    {
+        BannerProperties props = BannerProperties.FromStack(itemstack);
+        props.SetPlacement(DefaultVerticalPlacement);
+        return this.GetOrCreateMesh(api as ICoreClientAPI, props);
+    }
+
+    public string GetMeshCacheKey(ItemStack itemstack)
+    {
+        BannerProperties props = BannerProperties.FromStack(itemstack);
+        props.SetPlacement(DefaultVerticalPlacement);
+        return $"{itemstack.Collectible.Code}{props}";
     }
 }
