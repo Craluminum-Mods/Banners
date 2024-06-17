@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
@@ -41,9 +40,18 @@ public class BEBehaviorRotatableBanner : BlockEntityBehavior, IRotatableBanner
         float rotY = byItemStack.Attributes.GetFloat(attributeRotY);
         float rotZ = byItemStack.Attributes.GetFloat(attributeRotZ);
 
-        RotateX = saveRotations ? rotX : 0;
-        RotateY = saveRotations ? rotY : roundRad;
-        RotateZ = saveRotations ? rotZ : 0;
+        if (rotX == 0 && rotY == 0 && rotZ == 0)
+        {
+            RotateX = 0;
+            RotateY = roundRad;
+            RotateZ = 0;
+        }
+        else
+        {
+            RotateX = saveRotations ? rotX : 0;
+            RotateY = saveRotations ? rotY : roundRad;
+            RotateZ = saveRotations ? rotZ : 0;
+        }
     }
 
     public MeshData RotatedMesh(MeshData blockMesh)
@@ -100,26 +108,5 @@ public class BEBehaviorRotatableBanner : BlockEntityBehavior, IRotatableBanner
                 RotateZ += rotInterval * (float)dir;
                 break;
         }
-    }
-
-    public void OnTransformed(IWorldAccessor worldAccessor, ITreeAttribute tree, int degreeRotation, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping, EnumAxis? flipAxis)
-    {
-        float thetaX = tree.GetFloat(attributeRotateX);
-        float thetaY = tree.GetFloat(attributeRotateY);
-        float thetaZ = tree.GetFloat(attributeRotateZ);
-
-        float[] array = Mat4f.Create();
-        Mat4f.RotateY(array, array, (float)-degreeRotation * DegreesToRadians);
-        Mat4f.RotateX(array, array, thetaX);
-        Mat4f.RotateY(array, array, thetaY);
-        Mat4f.RotateZ(array, array, thetaZ);
-        Mat4f.ExtractEulerAngles(array, ref thetaX, ref thetaY, ref thetaZ);
-
-        tree.SetFloat(attributeRotateX, thetaX);
-        tree.SetFloat(attributeRotateY, thetaY);
-        tree.SetFloat(attributeRotateZ, thetaZ);
-        RotateX = thetaX;
-        RotateY = thetaY;
-        RotateZ = thetaZ;
     }
 }

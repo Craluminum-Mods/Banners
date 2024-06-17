@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Vintagestory.API.Client;
@@ -8,7 +9,7 @@ using Vintagestory.API.MathTools;
 
 namespace Flags;
 
-public class BlockEntityBanner : BlockEntity
+public class BlockEntityBanner : BlockEntity, IRotatable
 {
     public BannerProperties BannerProps { get; protected set; } = new BannerProperties();
     public BlockBanner BannerBlock => Block as BlockBanner;
@@ -40,16 +41,17 @@ public class BlockEntityBanner : BlockEntity
         base.OnBlockRemoved();
         CustomSelectionBoxes = null;
         CustomCollisionBoxes = null;
-        Mesh?.Dispose();
     }
 
     protected void Init()
     {
-        if (Api == null || Api.Side != EnumAppSide.Client)
+        if (Api == null || Api.Side != EnumAppSide.Client || BannerBlock == null)
         {
             return;
         }
 
+        GetOrCreateCollisionBoxes(true);
+        GetOrCreateSelectionBoxes(true);
         MeshData baseMesh = BannerBlock.GetOrCreateMesh(Api, BannerProps);
         IRotatableBanner rotatableBanner = Block.GetInterface<IRotatableBanner>(Api.World, Pos);
         Mesh = rotatableBanner?.RotatedMesh(baseMesh) ?? baseMesh;
@@ -110,16 +112,16 @@ public class BlockEntityBanner : BlockEntity
     {
         if (forceNew || CustomSelectionBoxes == null)
         {
-            Cuboidf[] _selectionBoxes = BannerBlock.CustomSelectionBoxes.TryGetValueOrWildcard(BannerProps.Placement, out Cuboidf[] boxes)
+            Cuboidf[] _selectionBoxes = BannerBlock?.CustomSelectionBoxes?.TryGetValueOrWildcard(BannerProps?.Placement ?? "", out Cuboidf[] boxes) == true
             ? boxes
-            : Block.SelectionBoxes;
+            : Block?.SelectionBoxes;
 
             _selectionBoxes ??= Array.Empty<Cuboidf>();
             CustomSelectionBoxes = new Cuboidf[_selectionBoxes.Length];
 
             for (int i = 0; i < CustomSelectionBoxes.Length; i++)
             {
-                IRotatableBanner rotatableBanner = Block.GetInterface<IRotatableBanner>(Api.World, Pos);
+                IRotatableBanner rotatableBanner = Block?.GetInterface<IRotatableBanner>(Api.World, Pos);
                 CustomSelectionBoxes[i] = rotatableBanner?.RotatedCuboid(_selectionBoxes[i]) ?? _selectionBoxes[i];
             }
         }
@@ -130,19 +132,32 @@ public class BlockEntityBanner : BlockEntity
     {
         if (forceNew || CustomCollisionBoxes == null)
         {
-            Cuboidf[] _collisionBoxes = BannerBlock.CustomCollisionBoxes.TryGetValueOrWildcard(BannerProps.Placement, out Cuboidf[] boxes)
+            Cuboidf[] _collisionBoxes = BannerBlock?.CustomCollisionBoxes?.TryGetValueOrWildcard(BannerProps?.Placement ?? "", out Cuboidf[] boxes) == true
             ? boxes
-            : Block.CollisionBoxes;
+            : Block?.CollisionBoxes;
 
             _collisionBoxes ??= Array.Empty<Cuboidf>();
             CustomCollisionBoxes = new Cuboidf[_collisionBoxes.Length];
 
             for (int i = 0; i < CustomCollisionBoxes.Length; i++)
             {
-                IRotatableBanner rotatableBanner = Block.GetInterface<IRotatableBanner>(Api.World, Pos);
+                IRotatableBanner rotatableBanner = Block?.GetInterface<IRotatableBanner>(Api.World, Pos);
                 CustomCollisionBoxes[i] = rotatableBanner?.RotatedCuboid(_collisionBoxes[i]) ?? _collisionBoxes[i];
             }
         }
         return CustomCollisionBoxes;
+    }
+
+    public void OnTransformed(IWorldAccessor worldAccessor, ITreeAttribute tree, int degreeRotation, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping, EnumAxis? flipAxis)
+    {
+        BEBehaviorRotatableBanner rotatableBanner = GetBehavior<BEBehaviorRotatableBanner>();
+        int dir = degreeRotation switch
+        {
+            90 => 1,
+            270 => -1,
+            _ => 1
+        };
+        rotatableBanner?.RotateByAxis(dir, EnumAxis.Y, Radians90);
+        MarkDirty(redrawOnClient: true);
     }
 }
