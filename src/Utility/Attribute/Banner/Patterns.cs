@@ -13,6 +13,7 @@ public class Patterns
     protected Dictionary<string, string> Elements { get; private set; } = new();
 
     public int Count => Elements.Count;
+    public bool Any => Elements.Any();
 
     public string BaseColor => GetOrdered()?.FirstOrDefault()?.Color;
 
@@ -29,7 +30,12 @@ public class Patterns
         {
             return false;
         }
-        return Elements.TryAdd(layer.AttributeKey(Elements.Count.ToString()), layer.AttributeValue());
+        return TryAdd(layer);
+    }
+
+    public bool TryAdd(BannerLayer layer)
+    {
+        return layer != null && Elements.TryAdd(layer.AttributeKey(Elements.Count.ToString()), layer.AttributeValue());
     }
 
     public bool TryRemoveLast()

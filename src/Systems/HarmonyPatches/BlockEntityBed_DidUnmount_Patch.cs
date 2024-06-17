@@ -22,6 +22,8 @@ public static class BlockEntityBed_DidUnmount_Patch
         return AccessTools.Method(typeof(BlockEntityBed), nameof(BlockEntityBed.DidUnmount), new[] { typeof(EntityAgent) });
     }
 
+    public static MethodInfo GetTranspiler() => typeof(BlockEntityBed_DidUnmount_Patch).GetMethod(nameof(Transpiler));
+
     public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator il)
     {
         if (Applied)

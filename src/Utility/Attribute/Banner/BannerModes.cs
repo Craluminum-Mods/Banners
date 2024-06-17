@@ -10,6 +10,9 @@ public class BannerModes
 {
     protected Dictionary<string, string> Elements { get; private set; } = new();
 
+    public int Count => Elements.Count;
+    public bool Any => Elements.Any();
+
     public bool this[BannerMode mode] => TryGetValue(mode.Key, out string value) && value == mode.Value;
     public string this[string key] => TryGetValue(key, out string value) ? value : "";
 
@@ -64,6 +67,10 @@ public class BannerModes
         foreach (string key in modesTree.Select(x => x.Key).Where(key => !Exists(key)))
         {
             SetValue(key, modesTree.GetString(key));
+        }
+        if (defaultValues == null)
+        {
+            return;
         }
         foreach ((string key, string value) in defaultValues.Where(key => !Exists(key.Key)))
         {

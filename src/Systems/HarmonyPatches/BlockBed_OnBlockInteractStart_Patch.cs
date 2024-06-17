@@ -15,6 +15,8 @@ public static class BlockBed_OnBlockInteractStart_Patch
         return AccessTools.Method(typeof(BlockBed), nameof(BlockBed.OnBlockInteractStart), new[] { typeof(IWorldAccessor), typeof(IPlayer), typeof(BlockSelection) });
     }
 
+    public static MethodInfo GetPrefix() => typeof(BlockBed_OnBlockInteractStart_Patch).GetMethod(nameof(Prefix));
+
     public static bool Prefix(BlockBed __instance, ref bool __result, IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel)
     {
         if (blockSel != null

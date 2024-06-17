@@ -12,10 +12,10 @@ public class HarmonyPatches : ModSystem
     public override void Start(ICoreAPI _api)
     {
         api = _api;
-        HarmonyInstance.Patch(original: BlockBed_OnBlockInteractStart_Patch.TargetMethod(), prefix: typeof(BlockBed_OnBlockInteractStart_Patch).GetMethod("Prefix"));
-        HarmonyInstance.Patch(original: ServerSystemBlockSimulation_HandleBlockPlaceOrBreak_Patch.TargetMethod(), prefix: typeof(ServerSystemBlockSimulation_HandleBlockPlaceOrBreak_Patch).GetMethod("Prefix"));
-        HarmonyInstance.Patch(original: BlockEntityBed_DidUnmount_Patch.TargetMethod(), transpiler: typeof(BlockEntityBed_DidUnmount_Patch).GetMethod("Transpiler"));
-        HarmonyInstance.Patch(original: ColorBlend_ColorBurn_Patch.TargetMethod(), prefix: typeof(ColorBlend_ColorBurn_Patch).GetMethod("Prefix"));
+        HarmonyInstance.Patch(original: BlockBed_OnBlockInteractStart_Patch.TargetMethod(), prefix: BlockBed_OnBlockInteractStart_Patch.GetPrefix());
+        HarmonyInstance.Patch(original: ServerSystemBlockSimulation_HandleBlockPlaceOrBreak_Patch.TargetMethod(), prefix: ServerSystemBlockSimulation_HandleBlockPlaceOrBreak_Patch.GetPrefix());
+        HarmonyInstance.Patch(original: BlockEntityBed_DidUnmount_Patch.TargetMethod(), transpiler: BlockEntityBed_DidUnmount_Patch.GetTranspiler());
+        HarmonyInstance.Patch(original: ColorBlend_ColorBurn_Patch.TargetMethod(), prefix: ColorBlend_ColorBurn_Patch.GetPrefix());
     }
 
     public override void Dispose()

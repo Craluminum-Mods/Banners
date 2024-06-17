@@ -14,6 +14,8 @@ public static class ColorBlend_ColorBurn_Patch
         return AccessTools.Method(typeof(ColorBlend), nameof(ColorBlend.ColorBurn), new[] { typeof(int), typeof(int) });
     }
 
+    public static MethodInfo GetPrefix() => typeof(ColorBlend_ColorBurn_Patch).GetMethod(nameof(Prefix));
+
     public static bool Prefix(ref int __result, int rgb1, int rgb2)
     {
         __result = OverlayCutout(rgb1, rgb2);

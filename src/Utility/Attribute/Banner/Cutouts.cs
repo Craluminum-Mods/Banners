@@ -12,6 +12,9 @@ public class Cutouts
 {
     protected List<string> Elements { get; private set; } = new();
 
+    public int Count => Elements.Count;
+    public bool Any => Elements.Any();
+
     public IOrderedEnumerable<BannerLayer> GetOrdered(string textureCode = null)
     {
         return Elements

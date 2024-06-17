@@ -17,6 +17,8 @@ public static class ServerSystemBlockSimulation_HandleBlockPlaceOrBreak_Patch
         return AccessTools.Method(typeof(ServerSystemBlockSimulation), "HandleBlockPlaceOrBreak", new[] { typeof(Packet_Client), typeof(ConnectedClient) });
     }
 
+    public static MethodInfo GetPrefix() => typeof(ServerSystemBlockSimulation_HandleBlockPlaceOrBreak_Patch).GetMethod(nameof(Prefix));
+
     public static void Prefix(ServerSystemBlockSimulation __instance, Packet_Client packet, ConnectedClient client)
     {
         Packet_ClientBlockPlaceOrBreak p = packet.BlockPlaceOrBreak;
