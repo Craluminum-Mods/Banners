@@ -95,7 +95,6 @@ public class BannerModes
 
         if (Elements.Any())
         {
-            result.Append('-');
             result.Append(';');
             result.Append(string.Join(layerSeparator, Elements.Select(x => $"{x.Key}-{x.Value}")));
             result.Append(';');

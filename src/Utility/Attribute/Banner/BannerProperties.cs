@@ -133,8 +133,11 @@ public class BannerProperties
         result.Append(Name);
         result.Append('-');
         result.Append(Placement);
+        result.Append('-');
         result.Append(Patterns.ToString());
+        result.Append('-');
         result.Append(Cutouts.ToString());
+        result.Append('-');
         result.Append(Modes.ToString());
         return result.ToString();
     }
