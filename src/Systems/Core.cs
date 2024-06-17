@@ -5,7 +5,7 @@ using Vintagestory.API.Server;
 using Vintagestory.API.Util;
 using Vintagestory.GameContent;
 
-[assembly: ModInfo(name: "Banners", modID: "flags")]
+[assembly: ModInfo(name: "Banners", modID: modDomain)]
 
 namespace Flags;
 
