@@ -124,6 +124,14 @@ public class BlockBanner : Block
     public override BlockDropItemStack[] GetDropsForHandbook(ItemStack handbookStack, IPlayer forPlayer)
     {
         BlockDropItemStack[] drops = base.GetDropsForHandbook(handbookStack, forPlayer);
+
+        BannerProperties.GetBannerTree(handbookStack.Attributes).RemoveAttribute(attributeName);
+        BannerProperties.GetBannerTree(handbookStack.Attributes).RemoveAttribute(attributeCutouts);
+        handbookStack.Attributes.RemoveAttribute(attributeBannerModes);
+        handbookStack.Attributes.RemoveAttribute(attributeRotX);
+        handbookStack.Attributes.RemoveAttribute(attributeRotY);
+        handbookStack.Attributes.RemoveAttribute(attributeRotZ);
+
         drops[0] = drops[0].Clone();
         drops[0].ResolvedItemstack.SetFrom(handbookStack);
         return drops;

@@ -32,8 +32,8 @@ public static class GuiHandbookItemStackPage_PageCodeForStack_Patch
         ItemStack newStack = stack.Clone();
 
         BannerProperties.GetBannerTree(newStack.Attributes).RemoveAttribute(attributeName);
-        BannerProperties.GetBannerTree(newStack.Attributes).RemoveAttribute(attributeBannerModes);
         BannerProperties.GetBannerTree(newStack.Attributes).RemoveAttribute(attributeCutouts);
+        newStack.Attributes.RemoveAttribute(attributeBannerModes);
         newStack.Attributes.RemoveAttribute(attributeRotX);
         newStack.Attributes.RemoveAttribute(attributeRotY);
         newStack.Attributes.RemoveAttribute(attributeRotZ);
