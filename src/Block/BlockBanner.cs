@@ -168,17 +168,14 @@ public class BlockBanner : Block
         }
 
         be.BannerProps.ToStack(stack);
-        if (!be.BannerProps.Modes[BannerMode.SaveRotations_On])
-        {
-            return stack;
-        }
 
         IRotatableBanner rotatableBanner = GetInterface<IRotatableBanner>(world, pos);
         if (rotatableBanner != null)
         {
-            stack.Attributes.SetFloat(attributeRotX, rotatableBanner.RotateX);
-            stack.Attributes.SetFloat(attributeRotY, rotatableBanner.RotateY);
-            stack.Attributes.SetFloat(attributeRotZ, rotatableBanner.RotateZ);
+            bool saverotations = be.BannerProps.Modes[BannerMode.SaveRotations_On];
+            stack.Attributes.SetFloat(attributeRotX, saverotations ? rotatableBanner.RotateX : 0);
+            stack.Attributes.SetFloat(attributeRotY, saverotations ? rotatableBanner.RotateY : 0);
+            stack.Attributes.SetFloat(attributeRotZ, saverotations ? rotatableBanner.RotateZ : 0);
         }
         return stack;
     }
