@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
@@ -106,8 +105,7 @@ public class BlockBanner : Block, IContainedMeshSource
     public override void GetHeldItemInfo(ItemSlot inSlot, StringBuilder sb, IWorldAccessor world, bool withDebugInfo)
     {
         base.GetHeldItemInfo(inSlot, sb, world, withDebugInfo);
-        sb.AppendLine(langCodePatternGroups.Localize(string.Join(commaSeparator, PatternGroups.Select(group => $"{langCodePatternGroup}{group}".Localize()))));
-        BannerProperties.FromStack(inSlot.Itemstack).GetDescription((world as IClientWorldAccessor)?.Player, sb, ShowDebugInfo);
+        BannerProperties.FromStack(inSlot.Itemstack).GetDescription(this, (world as IClientWorldAccessor)?.Player, sb, ShowDebugInfo);
     }
 
     public override bool Equals(ItemStack thisStack, ItemStack otherStack, params string[] ignoreAttributeSubTrees)

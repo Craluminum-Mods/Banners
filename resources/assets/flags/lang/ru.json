@@ -183,5 +183,12 @@
     "command-generatetextures-desc": "Генерирует текстуры для флага из текстур, определенных в json атрибутах флага. Накладывает цветные текстуры ткани на указанную текстуру и сохраняет новые текстуры в папке {0}",
     "command-genbannermc": "Флаг успешно сгенерирован",
     "command-genbannermc-desc": "Генерирует флаг из синтаксиса Minecraft",
-    "command-genbannermc-invalidsyntax": "Неверный синтаксис. Синтаксис: 'minecraft:white_banner{BlockEntityTag:{_PLACEHOLDER_}}'"
+    "command-genbannermc-invalidsyntax": "Неверный синтаксис. Синтаксис: 'minecraft:white_banner{BlockEntityTag:{_PLACEHOLDER_}}'",
+
+    // #######################
+    // ### Горячие клавиши ###
+    // #######################
+
+    "bannerextrainfo": "Показать/Скрыть дополнительную информацию о флаге",
+    "bannerextrainfo-desc": "<font color=\"#ffff9d\">Нажмите <hk>flags:bannerextrainfo</hk>, чтобы скрыть дополнительную информацию о флаге.</font>"
 }

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
@@ -104,8 +103,7 @@ public class BlockEntityBanner : BlockEntity, IRotatable
     public override void GetBlockInfo(IPlayer forPlayer, StringBuilder sb)
     {
         base.GetBlockInfo(forPlayer, sb);
-        sb.AppendLine(langCodePatternGroups.Localize(string.Join(commaSeparator, BannerBlock.PatternGroups.Select(group => $"{langCodePatternGroup}{group}".Localize()))));
-        BannerProps.GetDescription(forPlayer, sb, BannerBlock.ShowDebugInfo);
+        BannerProps.GetDescription(BannerBlock, forPlayer, sb, BannerBlock.ShowDebugInfo);
     }
 
     public Cuboidf[] GetOrCreateSelectionBoxes(bool forceNew = false)

@@ -183,5 +183,12 @@
     "command-generatetextures-desc": "Generates textures for banner from textures defined in banner's json attributes. Overlays colored cloth textures on top of grayscale texture and saves new textures to {0} folder",
     "command-genbannermc": "Successfully generated banner",
     "command-genbannermc-desc": "Generates banner from Minecraft syntax",
-    "command-genbannermc-invalidsyntax": "Not a valid syntax. Syntax: 'minecraft:white_banner{BlockEntityTag:{_PLACEHOLDER_}}'"
+    "command-genbannermc-invalidsyntax": "Not a valid syntax. Syntax: 'minecraft:white_banner{BlockEntityTag:{_PLACEHOLDER_}}'",
+
+    // ###############
+    // ### Hotkeys ###
+    // ###############
+
+    "bannerextrainfo": "Show/Hide banner's extra info",
+    "bannerextrainfo-desc": "<font color=\"#ffff9d\">Press <hk>flags:bannerextrainfo</hk> to hide banner's extra info.</font>"
 }

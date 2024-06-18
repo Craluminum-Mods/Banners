@@ -163,4 +163,15 @@ public static class Constants
     {
         public static readonly int Gray = ColorUtil.Hex2Int("#a9a9a9");
     }
+
+    public class ModHotkey
+    {
+        public const string BannerExtraInfo = $"{modDomain}:bannerextrainfo";
+        public const string BannerExtraInfoDesc = $"{modDomain}:bannerextrainfo-desc";
+    }
+
+    public class ModClientSetting
+    {
+        public const string BannerExtraInfo = "bannerExtraInfo";
+    }
 }

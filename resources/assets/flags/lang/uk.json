@@ -183,5 +183,12 @@
     "command-generatetextures-desc": "Генерує текстури для прапора з текстур, визначених в json атрибутах прапору. Накладає кольорові текстури тканини на вказану текстуру і зберігає нові текстури у папці {0}",
     "command-genbannermc": "Прапор успішно згенерований",
     "command-genbannermc-desc": "Генерує прапор з синтаксису Minecraft",
-    "command-genbannermc-invalidsyntax": "Невірний синтаксис. Синтаксис: 'minecraft:white_banner{BlockEntityTag:{_PLACEHOLDER_}}'"
+    "command-genbannermc-invalidsyntax": "Невірний синтаксис. Синтаксис: 'minecraft:white_banner{BlockEntityTag:{_PLACEHOLDER_}}'",
+
+    // ######################
+    // ### Гарячі клавіші ###
+    // ######################
+
+    "bannerextrainfo": "Показати/приховати додаткову інформацію про прапор",
+    "bannerextrainfo-desc": "<font color=\"#ffff9d\">Натисніть <hk>flags:bannerextrainfo</hk>, щоб приховати додаткову інформацію про прапор.</font>"
 }

@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
 
@@ -15,14 +17,16 @@ public class BannerProperties
     public Patterns Patterns { get; protected set; } = new();
     public Cutouts Cutouts { get; protected set; } = new();
 
-    public void GetDescription(IPlayer forPlayer, StringBuilder dsc, bool withDebugInfo = false)
+    public void GetDescription(BlockBanner blockBanner, IPlayer forPlayer, StringBuilder dsc, bool withDebugInfo = false)
     {
-        Patterns.GetDescription(dsc, withDebugInfo);
-        Cutouts.GetDescription(dsc, withDebugInfo);
-        // if (forPlayer != null && forPlayer.Entity.Controls.ShiftKey)
-        // {
-        Modes.GetDescription(dsc, withDebugInfo);
-        // }
+        if (forPlayer.Entity.Api is ICoreClientAPI && forPlayer.Entity.Api.ModLoader.GetModSystem<Hotkeys>().DisplayBannerExtraInfo)
+        {
+            dsc.AppendLine(ModHotkey.BannerExtraInfoDesc.Localize());
+            dsc.AppendLine(langCodePatternGroups.Localize(string.Join(commaSeparator, blockBanner.PatternGroups.Select(group => $"{langCodePatternGroup}{group}".Localize()))));
+            Patterns.GetDescription(dsc, withDebugInfo);
+            Cutouts.GetDescription(dsc, withDebugInfo);
+            Modes.GetDescription(dsc, withDebugInfo);
+        }
     }
 
     public BannerProperties FromTreeAttribute(ITreeAttribute tree, string defaultType, Dictionary<string, string> defaultModes)
