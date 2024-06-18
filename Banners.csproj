@@ -61,6 +61,6 @@
 	</ItemGroup>
 	
 	<Target Name="Package" AfterTargets="PostBuildEvent" Condition="'$(Configuration)' == 'ReleaseToMods'">
-		<ZipDirectory DestinationFile="$(VINTAGE_STORY_DATA)/Mods/$(TargetName)-v0.26.1.zip" SourceDirectory="$(TargetDir)" Overwrite="true" />
+		<ZipDirectory DestinationFile="$(VINTAGE_STORY_DATA)/Mods/$(TargetName)-v0.27.0.zip" SourceDirectory="$(TargetDir)" Overwrite="true" />
 	</Target>
 </Project>
