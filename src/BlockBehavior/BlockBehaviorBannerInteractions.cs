@@ -177,7 +177,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         ItemSlot activeSlot = byPlayer.Entity.RightHandItemSlot;
         ItemSlot offHandSlot = byPlayer.Entity.LeftHandItemSlot;
 
-        if (offHandSlot?.Itemstack?.Collectible is not ItemBannerPattern itemPattern || activeSlot?.Itemstack?.Collectible is not ItemShears)
+        if (offHandSlot?.Itemstack?.Collectible is not ItemBannerPattern itemPattern || activeSlot?.Itemstack?.Collectible is not ItemShears || activeSlot?.Itemstack?.Collectible is ItemScythe)
         {
             return false;
         }
@@ -203,7 +203,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
     {
         ItemSlot activeSlot = byPlayer.Entity.RightHandItemSlot;
         ItemSlot offHandSlot = byPlayer.Entity.LeftHandItemSlot;
-        if (!offHandSlot.Empty || activeSlot?.Itemstack?.Collectible is not ItemShears)
+        if (!offHandSlot.Empty || activeSlot?.Itemstack?.Collectible is not ItemShears || activeSlot?.Itemstack?.Collectible is ItemScythe)
         {
             return false;
         }
