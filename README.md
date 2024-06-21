@@ -1,3 +1,0 @@
-# Banners
-
-Extremely customizable banners
