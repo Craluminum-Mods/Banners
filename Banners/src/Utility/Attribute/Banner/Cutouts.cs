@@ -64,26 +64,30 @@ public class Cutouts
         }
     }
 
-    public bool CopyFrom(ItemStack fromStack)
+    public bool CanCopyFrom(ItemStack fromStack)
     {
-        BannerProperties fromProps = BannerProperties.FromStack(fromStack);
-        if (fromProps.Cutouts.Elements.Any() && !Elements.Any())
-        {
-            FromTreeAttribute(BannerProperties.GetBannerTree(fromStack.Attributes));
-            return true;
-        }
-        return false;
+        return BannerProperties.FromStack(fromStack).Cutouts.Elements.Any() && !Elements.Any();
     }
 
-    public bool CopyTo(ItemStack toStack)
+    public bool CanCopyTo(ItemStack toStack)
     {
-        BannerProperties toProps = BannerProperties.FromStack(toStack);
-        if (Elements.Any() && !toProps.Cutouts.Elements.Any())
+        return Elements.Any() && !BannerProperties.FromStack(toStack).Cutouts.Elements.Any();
+    }
+
+    public void CopyFrom(ItemStack fromStack)
+    {
+        if (CanCopyFrom(fromStack))
+        {
+            FromTreeAttribute(BannerProperties.GetBannerTree(fromStack.Attributes));
+        }
+    }
+
+    public void CopyTo(ItemStack toStack)
+    {
+        if (CanCopyTo(toStack))
         {
             ToTreeAttribute(BannerProperties.GetBannerTree(toStack.Attributes));
-            return true;
         }
-        return false;
     }
 
     public void FromTreeAttribute(ITreeAttribute bannerTree)

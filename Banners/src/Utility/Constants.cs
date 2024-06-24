@@ -62,6 +62,7 @@ public static class Constants
     public const string langCodeRemoveCutout = $"{modDomain}:blockhelp-banner-removecutout";
     public const string langCodeToolMode = $"{modDomain}:toolmode-";
     public const string langCodeToolModeValue = $"{modDomain}:toolmode-value-";
+    public const string langCodeBannerPreviewHudTransform = $"{modDomain}:{attributeBannerPreviewHudTransform}";
 
     public const string cacheKeyBlockBannerMeshes = $"{modDomain}BlockBannerMeshes";
     public const string cacheKeyBlockBannerInvMeshes = $"{modDomain}BlockBannerMeshesInventory";
@@ -129,9 +130,17 @@ public static class Constants
     public const string attributeRotX = "rotX";
     public const string attributeRotY = "rotY";
     public const string attributeRotZ = "rotZ";
+    public const string attributeBannerPreviewHudTransform = "bannerPreviewHudTransform";
+    public const string attributeInBannerPreviewHUD = "inBannerPreviewHUD";
+
+    public const string guiBannerPreviewHUD = $"{modDomain}:bannerpreviewhud-title";
 
     public const string hotkeyToolmodeSelect = "toolmodeselect";
     public const string eventKeepOpenToolmodeDialog = "keepopentoolmodedlg";
+    public const string eventOnCloseEditTransforms = "oncloseedittransforms";
+    public const string eventOnEditTransforms = "onedittransforms";
+    public const string eventOnApplyTransforms = "onapplytransforms";
+    public const string eventGenJsonTransform = "genjsontransform";
 
     public const string bannerContainableInvClassName = "flags-bannercontainable";
 
@@ -163,15 +172,21 @@ public static class Constants
     {
         public static readonly int Gray = ColorUtil.Hex2Int("#a9a9a9");
     }
+    public class HexColor
+    {
+        public const string SchematicTransparent = "#ffe2c299";
+    }
 
     public class ModHotkey
     {
         public const string BannerExtraInfo = $"{modDomain}:bannerextrainfo";
         public const string BannerExtraInfoDesc = $"{modDomain}:bannerextrainfo-desc";
+        public const string BannerPreviewHud = $"{modDomain}:bannerpreviewhud";
     }
 
     public class ModClientSetting
     {
         public const string BannerExtraInfo = "bannerExtraInfo";
+        public const string ShowBannerPreviewHud = "showBannerPreviewHud";
     }
 }

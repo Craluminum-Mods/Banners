@@ -190,5 +190,8 @@
     // ###############
 
     "bannerextrainfo": "Show/Hide banner's extra info",
-    "bannerextrainfo-desc": "<font color=\"#ffff9d\">Press <hk>flags:bannerextrainfo</hk> to hide banner's extra info.</font>"
+    "bannerextrainfo-desc": "<font color=\"#ffff9d\">Press <hk>flags:bannerextrainfo</hk> to hide banner's extra info.</font>",
+
+    "bannerpreviewhud": "Show/Hide Banner Preview HUD",
+    "bannerpreviewhud-title": "Banner Preview"
 }

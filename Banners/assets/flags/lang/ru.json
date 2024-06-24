@@ -190,5 +190,8 @@
     // #######################
 
     "bannerextrainfo": "Показать/Скрыть дополнительную информацию о флаге",
-    "bannerextrainfo-desc": "<font color=\"#ffff9d\">Нажмите <hk>flags:bannerextrainfo</hk>, чтобы скрыть дополнительную информацию о флаге.</font>"
+    "bannerextrainfo-desc": "<font color=\"#ffff9d\">Нажмите <hk>flags:bannerextrainfo</hk>, чтобы скрыть дополнительную информацию о флаге.</font>",
+
+    "bannerpreviewhud": "Показать/Скрыть HUD предварительного просмотра флага",
+    "bannerpreviewhud-title": "Предварительный просмотр флага"
 }

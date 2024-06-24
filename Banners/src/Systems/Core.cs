@@ -1,8 +1,10 @@
 global using static Flags.Constants;
+using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 using Vintagestory.API.Server;
 using Vintagestory.API.Util;
+using Vintagestory.Client.NoObf;
 using Vintagestory.GameContent;
 
 [assembly: ModInfo(name: "Banners", modID: modDomain)]
@@ -41,6 +43,12 @@ public class Core : ModSystem
         {
             api.World.Config.SetInt(worldConfigLayersLimit, defaultLayersLimit);
         }
+    }
+
+    public override void StartClientSide(ICoreClientAPI api)
+    {
+        api.Gui.RegisterDialog(new HudElementBannerPreview(api));
+        GuiDialogTransformEditor.extraTransforms.Add(new TransformConfig() { Title = langCodeBannerPreviewHudTransform.Localize(), AttributeName = attributeBannerPreviewHudTransform });
     }
 
     public override void AssetsFinalize(ICoreAPI api)

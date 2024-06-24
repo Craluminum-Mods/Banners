@@ -282,6 +282,12 @@
             "saverotations": "off"
         },
 
+        "bannerPreviewHudTransform": {
+	        "rotation": { "x": 0, "y": 180, "z": 0 },
+	        "origin": { "x": 0.5, "y": 0, "z": 0 },
+	        "scaleXyz": { "x": -0.85, "y": 0.85, "z": 0.85 }
+        },
+
         // "showDebugInfo": true,
         // all of these attributes below are used only to pregenerate textures with command
         "colors": ["blue", "brown", "gray", "black", "green", "orange", "pink", "purple", "red", "white", "yellow"],

@@ -1,5 +1,6 @@
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
+using Vintagestory.Client.NoObf;
 
 namespace Flags;
 
@@ -7,10 +8,16 @@ public class Hotkeys : ModSystem
 {
     private ICoreClientAPI capi;
 
-    public bool DisplayBannerExtraInfo
+    public static bool DisplayBannerExtraInfo
     {
-        get => capi.Settings.Bool[ModClientSetting.BannerExtraInfo];
-        set => capi.Settings.Bool[ModClientSetting.BannerExtraInfo] = value;
+        get => ClientSettings.Inst.GetBoolSetting(ModClientSetting.BannerExtraInfo);
+        set => ClientSettings.Inst.Bool[ModClientSetting.BannerExtraInfo] = value;
+    }
+
+    public static bool ShowBannerPreviewHud
+    {
+        get => ClientSettings.Inst.GetBoolSetting(ModClientSetting.ShowBannerPreviewHud);
+        set => ClientSettings.Inst.Bool[ModClientSetting.ShowBannerPreviewHud] = value;
     }
 
     public override bool ShouldLoad(EnumAppSide forSide) => forSide == EnumAppSide.Client;
@@ -19,17 +26,19 @@ public class Hotkeys : ModSystem
     {
         capi = api;
         api.Input.RegisterHotKey(ModHotkey.BannerExtraInfo, ModHotkey.BannerExtraInfo.Localize(), GlKeys.B, HotkeyType.HelpAndOverlays, shiftPressed: true);
-        api.Input.SetHotKeyHandler(ModHotkey.BannerExtraInfo, ToggleExtraInfo);
+        api.Input.SetHotKeyHandler(ModHotkey.BannerExtraInfo, (_) => { DisplayBannerExtraInfo = !DisplayBannerExtraInfo; return true; });
 
         if (!capi.Settings.Bool.Exists(ModClientSetting.BannerExtraInfo))
         {
             DisplayBannerExtraInfo = true;
         }
-    }
 
-    public bool ToggleExtraInfo(KeyCombination t1)
-    {
-        DisplayBannerExtraInfo = !DisplayBannerExtraInfo;
-        return true;
+        api.Input.RegisterHotKey(ModHotkey.BannerPreviewHud, ModHotkey.BannerPreviewHud.Localize(), GlKeys.P, HotkeyType.HelpAndOverlays, shiftPressed: true);
+        api.Input.SetHotKeyHandler(ModHotkey.BannerPreviewHud, (_) => { ShowBannerPreviewHud = !ShowBannerPreviewHud; return true; });
+
+        if (!capi.Settings.Bool.Exists(ModClientSetting.ShowBannerPreviewHud))
+        {
+            ShowBannerPreviewHud = true;
+        }
     }
 }

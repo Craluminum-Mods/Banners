@@ -90,24 +90,6 @@ public static class HelperExtensions
         };
     }
 
-    public static LoadedTexture DrawLetterIcon(this ICoreClientAPI capi, string letter, string hexColor)
-    {
-        if (capi == null)
-        {
-            return null;
-        }
-        int isize = (int)GuiElement.scaled(48.0);
-        return capi.Gui.Icons.GenTexture(isize, isize, delegate (Context ctx, ImageSurface surface)
-        {
-            CairoFont cairoFont = CairoFont.WhiteMediumText().WithColor(new double[4] { 1.0, 1.0, 1.0, 1.0 });
-            cairoFont.SetupContext(ctx);
-            ctx.SetSourceRGBA(ColorUtil.Hex2Doubles(hexColor));
-            TextExtents textExtents = cairoFont.GetTextExtents(letter);
-            double num = cairoFont.GetFontExtents().Ascent + GuiElement.scaled(2.0);
-            capi.Gui.Text.DrawTextLine(ctx, cairoFont, letter, ((double)isize - textExtents.Width) / 2.0, ((double)isize - num) / 2.0);
-        });
-    }
-
     public static bool TryGetValueOrWildcard<T>(this Dictionary<string, T> dict, string key, out T value)
     {
         return dict.TryGetValue(key, out value) || dict.TryGetValue(Wildcard, out value);
@@ -133,17 +115,22 @@ public static class HelperExtensions
         return block.PatternGroups.Any(otherBlock.PatternGroups.Contains);
     }
 
-    public static bool IsEditModeEnabled(this BlockEntityBanner blockEntity, IPlayer player = null, bool printError = true)
+    public static bool IsEditModeEnabled(this BannerProperties props, IPlayer byPlayer, bool printError = true)
     {
-        BannerModes modes = blockEntity.BannerProps.Modes;
-        if (modes[BannerMode.EditMode_Off])
+        BannerModes modes = props.Modes;
+        if (!modes[BannerMode.EditMode_Off])
         {
-            if (printError)
-            {
-                player?.IngameError(blockEntity, modes.ErrorCode(BannerMode.EditMode_Off.Key), modes.ErrorCode(BannerMode.EditMode_Off.Key).Localize());
-            }
-            return false;
+            return modes[BannerMode.EditMode_On];
         }
-        return modes[BannerMode.EditMode_On];
+        if (printError)
+        {
+            byPlayer?.IngameError(props, modes.ErrorCode(BannerMode.EditMode_Off.Key), modes.ErrorCode(BannerMode.EditMode_Off.Key).Localize());
+        }
+        return false;
+    }
+
+    public static bool IsEditModeEnabled(this BannerProperties props, ICoreClientAPI capi, bool printError = true)
+    {
+        return props.IsEditModeEnabled(capi.World.Player, printError);
     }
 }

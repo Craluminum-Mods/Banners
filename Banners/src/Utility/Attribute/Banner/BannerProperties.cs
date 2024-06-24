@@ -19,7 +19,7 @@ public class BannerProperties
 
     public void GetDescription(BlockBanner blockBanner, IPlayer forPlayer, StringBuilder dsc, bool withDebugInfo = false)
     {
-        if (forPlayer.Entity.Api is ICoreClientAPI && forPlayer.Entity.Api.ModLoader.GetModSystem<Hotkeys>().DisplayBannerExtraInfo)
+        if (forPlayer.Entity.Api is ICoreClientAPI && Hotkeys.DisplayBannerExtraInfo)
         {
             dsc.AppendLine(ModHotkey.BannerExtraInfoDesc.Localize());
             dsc.AppendLine(langCodePatternGroups.Localize(string.Join(commaSeparator, blockBanner.PatternGroups.Select(group => $"{langCodePatternGroup}{group}".Localize()))));
@@ -80,17 +80,19 @@ public class BannerProperties
         bool layersSuccess = copyLayers;
         bool cutoutsSuccess = copyCutouts;
 
-        if (copyLayers) layersSuccess = Patterns.CopyFrom(fromStack);
-        if (copyCutouts) cutoutsSuccess = Cutouts.CopyFrom(fromStack);
+        if (copyLayers) layersSuccess = Patterns.CanCopyFrom(fromStack);
+        if (copyCutouts) cutoutsSuccess = Cutouts.CanCopyFrom(fromStack);
 
         if (layersSuccess || cutoutsSuccess)
         {
+            if (layersSuccess) Patterns.CopyFrom(fromStack);
+            if (cutoutsSuccess) Cutouts.CopyFrom(fromStack);
             FromTreeAttribute(fromStack.Attributes,
                 defaultType: (fromStack.Collectible as BlockBanner).DefaultPlacement,
                 defaultModes: (fromStack.Collectible as BlockBanner).DefaultModes);
+            return true;
         }
-
-        return layersSuccess || cutoutsSuccess;
+        return false;
     }
 
     public bool CopyTo(ItemStack toStack, bool copyLayers = false, bool copyCutouts = false)
@@ -98,15 +100,17 @@ public class BannerProperties
         bool layersSuccess = copyLayers;
         bool cutoutsSuccess = copyCutouts;
 
-        if (copyLayers) layersSuccess = Patterns.CopyTo(toStack);
-        if (copyCutouts) cutoutsSuccess = Cutouts.CopyTo(toStack);
+        if (copyLayers) layersSuccess = Patterns.CanCopyTo(toStack);
+        if (copyCutouts) cutoutsSuccess = Cutouts.CanCopyTo(toStack);
 
         if (layersSuccess || cutoutsSuccess)
         {
+            if (layersSuccess) Patterns.CopyTo(toStack);
+            if (cutoutsSuccess) Cutouts.CopyTo(toStack);
             ToTreeAttribute(toStack.Attributes);
+            return true;
         }
-
-        return layersSuccess || cutoutsSuccess;
+        return false;
     }
 
     public void SetPlacement(string placement)

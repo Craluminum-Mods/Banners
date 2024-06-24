@@ -104,7 +104,7 @@ public static class BannerExtensions
         return mesh;
     }
 
-    public static void GetInventoryMesh(this BlockBanner block, ICoreClientAPI capi, ItemStack stack, ItemRenderInfo renderinfo)
+    public static MultiTextureMeshRef GetInventoryMesh(this BlockBanner block, ICoreClientAPI capi, ItemStack stack)
     {
         BannerProperties properties = BannerProperties.FromStack(stack);
         string key = $"{block.Code}-{properties}";
@@ -113,7 +113,7 @@ public static class BannerExtensions
             MeshData mesh = block.GetOrCreateMesh(capi, properties);
             meshref = block.InvMeshes[key] = capi.Render.UploadMultiTextureMesh(mesh);
         }
-        renderinfo.ModelRef = meshref;
+        return meshref;
     }
 
     public static ITexPositionSource HandleTextures(this BlockBanner block, BannerProperties properties, ICoreClientAPI capi, Shape shape, string filenameForLogging = "")

@@ -69,7 +69,9 @@ public class BEBehaviorRotatableBanner : BlockEntityBehavior, IRotatableBanner
         bool sneak = byEntity.Controls.Sneak;
         bool sprint = byEntity.Controls.Sprint;
 
-        if ((Blockentity as BlockEntityBanner)?.IsEditModeEnabled((byEntity as EntityPlayer)?.Player) == false)
+        if (Blockentity is not BlockEntityBanner blockEntityBanner
+            || byEntity is not EntityPlayer entityPlayer
+            || !blockEntityBanner.BannerProps.IsEditModeEnabled(entityPlayer.Player))
         {
             return false;
         }

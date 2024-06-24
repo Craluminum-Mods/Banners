@@ -35,7 +35,7 @@ public class BEBehaviorWrenchOrientableBanner : BlockEntityBehavior, IWrenchOrie
             return;
         }
 
-        if (!be.IsEditModeEnabled(byPlayer)) return;
+        if (!be.BannerProps.IsEditModeEnabled(byPlayer)) return;
 
         bool sneak = byEntity.Controls.Sneak;
         bool sprint = byEntity.Controls.Sprint;

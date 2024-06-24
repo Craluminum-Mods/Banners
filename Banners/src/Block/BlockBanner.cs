@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
+using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Util;
 using Vintagestory.GameContent;
@@ -11,6 +12,8 @@ namespace Flags;
 
 public class BlockBanner : Block, IContainedMeshSource
 {
+    protected bool transformEditMode;
+
     public List<string> PatternGroups { get; protected set; } = new();
 
     public Dictionary<string, CompositeShape> CustomShapes { get; protected set; } = new();
@@ -33,6 +36,8 @@ public class BlockBanner : Block, IContainedMeshSource
     public List<string> IgnoreForGeneratingTextures { get; protected set; } = new();
 
     public Dictionary<string, string> DefaultModes { get; protected set; } = new();
+
+    public ModelTransform BannerPreviewHudTransform { get; protected set; } = new();
 
     public Dictionary<string, MeshData> Meshes => ObjectCacheUtil.GetOrCreate(api, cacheKeyBlockBannerMeshes, () => new Dictionary<string, MeshData>());
     public Dictionary<string, MeshData> ContainableMeshes => ObjectCacheUtil.GetOrCreate(api, cacheKeyBlockBannerContainableMeshes, () => new Dictionary<string, MeshData>());
@@ -100,6 +105,29 @@ public class BlockBanner : Block, IContainedMeshSource
         IgnoreForGeneratingTextures = Attributes[attributeIgnoredTextureCodesForGeneratingTextures].AsObject<List<string>>();
 
         DefaultModes = Attributes[attributeDefaultModes].AsObject<Dictionary<string, string>>();
+
+        LoadTransforms();
+
+        EnumHandling handling = EnumHandling.PassThrough;
+        if (api is ICoreClientAPI capi)
+        {
+            capi.Event.RegisterEventBusListener((string eventName, ref EnumHandling handling, IAttribute data) => {
+                switch (eventName)
+                {
+                    case eventOnCloseEditTransforms:
+                    case eventOnEditTransforms:
+                    case eventOnApplyTransforms:
+                    case eventGenJsonTransform:
+                        LoadTransforms();
+                        break;
+                }
+            });
+        }
+    }
+
+    public void LoadTransforms()
+    {
+        BannerPreviewHudTransform = Attributes[attributeBannerPreviewHudTransform].AsObject<ModelTransform>();
     }
 
     public override void GetHeldItemInfo(ItemSlot inSlot, StringBuilder sb, IWorldAccessor world, bool withDebugInfo)
@@ -208,7 +236,18 @@ public class BlockBanner : Block, IContainedMeshSource
     public override void OnBeforeRender(ICoreClientAPI capi, ItemStack itemstack, EnumItemRenderTarget target, ref ItemRenderInfo renderinfo)
     {
         base.OnBeforeRender(capi, itemstack, target, ref renderinfo);
-        this.GetInventoryMesh(capi, itemstack, renderinfo);
+        MultiTextureMeshRef meshRef = this.GetInventoryMesh(capi, itemstack);
+        if (itemstack.TempAttributes.GetBool(attributeInBannerPreviewHUD))
+        {
+            renderinfo.Transform = BannerPreviewHudTransform;
+        }
+
+        renderinfo.ModelRef = meshRef;
+
+        if (target == EnumItemRenderTarget.Gui)
+        {
+            renderinfo.NormalShaded = false;
+        }
     }
 
     public MeshData GenMesh(ItemStack itemstack, ITextureAtlasAPI targetAtlas, BlockPos atBlockPos)

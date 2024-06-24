@@ -190,5 +190,8 @@
     // ######################
 
     "bannerextrainfo": "Показати/приховати додаткову інформацію про прапор",
-    "bannerextrainfo-desc": "<font color=\"#ffff9d\">Натисніть <hk>flags:bannerextrainfo</hk>, щоб приховати додаткову інформацію про прапор.</font>"
+    "bannerextrainfo-desc": "<font color=\"#ffff9d\">Натисніть <hk>flags:bannerextrainfo</hk>, щоб приховати додаткову інформацію про прапор.</font>",
+
+    "bannerpreviewhud": "Показати/приховати HUD попереднього перегляду прапора",
+    "bannerpreviewhud-title": "Попередній перегляд прапора"
 }
