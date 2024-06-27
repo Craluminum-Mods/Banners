@@ -41,9 +41,9 @@ public class HudElementBannerPreview : HudElement
         ElementBounds backgroundBounds = childBounds.WithFixedPadding(GuiElement.scaled(15));
 
         ElementBounds leftBounds = ElementBounds.Fixed(EnumDialogArea.None, 0.0, GuiElement.scaled(40.0), GuiElement.scaled(300.0), GuiElement.scaled(400.0));
-        ElementBounds leftItemBounds = leftBounds.FlatCopy().WithFixedOffset(0, GuiElement.scaled(50));
+        ElementBounds leftItemBounds = leftBounds.CopyOffsetedSibling(0, GuiElement.scaled(50));
 
-        ElementBounds rightBounds = ElementBounds.Fixed(EnumDialogArea.None, GuiElement.scaled(315.0) , GuiElement.scaled(40.0), GuiElement.scaled(300.0), GuiElement.scaled(400.0));
+        ElementBounds rightBounds = leftBounds.CopyOffsetedSibling(GuiElement.scaled(315.0));
         ElementBounds rightItemBounds = rightBounds.CopyOffsetedSibling(0, GuiElement.scaled(50));
 
         CairoFont titleFont = new CairoFont
@@ -62,8 +62,8 @@ public class HudElementBannerPreview : HudElement
         ElementBounds iconBounds = ElementBounds.FixedPos(EnumDialogArea.CenterMiddle, leftBounds.fixedX / 2, leftBounds.fixedY / 2).FixedGrow(iconSize);
         ElementBounds iconBackgroundBounds = iconBounds.CopyOffsetedSibling().WithFixedPadding(15);
 
-        RichTextComponentBase[] leftStack = GetPreviousBannerForPreview((double)GuiElement.scaled(300));
-        RichTextComponentBase[] rightStack = GetNextBannerForPreview((double)GuiElement.scaled(300));
+        RichTextComponentBase[] leftStack = GetPlacedBanner(GuiElement.scaled(300));
+        RichTextComponentBase[] rightStack = GetNextBanner(GuiElement.scaled(300));
 
         Composers[guiBannerPreviewHUD] = capi.Gui.CreateCompo(guiBannerPreviewHUD, mainBounds)
             .AddDialogBG(backgroundBounds, false)
@@ -86,7 +86,7 @@ public class HudElementBannerPreview : HudElement
         .Compose();
     }
 
-    private RichTextComponentBase[] GetPreviousBannerForPreview(double size)
+    private RichTextComponentBase[] GetPlacedBanner(double size)
     {
         if (capi.World.Player == null)
         {
@@ -102,7 +102,7 @@ public class HudElementBannerPreview : HudElement
         };
     }
 
-    private RichTextComponentBase[] GetNextBannerForPreview(double size)
+    private RichTextComponentBase[] GetNextBanner(double size)
     {
         if (capi.World.Player == null)
         {
