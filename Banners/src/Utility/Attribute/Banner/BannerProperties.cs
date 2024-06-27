@@ -77,16 +77,10 @@ public class BannerProperties
 
     public bool CopyFrom(ItemStack fromStack, bool copyLayers = false, bool copyCutouts = false)
     {
-        bool layersSuccess = copyLayers;
-        bool cutoutsSuccess = copyCutouts;
-
-        if (copyLayers) layersSuccess = Patterns.CanCopyFrom(fromStack);
-        if (copyCutouts) cutoutsSuccess = Cutouts.CanCopyFrom(fromStack);
-
-        if (layersSuccess || cutoutsSuccess)
+        if (copyLayers && Patterns.CanCopyFrom(fromStack))
         {
-            if (layersSuccess) Patterns.CopyFrom(fromStack);
-            if (cutoutsSuccess) Cutouts.CopyFrom(fromStack);
+            Patterns.CopyFrom(fromStack);
+            if (copyCutouts) Cutouts.CopyFrom(fromStack);
             FromTreeAttribute(fromStack.Attributes,
                 defaultType: (fromStack.Collectible as BlockBanner).DefaultPlacement,
                 defaultModes: (fromStack.Collectible as BlockBanner).DefaultModes);
@@ -97,16 +91,10 @@ public class BannerProperties
 
     public bool CopyTo(ItemStack toStack, bool copyLayers = false, bool copyCutouts = false)
     {
-        bool layersSuccess = copyLayers;
-        bool cutoutsSuccess = copyCutouts;
-
-        if (copyLayers) layersSuccess = Patterns.CanCopyTo(toStack);
-        if (copyCutouts) cutoutsSuccess = Cutouts.CanCopyTo(toStack);
-
-        if (layersSuccess || cutoutsSuccess)
+        if (copyLayers && Patterns.CanCopyTo(toStack))
         {
-            if (layersSuccess) Patterns.CopyTo(toStack);
-            if (cutoutsSuccess) Cutouts.CopyTo(toStack);
+            Patterns.CopyTo(toStack);
+            if (copyCutouts) Cutouts.CopyTo(toStack);
             ToTreeAttribute(toStack.Attributes);
             return true;
         }
