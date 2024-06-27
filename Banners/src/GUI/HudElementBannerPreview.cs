@@ -1,5 +1,4 @@
-﻿using Cairo;
-using Vintagestory.API.Client;
+﻿using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 using Vintagestory.Client.NoObf;
@@ -35,11 +34,10 @@ public class HudElementBannerPreview : HudElement
 
     private void ComposeBannerPreviewHud()
     {
-        ElementBounds mainBounds = ElementStdBounds.AutosizedMainDialog.WithAlignment(EnumDialogArea.LeftMiddle).WithFixedAlignmentOffset(50.0, GuiStyle.DialogToScreenPadding);
+        ElementBounds mainBounds = ElementStdBounds.AutosizedMainDialog.WithAlignment(EnumDialogArea.LeftMiddle).WithFixedAlignmentOffset(GuiStyle.DialogToScreenPadding, GuiStyle.DialogToScreenPadding);
         ElementBounds childBounds = new ElementBounds();
         childBounds.BothSizing = ElementSizing.FitToChildren;
 
-        double gap = GuiElement.scaled(GuiStyle.NormalFontSize);
         ElementBounds backgroundBounds = childBounds.WithFixedPadding(GuiElement.scaled(15));
 
         ElementBounds leftBounds = ElementBounds.Fixed(EnumDialogArea.None, 0.0, GuiElement.scaled(40.0), GuiElement.scaled(300.0), GuiElement.scaled(400.0));
