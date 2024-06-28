@@ -1,5 +1,6 @@
 global using static Flags.Constants;
 using Flags.Converter;
+using System.Linq;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
@@ -81,7 +82,36 @@ public class Core : ModSystem
             if (obj is ItemBook && !obj.HasBehavior<CollectibleBehaviorRenameTool>())
             {
                 obj.CollectibleBehaviors = obj.CollectibleBehaviors.Append(new CollectibleBehaviorRenameTool(obj));
+
+                if (obj.Code == AssetLocation.Create(itemcodeParchment))
+                {
+                    obj.CreativeInventoryTabs = obj.CreativeInventoryTabs.Append(modCreativeTab);
+                }
             }
+            if (obj.Code == AssetLocation.Create(itemcodeInkAndQuill))
+            {
+                obj.CreativeInventoryTabs = obj.CreativeInventoryTabs.Append(modCreativeTab);
+            }
+        }
+
+        CollectibleObject cutoutTool = api.World.Collectibles
+            .Where(obj => obj != null && obj.Code != null && obj.HasBehavior<CollectibleBehaviorCutoutTool>() && obj.CreativeInventoryTabs != null)
+            ?.OrderByDescending(obj => obj.Durability)
+            ?.FirstOrDefault();
+
+        if (cutoutTool != null)
+        {
+            cutoutTool.CreativeInventoryTabs = cutoutTool.CreativeInventoryTabs.Append(modCreativeTab);
+        }
+
+        CollectibleObject wrenchTool = api.World.Collectibles
+            .Where(obj => obj is ItemWrench && obj.CreativeInventoryTabs != null)
+            ?.OrderByDescending(obj => obj.Durability)
+            ?.FirstOrDefault();
+
+        if (wrenchTool != null)
+        {
+            wrenchTool.CreativeInventoryTabs = wrenchTool.CreativeInventoryTabs.Append(modCreativeTab);
         }
     }
 
