@@ -20,6 +20,12 @@ public class Hotkeys : ModSystem
         set => ClientSettings.Inst.Bool[ModClientSetting.ShowBannerPreviewHud] = value;
     }
 
+    public static bool ShowBannerOverviewHud
+    {
+        get => ClientSettings.Inst.GetBoolSetting(ModClientSetting.ShowBannerOverviewHud);
+        set => ClientSettings.Inst.Bool[ModClientSetting.ShowBannerOverviewHud] = value;
+    }
+
     public override bool ShouldLoad(EnumAppSide forSide) => forSide == EnumAppSide.Client;
 
     public override void StartClientSide(ICoreClientAPI api)
@@ -39,6 +45,14 @@ public class Hotkeys : ModSystem
         if (!capi.Settings.Bool.Exists(ModClientSetting.ShowBannerPreviewHud))
         {
             ShowBannerPreviewHud = true;
+        }
+
+        api.Input.RegisterHotKey(ModHotkey.BannerOverviewHud, ModHotkey.BannerOverviewHud.Localize(), GlKeys.P, HotkeyType.HelpAndOverlays, shiftPressed: true, ctrlPressed: true);
+        api.Input.SetHotKeyHandler(ModHotkey.BannerOverviewHud, (_) => { ShowBannerOverviewHud = !ShowBannerOverviewHud; return true; });
+
+        if (!capi.Settings.Bool.Exists(ModClientSetting.ShowBannerOverviewHud))
+        {
+            ShowBannerOverviewHud = true;
         }
     }
 }

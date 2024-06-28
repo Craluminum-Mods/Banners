@@ -17,6 +17,8 @@
     "unlocked-patterns": "<font color=\"#FF9900\">Розблоковані візерунки:</font> {0}",
     "patterns": "<font color=\"#BBBBBB\">Візерунки:</font>",
     "cutouts": "<font color=\"#FF99FF\">Вирізки:</font>",
+    "patterns-nocolor": "Візерунки",
+    "cutouts-nocolor": "Вирізки",
     "banner-modes": "<font color=\"#C9FFFC\">Режими:</font>",
 
     "patterngroups": "Групи візерунків: {0}",
@@ -193,5 +195,8 @@
     "bannerextrainfo-desc": "<font color=\"#ffff9d\">Натисніть <hk>flags:bannerextrainfo</hk>, щоб приховати додаткову інформацію про прапор.</font>",
 
     "bannerpreviewhud": "Показати/приховати HUD попереднього перегляду прапора",
-    "bannerpreviewhud-title": "Попередній перегляд прапора"
+    "bannerpreviewhud-title": "Попередній перегляд прапора",
+
+    "banneroverviewhud": "Показати/приховати HUD огляду прапора",
+    "banneroverviewhud-title": "Огляд прапора"
 }

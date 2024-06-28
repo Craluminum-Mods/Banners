@@ -17,6 +17,8 @@
     "unlocked-patterns": "<font color=\"#FF9900\">Разблокированные узоры:</font> {0}",
     "patterns": "<font color=\"#BBBBBB\">Узоры:</font>",
     "cutouts": "<font color=\"#FF99FF\">Вырезы:</font>",
+    "patterns-nocolor": "Узоры",
+    "cutouts-nocolor": "Вырезы",
     "banner-modes": "<font color=\"#C9FFFC\">Режимы:</font>",
 
     "patterngroups": "Группы узоров: {0}",
@@ -193,5 +195,8 @@
     "bannerextrainfo-desc": "<font color=\"#ffff9d\">Нажмите <hk>flags:bannerextrainfo</hk>, чтобы скрыть дополнительную информацию о флаге.</font>",
 
     "bannerpreviewhud": "Показать/Скрыть HUD предварительного просмотра флага",
-    "bannerpreviewhud-title": "Предварительный просмотр флага"
+    "bannerpreviewhud-title": "Предварительный просмотр флага",
+
+    "banneroverviewhud": "Показать/Скрыть HUD обзора флага",
+    "banneroverviewhud-title": "Обзор флага"
 }

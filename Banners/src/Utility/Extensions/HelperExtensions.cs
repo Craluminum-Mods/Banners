@@ -45,6 +45,17 @@ public static class HelperExtensions
 
     public static bool HasTranslation(this string key) => Lang.HasTranslation(key);
 
+
+    public static double Scaled(this double value)
+    {
+        return GuiElement.scaled(value);
+    }
+
+    public static double Scaledi(this double value)
+    {
+        return GuiElement.scaledi(value);
+    }
+
     public static bool TryGetBEBehavior<T>(this IBlockAccessor blockAccessor, BlockSelection blockSel, out T behavior) where T : BlockEntityBehavior
     {
         if (blockSel == null)

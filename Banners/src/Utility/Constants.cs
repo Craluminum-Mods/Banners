@@ -57,6 +57,8 @@ public static class Constants
     public const string langCodeUnlockedPatterns = $"{modDomain}:unlocked-patterns";
     public const string langCodePatterns = $"{modDomain}:patterns";
     public const string langCodeCutouts = $"{modDomain}:cutouts";
+    public const string langCodePatternsNoColor = $"{modDomain}:patterns-nocolor";
+    public const string langCodeCutoutsNoColor = $"{modDomain}:cutouts-nocolor";
     public const string langCodeBannerModes = $"{modDomain}:banner-modes";
     public const string langCodeAddCutout = $"{modDomain}:blockhelp-banner-addcutout";
     public const string langCodeRemoveCutout = $"{modDomain}:blockhelp-banner-removecutout";
@@ -134,6 +136,7 @@ public static class Constants
     public const string attributeInBannerPreviewHUD = "inBannerPreviewHUD";
 
     public const string guiBannerPreviewHUD = $"{modDomain}:bannerpreviewhud-title";
+    public const string guiBannerOverviewHUD = $"{modDomain}:banneroverviewhud-title";
 
     public const string hotkeyToolmodeSelect = "toolmodeselect";
     public const string eventKeepOpenToolmodeDialog = "keepopentoolmodedlg";
@@ -172,6 +175,7 @@ public static class Constants
     {
         public static readonly int Gray = ColorUtil.Hex2Int("#a9a9a9");
     }
+
     public class HexColor
     {
         public const string SchematicTransparent = "#ffe2c299";
@@ -181,12 +185,15 @@ public static class Constants
     {
         public const string BannerExtraInfo = $"{modDomain}:bannerextrainfo";
         public const string BannerExtraInfoDesc = $"{modDomain}:bannerextrainfo-desc";
+        public const string BannerOverviewHud = $"{modDomain}:banneroverviewhud";
         public const string BannerPreviewHud = $"{modDomain}:bannerpreviewhud";
+
     }
 
     public class ModClientSetting
     {
         public const string BannerExtraInfo = "bannerExtraInfo";
+        public const string ShowBannerOverviewHud = "showBannerOverviewHud";
         public const string ShowBannerPreviewHud = "showBannerPreviewHud";
     }
 }

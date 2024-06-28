@@ -47,7 +47,7 @@ public class Core : ModSystem
 
     public override void StartClientSide(ICoreClientAPI api)
     {
-        api.Gui.RegisterDialog(new HudElementBannerPreview(api));
+        api.Gui.RegisterDialog(new HudElementBannerPreview(api), new HudElementBannerOverview(api));
         GuiDialogTransformEditor.extraTransforms.Add(new TransformConfig() { Title = langCodeBannerPreviewHudTransform.Localize(), AttributeName = attributeBannerPreviewHudTransform });
     }
 
