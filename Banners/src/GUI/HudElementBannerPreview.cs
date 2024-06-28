@@ -13,7 +13,7 @@ public class HudElementBannerPreview : HudElement
     {
         capi.Event.RegisterGameTickListener(Every500ms, 500);
         capi.Event.BlockChanged += OnBlockChanged;
-        ComposeBannerPreviewHud();
+        ComposeHud();
         if (Hotkeys.ShowBannerPreviewHud == true)
         {
             TryOpen();
@@ -32,7 +32,7 @@ public class HudElementBannerPreview : HudElement
         });
     }
 
-    private void ComposeBannerPreviewHud()
+    private void ComposeHud()
     {
         ElementBounds mainBounds = ElementStdBounds.AutosizedMainDialog.WithAlignment(EnumDialogArea.LeftMiddle).WithFixedAlignmentOffset(GuiStyle.DialogToScreenPadding, GuiStyle.DialogToScreenPadding);
         ElementBounds childBounds = new ElementBounds();
@@ -133,7 +133,7 @@ public class HudElementBannerPreview : HudElement
     {
         if (capi.World.Player?.CurrentBlockSelection != null && pos.Equals(capi.World.Player.CurrentBlockSelection.Position))
         {
-            ComposeBannerPreviewHud();
+            ComposeHud();
         }
         else
         {
@@ -141,7 +141,7 @@ public class HudElementBannerPreview : HudElement
         }
     }
 
-    private void Every500ms(float dt) => ComposeBannerPreviewHud();
+    private void Every500ms(float dt) => ComposeHud();
 
     public override void OnGuiOpened()
     {
