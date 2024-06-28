@@ -27,6 +27,12 @@ public class BlockEntityBanner : BlockEntity, IRotatable
         }
     }
 
+    public void ReplaceProperties(BannerProperties fromProps)
+    {
+        BannerProps = fromProps;
+        MarkDirty(redrawOnClient: true);
+    }
+
     public override void OnBlockUnloaded()
     {
         base.OnBlockUnloaded();
@@ -78,6 +84,7 @@ public class BlockEntityBanner : BlockEntity, IRotatable
     public override void FromTreeAttributes(ITreeAttribute tree, IWorldAccessor world)
     {
         base.FromTreeAttributes(tree, world);
+        BannerProps = new BannerProperties();
         BannerProps.FromTreeAttribute(tree,
             defaultType: BannerBlock.DefaultPlacement,
             defaultModes: BannerBlock.DefaultModes);

@@ -1,4 +1,5 @@
 global using static Flags.Constants;
+using Flags.Converter;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;

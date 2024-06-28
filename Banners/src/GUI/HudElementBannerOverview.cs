@@ -6,6 +6,7 @@ using Vintagestory.API.MathTools;
 using Vintagestory.Client.NoObf;
 
 namespace Flags;
+
 public class HudElementBannerOverview : HudElement
 {
     public override string ToggleKeyCombinationCode => ModHotkey.BannerOverviewHud;

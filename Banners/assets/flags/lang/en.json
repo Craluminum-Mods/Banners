@@ -179,7 +179,7 @@
     "ingameerror-liquidcontainer-onemax": "Only one liquid container is allowed",
     "ingameerror-editmode-off": "Unable to edit banner because edit mode was disabled",
 
-    "command-nobanner": "Active hand is missing banner",
+    "command-nobanner": "Active hand is missing banner or you are not looking at placed banner",
     "command-generatetextures": "{0} textures were sucessfully generated for banner",
     "command-generatetextures-error": "No grayscale texture found",
     "command-generatetextures-desc": "Generates textures for banner from textures defined in banner's json attributes. Overlays colored cloth textures on top of grayscale texture and saves new textures to {0} folder",
