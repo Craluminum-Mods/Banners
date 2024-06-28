@@ -33,6 +33,7 @@ public class Core : ModSystem
         api.RegisterCollectibleBehaviorClass("Flags.BannerPatternDescription", typeof(CollectibleBehaviorBannerPatternDescription));
         api.RegisterCollectibleBehaviorClass("Flags.BannerPatternToolModes", typeof(CollectibleBehaviorBannerPatternToolModes));
         api.RegisterCollectibleBehaviorClass("Flags.BannerLiquidDescription", typeof(CollectibleBehaviorBannerLiquidDescription));
+        api.RegisterCollectibleBehaviorClass("Flags.CutoutTool", typeof(CollectibleBehaviorCutoutTool));
         api.Logger.Event("started '{0}' mod", Mod.Info.Name);
 
         GlobalConstants.IgnoredStackAttributes = GlobalConstants.IgnoredStackAttributes.Append(BannersIgnoreAttributeSubTrees);
@@ -71,6 +72,10 @@ public class Core : ModSystem
             if (obj is BlockLiquidContainerTopOpened && !obj.HasBehavior<CollectibleBehaviorBannerLiquidDescription>())
             {
                 obj.CollectibleBehaviors = obj.CollectibleBehaviors.Append(new CollectibleBehaviorBannerLiquidDescription(obj));
+            }
+            if (obj is ItemShears and not ItemScythe && !obj.HasBehavior<CollectibleBehaviorCutoutTool>())
+            {
+                obj.CollectibleBehaviors = obj.CollectibleBehaviors.Append(new CollectibleBehaviorCutoutTool(obj));
             }
         }
     }

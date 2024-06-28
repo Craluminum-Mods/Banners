@@ -178,7 +178,8 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
 
     public static bool AddCutout(IPlayer byPlayer, ItemSlot leftSlot, ItemSlot rightSlot, BannerProperties bannerProps, BlockBanner blockBanner, bool isPreview = false)
     {
-        if (leftSlot?.Itemstack?.Collectible is not ItemBannerPattern itemPattern || rightSlot?.Itemstack?.Collectible is not ItemShears || rightSlot?.Itemstack?.Collectible is ItemScythe)
+        CollectibleBehaviorCutoutTool cutoutToolBehavior = rightSlot?.Itemstack?.Collectible?.GetBehavior<CollectibleBehaviorCutoutTool>();
+        if (leftSlot?.Itemstack?.Collectible is not ItemBannerPattern itemPattern || cutoutToolBehavior == null)
         {
             return false;
         }
@@ -192,16 +193,29 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         }
 
         string pattern = PatternProperties.FromStack(leftSlot.Itemstack).Type;
-        return !string.IsNullOrEmpty(pattern) && bannerProps.Cutouts.TryAdd(new BannerLayer().WithPattern(pattern));
+        bool applied = cutoutToolBehavior.HasEnoughDurability(rightSlot) && !string.IsNullOrEmpty(pattern) && bannerProps.Cutouts.TryAdd(new BannerLayer().WithPattern(pattern));
+
+        if (applied && !isPreview)
+        {
+            cutoutToolBehavior.ConsumeDurability(byPlayer.Entity.World, byPlayer.Entity, rightSlot);
+        }
+        if (applied && !isPreview) cutoutToolBehavior.PlayCutSound(byPlayer);
+        return applied;
     }
 
     public static bool RemoveCutout(IPlayer byPlayer, ItemSlot leftSlot, ItemSlot rightSlot, BannerProperties bannerProps, bool isPreview = false)
     {
-        return leftSlot.Empty
-            && rightSlot?.Itemstack?.Collectible is ItemShears
-            && rightSlot?.Itemstack?.Collectible is not ItemScythe
-            && bannerProps.IsEditModeEnabled(byPlayer, printError: !isPreview)
-            && bannerProps.Cutouts.TryRemoveLast();
+        CollectibleBehaviorCutoutTool cutoutToolBehavior = rightSlot?.Itemstack?.Collectible?.GetBehavior<CollectibleBehaviorCutoutTool>();
+        if (!leftSlot.Empty || cutoutToolBehavior == null)
+        {
+            return false;
+        }
+
+        if (!bannerProps.IsEditModeEnabled(byPlayer, printError: !isPreview)) return false;
+
+        bool applied = bannerProps.Cutouts.TryRemoveLast();
+        if (applied && !isPreview) cutoutToolBehavior.PlayRepairSound(byPlayer);
+        return applied;
     }
 
     public static bool CopyLayers(IPlayer byPlayer, ItemSlot rightSlot, BannerProperties bannerProps, BlockBanner blockBanner, bool isPreview = false)

@@ -30,6 +30,9 @@ public static class Constants
     public const string textureUnknown = "unknown";
     public const string defaultColor = "grayscale";
 
+    public const string DefaultSoundCutoutAdd = "sounds/effect/clothrip";
+    public const string DefaultSoundCutoutRemove = "sounds/player/clothrepair";
+
     public const string langCodeEmpty = "Empty";
     public const string langCodeColor = "color-";
     public const string langCodeSetToolmode = "heldhelp-settoolmode";
@@ -134,6 +137,10 @@ public static class Constants
     public const string attributeRotZ = "rotZ";
     public const string attributeBannerPreviewHudTransform = "bannerPreviewHudTransform";
     public const string attributeInBannerPreviewHUD = "inBannerPreviewHUD";
+    public const string attributeToolDurabilityCost = "toolDurabilityCost";
+    public const string attributeIsTool = "isTool";
+    public const string attributeCutSound = "cutSound";
+    public const string attributeRepairSound = "repairSound";
 
     public const string guiBannerPreviewHUD = $"{modDomain}:bannerpreviewhud-title";
     public const string guiBannerOverviewHUD = $"{modDomain}:banneroverviewhud-title";

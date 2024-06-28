@@ -51,7 +51,7 @@ public class CachedInteractions : ModSystem
 
         ObjectCacheUtil.GetOrCreate(capi, cacheKeyShearsStacks, () =>
         {
-            return capi.World.Collectibles.Where(obj => obj is ItemShears && obj is not ItemScythe).SelectMany(obj => obj.GetHandBookStacksArray(capi)).ToArray();
+            return capi.World.Collectibles.Where(obj => obj.HasBehavior<CollectibleBehaviorCutoutTool>()).SelectMany(obj => obj.GetHandBookStacksArray(capi)).ToArray();
         });
 
         ObjectCacheUtil.GetOrCreate(capi, cacheKeyRotatableBannerInteractions, () =>
