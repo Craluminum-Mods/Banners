@@ -34,7 +34,7 @@ public class CollectibleBehaviorBannerPatternToolModes : CollectibleBehavior
         ItemSlot mouseslot = byPlayer.InventoryManager.MouseItemSlot;
         if (!mouseslot.Empty)
         {
-            PatternToolMode.TryUnlockAll(ToolModes, slot, mouseslot.Itemstack);
+            PatternToolMode.TryUnlockAll(ToolModes, slot, mouseslot);
             byPlayer.Entity.World.Api.Event.PushEvent(eventKeepOpenToolmodeDialog);
         }
         else if (ToolModes[index].IsUnlocked(slot) || byPlayer.IsCreative())

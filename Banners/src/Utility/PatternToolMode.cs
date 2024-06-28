@@ -60,33 +60,36 @@ public class PatternToolMode
         props.ToTreeAttribute(stack.Attributes);
     }
 
-    public bool TryUnlock(ItemSlot slot, ItemStack byStack, bool skipStack = false)
+    public bool TryUnlock(ItemSlot slot, ItemSlot mouseSlot, bool skipStack = false)
     {
         PatternProperties props = PatternProperties.FromStack(slot.Itemstack);
-        if ((skipStack && props.Type == Pattern) || Unlockable.Any(x => x.Matches(byStack)))
+        if ((skipStack && props.Type == Pattern) || Unlockable.Any(x => x.Matches(mouseSlot?.Itemstack)))
         {
             props.SetUnlockedTypes(Pattern);
             props.ToTreeAttribute(slot.Itemstack.Attributes);
             slot.MarkDirty();
             return true;
         }
-        else if (byStack?.Collectible is ItemBannerPattern)
+        else if (mouseSlot?.Itemstack?.Collectible is ItemBannerPattern)
         {
-            PatternProperties otherProps = PatternProperties.FromStack(byStack);
+            PatternProperties otherProps = PatternProperties.FromStack(mouseSlot.Itemstack);
+            otherProps.MergeTypes(props);
             props.MergeTypes(otherProps);
             props.ToTreeAttribute(slot.Itemstack.Attributes);
+            otherProps.ToTreeAttribute(mouseSlot.Itemstack.Attributes);
             slot.MarkDirty();
+            mouseSlot.MarkDirty();
             return true;
         }
         return false;
     }
 
-    public static bool TryUnlockAll(IEnumerable<PatternToolMode> modes, ItemSlot slot, ItemStack byStack, bool skipStack = false)
+    public static bool TryUnlockAll(IEnumerable<PatternToolMode> modes, ItemSlot slot, ItemSlot mouseSlot, bool skipStack = false)
     {
         bool any = false;
         foreach (PatternToolMode toolMode in modes.Where(toolMode => !toolMode.IsUnlocked(slot)))
         {
-            if (toolMode.TryUnlock(slot, byStack, skipStack))
+            if (toolMode.TryUnlock(slot, mouseSlot, skipStack))
             {
                 any = true;
             }
