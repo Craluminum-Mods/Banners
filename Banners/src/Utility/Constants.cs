@@ -170,7 +170,7 @@ public static class Constants
         public const string Prefix = $"{modDomain}:ingameerror-";
 
         public const string BannerCopyLayers = $"{Prefix}banner-copylayers";
-        public const string BannerRename = $"{Prefix}:ingameerror-banner-rename";
+        public const string BannerRename = $"{Prefix}banner-rename";
         public const string BannerPatternGroups = $"{Prefix}banner-patterngroups";
         public const string BannerNotEnoughDye = $"{Prefix}banner-notenoughdye";
         public const string BannerNotEnoughBleach = $"{Prefix}banner-notenoughbleach";
