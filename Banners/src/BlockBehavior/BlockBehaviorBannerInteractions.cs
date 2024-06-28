@@ -248,12 +248,13 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
 
     public static bool Rename(IPlayer byPlayer, ItemSlot rightSlot, BannerProperties bannerProps, BlockBanner blockBanner)
     {
-        if (rightSlot?.Itemstack?.Collectible is not ItemBook || !bannerProps.IsEditModeEnabled(byPlayer))
+        CollectibleBehaviorRenameTool renameToolBehavior = rightSlot?.Itemstack?.Collectible?.GetBehavior<CollectibleBehaviorRenameTool>();
+        if (renameToolBehavior == null || !bannerProps.IsEditModeEnabled(byPlayer))
         {
             return false;
         }
 
-        string newName = rightSlot.Itemstack.Attributes.GetString(attributeTitle);
+        string newName = rightSlot.Itemstack.Attributes.GetString(renameToolBehavior.FromAttribute);
         if (string.IsNullOrEmpty(newName))
         {
             byPlayer.IngameError(blockBanner, IngameError.BannerRename, IngameError.BannerRename.Localize());

@@ -31,7 +31,7 @@ public class CachedInteractions : ModSystem
 
         ObjectCacheUtil.GetOrCreate(capi, cacheKeyBookStacks, () =>
         {
-            return capi.World.Collectibles.Where(obj => obj is ItemBook).SelectMany(obj => obj.GetHandBookStacksArray(capi)).ToArray();
+            return capi.World.Collectibles.Where(obj => obj.HasBehavior<CollectibleBehaviorRenameTool>()).SelectMany(obj => obj.GetHandBookStacksArray(capi)).ToArray();
         });
 
         ObjectCacheUtil.GetOrCreate(capi, cacheKeyWrenchStacks, () =>

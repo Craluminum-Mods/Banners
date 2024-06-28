@@ -141,6 +141,7 @@ public static class Constants
     public const string attributeIsTool = "isTool";
     public const string attributeCutSound = "cutSound";
     public const string attributeRepairSound = "repairSound";
+    public const string attributeFromAttribute = "fromAttribute";
 
     public const string guiBannerPreviewHUD = $"{modDomain}:bannerpreviewhud-title";
     public const string guiBannerOverviewHUD = $"{modDomain}:banneroverviewhud-title";
