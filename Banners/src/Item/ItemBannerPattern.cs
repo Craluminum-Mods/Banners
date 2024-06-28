@@ -57,6 +57,7 @@ public class ItemBannerPattern : ItemRollableFixed
     public override void OnBeforeRender(ICoreClientAPI capi, ItemStack itemstack, EnumItemRenderTarget target, ref ItemRenderInfo renderinfo)
     {
         base.OnBeforeRender(capi, itemstack, target, ref renderinfo);
-        this.GetInventoryMesh(capi, itemstack, renderinfo);
+        MultiTextureMeshRef meshRef = this.GetInventoryMesh(capi, itemstack, renderinfo);
+        renderinfo.ModelRef = meshRef;
     }
 }
