@@ -287,12 +287,12 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
 
         interactions.Add(new WorldInteraction()
         {
-            ActionLangCode = bannerProps.IsEditModeEnabled(capi) ? langCodeCopyLayers : langCodeCopyLayersFromPlaced,
+            ActionLangCode = bannerProps.IsEditModeEnabled(capi, printError: false) ? langCodeCopyLayers : langCodeCopyLayersFromPlaced,
             MouseButton = EnumMouseButton.Right,
             Itemstacks = bannerStacks
         });
 
-        if (bannerProps.IsEditModeEnabled(capi))
+        if (bannerProps.IsEditModeEnabled(capi, printError: false))
         {
             interactions.Add(new WorldInteraction()
             {
