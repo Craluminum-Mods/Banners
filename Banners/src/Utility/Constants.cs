@@ -12,10 +12,10 @@ public static class Constants
     public const int lastPatternDisplayAmount = 8;
     public const int cutoutsDisplayAmount = 4;
 
-    public const float DegreesToRadians = (float)Math.PI / 180f;
-    public const float RadiansToDegrees = 180f / (float)Math.PI;
-    public const float Radians90 = (float)Math.PI / 2f;
-    public const float Radians22_5 = (float)Math.PI / 8f;
+    public const float DegreesToRadians = GameMath.DEG2RAD;
+    public const float RadiansToDegrees = GameMath.RAD2DEG;
+    public const float Radians90 = GameMath.PIHALF; 
+    public const float Radians22_5 = MathF.PI / 8f;
 
     public const char unlockedSeparator = '-';
     public const char layerSeparator = '|';
@@ -142,6 +142,9 @@ public static class Constants
     public const string attributeCutSound = "cutSound";
     public const string attributeRepairSound = "repairSound";
     public const string attributeFromAttribute = "fromAttribute";
+
+    public const string itemcodeParchment = "paper-parchment";
+    public const string itemcodeInkAndQuill = "inkandquill";
 
     public const string guiBannerPreviewHUD = $"{modDomain}:bannerpreviewhud-title";
     public const string guiBannerOverviewHUD = $"{modDomain}:banneroverviewhud-title";
