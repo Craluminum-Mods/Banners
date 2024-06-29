@@ -11,7 +11,6 @@ public class HudElementBannerPreview : HudElement
 
     public HudElementBannerPreview(ICoreClientAPI capi) : base(capi)
     {
-        capi.Event.RegisterGameTickListener(Every500ms, 500);
         capi.Event.BlockChanged += OnBlockChanged;
         ComposeHud();
         if (Hotkeys.ShowBannerPreviewHud == true)
@@ -140,8 +139,6 @@ public class HudElementBannerPreview : HudElement
             ClearComposers();
         }
     }
-
-    private void Every500ms(float dt) => ComposeHud();
 
     public override void OnGuiOpened()
     {

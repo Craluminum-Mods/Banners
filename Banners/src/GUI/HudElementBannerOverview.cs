@@ -13,7 +13,6 @@ public class HudElementBannerOverview : HudElement
 
     public HudElementBannerOverview(ICoreClientAPI capi) : base(capi)
     {
-        capi.Event.RegisterGameTickListener(Every500ms, 500);
         capi.Event.BlockChanged += OnBlockChanged;
         ComposeHud();
         if (Hotkeys.ShowBannerOverviewHud == true)
@@ -239,8 +238,6 @@ public class HudElementBannerOverview : HudElement
             ClearComposers();
         }
     }
-
-    private void Every500ms(float dt) => ComposeHud();
 
     public override void OnGuiOpened()
     {
