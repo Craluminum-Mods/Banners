@@ -124,6 +124,7 @@ public static class Constants
     public const string attributeBannerLiquid = "bannerLiquid";
     public const string attributeShapesContainable = "shapesContainable";
     public const string attributeInventoryBannerContainable = "inventoryBannerContainable";
+    public const string attributeInventoryBannerContainableBoat = "inventoryBannerContainableBoat";
     public const string attributeExcludeFaces = "excludeFaces";
     public const string attributeShapeKey = "shapeKey";
     public const string attributeRotationsByFace = "rotationsByFace";
@@ -142,6 +143,7 @@ public static class Constants
     public const string attributeCutSound = "cutSound";
     public const string attributeRepairSound = "repairSound";
     public const string attributeFromAttribute = "fromAttribute";
+    public const string attributeQuantitySlots = "quantitySlots";
 
     public const string itemcodeParchment = "paper-parchment";
     public const string itemcodeInkAndQuill = "inkandquill";
@@ -157,6 +159,7 @@ public static class Constants
     public const string eventGenJsonTransform = "genjsontransform";
 
     public const string bannerContainableInvClassName = "flags-bannercontainable";
+    public const string bannerContainableBoatInvClassName = "flags-bannercontainableboat";
 
     public const string appendixJson = ".json";
     public const string appendixPng = ".png";
