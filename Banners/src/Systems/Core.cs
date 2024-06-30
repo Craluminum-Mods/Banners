@@ -60,6 +60,7 @@ public class Core : ModSystem
     {
         api.Gui.RegisterDialog(new HudElementBannerPreview(api), new HudElementBannerOverview(api));
         GuiDialogTransformEditor.extraTransforms.Add(new TransformConfig() { Title = langCodeBannerPreviewHudTransform.Localize(), AttributeName = attributeBannerPreviewHudTransform });
+        GuiDialogTransformEditor.extraTransforms.Add(new TransformConfig() { Title = langCodeBannerOnBoatTransform.Localize(), AttributeName = attributeBannerOnBoatTransform });
 
         api.Event.OnEntitySpawn += AddEntityBehaviors;
         api.Event.OnEntityLoaded += AddEntityBehaviors;

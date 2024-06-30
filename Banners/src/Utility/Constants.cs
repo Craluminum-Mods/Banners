@@ -68,6 +68,7 @@ public static class Constants
     public const string langCodeToolMode = $"{modDomain}:toolmode-";
     public const string langCodeToolModeValue = $"{modDomain}:toolmode-value-";
     public const string langCodeBannerPreviewHudTransform = $"{modDomain}:{attributeBannerPreviewHudTransform}";
+    public const string langCodeBannerOnBoatTransform = $"{modDomain}:{attributeBannerOnBoatTransform}";
 
     public const string cacheKeyBlockBannerMeshes = $"{modDomain}BlockBannerMeshes";
     public const string cacheKeyBlockBannerInvMeshes = $"{modDomain}BlockBannerMeshesInventory";
@@ -144,6 +145,7 @@ public static class Constants
     public const string attributeRepairSound = "repairSound";
     public const string attributeFromAttribute = "fromAttribute";
     public const string attributeQuantitySlots = "quantitySlots";
+    public const string attributeBannerOnBoatTransform = "bannerOnBoatTransform";
 
     public const string itemcodeParchment = "paper-parchment";
     public const string itemcodeInkAndQuill = "inkandquill";

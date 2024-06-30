@@ -12,8 +12,6 @@ namespace Flags;
 
 public class BlockBanner : Block, IContainedMeshSource
 {
-    protected bool transformEditMode;
-
     public List<string> PatternGroups { get; protected set; } = new();
 
     public Dictionary<string, CompositeShape> CustomShapes { get; protected set; } = new();
@@ -38,6 +36,7 @@ public class BlockBanner : Block, IContainedMeshSource
     public Dictionary<string, string> DefaultModes { get; protected set; } = new();
 
     public ModelTransform BannerPreviewHudTransform { get; protected set; } = new();
+    public ModelTransform BannerOnBoatTransform { get; protected set; } = new();
 
     public Dictionary<string, MeshData> Meshes => ObjectCacheUtil.GetOrCreate(api, cacheKeyBlockBannerMeshes, () => new Dictionary<string, MeshData>());
     public Dictionary<string, MeshData> ContainableMeshes => ObjectCacheUtil.GetOrCreate(api, cacheKeyBlockBannerContainableMeshes, () => new Dictionary<string, MeshData>());
@@ -128,6 +127,7 @@ public class BlockBanner : Block, IContainedMeshSource
     public void LoadTransforms()
     {
         BannerPreviewHudTransform = Attributes[attributeBannerPreviewHudTransform].AsObject<ModelTransform>();
+        BannerOnBoatTransform = Attributes[attributeBannerOnBoatTransform].AsObject<ModelTransform>();
     }
 
     public override void GetHeldItemInfo(ItemSlot inSlot, StringBuilder sb, IWorldAccessor world, bool withDebugInfo)

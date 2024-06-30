@@ -123,11 +123,13 @@ public class EntityBehaviorBoatWithBanner : EntityBehavior
                 continue;
             }
             BannerProperties bannerProperties = BannerProperties.FromStack(slot.Itemstack);
-            MeshData mesh = blockBanner.GetOrCreateMesh(entity.Api as ICoreClientAPI, bannerProperties);
+            MeshData mesh = blockBanner.GetOrCreateMesh(entity.Api as ICoreClientAPI, bannerProperties).Clone();
             if (mesh == null)
             {
                 continue;
             }
+
+            mesh.MatrixTransform(blockBanner.BannerOnBoatTransform.AsMatrix);
             meshData.AddMeshData(mesh);
         }
     }
