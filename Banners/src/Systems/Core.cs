@@ -1,4 +1,5 @@
 global using static Flags.Constants;
+global using static Flags.Core;
 using Flags.Converter;
 using System.Linq;
 using Vintagestory.API.Client;
@@ -8,6 +9,7 @@ using Vintagestory.API.Server;
 using Vintagestory.API.Util;
 using Vintagestory.Client.NoObf;
 using Vintagestory.GameContent;
+using Vintagestory.GameContent.Mechanics;
 
 [assembly: ModInfo(name: "Banners", modID: modDomain)]
 
@@ -16,6 +18,9 @@ namespace Flags;
 public class Core : ModSystem
 {
     public static BannerConverter Converter { get; set; } = new();
+
+    public const string attributeInventoryWindmillBanners = "inventoryWindmillBanners";
+    public const string windmillBannersInvClassName = "flags-windmillbanners";
 
     public override void Start(ICoreAPI api)
     {
@@ -36,6 +41,10 @@ public class Core : ModSystem
         api.RegisterCollectibleBehaviorClass("Flags.BannerLiquidDescription", typeof(CollectibleBehaviorBannerLiquidDescription));
         api.RegisterCollectibleBehaviorClass("Flags.CutoutTool", typeof(CollectibleBehaviorCutoutTool));
         api.RegisterCollectibleBehaviorClass("Flags.RenameTool", typeof(CollectibleBehaviorRenameTool));
+
+        api.RegisterBlockBehaviorClass("Flags.WindmillWithBanners", typeof(BlockBehaviorWindmillWithBanners));
+        api.RegisterBlockEntityBehaviorClass("Flags.WindmillWithBanners", typeof(BEBehaviorWindmillWithBanners));
+
         api.Logger.Event("started '{0}' mod", Mod.Info.Name);
 
         GlobalConstants.IgnoredStackAttributes = GlobalConstants.IgnoredStackAttributes.Append(BannersIgnoreAttributeSubTrees);
@@ -46,6 +55,11 @@ public class Core : ModSystem
         if (!api.World.Config.HasAttribute(worldConfigLayersLimit))
         {
             api.World.Config.SetInt(worldConfigLayersLimit, defaultLayersLimit);
+        }
+
+        if (!MechNetworkRenderer.RendererByCode.ContainsKey("windmillwithbanners"))
+        {
+            MechNetworkRenderer.RendererByCode.Add("windmillwithbanners", typeof(WindmillWithBannersMechBlockRenderer));
         }
     }
 

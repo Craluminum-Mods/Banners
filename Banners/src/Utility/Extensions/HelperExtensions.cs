@@ -67,6 +67,12 @@ public static class HelperExtensions
         return behavior != null;
     }
 
+    public static bool TryGetBEBehavior<T>(this IBlockAccessor blockAccessor, BlockPos pos, out T behavior) where T : BlockEntityBehavior
+    {
+        behavior = blockAccessor.GetBlockEntity(pos)?.GetBehavior<T>();
+        return behavior != null;
+    }
+
     public static bool TryGetBlockBehavior<T>(this IBlockAccessor blockAccessor, BlockSelection blockSel, out T behavior) where T : BlockBehavior
     {
         if (blockSel == null)

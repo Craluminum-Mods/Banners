@@ -19,6 +19,13 @@ public class HarmonyPatches : ModSystem
         HarmonyInstance.Patch(original: BlockEntityBed_DidUnmount_Patch.TargetMethod(), transpiler: BlockEntityBed_DidUnmount_Patch.GetTranspiler());
         HarmonyInstance.Patch(original: ColorBlend_ColorBurn_Patch.TargetMethod(), prefix: ColorBlend_ColorBurn_Patch.GetPrefix());
         HarmonyInstance.Patch(original: GuiHandbookItemStackPage_PageCodeForStack_Patch.TargetMethod(), postfix: GuiHandbookItemStackPage_PageCodeForStack_Patch.GetPostfix());
+
+        HarmonyInstance.Patch(original: MechNetworkRenderer_AddDevice_Patch.TargetMethod(), prefix: MechNetworkRenderer_AddDevice_Patch.GetPrefix());
+        HarmonyInstance.Patch(original: BlockWindmillRotor_OnBlockInteractStart_Patch.TargetMethod(), prefix: BlockWindmillRotor_OnBlockInteractStart_Patch.GetPrefix());
+        if (api.Side.IsClient())
+        {
+            HarmonyInstance.Patch(original: BlockWindmillRotor_GetPlacedBlockInteractionHelp_Patch.TargetMethod(), postfix: BlockWindmillRotor_GetPlacedBlockInteractionHelp_Patch.GetPostfix());
+        }
     }
 
     public override void Dispose()
@@ -28,5 +35,12 @@ public class HarmonyPatches : ModSystem
         HarmonyInstance.Unpatch(original: BlockEntityBed_DidUnmount_Patch.TargetMethod(), HarmonyPatchType.All, HarmonyInstance.Id);
         HarmonyInstance.Unpatch(original: GuiHandbookItemStackPage_PageCodeForStack_Patch.TargetMethod(), HarmonyPatchType.All, HarmonyInstance.Id);
         BlockEntityBed_DidUnmount_Patch.Applied = false;
+
+        HarmonyInstance.Unpatch(original: MechNetworkRenderer_AddDevice_Patch.TargetMethod(), HarmonyPatchType.All, HarmonyInstance.Id);
+        HarmonyInstance.Unpatch(original: BlockWindmillRotor_OnBlockInteractStart_Patch.TargetMethod(), HarmonyPatchType.All, HarmonyInstance.Id);
+        if (api.Side.IsClient())
+        {
+            HarmonyInstance.Unpatch(original: BlockWindmillRotor_GetPlacedBlockInteractionHelp_Patch.TargetMethod(), HarmonyPatchType.All, HarmonyInstance.Id);
+        }
     }
 }

@@ -1,0 +1,23 @@
+﻿[
+    {
+        "op": "addmerge",
+        "path": "/behaviors/-",
+        "value": { "name": "Flags.WindmillWithBanners" },
+        "file": "game:blocktypes/mechanics/windmillrotor.json",
+        "side": "Server"
+    },
+    {
+        "op": "addmerge",
+        "path": "/entityBehaviors/-",
+        "value": { "name": "Flags.WindmillWithBanners" },
+        "file": "game:blocktypes/mechanics/windmillrotor.json",
+        "side": "Server"
+    },
+    {
+        "op": "addmerge",
+        "path": "/attributes/mechanicalPower",
+        "value": { "renderer": "windmillwithbanners" },
+        "file": "game:blocktypes/mechanics/windmillrotor.json",
+        "side": "Server"
+    }
+]
