@@ -130,6 +130,7 @@ public class EntityBehaviorBoatWithBanner : EntityBehavior
             }
 
             mesh.MatrixTransform(blockBanner.BannerOnBoatTransform.AsMatrix);
+            mesh.ClearWindFlags();
             meshData.AddMeshData(mesh);
         }
     }
