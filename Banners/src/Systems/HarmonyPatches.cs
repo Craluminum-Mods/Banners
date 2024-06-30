@@ -26,6 +26,7 @@ public class HarmonyPatches : ModSystem
         HarmonyInstance.Unpatch(original: BlockBed_OnBlockInteractStart_Patch.TargetMethod(), HarmonyPatchType.All, HarmonyInstance.Id);
         HarmonyInstance.Unpatch(original: ServerSystemBlockSimulation_HandleBlockPlaceOrBreak_Patch.TargetMethod(), HarmonyPatchType.All, HarmonyInstance.Id);
         HarmonyInstance.Unpatch(original: BlockEntityBed_DidUnmount_Patch.TargetMethod(), HarmonyPatchType.All, HarmonyInstance.Id);
+        HarmonyInstance.Unpatch(original: ColorBlend_ColorBurn_Patch.TargetMethod(), HarmonyPatchType.All, HarmonyInstance.Id);
         HarmonyInstance.Unpatch(original: GuiHandbookItemStackPage_PageCodeForStack_Patch.TargetMethod(), HarmonyPatchType.All, HarmonyInstance.Id);
         BlockEntityBed_DidUnmount_Patch.Applied = false;
     }

@@ -2,7 +2,6 @@
 using System.Linq;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
-using Vintagestory.API.MathTools;
 using Vintagestory.Client.NoObf;
 
 namespace Flags;
@@ -13,8 +12,8 @@ public class HudElementBannerOverview : HudElement
 
     public HudElementBannerOverview(ICoreClientAPI capi) : base(capi)
     {
-        capi.Event.BlockChanged += OnBlockChanged;
-        ComposeHud();
+        capi.Event.AfterActiveSlotChanged += (_) => ComposeHud();
+        capi.Event.BlockChanged += (_, _) => ComposeHud();
         if (Hotkeys.ShowBannerOverviewHud == true)
         {
             TryOpen();
@@ -59,13 +58,22 @@ public class HudElementBannerOverview : HudElement
                 y: 30.0.Scaled() * 2)
             .WithAlignment(EnumDialogArea.None);
 
-        ElementBounds secondBounds = firstBounds
-            .CopyOffsetedSibling(
-                fixedDeltaX: 0,
-                fixedDeltaY: (firstBounds.fixedHeight + ScaledSlotPadding) * 2)
-            .WithFixedSize(
+        ElementBounds secondBounds = firstBounds.CopyOffsetedSibling(
+            fixedDeltaX: 0,
+            fixedDeltaY: (firstBounds.fixedHeight + ScaledSlotPadding) * 2);
+
+        if (patterns == null || patterns.Empty)
+        {
+            secondBounds = firstBounds.CopyOffsetedSibling().WithFixedSize(
                 width: ScaledSlotSize * cutouts.Count / 0.945.Scaled(),
                 height: firstBounds.fixedHeight);
+        }
+        else
+        {
+            secondBounds = secondBounds.WithFixedSize(
+                width: ScaledSlotSize * cutouts.Count / 0.945.Scaled(),
+                height: firstBounds.fixedHeight);
+        }
 
         string text = guiBannerOverviewHUD.Localize();
         CairoFont titleFont = new CairoFont
@@ -96,15 +104,15 @@ public class HudElementBannerOverview : HudElement
         Composers[guiBannerOverviewHUD] = capi.Gui.CreateCompo(guiBannerOverviewHUD, mainBounds)
         .AddDialogBG(backgroundBounds, false)
         .BeginChildElements(childBounds)
-        .AddDynamicText(text, titleFont, titleTextBounds)
-        .AddIf(patterns != null)
-            .AddDynamicText(patternsText, titleFont, patternsTextBounds)
-            .AddItemSlotGrid(patterns, null, patterns.Count, firstBounds)
-        .EndIf()
-        .AddIf(cutouts != null && cutouts.Count != 0)
-            .AddDynamicText(cutoutsText, titleFont, cutoutsTextBounds)
-            .AddItemSlotGrid(cutouts, null, cutouts.Count, secondBounds)
-        .EndIf()
+            .AddDynamicText(text, titleFont, titleTextBounds)
+            .AddIf(patterns != null && !patterns.Empty)
+                .AddDynamicText(patternsText, titleFont, patternsTextBounds)
+                .AddItemSlotGrid(patterns, null, patterns.Count, firstBounds)
+            .EndIf()
+            .AddIf(cutouts != null && !cutouts.Empty)
+                .AddDynamicText(cutoutsText, titleFont, cutoutsTextBounds)
+                .AddItemSlotGrid(cutouts, null, cutouts.Count, secondBounds)
+            .EndIf()
         .EndChildElements()
         .Compose();
     }
@@ -226,18 +234,6 @@ public class HudElementBannerOverview : HudElement
 
     public override bool ShouldReceiveKeyboardEvents() => false;
     public override bool ShouldReceiveMouseEvents() => false;
-
-    private void OnBlockChanged(BlockPos pos, Block oldBlock)
-    {
-        if (capi.World.Player?.CurrentBlockSelection != null && pos.Equals(capi.World.Player.CurrentBlockSelection.Position))
-        {
-            ComposeHud();
-        }
-        else
-        {
-            ClearComposers();
-        }
-    }
 
     public override void OnGuiOpened()
     {

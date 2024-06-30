@@ -11,8 +11,8 @@ public class HudElementBannerPreview : HudElement
 
     public HudElementBannerPreview(ICoreClientAPI capi) : base(capi)
     {
-        capi.Event.BlockChanged += OnBlockChanged;
-        ComposeHud();
+        capi.Event.AfterActiveSlotChanged += (_) => ComposeHud();
+        capi.Event.BlockChanged += (_, _) => ComposeHud();
         if (Hotkeys.ShowBannerPreviewHud == true)
         {
             TryOpen();
@@ -65,23 +65,23 @@ public class HudElementBannerPreview : HudElement
         RichTextComponentBase[] rightStack = GetNextBanner(GuiElement.scaled(300));
 
         Composers[guiBannerPreviewHUD] = capi.Gui.CreateCompo(guiBannerPreviewHUD, mainBounds)
-            .AddDialogBG(backgroundBounds, false)
-            .BeginChildElements(childBounds)
-                .AddDynamicText(guiBannerPreviewHUD.Localize(), titleFont, titleTextBounds)
-                .AddGameOverlay(leftBounds)
-                .AddInset(leftBounds, 6)
-                .AddIf(leftStack != null)
-                    .AddRichtext(leftStack, leftItemBounds)
-                .EndIf()
-                .AddGameOverlay(rightBounds)
-                .AddInset(rightBounds, 6)
-                .AddIf(rightStack != null)
-                    .AddRichtext(rightStack, rightItemBounds)
-                .EndIf()
-                .AddIf(leftStack != null && rightStack != null)
-                    .AddDynamicCustomDraw(iconBounds, (ctx, surface, bounds) => ctx.DrawChevron(surface, bounds, iconSize, iconColor, strokeColor, iconStrokeSize))
-                .EndIf()
-            .EndChildElements()
+        .AddDialogBG(backgroundBounds, false)
+        .BeginChildElements(childBounds)
+            .AddDynamicText(guiBannerPreviewHUD.Localize(), titleFont, titleTextBounds)
+            .AddGameOverlay(leftBounds)
+            .AddInset(leftBounds, 6)
+            .AddIf(leftStack != null)
+                .AddRichtext(leftStack, leftItemBounds)
+            .EndIf()
+            .AddGameOverlay(rightBounds)
+            .AddInset(rightBounds, 6)
+            .AddIf(rightStack != null)
+                .AddRichtext(rightStack, rightItemBounds)
+            .EndIf()
+            .AddIf(leftStack != null && rightStack != null)
+                .AddDynamicCustomDraw(iconBounds, (ctx, surface, bounds) => ctx.DrawChevron(surface, bounds, iconSize, iconColor, strokeColor, iconStrokeSize))
+            .EndIf()
+        .EndChildElements()
         .Compose();
     }
 
@@ -127,18 +127,6 @@ public class HudElementBannerPreview : HudElement
     public override bool ShouldReceiveRenderEvents() => GetBanner() != null;
     public override bool ShouldReceiveKeyboardEvents() => false;
     public override bool ShouldReceiveMouseEvents() => false;
-
-    private void OnBlockChanged(BlockPos pos, Block oldBlock)
-    {
-        if (capi.World.Player?.CurrentBlockSelection != null && pos.Equals(capi.World.Player.CurrentBlockSelection.Position))
-        {
-            ComposeHud();
-        }
-        else
-        {
-            ClearComposers();
-        }
-    }
 
     public override void OnGuiOpened()
     {
