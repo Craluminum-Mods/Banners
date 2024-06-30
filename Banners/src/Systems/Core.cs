@@ -1,9 +1,12 @@
 global using static Flags.Constants;
 using Flags.Converter;
+using Newtonsoft.Json.Linq;
 using System.Linq;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
+using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
+using Vintagestory.API.Datastructures;
 using Vintagestory.API.Server;
 using Vintagestory.API.Util;
 using Vintagestory.Client.NoObf;
@@ -36,6 +39,7 @@ public class Core : ModSystem
         api.RegisterCollectibleBehaviorClass("Flags.BannerLiquidDescription", typeof(CollectibleBehaviorBannerLiquidDescription));
         api.RegisterCollectibleBehaviorClass("Flags.CutoutTool", typeof(CollectibleBehaviorCutoutTool));
         api.RegisterCollectibleBehaviorClass("Flags.RenameTool", typeof(CollectibleBehaviorRenameTool));
+        api.RegisterEntityBehaviorClass("flags:bannercontainableboat", typeof(EntityBehaviorBoatWithBanner));
         api.Logger.Event("started '{0}' mod", Mod.Info.Name);
 
         GlobalConstants.IgnoredStackAttributes = GlobalConstants.IgnoredStackAttributes.Append(BannersIgnoreAttributeSubTrees);
@@ -47,12 +51,18 @@ public class Core : ModSystem
         {
             api.World.Config.SetInt(worldConfigLayersLimit, defaultLayersLimit);
         }
+
+        api.Event.OnEntitySpawn += AddEntityBehaviors;
+        api.Event.OnEntityLoaded += AddEntityBehaviors;
     }
 
     public override void StartClientSide(ICoreClientAPI api)
     {
         api.Gui.RegisterDialog(new HudElementBannerPreview(api), new HudElementBannerOverview(api));
         GuiDialogTransformEditor.extraTransforms.Add(new TransformConfig() { Title = langCodeBannerPreviewHudTransform.Localize(), AttributeName = attributeBannerPreviewHudTransform });
+
+        api.Event.OnEntitySpawn += AddEntityBehaviors;
+        api.Event.OnEntityLoaded += AddEntityBehaviors;
     }
 
     public override void AssetsFinalize(ICoreAPI api)
@@ -118,5 +128,15 @@ public class Core : ModSystem
     public override void AssetsLoaded(ICoreAPI api)
     {
         Converter = api.Assets.TryGet(AssetLocation.Create(pathConverter)).ToObject<BannerConverter>();
+    }
+
+    private void AddEntityBehaviors(Entity entity)
+    {
+        if (entity.Api.ModLoader.IsModEnabled("sailboat") && entity.Code.Domain == "sailboat" && !entity.HasBehavior<EntityBehaviorBoatWithBanner>())
+        {
+            EntityBehaviorBoatWithBanner behavior = new EntityBehaviorBoatWithBanner(entity);
+            behavior.Initialize(entity.Properties, new JsonObject(new JObject()));
+            entity.AddBehavior(behavior);
+        }
     }
 }

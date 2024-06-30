@@ -10,11 +10,11 @@ public class ItemSlotBanner : ItemSlot
 
     public override bool CanTakeFrom(ItemSlot sourceSlot, EnumMergePriority priority = EnumMergePriority.AutoMerge)
     {
-        return sourceSlot.Itemstack.Collectible is BlockBanner;
+        return sourceSlot?.Itemstack?.Collectible is BlockBanner;
     }
 
     public override bool CanHold(ItemSlot sourceSlot)
     {
-        return sourceSlot.Itemstack.Collectible is BlockBanner;
+        return sourceSlot?.Itemstack?.Collectible is BlockBanner;
     }
 }
