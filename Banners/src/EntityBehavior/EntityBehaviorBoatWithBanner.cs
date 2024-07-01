@@ -77,12 +77,15 @@ public class EntityBehaviorBoatWithBanner : EntityBehavior
             {
                 ActionLangCode = langCodeBannerContainableContainedBannerAdd,
                 MouseButton = EnumMouseButton.Right,
+                HotKeyCode = "shift",
                 Itemstacks = ObjectCacheUtil.TryGet<ItemStack[]>(world.Api, cacheKeyBannerStacks)
             },
             new WorldInteraction()
             {
                 ActionLangCode = langCodeBannerContainableContainedBannerRemove,
-                MouseButton = EnumMouseButton.Left
+                RequireFreeHand = true,
+                HotKeyCode = "shift",
+                MouseButton = EnumMouseButton.Right
             },
         };
     }
@@ -92,7 +95,7 @@ public class EntityBehaviorBoatWithBanner : EntityBehavior
         IPlayer player = entity.World.PlayerByUid((byEntity as EntityPlayer).PlayerUID);
         if (entity.World.Side == EnumAppSide.Server && byEntity.ServerControls.Sneak)
         {
-           TryPut(itemslot);
+           _ = TryPut(itemslot) || TryTake();
         }
     }
 
@@ -148,12 +151,23 @@ public class EntityBehaviorBoatWithBanner : EntityBehavior
 
     public bool TryPut(ItemSlot slot)
     {
-        if (inv != null && inv.Any(slot => slot.Empty))
+        if (inv == null || !inv.Any(slot => slot.Empty))
         {
-            int num = slot.TryPutInto(entity.Api.World, inv.First(slot => slot.Empty));
-            return num > 0;
+            return false;
         }
-        return false;
+
+        int num = slot.TryPutInto(entity.Api.World, inv.First(slot => slot.Empty));
+        return num > 0;
+    }
+
+    public bool TryTake()
+    {
+        if (inv == null || inv.FirstNonEmptySlot == null)
+        {
+            return false;
+        }
+        inv.DropSlots(entity.SidedPos.AsBlockPos.ToVec3d().Add(0.5, 0.5, 0.5), inv.GetSlotId(inv.FirstNonEmptySlot));
+        return true;
     }
 
     public override string PropertyName()
