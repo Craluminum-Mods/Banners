@@ -129,10 +129,21 @@ public class EntityBehaviorBoatWithBanner : EntityBehavior
                 continue;
             }
 
-            mesh.MatrixTransform(blockBanner.BannerOnBoatTransform.AsMatrix);
+            mesh.MatrixTransform(GetTransformation(blockBanner, entity).AsMatrix);
             mesh.ClearWindFlags();
             meshData.AddMeshData(mesh);
         }
+    }
+
+    public static ModelTransform GetTransformation(BlockBanner forBanner, Entity forEntity, ItemSlot forSlot = null, InventoryGeneric inventory = null)
+    {
+        ModelTransform transform = forBanner.BannerOnBoatTransform;
+        if (forBanner.BannerOnBoatTransformByBoat.Any(x => WildcardUtil.Match(x.Key, forEntity.Code.ToString()) && x.Value != null))
+        {
+            ModelTransform _transform = forBanner.BannerOnBoatTransformByBoat.First(x => WildcardUtil.Match(x.Key, forEntity.Code.ToString())).Value;
+            if (_transform != null) transform = _transform;
+        }
+        return transform;
     }
 
     public bool TryPut(ItemSlot slot)

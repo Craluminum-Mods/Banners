@@ -146,6 +146,7 @@ public static class Constants
     public const string attributeFromAttribute = "fromAttribute";
     public const string attributeQuantitySlots = "quantitySlots";
     public const string attributeBannerOnBoatTransform = "bannerOnBoatTransform";
+    public const string attributeBannerOnBoatTransformByBoat = "bannerOnBoatTransformByBoat";
 
     public const string itemcodeParchment = "paper-parchment";
     public const string itemcodeInkAndQuill = "inkandquill";

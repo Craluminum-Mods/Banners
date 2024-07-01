@@ -37,6 +37,7 @@ public class BlockBanner : Block, IContainedMeshSource
 
     public ModelTransform BannerPreviewHudTransform { get; protected set; } = new();
     public ModelTransform BannerOnBoatTransform { get; protected set; } = new();
+    public Dictionary<string, ModelTransform> BannerOnBoatTransformByBoat { get; protected set; } = new();
 
     public Dictionary<string, MeshData> Meshes => ObjectCacheUtil.GetOrCreate(api, cacheKeyBlockBannerMeshes, () => new Dictionary<string, MeshData>());
     public Dictionary<string, MeshData> ContainableMeshes => ObjectCacheUtil.GetOrCreate(api, cacheKeyBlockBannerContainableMeshes, () => new Dictionary<string, MeshData>());
@@ -61,6 +62,8 @@ public class BlockBanner : Block, IContainedMeshSource
         IgnoreForGeneratingTextures.Clear();
         CustomSelectionBoxes.Clear();
         CustomCollisionBoxes.Clear();
+        DefaultModes.Clear();
+        BannerOnBoatTransformByBoat.Clear();
 
         foreach (MeshData mesh in Meshes.Values)
         {
@@ -128,6 +131,7 @@ public class BlockBanner : Block, IContainedMeshSource
     {
         BannerPreviewHudTransform = Attributes[attributeBannerPreviewHudTransform].AsObject<ModelTransform>();
         BannerOnBoatTransform = Attributes[attributeBannerOnBoatTransform].AsObject<ModelTransform>();
+        BannerOnBoatTransformByBoat = Attributes[attributeBannerOnBoatTransformByBoat].AsObject<Dictionary<string, ModelTransform>>();
     }
 
     public override void GetHeldItemInfo(ItemSlot inSlot, StringBuilder sb, IWorldAccessor world, bool withDebugInfo)

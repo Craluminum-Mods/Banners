@@ -35,10 +35,7 @@ public static class EntityShapeRenderer_onMeshReady_Patch
                 behavior.AddMeshDataTo(ref meshData);
                 ___meshRefOpaque = __instance.capi.Render.UploadMultiTextureMesh(meshData);
             }
-            catch (System.Exception)
-            {
-                //return true;
-            }
+            catch (System.Exception) { }
         }
 
         return false;
