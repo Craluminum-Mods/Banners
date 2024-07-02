@@ -90,20 +90,26 @@ public class EntityBehaviorBoatWithBanner : EntityBehavior
 
     public override WorldInteraction[] GetInteractionHelp(IClientWorldAccessor world, EntitySelection es, IClientPlayer player, ref EnumHandling handled)
     {
+        string hotkeyCode = "shift";
+        if (entity.Code.Domain == "game")
+        {
+            hotkeyCode = "ctrl";
+        }
+
         handled = EnumHandling.PassThrough;
         return new WorldInteraction[] {
             new WorldInteraction()
             {
                 ActionLangCode = langCodeBannerContainableContainedBannerAdd,
                 MouseButton = EnumMouseButton.Right,
-                HotKeyCode = "shift",
+                HotKeyCode = hotkeyCode,
                 Itemstacks = ObjectCacheUtil.TryGet<ItemStack[]>(world.Api, cacheKeyBannerStacks)
             },
             new WorldInteraction()
             {
                 ActionLangCode = langCodeBannerContainableContainedBannerRemove,
                 RequireFreeHand = true,
-                HotKeyCode = "shift",
+                HotKeyCode = hotkeyCode,
                 MouseButton = EnumMouseButton.Right
             },
         };
