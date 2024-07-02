@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
@@ -30,6 +31,22 @@ public class EntityBehaviorBoatWithBanner : EntityBehavior
         {
             inv.SlotModified += Inv_SlotModified;
         }
+
+        (entity.Api as ICoreClientAPI)?.Event.RegisterEventBusListener((string eventName, ref EnumHandling handling, IAttribute data) =>
+        {
+            switch (eventName)
+            {
+                case eventOnCloseEditTransforms:
+                case eventOnEditTransforms:
+                case eventOnApplyTransforms:
+                case eventGenJsonTransform:
+                    if (entity.Code.Domain == "game")
+                    {
+                        (entity.Properties.Client.Renderer as EntityShapeRenderer)?.MarkShapeModified();
+                    }
+                    break;
+                }
+        });
     }
 
     private void Inv_SlotModified(int slotid)

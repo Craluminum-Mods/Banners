@@ -308,9 +308,10 @@
                 "origin": { "x": 0.5, "y": 0, "z": 0 },
                 "scaleXyz": { "x": -0.85, "y": 0.85, "z": 0.85 }
             },
-            //"@game:boat-raft.*": {
-
-            //}
+            "@game:boat-raft.*": {
+                "translation": { "x": 0, "y": 0.42, "z": 0 },
+                "origin": { "x": 0.5, "y": 0, "z": 0 }
+            }
         },
         
         "placementByBoat": {
