@@ -20,8 +20,6 @@
             "bed-vanilla-hay": { "base": "flags:block/bannercontainable/bed/vanilla-hay" },
             "bed-vanilla-wood": { "base": "flags:block/bannercontainable/bed/vanilla-wood" },
             "bed-vanilla-woodaged": { "base": "flags:block/bannercontainable/bed/vanilla-woodaged" }
-
-            //"sailboat:*": { "base": "pathtoshape" }
         },
         "ignoredTextureCodesForOverlays": {
             "topsymbol": ["hhb", "bs", "bl", "br", "bt", "bts"],
@@ -309,7 +307,14 @@
                 "rotation": { "x": 0, "y": 90, "z": 0 },
                 "origin": { "x": 0.5, "y": 0, "z": 0 },
                 "scaleXyz": { "x": -0.85, "y": 0.85, "z": 0.85 }
-            }
+            },
+            //"@game:boat-raft.*": {
+
+            //}
+        },
+        
+        "placementByBoat": {
+            "@game:boat-raft.*": "compact-groundsimple"
         },
 
         // "showDebugInfo": true,

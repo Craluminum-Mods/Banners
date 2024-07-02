@@ -133,7 +133,11 @@ public class Core : ModSystem
 
     private void AddEntityBehaviors(Entity entity)
     {
-        if (entity.Api.ModLoader.IsModEnabled("sailboat") && entity.Code.Domain == "sailboat" && !entity.HasBehavior<EntityBehaviorBoatWithBanner>())
+        if (entity.HasBehavior<EntityBehaviorBoatWithBanner>())
+        {
+            return;
+        }
+        if ((entity.Api.ModLoader.IsModEnabled("sailboat") && entity.Code.Domain == "sailboat") || entity is EntityBoat)
         {
             EntityBehaviorBoatWithBanner behavior = new EntityBehaviorBoatWithBanner(entity);
             behavior.Initialize(entity.Properties, new JsonObject(new JObject()));

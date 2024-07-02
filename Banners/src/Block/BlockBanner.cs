@@ -38,6 +38,7 @@ public class BlockBanner : Block, IContainedMeshSource
     public ModelTransform BannerPreviewHudTransform { get; protected set; } = new();
     public ModelTransform BannerOnBoatTransform { get; protected set; } = new();
     public Dictionary<string, ModelTransform> BannerOnBoatTransformByBoat { get; protected set; } = new();
+    public Dictionary<string, string> PlacementsByBoat { get; protected set; } = new();
 
     public Dictionary<string, MeshData> Meshes => ObjectCacheUtil.GetOrCreate(api, cacheKeyBlockBannerMeshes, () => new Dictionary<string, MeshData>());
     public Dictionary<string, MeshData> ContainableMeshes => ObjectCacheUtil.GetOrCreate(api, cacheKeyBlockBannerContainableMeshes, () => new Dictionary<string, MeshData>());
@@ -64,6 +65,7 @@ public class BlockBanner : Block, IContainedMeshSource
         CustomCollisionBoxes.Clear();
         DefaultModes.Clear();
         BannerOnBoatTransformByBoat.Clear();
+        PlacementsByBoat.Clear();
 
         foreach (MeshData mesh in Meshes.Values)
         {
@@ -108,23 +110,26 @@ public class BlockBanner : Block, IContainedMeshSource
 
         DefaultModes = Attributes[attributeDefaultModes].AsObject<Dictionary<string, string>>();
 
+        PlacementsByBoat = Attributes[attributePlacementByBoat].AsObject<Dictionary<string, string>>();
+
         LoadTransforms();
 
-        EnumHandling handling = EnumHandling.PassThrough;
-        if (api is ICoreClientAPI capi)
+        if (api is not ICoreClientAPI capi)
         {
-            capi.Event.RegisterEventBusListener((string eventName, ref EnumHandling handling, IAttribute data) => {
-                switch (eventName)
-                {
-                    case eventOnCloseEditTransforms:
-                    case eventOnEditTransforms:
-                    case eventOnApplyTransforms:
-                    case eventGenJsonTransform:
-                        LoadTransforms();
-                        break;
-                }
-            });
+            return;
         }
+        capi.Event.RegisterEventBusListener((string eventName, ref EnumHandling handling, IAttribute data) =>
+        {
+            switch (eventName)
+            {
+                case eventOnCloseEditTransforms:
+                case eventOnEditTransforms:
+                case eventOnApplyTransforms:
+                case eventGenJsonTransform:
+                    LoadTransforms();
+                    break;
+            }
+        });
     }
 
     public void LoadTransforms()

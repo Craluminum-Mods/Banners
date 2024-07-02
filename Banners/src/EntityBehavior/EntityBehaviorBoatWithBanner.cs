@@ -7,6 +7,7 @@ using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
 using Vintagestory.API.Util;
+using Vintagestory.GameContent;
 
 namespace Flags;
 
@@ -50,6 +51,7 @@ public class EntityBehaviorBoatWithBanner : EntityBehavior
             TreeAttribute tree = new TreeAttribute();
             SerializerUtil.FromBytes(data, tree.FromBytes);
             inv.FromTreeAttributes(tree);
+            if (entity.Code.Domain == "game") (entity.Properties.Client.Renderer as EntityShapeRenderer)?.MarkShapeModified();
         }
     }
 
@@ -92,10 +94,25 @@ public class EntityBehaviorBoatWithBanner : EntityBehavior
 
     public override void OnInteract(EntityAgent byEntity, ItemSlot itemslot, Vec3d hitPosition, EnumInteractMode mode, ref EnumHandling handled)
     {
-        IPlayer player = entity.World.PlayerByUid((byEntity as EntityPlayer).PlayerUID);
-        if (entity.World.Side == EnumAppSide.Server && byEntity.ServerControls.Sneak)
+        if (entity.World.Side != EnumAppSide.Server)
         {
-           _ = TryPut(itemslot) || TryTake();
+            return;
+        }
+
+        switch (entity.Code.Domain)
+        {
+            case "sailboat" when byEntity.ServerControls.ShiftKey:
+                {
+                    bool success = TryPut(itemslot) || TryTake();
+                    handled = success ? EnumHandling.PreventDefault : EnumHandling.PassThrough;
+                    break;
+                }
+            case "game" when byEntity.ServerControls.CtrlKey:
+                {
+                    bool success = TryPut(itemslot) || TryTake();
+                    handled = success ? EnumHandling.PreventDefault : EnumHandling.PassThrough;
+                    break;
+                }
         }
     }
 
@@ -126,6 +143,7 @@ public class EntityBehaviorBoatWithBanner : EntityBehavior
                 continue;
             }
             BannerProperties bannerProperties = BannerProperties.FromStack(slot.Itemstack);
+            bannerProperties.SetPlacement(GetPlacement(blockBanner, entity));
             MeshData mesh = blockBanner.GetOrCreateMesh(entity.Api as ICoreClientAPI, bannerProperties).Clone();
             if (mesh == null)
             {
@@ -147,6 +165,17 @@ public class EntityBehaviorBoatWithBanner : EntityBehavior
             if (_transform != null) transform = _transform;
         }
         return transform;
+    }
+
+    public static string GetPlacement(BlockBanner forBanner, Entity forEntity, ItemSlot forSlot = null, InventoryGeneric inventory = null)
+    {
+        string placement = forBanner.DefaultPlacement;
+        if (forBanner.PlacementsByBoat.Any(x => WildcardUtil.Match(x.Key, forEntity.Code.ToString()) && x.Value != null))
+        {
+            string _placement = forBanner.PlacementsByBoat.First(x => WildcardUtil.Match(x.Key, forEntity.Code.ToString())).Value;
+            if (_placement != null) placement = _placement;
+        }
+        return placement;
     }
 
     public bool TryPut(ItemSlot slot)
