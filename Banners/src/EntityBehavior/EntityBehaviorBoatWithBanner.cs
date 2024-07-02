@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
@@ -31,7 +30,6 @@ public class EntityBehaviorBoatWithBanner : EntityBehavior
         {
             inv.SlotModified += Inv_SlotModified;
         }
-
         (entity.Api as ICoreClientAPI)?.Event.RegisterEventBusListener((string eventName, ref EnumHandling handling, IAttribute data) =>
         {
             switch (eventName)
@@ -68,8 +66,8 @@ public class EntityBehaviorBoatWithBanner : EntityBehavior
             TreeAttribute tree = new TreeAttribute();
             SerializerUtil.FromBytes(data, tree.FromBytes);
             inv.FromTreeAttributes(tree);
-            if (entity.Code.Domain == "game") (entity.Properties.Client.Renderer as EntityShapeRenderer)?.MarkShapeModified();
         }
+            if (entity.Code.Domain == "game") (entity.Properties.Client.Renderer as EntityShapeRenderer)?.MarkShapeModified();
     }
 
     public override void OnEntityDeath(DamageSource damageSourceForDeath)
@@ -122,21 +120,47 @@ public class EntityBehaviorBoatWithBanner : EntityBehavior
             return;
         }
 
+        IServerPlayer player = (byEntity as EntityPlayer)?.Player as IServerPlayer;
+
         switch (entity.Code.Domain)
         {
             case "sailboat" when byEntity.ServerControls.ShiftKey:
                 {
-                    bool success = TryPut(itemslot) || TryTake();
+                    bool success = TryPut(itemslot) || TryTake(player);
                     handled = success ? EnumHandling.PreventDefault : EnumHandling.PassThrough;
                     break;
                 }
             case "game" when byEntity.ServerControls.CtrlKey:
                 {
-                    bool success = TryPut(itemslot) || TryTake();
+                    bool success = TryPut(itemslot) || TryTake(player);
                     handled = success ? EnumHandling.PreventDefault : EnumHandling.PassThrough;
                     break;
                 }
         }
+    }
+
+    public bool TryPut(ItemSlot slot)
+    {
+        if (inv == null || !inv.Any(slot => slot.Empty))
+        {
+            return false;
+        }
+
+        int num = slot.TryPutInto(entity.Api.World, inv.First(slot => slot.Empty));
+        return num > 0;
+    }
+
+    public bool TryTake(IServerPlayer player = null)
+    {
+        ItemSlot targetSlot = inv.FirstNonEmptySlot;
+        if (inv == null || targetSlot == null)
+        {
+            return false;
+        }
+
+        int slotId = inv.GetSlotId(targetSlot);
+        inv.DropSlots(entity.SidedPos.AsBlockPos.ToVec3d().Add(0.5, 0.5, 0.5), slotId);
+        return true;
     }
 
     public override void GetInfoText(StringBuilder infotext)
@@ -199,27 +223,6 @@ public class EntityBehaviorBoatWithBanner : EntityBehavior
             if (_placement != null) placement = _placement;
         }
         return placement;
-    }
-
-    public bool TryPut(ItemSlot slot)
-    {
-        if (inv == null || !inv.Any(slot => slot.Empty))
-        {
-            return false;
-        }
-
-        int num = slot.TryPutInto(entity.Api.World, inv.First(slot => slot.Empty));
-        return num > 0;
-    }
-
-    public bool TryTake()
-    {
-        if (inv == null || inv.FirstNonEmptySlot == null)
-        {
-            return false;
-        }
-        inv.DropSlots(entity.SidedPos.AsBlockPos.ToVec3d().Add(0.5, 0.5, 0.5), inv.GetSlotId(inv.FirstNonEmptySlot));
-        return true;
     }
 
     public override string PropertyName()
