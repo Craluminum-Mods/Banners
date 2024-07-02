@@ -69,6 +69,8 @@ public static class Constants
     public const string langCodeToolModeValue = $"{modDomain}:toolmode-value-";
     public const string langCodeBannerPreviewHudTransform = $"{modDomain}:{attributeBannerPreviewHudTransform}";
     public const string langCodeBannerOnBoatTransform = $"{modDomain}:{attributeBannerOnBoatTransform}";
+    public const string langCodeGuiBannerPreviewHUDTitle = $"{modDomain}:bannerpreviewhud-title";
+    public const string langCodeGuiBannerOverviewHUDTitle = $"{modDomain}:banneroverviewhud-title";
 
     public const string cacheKeyBlockBannerMeshes = $"{modDomain}BlockBannerMeshes";
     public const string cacheKeyBlockBannerInvMeshes = $"{modDomain}BlockBannerMeshesInventory";
@@ -152,8 +154,8 @@ public static class Constants
     public const string itemcodeParchment = "paper-parchment";
     public const string itemcodeInkAndQuill = "inkandquill";
 
-    public const string guiBannerPreviewHUD = $"{modDomain}:bannerpreviewhud-title";
-    public const string guiBannerOverviewHUD = $"{modDomain}:banneroverviewhud-title";
+    public const string guiBannerPreviewHUD = $"{modDomain}:bannerpreviewhud";
+    public const string guiBannerOverviewHUD = $"{modDomain}:banneroverviewhud";
 
     public const string hotkeyToolmodeSelect = "toolmodeselect";
     public const string eventKeepOpenToolmodeDialog = "keepopentoolmodedlg";

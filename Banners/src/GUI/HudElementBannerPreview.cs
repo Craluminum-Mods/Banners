@@ -64,25 +64,28 @@ public class HudElementBannerPreview : HudElement
         RichTextComponentBase[] leftStack = GetPlacedBanner(GuiElement.scaled(300));
         RichTextComponentBase[] rightStack = GetNextBanner(GuiElement.scaled(300));
 
-        Composers[guiBannerPreviewHUD] = capi.Gui.CreateCompo(guiBannerPreviewHUD, mainBounds)
-        .AddDialogBG(backgroundBounds, false)
-        .BeginChildElements(childBounds)
-            .AddDynamicText(guiBannerPreviewHUD.Localize(), titleFont, titleTextBounds)
-            .AddGameOverlay(leftBounds)
-            .AddInset(leftBounds, 6)
-            .AddIf(leftStack != null)
-                .AddRichtext(leftStack, leftItemBounds)
-            .EndIf()
-            .AddGameOverlay(rightBounds)
-            .AddInset(rightBounds, 6)
-            .AddIf(rightStack != null)
-                .AddRichtext(rightStack, rightItemBounds)
-            .EndIf()
-            .AddIf(leftStack != null && rightStack != null)
-                .AddDynamicCustomDraw(iconBounds, (ctx, surface, bounds) => ctx.DrawChevron(surface, bounds, iconSize, iconColor, strokeColor, iconStrokeSize))
-            .EndIf()
-        .EndChildElements()
-        .Compose();
+        capi.World.Api.Event.EnqueueMainThreadTask(action: () =>
+        {
+            Composers[guiBannerPreviewHUD] = capi.Gui.CreateCompo(guiBannerPreviewHUD, mainBounds)
+            .AddDialogBG(backgroundBounds, false)
+            .BeginChildElements(childBounds)
+                .AddDynamicText(langCodeGuiBannerPreviewHUDTitle.Localize(), titleFont, titleTextBounds)
+                .AddGameOverlay(leftBounds)
+                .AddInset(leftBounds, 6)
+                .AddIf(leftStack != null)
+                    .AddRichtext(leftStack, leftItemBounds)
+                .EndIf()
+                .AddGameOverlay(rightBounds)
+                .AddInset(rightBounds, 6)
+                .AddIf(rightStack != null)
+                    .AddRichtext(rightStack, rightItemBounds)
+                .EndIf()
+                .AddIf(leftStack != null && rightStack != null)
+                    .AddDynamicCustomDraw(iconBounds, (ctx, surface, bounds) => ctx.DrawChevron(surface, bounds, iconSize, iconColor, strokeColor, iconStrokeSize))
+                .EndIf()
+            .EndChildElements()
+            .Compose();
+        }, code: guiBannerPreviewHUD);
     }
 
     private RichTextComponentBase[] GetPlacedBanner(double size)

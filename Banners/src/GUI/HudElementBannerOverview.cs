@@ -75,7 +75,7 @@ public class HudElementBannerOverview : HudElement
                 height: firstBounds.fixedHeight);
         }
 
-        string text = guiBannerOverviewHUD.Localize();
+        string text = langCodeGuiBannerOverviewHUDTitle.Localize();
         CairoFont titleFont = new CairoFont
         {
             Color = (double[])GuiStyle.DialogDefaultTextColor.Clone(),
@@ -101,20 +101,23 @@ public class HudElementBannerOverview : HudElement
             fixedWidth: GuiElement.scaled(text.Length) * titleFont.UnscaledFontsize,
             fixedHeight: 20.0.Scaled());
 
-        Composers[guiBannerOverviewHUD] = capi.Gui.CreateCompo(guiBannerOverviewHUD, mainBounds)
-        .AddDialogBG(backgroundBounds, false)
-        .BeginChildElements(childBounds)
-            .AddDynamicText(text, titleFont, titleTextBounds)
-            .AddIf(patterns != null && !patterns.Empty)
-                .AddDynamicText(patternsText, titleFont, patternsTextBounds)
-                .AddItemSlotGrid(patterns, null, patterns.Count, firstBounds)
-            .EndIf()
-            .AddIf(cutouts != null && !cutouts.Empty)
-                .AddDynamicText(cutoutsText, titleFont, cutoutsTextBounds)
-                .AddItemSlotGrid(cutouts, null, cutouts.Count, secondBounds)
-            .EndIf()
-        .EndChildElements()
-        .Compose();
+        capi.World.Api.Event.EnqueueMainThreadTask(action: () =>
+        {
+            Composers[guiBannerOverviewHUD] = capi.Gui.CreateCompo(guiBannerOverviewHUD, mainBounds)
+            .AddDialogBG(backgroundBounds, false)
+            .BeginChildElements(childBounds)
+                .AddDynamicText(text, titleFont, titleTextBounds)
+                .AddIf(patterns != null && !patterns.Empty)
+                    .AddDynamicText(patternsText, titleFont, patternsTextBounds)
+                    .AddItemSlotGrid(patterns, null, patterns.Count, firstBounds)
+                .EndIf()
+                .AddIf(cutouts != null && !cutouts.Empty)
+                    .AddDynamicText(cutoutsText, titleFont, cutoutsTextBounds)
+                    .AddItemSlotGrid(cutouts, null, cutouts.Count, secondBounds)
+                .EndIf()
+            .EndChildElements()
+            .Compose();
+        }, code: guiBannerOverviewHUD);
     }
 
     private DummyInventory GetPatternsInventory()
