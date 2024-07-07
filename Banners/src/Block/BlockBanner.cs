@@ -128,6 +128,8 @@ public class BlockBanner : Block, IContainedMeshSource
         {
             case eventOnEditTransforms:
             case eventOnApplyTransforms:
+            case eventGenJsonTransform:
+            case eventOnCloseEditTransforms:
                 LoadTransforms();
                 break;
         }
