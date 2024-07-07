@@ -283,9 +283,9 @@
         },
 
         "bannerPreviewHudTransform": {
-	        "rotation": { "x": 0, "y": 180, "z": 0 },
+	        "rotation": { "x": 0, "y": 0, "z": 0 },
 	        "origin": { "x": 0.5, "y": 0, "z": 0 },
-	        "scaleXyz": { "x": -0.85, "y": 0.85, "z": 0.85 }
+          "scale": 1
         },
 
         "bannerOnBoatTransform": {
@@ -297,20 +297,18 @@
 
         "bannerOnBoatTransformByBoat": {
             "@sailboat:crude.*": {
-                "translation": { "x": -0.04, "y": 3.2, "z": 2.02 },
-                "rotation": { "x": 0, "y": 90, "z": 0 },
-                "origin": { "x": 0.5, "y": 0, "z": 0 },
-                "scaleXyz": { "x": -0.85, "y": 0.85, "z": 0.85 }
+              "translation": { "x": -0.045, "y": 2.92, "z": 2.095 },
+              "rotation": { "x": 0, "y": 90, "z": 0 },
+              "origin": { "x": 0.5, "y": 0, "z": 0 }
             },
             "@sailboat:(cargosailboat|sailboat).*": {
-                "translation": { "x": -0.04, "y": 3.4, "z": 1.83 },
-                "rotation": { "x": 0, "y": 90, "z": 0 },
-                "origin": { "x": 0.5, "y": 0, "z": 0 },
-                "scaleXyz": { "x": -0.85, "y": 0.85, "z": 0.85 }
+              "translation": { "x": -0.04, "y": 3.2, "z": 1.905 },
+              "rotation": { "x": 0, "y": 90, "z": 0 },
+              "origin": { "x": 0.5, "y": 0, "z": 0 }
             },
             "@game:boat-raft.*": {
-                "translation": { "x": 0, "y": 0.42, "z": 0 },
-                "origin": { "x": 0.5, "y": 0, "z": 0 }
+              "translation": { "x": 0, "y": 0.42, "z": 0 },
+              "origin": { "x": 0.5, "y": 0, "z": 0 }
             }
         },
         
