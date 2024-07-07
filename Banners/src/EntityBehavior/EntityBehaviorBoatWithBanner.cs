@@ -30,21 +30,26 @@ public class EntityBehaviorBoatWithBanner : EntityBehavior
         {
             inv.SlotModified += Inv_SlotModified;
         }
-        (entity.Api as ICoreClientAPI)?.Event.RegisterEventBusListener((string eventName, ref EnumHandling handling, IAttribute data) =>
+
+        if (entity.Api is not ICoreClientAPI capi)
         {
-            switch (eventName)
-            {
-                case eventOnCloseEditTransforms:
-                case eventOnEditTransforms:
-                case eventOnApplyTransforms:
-                case eventGenJsonTransform:
-                    if (entity.Code.Domain == "game")
-                    {
-                        (entity.Properties.Client.Renderer as EntityShapeRenderer)?.MarkShapeModified();
-                    }
-                    break;
+            return;
+        }
+        capi.Event.RegisterEventBusListener(OnEvent);
+    }
+
+    private void OnEvent(string eventName, ref EnumHandling handling, IAttribute data)
+    {
+        switch (eventName)
+        {
+            case eventOnEditTransforms:
+            case eventOnApplyTransforms:
+                if (entity.Code.Domain == "game")
+                {
+                    (entity.Properties.Client.Renderer as EntityShapeRenderer)?.MarkShapeModified();
                 }
-        });
+                break;
+        }
     }
 
     private void Inv_SlotModified(int slotid)

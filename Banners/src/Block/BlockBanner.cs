@@ -113,29 +113,34 @@ public class BlockBanner : Block, IContainedMeshSource
         PlacementsByBoat = Attributes[attributePlacementByBoat].AsObject<Dictionary<string, string>>();
 
         LoadTransforms();
+        LoadBoatTransforms();
 
         if (api is not ICoreClientAPI capi)
         {
             return;
         }
-        capi.Event.RegisterEventBusListener((string eventName, ref EnumHandling handling, IAttribute data) =>
+        capi.Event.RegisterEventBusListener(OnEvent);
+    }
+
+    private void OnEvent(string eventName, ref EnumHandling handling, IAttribute data)
+    {
+        switch (eventName)
         {
-            switch (eventName)
-            {
-                case eventOnCloseEditTransforms:
-                case eventOnEditTransforms:
-                case eventOnApplyTransforms:
-                case eventGenJsonTransform:
-                    LoadTransforms();
-                    break;
-            }
-        });
+            case eventOnEditTransforms:
+            case eventOnApplyTransforms:
+                LoadTransforms();
+                break;
+        }
     }
 
     public void LoadTransforms()
     {
         BannerPreviewHudTransform = Attributes[attributeBannerPreviewHudTransform].AsObject<ModelTransform>();
         BannerOnBoatTransform = Attributes[attributeBannerOnBoatTransform].AsObject<ModelTransform>();
+    }
+
+    public void LoadBoatTransforms()
+    {
         BannerOnBoatTransformByBoat = Attributes[attributeBannerOnBoatTransformByBoat].AsObject<Dictionary<string, ModelTransform>>();
     }
 
