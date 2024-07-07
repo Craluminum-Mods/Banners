@@ -14,7 +14,7 @@ public class BlockBehaviorBannerToolModes : BlockBehavior
     private ICoreAPI api;
 
     public List<BannerToolMode> ToolModes { get; protected set; } = new();
-    public List<LoadedTexture> CachedTextures => ObjectCacheUtil.GetOrCreate(api, cacheKeyBannerToolModeTextures, () => new List<LoadedTexture>(ToolModes.Count));
+    public List<LoadedTexture> CachedTextures => ObjectCacheUtil.GetOrCreate(api, cacheKeyBannerToolModeTextures, () => new List<LoadedTexture>(ToolModes?.Count ?? 0));
 
     public BlockBehaviorBannerToolModes(Block block) : base(block) { }
 

@@ -17,11 +17,12 @@ public static class EntityBoat_OnInteract_Patch
 
     public static bool Prefix(EntityBoat __instance, EntityAgent byEntity, ItemSlot itemslot, Vec3d hitPosition, EnumInteractMode mode)
     {
-        EntityBehaviorBoatWithBanner behavior = __instance.GetBehavior<EntityBehaviorBoatWithBanner>();
-        if (behavior == null)
+        if (!__instance.HasBehavior<EntityBehaviorBoatWithBanner>())
         {
             return true;
         }
+
+        EntityBehaviorBoatWithBanner behavior = __instance.GetBehavior<EntityBehaviorBoatWithBanner>();
 
         EnumHandling handling = EnumHandling.PassThrough;
         behavior.OnInteract(byEntity, itemslot, hitPosition, mode, ref handling);

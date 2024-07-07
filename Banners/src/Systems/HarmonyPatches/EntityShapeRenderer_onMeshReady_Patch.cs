@@ -16,11 +16,12 @@ public static class EntityShapeRenderer_onMeshReady_Patch
 
     public static bool Prefix(EntityShapeRenderer __instance, MeshData meshData, ref MultiTextureMeshRef ___meshRefOpaque)
     {
-        EntityBehaviorBoatWithBanner behavior = __instance.entity.GetBehavior<EntityBehaviorBoatWithBanner>();
-        if (behavior == null)
+        if (!__instance.entity.HasBehavior<EntityBehaviorBoatWithBanner>())
         {
             return true;
         }
+
+        EntityBehaviorBoatWithBanner behavior = __instance.entity.GetBehavior<EntityBehaviorBoatWithBanner>();
 
         if (___meshRefOpaque != null)
         {

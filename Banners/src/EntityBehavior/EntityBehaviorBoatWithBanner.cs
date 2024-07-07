@@ -216,7 +216,7 @@ public class EntityBehaviorBoatWithBanner : EntityBehavior
             ModelTransform _transform = forBanner.BannerOnBoatTransformByBoat.First(x => WildcardUtil.Match(x.Key, forEntity.Code.ToString())).Value;
             if (_transform != null) transform = _transform;
         }
-        return transform;
+        return transform ?? forBanner.BannerOnBoatTransform;
     }
 
     public static string GetPlacement(BlockBanner forBanner, Entity forEntity, ItemSlot forSlot = null, InventoryGeneric inventory = null)
