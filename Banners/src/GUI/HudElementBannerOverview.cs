@@ -2,6 +2,7 @@
 using System.Linq;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
+using Vintagestory.API.MathTools;
 using Vintagestory.Client.NoObf;
 
 namespace Flags;
@@ -12,8 +13,9 @@ public class HudElementBannerOverview : HudElement
 
     public HudElementBannerOverview(ICoreClientAPI capi) : base(capi)
     {
-        capi.Event.AfterActiveSlotChanged += (_) => ComposeHud();
-        capi.Event.BlockChanged += (_, _) => ComposeHud();
+        capi.Event.RegisterGameTickListener(Every500ms, 500);
+        ComposeHud();
+        capi.Event.BlockChanged += OnBlockChanged;
         if (Hotkeys.ShowBannerOverviewHud == true)
         {
             TryOpen();
@@ -32,8 +34,18 @@ public class HudElementBannerOverview : HudElement
         });
     }
 
+    private void Every500ms(float dt)
+    {
+        ComposeHud();
+    }
+
     private void ComposeHud()
     {
+        if (!IsBanner())
+        {
+            return;
+        }
+
         double ScaledSlotSize = GuiElementPassiveItemSlot.unscaledSlotSize.Scaled();
         double ScaledSlotPadding = GuiElementItemSlotGridBase.unscaledSlotPadding.Scaled();
 
@@ -229,10 +241,29 @@ public class HudElementBannerOverview : HudElement
             : capi.World.BlockAccessor.GetBlockEntity<BlockEntityBanner>(capi.World.Player.CurrentBlockSelection.Position);
     }
 
+    private bool IsBanner()
+    {
+        return capi.World.Player?.CurrentBlockSelection?.Block is BlockBanner;
+    }
+
     public override bool ShouldReceiveRenderEvents()
     {
+        if (!IsBanner())
+        {
+            return false;
+        }
+
         BlockEntityBanner banner = GetBanner();
         return banner != null && (banner.BannerProps.Patterns.Count > 1 || banner.BannerProps.Cutouts.Any);
+    }
+
+    private void OnBlockChanged(BlockPos pos, Block oldBlock)
+    {
+        IPlayer player = capi.World.Player;
+        if (player?.CurrentBlockSelection != null && pos.Equals(player.CurrentBlockSelection.Position))
+        {
+            ComposeHud();
+        }
     }
 
     public override bool ShouldReceiveKeyboardEvents() => false;

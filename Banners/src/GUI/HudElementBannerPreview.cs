@@ -11,8 +11,9 @@ public class HudElementBannerPreview : HudElement
 
     public HudElementBannerPreview(ICoreClientAPI capi) : base(capi)
     {
-        capi.Event.AfterActiveSlotChanged += (_) => ComposeHud();
-        capi.Event.BlockChanged += (_, _) => ComposeHud();
+        capi.Event.RegisterGameTickListener(Every500ms, 500);
+        ComposeHud();
+        capi.Event.BlockChanged += OnBlockChanged;
         if (Hotkeys.ShowBannerPreviewHud == true)
         {
             TryOpen();
@@ -31,8 +32,18 @@ public class HudElementBannerPreview : HudElement
         });
     }
 
+    private void Every500ms(float dt)
+    {
+        ComposeHud();
+    }
+
     private void ComposeHud()
     {
+        if (!IsBanner())
+        {
+            return;
+        }
+
         ElementBounds mainBounds = ElementStdBounds.AutosizedMainDialog.WithAlignment(EnumDialogArea.LeftMiddle).WithFixedAlignmentOffset(GuiStyle.DialogToScreenPadding, GuiStyle.DialogToScreenPadding);
         ElementBounds childBounds = new ElementBounds();
         childBounds.BothSizing = ElementSizing.FitToChildren;
@@ -125,6 +136,20 @@ public class HudElementBannerPreview : HudElement
         return capi.World.Player?.CurrentBlockSelection == null
             ? null
             : capi.World.BlockAccessor.GetBlockEntity<BlockEntityBanner>(capi.World.Player?.CurrentBlockSelection?.Position);
+    }
+
+    private bool IsBanner()
+    {
+        return capi.World.Player?.CurrentBlockSelection?.Block is BlockBanner;
+    }
+
+    private void OnBlockChanged(BlockPos pos, Block oldBlock)
+    {
+        IPlayer player = capi.World.Player;
+        if (player?.CurrentBlockSelection != null && pos.Equals(player.CurrentBlockSelection.Position))
+        {
+            ComposeHud();
+        }
     }
 
     public override bool ShouldReceiveRenderEvents() => GetBanner() != null;
