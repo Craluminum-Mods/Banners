@@ -80,7 +80,7 @@ public class GuiDialogBannerConfig : GuiDialog
         .BeginChildElements(childBounds)
             .AddDynamicText("", titleFont, leftBounds, "textTitlePreview")
             .AddDynamicText(textAlign, textFont, BelowCopySet(ref leftBounds, fixedDeltaY: gap))
-            .AddDropDown(alignNames, alignValues, (int)BannerPreviewConfig.Alignment, OnDropdownPreview, BelowCopySet(ref rightBounds, fixedDeltaY: gap))
+            .AddDropDown(alignNames, alignValues, 0, OnDropdownPreview, BelowCopySet(ref rightBounds, fixedDeltaY: gap), "dropdownPreviewAlign")
             .AddDynamicText(textX, textFont, BelowCopySet(ref leftBounds, fixedDeltaY: gap))
             .AddSlider(OnSliderPreviewX, BelowCopySet(ref rightBounds, fixedDeltaY: gap), "sliderPreviewX")
             .AddDynamicText(textY, textFont, BelowCopySet(ref leftBounds, fixedDeltaY: gap))
@@ -88,7 +88,7 @@ public class GuiDialogBannerConfig : GuiDialog
 
             .AddDynamicText("", titleFont, BelowCopySet(ref leftBounds, fixedDeltaY: offsetY), "textTitleOverview")
             .AddDynamicText(textAlign, textFont, BelowCopySet(ref leftBounds, fixedDeltaY: gap), "textOverviewAlign")
-            .AddDropDown(alignNames, alignValues, (int)BannerOverviewConfig.Alignment, OnDropdownOverview, BelowCopySet(ref rightBounds, fixedDeltaY: offsetY * 2))
+            .AddDropDown(alignNames, alignValues, 0, OnDropdownOverview, BelowCopySet(ref rightBounds, fixedDeltaY: offsetY * 2), "dropdownOverviewAlign")
             .AddDynamicText(textX, textFont, BelowCopySet(ref leftBounds, fixedDeltaY: gap))
             .AddSlider(OnSliderOverviewX, BelowCopySet(ref rightBounds, fixedDeltaY: gap), "sliderOverviewX")
             .AddDynamicText(textY, textFont, BelowCopySet(ref leftBounds, fixedDeltaY: gap))
@@ -103,6 +103,9 @@ public class GuiDialogBannerConfig : GuiDialog
             .AddSwitch(OnToogleExtraInfo, BelowCopySet(ref rightBounds, fixedDeltaY: gap), "switchExtraInfo")
         .EndChildElements()
         .Compose();
+
+        composer?.GetDropDown("dropdownPreviewAlign")?.SetSelectedIndex((int)BannerPreviewConfig.Alignment);
+        composer?.GetDropDown("dropdownOverviewAlign")?.SetSelectedIndex((int)BannerOverviewConfig.Alignment);
         composer?.GetDynamicText("textTitlePreview")?.SetNewText(guiBannerPreviewHUD.Localize());
         composer?.GetDynamicText("textTitleOverview")?.SetNewText(guiBannerOverviewHUD.Localize());
         composer?.GetDynamicText("textTitleOther")?.SetNewText(langCodeOther.Localize());
