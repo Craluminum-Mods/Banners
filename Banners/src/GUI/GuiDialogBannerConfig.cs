@@ -48,7 +48,7 @@ public class GuiDialogBannerConfig : GuiDialog
 
     private void ComposeDialog()
     {
-        string[] alignNames = Enum.GetNames(typeof(EnumDialogArea));
+        string[] alignNames = Enum.GetNames(typeof(EnumDialogArea)).Select(x => $"{langCodeDialogAreaPrefix}{x}".Localize()).ToArray();
         string[] alignValues = Enum.GetValues<EnumDialogArea>().Select(x => x.ToString()).ToArray();
 
         double indent = GuiElement.scaled(30);
@@ -80,7 +80,7 @@ public class GuiDialogBannerConfig : GuiDialog
         .BeginChildElements(childBounds)
             .AddDynamicText("", titleFont, leftBounds, "textTitlePreview")
             .AddDynamicText(textAlign, textFont, BelowCopySet(ref leftBounds, fixedDeltaY: gap))
-            .AddDropDown(alignNames, alignValues, 0, OnDropdownPreview, BelowCopySet(ref rightBounds, fixedDeltaY: gap), "dropdownPreviewAlign")
+            .AddDropDown(alignValues, alignNames, 0, OnDropdownPreview, BelowCopySet(ref rightBounds, fixedDeltaY: gap), "dropdownPreviewAlign")
             .AddDynamicText(textX, textFont, BelowCopySet(ref leftBounds, fixedDeltaY: gap))
             .AddSlider(OnSliderPreviewX, BelowCopySet(ref rightBounds, fixedDeltaY: gap), "sliderPreviewX")
             .AddDynamicText(textY, textFont, BelowCopySet(ref leftBounds, fixedDeltaY: gap))
@@ -88,7 +88,7 @@ public class GuiDialogBannerConfig : GuiDialog
 
             .AddDynamicText("", titleFont, BelowCopySet(ref leftBounds, fixedDeltaY: offsetY), "textTitleOverview")
             .AddDynamicText(textAlign, textFont, BelowCopySet(ref leftBounds, fixedDeltaY: gap), "textOverviewAlign")
-            .AddDropDown(alignNames, alignValues, 0, OnDropdownOverview, BelowCopySet(ref rightBounds, fixedDeltaY: offsetY * 2), "dropdownOverviewAlign")
+            .AddDropDown(alignValues, alignNames, 0, OnDropdownOverview, BelowCopySet(ref rightBounds, fixedDeltaY: offsetY * 2), "dropdownOverviewAlign")
             .AddDynamicText(textX, textFont, BelowCopySet(ref leftBounds, fixedDeltaY: gap))
             .AddSlider(OnSliderOverviewX, BelowCopySet(ref rightBounds, fixedDeltaY: gap), "sliderOverviewX")
             .AddDynamicText(textY, textFont, BelowCopySet(ref leftBounds, fixedDeltaY: gap))

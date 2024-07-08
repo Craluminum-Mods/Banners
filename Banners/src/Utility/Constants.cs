@@ -73,6 +73,7 @@ public static class Constants
     public const string langCodePosX = $"{modDomain}:posX";
     public const string langCodePosY = $"{modDomain}:posY";
     public const string langCodeOther = "Other";
+    public const string langCodeDialogAreaPrefix = "DialogArea.";
 
     public const string langCodeBannerExtraInfoDesc = $"{modDomain}:bannerextrainfo-desc";
     public const string langCodeBannerExtraInfo = $"{modDomain}:bannerextrainfo";

@@ -201,5 +201,23 @@
 
     "alignment": "Вирівнювання",
     "posX": "X",
-    "posY": "Y"
+    "posY": "Y",
+
+    "game:DialogArea.None": "Нічого",
+    "game:DialogArea.LeftTop": "Зліва зверху",
+    "game:DialogArea.LeftMiddle": "Зліва посередині",
+    "game:DialogArea.LeftBottom": "Зліва внизу",
+    "game:DialogArea.LeftFixed": "Фіксований зліва",
+    "game:DialogArea.CenterTop": "По центру зверху",
+    "game:DialogArea.CenterMiddle": "По центру посередині",
+    "game:DialogArea.CenterBottom": "По центру внизу",
+    "game:DialogArea.CenterFixed": "Фіксований по центру",
+    "game:DialogArea.RightTop": "Праворуч зверху",
+    "game:DialogArea.RightMiddle": "Праворуч посередині",
+    "game:DialogArea.RightBottom": "Праворуч знизу",
+    "game:DialogArea.RightFixed": "Фіксований праворуч",
+    "game:DialogArea.FixedTop": "Фіксований зверху",
+    "game:DialogArea.FixedMiddle": "Фіксований посередині",
+    "game:DialogArea.FixedBottom": "Фіксований знизу",
+    "game:DialogArea.TextBaselineOffset": "Відхилення від базової лінії тексту"
 }

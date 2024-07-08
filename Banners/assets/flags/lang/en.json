@@ -201,5 +201,23 @@
 
     "alignment": "Alignment",
     "posX": "X",
-    "posY": "Y"
+    "posY": "Y",
+
+    "game:DialogArea.None": "None",
+    "game:DialogArea.LeftTop": "Left Top",
+    "game:DialogArea.LeftMiddle": "Left Middle",
+    "game:DialogArea.LeftBottom": "Left Bottom",
+    "game:DialogArea.LeftFixed": "Left Fixed",
+    "game:DialogArea.CenterTop": "Center Top",
+    "game:DialogArea.CenterMiddle": "Center Middle",
+    "game:DialogArea.CenterBottom": "Center Bottom",
+    "game:DialogArea.CenterFixed": "Center Fixed",
+    "game:DialogArea.RightTop": "Right Top",
+    "game:DialogArea.RightMiddle": "Right Middle",
+    "game:DialogArea.RightBottom": "Right Bottom",
+    "game:DialogArea.RightFixed": "Right Fixed",
+    "game:DialogArea.FixedTop": "Fixed Top",
+    "game:DialogArea.FixedMiddle": "Fixed Middle",
+    "game:DialogArea.FixedBottom": "Fixed Bottom",
+    "game:DialogArea.TextBaselineOffset": "Text Baseline Offset"
 }
