@@ -2,24 +2,23 @@
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 using Vintagestory.Client.NoObf;
+using static Flags.ConfigSystem;
 
 namespace Flags;
 
 public class HudElementBannerPreview : HudElement
 {
-    public override string ToggleKeyCombinationCode => ModHotkey.BannerPreviewHud;
-
     public HudElementBannerPreview(ICoreClientAPI capi) : base(capi)
     {
         capi.Event.RegisterGameTickListener(Every500ms, 500);
         ComposeHud();
         capi.Event.BlockChanged += OnBlockChanged;
-        if (Hotkeys.ShowBannerPreviewHud == true)
+        if (BannerPreviewConfig.Enabled == true)
         {
             TryOpen();
         }
 
-        ClientSettings.Inst.AddWatcher(ModClientSetting.ShowBannerPreviewHud, delegate (bool on)
+        ClientSettings.Inst.AddWatcher(ModClientSetting.ShowPreview, delegate (bool on)
         {
             if (on)
             {
@@ -44,7 +43,10 @@ public class HudElementBannerPreview : HudElement
             return;
         }
 
-        ElementBounds mainBounds = ElementStdBounds.AutosizedMainDialog.WithAlignment(EnumDialogArea.LeftMiddle).WithFixedAlignmentOffset(GuiStyle.DialogToScreenPadding, GuiStyle.DialogToScreenPadding);
+        ElementBounds mainBounds = ElementStdBounds.AutosizedMainDialog
+            .WithAlignment(BannerPreviewConfig.Alignment)
+            .WithFixedAlignmentOffset(BannerPreviewConfig.X, BannerPreviewConfig.Y);
+
         ElementBounds childBounds = new ElementBounds();
         childBounds.BothSizing = ElementSizing.FitToChildren;
 
@@ -159,12 +161,12 @@ public class HudElementBannerPreview : HudElement
     public override void OnGuiOpened()
     {
         base.OnGuiOpened();
-        Hotkeys.ShowBannerPreviewHud = true;
+        BannerPreviewConfig.Enabled = true;
     }
 
     public override void OnGuiClosed()
     {
         base.OnGuiClosed();
-        Hotkeys.ShowBannerPreviewHud = false;
+        BannerPreviewConfig.Enabled = false;
     }
 }

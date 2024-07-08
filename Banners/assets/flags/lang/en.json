@@ -187,16 +187,19 @@
     "command-genbannermc-desc": "Generates banner from Minecraft syntax",
     "command-genbannermc-invalidsyntax": "Not a valid syntax. Syntax: 'minecraft:white_banner{BlockEntityTag:{_PLACEHOLDER_}}'",
 
-    // ###############
-    // ### Hotkeys ###
-    // ###############
+    "bannerextrainfo": "Banner extra info",
+    "bannerextrainfo-desc": "<font color=\"#ffff9d\">Press <hk>flags:bannerconfigdialog</hk> to hide banner's extra info.</font>",
 
-    "bannerextrainfo": "Show/Hide banner's extra info",
-    "bannerextrainfo-desc": "<font color=\"#ffff9d\">Press <hk>flags:bannerextrainfo</hk> to hide banner's extra info.</font>",
-
-    "bannerpreviewhud": "Show/Hide Banner Preview HUD",
     "bannerpreviewhud-title": "Banner Preview",
+    "bannerpreviewhud": "Banner Preview HUD",
 
-    "banneroverviewhud": "Show/Hide Banner Overview HUD",
     "banneroverviewhud-title": "Banner Overview",
+    "banneroverviewhud": "Banner Overview HUD",
+
+    "bannerconfigdialog-title": "Banner Config",
+    "bannerconfigdialog": "Open Banner Config",
+
+    "alignment": "Alignment",
+    "posX": "X",
+    "posY": "Y"
 }

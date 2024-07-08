@@ -19,9 +19,9 @@ public class BannerProperties
 
     public void GetDescription(BlockBanner blockBanner, IPlayer forPlayer, StringBuilder dsc, bool withDebugInfo = false)
     {
-        if (forPlayer.Entity.Api is ICoreClientAPI && Hotkeys.DisplayBannerExtraInfo)
+        if (forPlayer.Entity.Api is ICoreClientAPI && ConfigSystem.BannerExtraInfoConfig.Enabled)
         {
-            dsc.AppendLine(ModHotkey.BannerExtraInfoDesc.Localize());
+            dsc.AppendLine(langCodeBannerExtraInfoDesc.Localize());
             dsc.AppendLine(langCodePatternGroups.Localize(string.Join(commaSeparator, blockBanner.PatternGroups.Select(group => $"{langCodePatternGroup}{group}".Localize()))));
             Patterns.GetDescription(dsc, withDebugInfo);
             Cutouts.GetDescription(dsc, withDebugInfo);

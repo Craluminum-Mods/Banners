@@ -4,24 +4,23 @@ using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 using Vintagestory.Client.NoObf;
+using static Flags.ConfigSystem;
 
 namespace Flags;
 
 public class HudElementBannerOverview : HudElement
 {
-    public override string ToggleKeyCombinationCode => ModHotkey.BannerOverviewHud;
-
     public HudElementBannerOverview(ICoreClientAPI capi) : base(capi)
     {
         capi.Event.RegisterGameTickListener(Every500ms, 500);
         ComposeHud();
         capi.Event.BlockChanged += OnBlockChanged;
-        if (Hotkeys.ShowBannerOverviewHud == true)
+        if (BannerOverviewConfig.Enabled == true)
         {
             TryOpen();
         }
 
-        ClientSettings.Inst.AddWatcher(ModClientSetting.ShowBannerOverviewHud, delegate (bool on)
+        ClientSettings.Inst.AddWatcher(ModClientSetting.ShowOverview, delegate (bool on)
         {
             if (on)
             {
@@ -50,8 +49,8 @@ public class HudElementBannerOverview : HudElement
         double ScaledSlotPadding = GuiElementItemSlotGridBase.unscaledSlotPadding.Scaled();
 
         ElementBounds mainBounds = ElementStdBounds.AutosizedMainDialog
-            .WithAlignment(EnumDialogArea.LeftTop)
-            .WithFixedAlignmentOffset(GuiStyle.DialogToScreenPadding, GuiStyle.DialogToScreenPadding);
+            .WithAlignment(BannerOverviewConfig.Alignment)
+            .WithFixedAlignmentOffset(BannerOverviewConfig.X, BannerOverviewConfig.Y);
 
         ElementBounds childBounds = new ElementBounds();
         childBounds.BothSizing = ElementSizing.FitToChildren;
@@ -272,12 +271,12 @@ public class HudElementBannerOverview : HudElement
     public override void OnGuiOpened()
     {
         base.OnGuiOpened();
-        Hotkeys.ShowBannerOverviewHud = true;
+        BannerOverviewConfig.Enabled = true;
     }
 
     public override void OnGuiClosed()
     {
         base.OnGuiClosed();
-        Hotkeys.ShowBannerOverviewHud = false;
+        BannerOverviewConfig.Enabled = false;
     }
 }

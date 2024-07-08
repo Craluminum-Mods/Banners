@@ -187,16 +187,19 @@
     "command-genbannermc-desc": "Генерує прапор з синтаксису Minecraft",
     "command-genbannermc-invalidsyntax": "Невірний синтаксис. Синтаксис: 'minecraft:white_banner{BlockEntityTag:{_PLACEHOLDER_}}'",
 
-    // ######################
-    // ### Гарячі клавіші ###
-    // ######################
+    "bannerextrainfo": "Додаткова інформація про прапор",
+    "bannerextrainfo-desc": "<font color=\"#ffff9d\">Натисніть <hk>flags:bannerconfigdialog</hk>, щоб приховати додаткову інформацію про прапор.</font>",
 
-    "bannerextrainfo": "Показати/приховати додаткову інформацію про прапор",
-    "bannerextrainfo-desc": "<font color=\"#ffff9d\">Натисніть <hk>flags:bannerextrainfo</hk>, щоб приховати додаткову інформацію про прапор.</font>",
-
-    "bannerpreviewhud": "Показати/приховати HUD попереднього перегляду прапора",
     "bannerpreviewhud-title": "Попередній перегляд прапора",
+    "bannerpreviewhud": "HUD попереднього перегляду прапора",
 
-    "banneroverviewhud": "Показати/приховати HUD огляду прапора",
-    "banneroverviewhud-title": "Огляд прапора"
+    "banneroverviewhud-title": "Огляд прапора",
+    "banneroverviewhud": "HUD огляду прапора",
+
+    "bannerconfigdialog-title": "Налаштування прапорів",
+    "bannerconfigdialog": "Відкрити налаштування прапорів",
+
+    "alignment": "Вирівнювання",
+    "posX": "X",
+    "posY": "Y"
 }

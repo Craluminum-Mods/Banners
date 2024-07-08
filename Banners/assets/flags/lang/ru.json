@@ -186,17 +186,20 @@
     "command-genbannermc": "Флаг успешно сгенерирован",
     "command-genbannermc-desc": "Генерирует флаг из синтаксиса Minecraft",
     "command-genbannermc-invalidsyntax": "Неверный синтаксис. Синтаксис: 'minecraft:white_banner{BlockEntityTag:{_PLACEHOLDER_}}'",
+    
+    "bannerextrainfo": "Дополнительная информация о флаге",
+    "bannerextrainfo-desc": "<font color=\"#ffff9d\">Нажмите <hk>flags:bannerconfigdialog</hk>, чтобы скрыть дополнительную информацию о флаге.</font>",
 
-    // #######################
-    // ### Горячие клавиши ###
-    // #######################
-
-    "bannerextrainfo": "Показать/Скрыть дополнительную информацию о флаге",
-    "bannerextrainfo-desc": "<font color=\"#ffff9d\">Нажмите <hk>flags:bannerextrainfo</hk>, чтобы скрыть дополнительную информацию о флаге.</font>",
-
-    "bannerpreviewhud": "Показать/Скрыть HUD предварительного просмотра флага",
     "bannerpreviewhud-title": "Предварительный просмотр флага",
+    "bannerpreviewhud": "HUD предварительного просмотра флага",
 
-    "banneroverviewhud": "Показать/Скрыть HUD обзора флага",
-    "banneroverviewhud-title": "Обзор флага"
+    "banneroverviewhud-title": "Обзор флага",
+    "banneroverviewhud": "HUD обзора флага",
+
+    "bannerconfigdialog-title": "Настройка флагов",
+    "bannerconfigdialog": "Открыть настройку флагов",
+
+    "alignment": "Выравнивание",
+    "posX": "X",
+    "posY": "Y"
 }

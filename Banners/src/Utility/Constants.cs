@@ -69,8 +69,20 @@ public static class Constants
     public const string langCodeToolModeValue = $"{modDomain}:toolmode-value-";
     public const string langCodeBannerPreviewHudTransform = $"{modDomain}:{attributeBannerPreviewHudTransform}";
     public const string langCodeBannerOnBoatTransform = $"{modDomain}:{attributeBannerOnBoatTransform}";
-    public const string langCodeGuiBannerPreviewHUDTitle = $"{modDomain}:bannerpreviewhud-title";
-    public const string langCodeGuiBannerOverviewHUDTitle = $"{modDomain}:banneroverviewhud-title";
+    public const string langCodeAlignment = $"{modDomain}:alignment";
+    public const string langCodePosX = $"{modDomain}:posX";
+    public const string langCodePosY = $"{modDomain}:posY";
+    public const string langCodeOther = "Other";
+
+    public const string langCodeBannerExtraInfoDesc = $"{modDomain}:bannerextrainfo-desc";
+    public const string langCodeBannerExtraInfo = $"{modDomain}:bannerextrainfo";
+    public const string langCodeGuiBannerPreviewHUDTitle = $"{guiBannerPreviewHUD}-title";
+    public const string langCodeGuiBannerOverviewHUDTitle = $"{guiBannerOverviewHUD}-title";
+    public const string langCodeGuiBannerConfigDialogTitle = $"{guiBannerConfigDialog}-title";
+
+    public const string guiBannerPreviewHUD = $"{modDomain}:bannerpreviewhud";
+    public const string guiBannerOverviewHUD = $"{modDomain}:banneroverviewhud";
+    public const string guiBannerConfigDialog = $"{modDomain}:bannerconfigdialog";
 
     public const string cacheKeyBlockBannerMeshes = $"{modDomain}BlockBannerMeshes";
     public const string cacheKeyBlockBannerInvMeshes = $"{modDomain}BlockBannerMeshesInventory";
@@ -154,9 +166,6 @@ public static class Constants
     public const string itemcodeParchment = "paper-parchment";
     public const string itemcodeInkAndQuill = "inkandquill";
 
-    public const string guiBannerPreviewHUD = $"{modDomain}:bannerpreviewhud";
-    public const string guiBannerOverviewHUD = $"{modDomain}:banneroverviewhud";
-
     public const string hotkeyToolmodeSelect = "toolmodeselect";
     public const string eventKeepOpenToolmodeDialog = "keepopentoolmodedlg";
     public const string eventOnCloseEditTransforms = "oncloseedittransforms";
@@ -199,21 +208,5 @@ public static class Constants
     public class HexColor
     {
         public const string SchematicTransparent = "#ffe2c299";
-    }
-
-    public class ModHotkey
-    {
-        public const string BannerExtraInfo = $"{modDomain}:bannerextrainfo";
-        public const string BannerExtraInfoDesc = $"{modDomain}:bannerextrainfo-desc";
-        public const string BannerOverviewHud = $"{modDomain}:banneroverviewhud";
-        public const string BannerPreviewHud = $"{modDomain}:bannerpreviewhud";
-
-    }
-
-    public class ModClientSetting
-    {
-        public const string BannerExtraInfo = "bannerExtraInfo";
-        public const string ShowBannerOverviewHud = "showBannerOverviewHud";
-        public const string ShowBannerPreviewHud = "showBannerPreviewHud";
     }
 }
