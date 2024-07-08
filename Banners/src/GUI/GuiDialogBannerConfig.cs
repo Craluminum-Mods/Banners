@@ -48,7 +48,7 @@ public class GuiDialogBannerConfig : GuiDialog
 
     private void ComposeDialog()
     {
-        string[] alignNames = Enum.GetNames(typeof(EnumDialogArea)).Select(x => $"{langCodeDialogAreaPrefix}{x}".Localize()).ToArray();
+        string[] alignNames = Enum.GetNames(typeof(EnumDialogArea)).Select(x => $"{langCodeDialogArea}{x}".Localize()).ToArray();
         string[] alignValues = Enum.GetValues<EnumDialogArea>().Select(x => x.ToString()).ToArray();
 
         double indent = GuiElement.scaled(30);
