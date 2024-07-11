@@ -138,7 +138,6 @@ public static class Constants
     public const string attributeDefaultType = "defaultType";
     public const string attributeRolledShape = "rolledShape";
     public const string attributeBannerLiquid = "bannerLiquid";
-    public const string attributeShapesContainable = "shapesContainable";
     public const string attributeInventoryBannerContainable = "inventoryBannerContainable";
     public const string attributeInventoryBannerContainableBoat = "inventoryBannerContainableBoat";
     public const string attributeExcludeFaces = "excludeFaces";

@@ -74,7 +74,7 @@ public static class BannerExtensions
 
         if (!block.ContainableMeshes.TryGetValue(key, out MeshData mesh))
         {
-            if (!block.CustomShapesContainable.TryGetValueOrWildcard(shapeKey, out CompositeShape rcshape))
+            if (!block.CustomShapes.TryGetValueOrWildcard(shapeKey, out CompositeShape rcshape))
             {
                 capi.Tesselator.TesselateBlock(block, out mesh);
                 capi.Logger.Error("[Flags] No matching shape found for block {0} for BannerContainable key '{1}'", block.Code, shapeKey);
