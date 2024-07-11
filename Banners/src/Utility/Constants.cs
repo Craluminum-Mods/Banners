@@ -114,6 +114,7 @@ public static class Constants
     public const string attributeRotateY = "meshAngle";
     public const string attributeRotateZ = "rotateZ";
     public const string attributePatternGroups = "patternGroups";
+    public const string attributePatternGroupsBy = "patternGroupsBy";
     public const string attributeShapes = "shapes";
     public const string attributeTextures = "textures";
     public const string attributeColors = "colors";

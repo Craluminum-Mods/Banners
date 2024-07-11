@@ -9,7 +9,7 @@ namespace Flags;
 
 public class ItemBannerPattern : ItemRollableFixed
 {
-    public List<string> PatternGroups { get; protected set; } = new();
+    public Dictionary<string, List<string>> PatternGroupsBy { get; protected set; } = new();
 
     public Dictionary<string, CompositeTexture> CustomTextures { get; protected set; } = new();
     public List<string> TextureCodesForOverlays { get; protected set; } = new();
@@ -26,7 +26,7 @@ public class ItemBannerPattern : ItemRollableFixed
     public override void OnUnloaded(ICoreAPI api)
     {
         base.OnUnloaded(api);
-        PatternGroups.Clear();
+        PatternGroupsBy.Clear();
         CustomTextures.Clear();
         TextureCodesForOverlays.Clear();
 
@@ -43,7 +43,7 @@ public class ItemBannerPattern : ItemRollableFixed
 
     public void LoadTypes()
     {
-        PatternGroups = Attributes[attributePatternGroups].AsObject<List<string>>();
+        PatternGroupsBy = Attributes[attributePatternGroupsBy].AsObject<Dictionary<string, List<string>>>();
         CustomTextures = Attributes[attributeTextures].AsObject<Dictionary<string, CompositeTexture>>();
         TextureCodesForOverlays = Attributes[attributeTextureCodesForOverlays].AsObject<List<string>>();
     }
@@ -51,7 +51,13 @@ public class ItemBannerPattern : ItemRollableFixed
     public override void GetHeldItemInfo(ItemSlot inSlot, StringBuilder sb, IWorldAccessor world, bool withDebugInfo)
     {
         base.GetHeldItemInfo(inSlot, sb, world, withDebugInfo);
-        sb.AppendLine(langCodePatternGroups.Localize(string.Join(commaSeparator, PatternGroups.Select(group => $"{langCodePatternGroup}{group}".Localize()))));
+        PatternProperties props = PatternProperties.FromStack(inSlot.Itemstack);
+        if (!string.IsNullOrEmpty(props.Type)
+            && PatternGroupsBy.TryGetValueOrWildcard(props.Type, out List<string> patternGroupsByType)
+            && patternGroupsByType != null)
+        {
+            sb.AppendLine(langCodePatternGroups.Localize(string.Join(commaSeparator, patternGroupsByType.Select(group => $"{langCodePatternGroup}{group}".Localize()))));
+        }
     }
 
     public override void OnBeforeRender(ICoreClientAPI capi, ItemStack itemstack, EnumItemRenderTarget target, ref ItemRenderInfo renderinfo)

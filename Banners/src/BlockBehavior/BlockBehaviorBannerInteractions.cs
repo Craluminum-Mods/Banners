@@ -98,7 +98,13 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
 
         if (!bannerProps.IsEditModeEnabled(byPlayer, printError: !isPreview)) return false;
 
-        if (!blockBanner.MatchesPatternGroups(itemPattern))
+        PatternProperties patternProperties = PatternProperties.FromStack(leftSlot.Itemstack);
+        if (string.IsNullOrEmpty(patternProperties.Type))
+        {
+            return false;
+        }
+
+        if (!blockBanner.MatchesPatternGroups(itemPattern, patternProperties))
         {
             if (!isPreview) byPlayer.IngameError(blockBanner, IngameError.BannerPatternGroups, IngameError.BannerPatternGroups.Localize());
             return false;
@@ -112,11 +118,6 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         {
             return false;
         }
-        string pattern = PatternProperties.FromStack(leftSlot.Itemstack).Type;
-        if (string.IsNullOrEmpty(pattern))
-        {
-            return false;
-        }
 
         if (!liquidProps.CanTakeLiquid(rightSlot.Itemstack, blockContainer) && !byPlayer.IsCreative())
         {
@@ -124,7 +125,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
             return false;
         }
 
-        if (!bannerProps.Patterns.TryAdd(new BannerLayer().WithPattern(pattern).WithColor(liquidProps.Color), byPlayer.Entity.World, byPlayer))
+        if (!bannerProps.Patterns.TryAdd(new BannerLayer().WithPattern(patternProperties.Type).WithColor(liquidProps.Color), byPlayer.Entity.World, byPlayer))
         {
             if (!isPreview) byPlayer.IngameError(blockBanner, IngameError.LayersLimitReached, IngameError.LayersLimitReached.Localize(Patterns.GetLayersLimit(byPlayer.Entity.World)));
             return false;
@@ -186,14 +187,19 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
 
         if (!bannerProps.IsEditModeEnabled(byPlayer, printError: !isPreview)) return false;
 
-        if (!blockBanner.MatchesPatternGroups(itemPattern))
+        PatternProperties patternProperties = PatternProperties.FromStack(leftSlot.Itemstack);
+        if (string.IsNullOrEmpty(patternProperties.Type))
+        {
+            return false;
+        }
+
+        if (!blockBanner.MatchesPatternGroups(itemPattern, patternProperties))
         {
             if (!isPreview) byPlayer.IngameError(blockBanner, IngameError.BannerPatternGroups, IngameError.BannerPatternGroups.Localize());
             return false;
         }
 
-        string pattern = PatternProperties.FromStack(leftSlot.Itemstack).Type;
-        bool applied = cutoutToolBehavior.HasEnoughDurability(rightSlot) && !string.IsNullOrEmpty(pattern) && bannerProps.Cutouts.TryAdd(new BannerLayer().WithPattern(pattern));
+        bool applied = cutoutToolBehavior.HasEnoughDurability(rightSlot) && bannerProps.Cutouts.TryAdd(new BannerLayer().WithPattern(patternProperties.Type));
 
         if (applied && !isPreview)
         {

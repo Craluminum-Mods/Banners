@@ -2,7 +2,9 @@
     "code": "bannerpattern",
     "class": "Flags.ItemBannerPattern",
     "attributes": {
-        "patternGroups": ["basic"],
+        "patternGroupsBy": {
+          "*": ["basic"]
+        },
         "rolledShape": "game:item/lore/scroll-unbound",
         "handbook": {
             "extraSections": [{ "title": "flags:item-handbooktitle-bannerpattern", "text": "flags:item-handbooktext-bannerpattern" }]

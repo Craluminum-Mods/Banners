@@ -1,4 +1,3 @@
-using Cairo;
 using System.Collections.Generic;
 using System.Linq;
 using Vintagestory.API.Client;
@@ -116,9 +115,12 @@ public static class HelperExtensions
         (byPlayer.Entity.World.Api as ICoreClientAPI)?.TriggerIngameError(sender, errorCode, text);
     }
 
-    public static bool MatchesPatternGroups(this BlockBanner block, ItemBannerPattern item)
+    public static bool MatchesPatternGroups(this BlockBanner block, ItemBannerPattern itemPattern, PatternProperties props)
     {
-        return block.PatternGroups.Any(item.PatternGroups.Contains);
+        return !string.IsNullOrEmpty(props.Type)
+            && itemPattern.PatternGroupsBy.TryGetValueOrWildcard(props.Type, out List<string> patternGroupsByType)
+            && patternGroupsByType != null
+            && block.PatternGroups.Any(patternGroupsByType.Contains);
     }
 
     public static bool MatchesPatternGroups(this BlockBanner block, BlockBanner otherBlock)
