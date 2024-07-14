@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
-using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
 namespace Flags;
@@ -17,42 +16,6 @@ public static class HelperExtensions
             _protected = true;
         }
         return _protected;
-    }
-
-    public static string RemoveAfterLastSymbol(this string input, char symbol)
-    {
-        int lastIndexOfSymbol = input.LastIndexOf(symbol);
-        if (lastIndexOfSymbol >= 0)
-        {
-            return input[..lastIndexOfSymbol];
-        }
-        else
-        {
-            return input;
-        }
-    }
-
-    public static string Localize(this string input, params object[] args)
-    {
-        return Lang.Get(input, args);
-    }
-
-    public static string LocalizeM(this string input, params object[] args)
-    {
-        return Lang.GetMatching(input, args);
-    }
-
-    public static bool HasTranslation(this string key) => Lang.HasTranslation(key);
-
-
-    public static double Scaled(this double value)
-    {
-        return GuiElement.scaled(value);
-    }
-
-    public static double Scaledi(this double value)
-    {
-        return GuiElement.scaledi(value);
     }
 
     public static bool TryGetBEBehavior<T>(this IBlockAccessor blockAccessor, BlockSelection blockSel, out T behavior) where T : BlockEntityBehavior
