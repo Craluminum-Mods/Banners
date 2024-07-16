@@ -11,6 +11,7 @@ namespace Flags;
 public class CollectibleBehaviorBannerPatternToolModes : CollectibleBehavior
 {
     public List<PatternToolMode> ToolModes { get; protected set; } = new();
+    public bool UnlockInNoLoreMode { get; set; }
 
     public CollectibleBehaviorBannerPatternToolModes(CollectibleObject collObj) : base(collObj) { }
 
@@ -18,6 +19,7 @@ public class CollectibleBehaviorBannerPatternToolModes : CollectibleBehavior
     {
         base.Initialize(properties);
         ToolModes = properties[attributeToolModes].AsObject<List<PatternToolMode>>();
+        UnlockInNoLoreMode = properties[attributeUnlockInNoLoreMode].AsBool();
     }
 
     public override void OnUnloaded(ICoreAPI api)
@@ -29,15 +31,15 @@ public class CollectibleBehaviorBannerPatternToolModes : CollectibleBehavior
     {
         if (slot.Empty || ToolModes.Count <= index) return;
 
-        PatternToolMode.TryUnlockAll(ToolModes, slot, null, skipStack: true);
+        PatternToolMode.TryUnlockAll(this, slot, null, skipStack: true);
 
         ItemSlot mouseslot = byPlayer.InventoryManager.MouseItemSlot;
         if (!mouseslot.Empty)
         {
-            PatternToolMode.TryUnlockAll(ToolModes, slot, mouseslot);
+            PatternToolMode.TryUnlockAll(this, slot, mouseslot);
             byPlayer.Entity.World.Api.Event.PushEvent(eventKeepOpenToolmodeDialog);
         }
-        else if (ToolModes[index].IsUnlocked(slot) || byPlayer.IsCreative())
+        else if (ToolModes[index].IsUnlocked(slot) || (UnlockInNoLoreMode && !byPlayer.Entity.Api.World.IsLoreModeEnabled()) || byPlayer.IsCreative())
         {
             ToolModes[index].SetPattern(slot.Itemstack);
         }
@@ -51,7 +53,7 @@ public class CollectibleBehaviorBannerPatternToolModes : CollectibleBehavior
         {
             return null;
         }
-        return PatternToolMode.GetToolModes(capi, slot, ToolModes);
+        return PatternToolMode.GetToolModes(this, capi, slot);
     }
 
     public override WorldInteraction[] GetHeldInteractionHelp(ItemSlot inSlot, ref EnumHandling handling)

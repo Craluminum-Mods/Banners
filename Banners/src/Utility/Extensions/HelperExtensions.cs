@@ -3,6 +3,7 @@ using System.Linq;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Util;
 
 namespace Flags;
 
@@ -71,6 +72,11 @@ public static class HelperExtensions
     public static bool IsCreative(this IPlayer byPlayer)
     {
         return byPlayer != null && byPlayer.WorldData.CurrentGameMode == EnumGameMode.Creative;
+    }
+
+    public static bool IsLoreModeEnabled(this IWorldAccessor world)
+    {
+        return world.Config.GetAsString(worldConfigLoreContent, true.ToString()).ToBool(defaultValue: true);
     }
 
     public static void IngameError(this IPlayer byPlayer, object sender, string errorCode, string text)

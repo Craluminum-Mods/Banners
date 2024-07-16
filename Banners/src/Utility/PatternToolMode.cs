@@ -12,11 +12,11 @@ public class PatternToolMode
     public bool Linebreak { get; set; }
     public Unlockable[] Unlockable { get; set; } = null;
 
-    public SkillItem GetToolMode(ICoreClientAPI capi, ItemSlot slot)
+    public SkillItem GetToolMode(CollectibleBehaviorBannerPatternToolModes behavior, ICoreClientAPI capi, ItemSlot slot)
     {
         ItemStack newStack = slot.Itemstack.Clone();
         SetPattern(newStack);
-        bool unlocked = IsUnlocked(slot) || capi.World.Player.IsCreative();
+        bool unlocked = IsUnlocked(slot) || (behavior.UnlockInNoLoreMode && !capi.World.IsLoreModeEnabled()) || capi.World.Player.IsCreative();
 
         SkillItem toolMode = new SkillItem()
         {
@@ -48,9 +48,9 @@ public class PatternToolMode
         }
     }
 
-    public static SkillItem[] GetToolModes(ICoreClientAPI capi, ItemSlot slot, IEnumerable<PatternToolMode> modes)
+    public static SkillItem[] GetToolModes(CollectibleBehaviorBannerPatternToolModes behavior, ICoreClientAPI capi, ItemSlot slot)
     {
-        return modes?.Select(x => x.GetToolMode(capi, slot)).ToArray();
+        return behavior.ToolModes?.Select(x => x.GetToolMode(behavior, capi, slot)).ToArray();
     }
 
     public void SetPattern(ItemStack stack)
@@ -60,10 +60,11 @@ public class PatternToolMode
         props.ToTreeAttribute(stack.Attributes);
     }
 
-    public bool TryUnlock(ItemSlot slot, ItemSlot mouseSlot, bool skipStack = false)
+    public bool TryUnlock( ItemSlot slot, ItemSlot mouseSlot, bool skipStack = false)
     {
         PatternProperties props = PatternProperties.FromStack(slot.Itemstack);
-        if ((skipStack && props.Type == Pattern) || Unlockable.Any(x => x.Matches(mouseSlot?.Itemstack)))
+        bool canUnlock = (skipStack && props.Type == Pattern) || Unlockable.Any(x => x.Matches(mouseSlot?.Itemstack));
+        if (canUnlock)
         {
             props.SetUnlockedTypes(Pattern);
             props.ToTreeAttribute(slot.Itemstack.Attributes);
@@ -84,10 +85,10 @@ public class PatternToolMode
         return false;
     }
 
-    public static bool TryUnlockAll(IEnumerable<PatternToolMode> modes, ItemSlot slot, ItemSlot mouseSlot, bool skipStack = false)
+    public static bool TryUnlockAll(CollectibleBehaviorBannerPatternToolModes behavior, ItemSlot slot, ItemSlot mouseSlot, bool skipStack = false)
     {
         bool any = false;
-        foreach (PatternToolMode toolMode in modes.Where(toolMode => !toolMode.IsUnlocked(slot)))
+        foreach (PatternToolMode toolMode in behavior.ToolModes.Where(toolMode => !toolMode.IsUnlocked(slot)))
         {
             if (toolMode.TryUnlock(slot, mouseSlot, skipStack))
             {

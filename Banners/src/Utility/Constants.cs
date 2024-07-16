@@ -24,7 +24,6 @@ public static class Constants
     public const string modDomain = "flags";
     public const string modCreativeTab = "flags";
     public const string Wildcard = "*";
-    public const string worldConfigLayersLimit = "bannerLayersLimit";
     public const string textureCodeColor = "{color}";
     public const string textureCodePattern = "{pattern}";
     public const string textureUnknown = "unknown";
@@ -163,6 +162,10 @@ public static class Constants
     public const string attributeBannerOnBoatTransform = "bannerOnBoatTransform";
     public const string attributeBannerOnBoatTransformByBoat = "bannerOnBoatTransformByBoat";
     public const string attributePlacementByBoat = "placementByBoat";
+    public const string attributeUnlockInNoLoreMode = "unlockInNoLoreMode";
+
+    public const string worldConfigLayersLimit = "bannerLayersLimit";
+    public const string worldConfigLoreContent = "loreContent";
 
     public const string itemcodeParchment = "paper-parchment";
     public const string itemcodeInkAndQuill = "inkandquill";
