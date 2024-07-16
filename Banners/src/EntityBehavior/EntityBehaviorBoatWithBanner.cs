@@ -15,6 +15,8 @@ public class EntityBehaviorBoatWithBanner : EntityBehavior
 {
     private InventoryGeneric inv;
 
+    public InventoryGeneric Inventory => inv;
+
     public EntityBehaviorBoatWithBanner(Entity entity) : base(entity) { }
 
     public override void Initialize(EntityProperties properties, JsonObject typeAttributes)

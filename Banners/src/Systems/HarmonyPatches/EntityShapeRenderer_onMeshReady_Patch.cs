@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using System.Linq;
 using System.Reflection;
 using Vintagestory.API.Client;
 using Vintagestory.GameContent;
@@ -22,6 +23,11 @@ public static class EntityShapeRenderer_onMeshReady_Patch
         }
 
         EntityBehaviorBoatWithBanner behavior = __instance.entity.GetBehavior<EntityBehaviorBoatWithBanner>();
+
+        if (!behavior.Inventory.Any())
+        {
+            return true;
+        }
 
         if (___meshRefOpaque != null)
         {
