@@ -102,7 +102,7 @@ public class BannerProperties
         {
             Patterns.CopyTo(toStack);
             if (copyCutouts) Cutouts.CopyTo(toStack);
-            ToTreeAttribute(toStack.Attributes);
+            ToTreeAttribute(toStack.Attributes, setPlacement: false);
             return true;
         }
         return false;
