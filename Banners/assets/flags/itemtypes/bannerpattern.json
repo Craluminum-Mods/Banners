@@ -310,7 +310,7 @@
                     },
 
                     { "Pattern": "fleur_de_lis", "Unlockable": [], "Linebreak": true },
-                    { "Pattern": "flower", "Unlockable": [] },
+                    { "Pattern": "flower", "Unlockable": [{ "type": "item", "code": "game:gear-temporal" }] },
                     { "Pattern": "moby_dick", "Unlockable": [] },
                     { "Pattern": "sad_catfish", "Unlockable": [] },
 
@@ -358,8 +358,43 @@
                     },
 
                     { "Pattern": "vs_elk", "Unlockable": [{ "type": "block", "code": "game:painting-elk-north" }] },
-                    { "Pattern": "vs_falx_left", "Unlockable": [] },
-                    { "Pattern": "vs_falx_right", "Unlockable": [] },
+
+                    {
+                      "Pattern": "vs_falx_left", 
+                      "Unlockable": [
+                        { "type": "item", "code": "game:blade-falx-scrap" },
+                        { "type": "item", "code": "game:blade-falx-copper" },
+                        { "type": "item", "code": "game:blade-falx-tinbronze" },
+                        { "type": "item", "code": "game:blade-falx-bismuthbronze" },
+                        { "type": "item", "code": "game:blade-falx-blackbronze" },
+                        { "type": "item", "code": "game:blade-falx-gold" },
+                        { "type": "item", "code": "game:blade-falx-silver" },
+                        { "type": "item", "code": "game:blade-falx-iron" },
+                        { "type": "item", "code": "game:blade-falx-meteoriciron" },
+                        { "type": "item", "code": "game:blade-falx-steel" },
+                        { "type": "item", "code": "game:blade-falx-admin" },
+                        { "type": "item", "code": "game:blade-falx-ruined" }
+                      ]
+
+                    },
+                    { 
+                      "Pattern": "vs_falx_right", 
+                      "Unlockable": [
+                        { "type": "item", "code": "game:blade-falx-scrap" },
+                        { "type": "item", "code": "game:blade-falx-copper" },
+                        { "type": "item", "code": "game:blade-falx-tinbronze" },
+                        { "type": "item", "code": "game:blade-falx-bismuthbronze" },
+                        { "type": "item", "code": "game:blade-falx-blackbronze" },
+                        { "type": "item", "code": "game:blade-falx-gold" },
+                        { "type": "item", "code": "game:blade-falx-silver" },
+                        { "type": "item", "code": "game:blade-falx-iron" },
+                        { "type": "item", "code": "game:blade-falx-meteoriciron" },
+                        { "type": "item", "code": "game:blade-falx-steel" },
+                        { "type": "item", "code": "game:blade-falx-admin" },
+                        { "type": "item", "code": "game:blade-falx-ruined" }
+                      ]
+                    },
+
                     { "Pattern": "vs_logo", "Unlockable": [] },
 
                     {
