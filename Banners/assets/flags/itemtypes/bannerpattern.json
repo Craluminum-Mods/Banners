@@ -297,12 +297,42 @@
                     { "Pattern": "yin", "Unlockable": [] },
                     { "Pattern": "crescent_left", "Unlockable": [] },
                     { "Pattern": "crescent_right", "Unlockable": [] },
-                    { "Pattern": "globe", "Unlockable": [] },
+
+                    { "Pattern": "globe",
+                      "Unlockable": [
+                        { "type": "block", "code": "game:clutter", "HasAttributes": { "type": "globe1" } },
+                        { "type": "block", "code": "game:clutter", "HasAttributes": { "type": "globe2" } },
+                        { "type": "block", "code": "game:clutter", "HasAttributes": { "type": "globe3" } },
+                        { "type": "block", "code": "game:clutter", "HasAttributes": { "type": "globe4" } },
+                        { "type": "block", "code": "game:clutter", "HasAttributes": { "type": "globe5" } },
+                        { "type": "block", "code": "game:clutter", "HasAttributes": { "type": "globe6" } }
+                      ]
+                    },
+
                     { "Pattern": "fleur_de_lis", "Unlockable": [], "Linebreak": true },
                     { "Pattern": "flower", "Unlockable": [] },
                     { "Pattern": "moby_dick", "Unlockable": [] },
                     { "Pattern": "sad_catfish", "Unlockable": [] },
-                    { "Pattern": "skull", "Unlockable": [] },
+
+                    { 
+                      "Pattern": "skull",
+                      "Unlockable": [
+                        { "type": "block", "code": "game:clutter", "HasAttributes": { "type": "carcass-tiny" } },
+                        { "type": "block", "code": "game:clutter", "HasAttributes": { "type": "carcass-small" } },
+                        { "type": "block", "code": "game:clutter", "HasAttributes": { "type": "carcass-medium" } },
+                        { "type": "block", "code": "game:clutter", "HasAttributes": { "type": "carcass-large" } },
+                        { "type": "block", "code": "game:clutter", "HasAttributes": { "type": "carcass-fish" } },
+                        { "type": "block", "code": "game:clutter", "HasAttributes": { "type": "carcass-ribcage1" } },
+                        { "type": "block", "code": "game:clutter", "HasAttributes": { "type": "carcass-ribcage2" } },
+                        { "type": "block", "code": "game:clutter", "HasAttributes": { "type": "skeleton-compact1" } },
+                        { "type": "block", "code": "game:clutter", "HasAttributes": { "type": "skeleton-compact2" } },
+                        { "type": "block", "code": "game:clutter", "HasAttributes": { "type": "skeleton-compact3" } },
+                        { "type": "block", "code": "game:clutter", "HasAttributes": { "type": "skeleton-long" } },
+                        { "type": "block", "code": "game:clutter", "HasAttributes": { "type": "skeleton-inbed" } },
+                        { "type": "block", "code": "game:clutter", "HasAttributes": { "type": "skeleton-special" } }
+                      ]
+                    },
+
                     { "Pattern": "suit_clubs", "Unlockable": [] },
                     { "Pattern": "suit_hearts", "Unlockable": [] },
                     { "Pattern": "suit_spades", "Unlockable": [] },
@@ -311,7 +341,22 @@
 
                     { "Pattern": "vs_cookie", "Unlockable": [] },
                     { "Pattern": "vs_drifter", "Unlockable": [] },
-                    { "Pattern": "vs_eidolon", "Unlockable": [] },
+
+                    { 
+                      "Pattern": "vs_eidolon",
+                      "Unlockable": [
+                        { "type": "block", "code": "game:clutter", "HasAttributes": { "type": "golem-foot" } },
+                        { "type": "block", "code": "game:clutter", "HasAttributes": { "type": "golem-foot1" } },
+                        { "type": "block", "code": "game:clutter", "HasAttributes": { "type": "golem-foot2" } },
+                        { "type": "block", "code": "game:clutter", "HasAttributes": { "type": "golem-hand" } },
+                        { "type": "block", "code": "game:clutter", "HasAttributes": { "type": "golem-hand1" } },
+                        { "type": "block", "code": "game:clutter", "HasAttributes": { "type": "golem-hand2" } },
+                        { "type": "block", "code": "game:clutter", "HasAttributes": { "type": "golem-hand3" } },
+                        { "type": "block", "code": "game:clutter", "HasAttributes": { "type": "golem-head" } },
+                        { "type": "block", "code": "game:clutter", "HasAttributes": { "type": "golem-skull" } }
+                      ]
+                    },
+
                     { "Pattern": "vs_elk", "Unlockable": [{ "type": "block", "code": "game:painting-elk-north" }] },
                     { "Pattern": "vs_falx_left", "Unlockable": [] },
                     { "Pattern": "vs_falx_right", "Unlockable": [] },
