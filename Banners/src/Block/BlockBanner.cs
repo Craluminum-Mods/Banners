@@ -165,8 +165,8 @@ public class BlockBanner : Block, IContainedMeshSource
     {
         BlockDropItemStack[] drops = base.GetDropsForHandbook(handbookStack, forPlayer);
 
-        BannerProperties.GetBannerTree(handbookStack.Attributes).RemoveAttribute(attributeName);
-        BannerProperties.GetBannerTree(handbookStack.Attributes).RemoveAttribute(attributeCutouts);
+        handbookStack.Attributes.GetTreeAttribute(attributeBanner)?.RemoveAttribute(attributeName);
+        handbookStack.Attributes.GetTreeAttribute(attributeBanner)?.RemoveAttribute(attributeCutouts);
         handbookStack.Attributes.RemoveAttribute(attributeBannerModes);
         handbookStack.Attributes.RemoveAttribute(attributeRotX);
         handbookStack.Attributes.RemoveAttribute(attributeRotY);

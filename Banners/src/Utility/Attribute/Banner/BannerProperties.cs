@@ -33,7 +33,9 @@ public class BannerProperties
     {
         Modes.FromTreeAttribute(tree, defaultModes);
 
-        ITreeAttribute bannerTree = GetBannerTree(tree);
+        if (!tree.HasAttribute(attributeBanner)) return this;
+
+        ITreeAttribute bannerTree = tree.GetTreeAttribute(attributeBanner);
         Patterns.FromTreeAttribute(bannerTree);
         Cutouts.FromTreeAttribute(bannerTree);
         Name = bannerTree.GetString(attributeName, Name);
@@ -50,12 +52,17 @@ public class BannerProperties
     {
         Modes.ToTreeAttribute(tree);
 
-        ITreeAttribute bannerTree = GetBannerTree(tree);
-        Patterns.ToTreeAttribute(bannerTree);
-        Cutouts.ToTreeAttribute(bannerTree);
+        if (Patterns.Any)
+        {
+            Patterns.ToTreeAttribute(tree.GetOrAddTreeAttribute(attributeBanner));
+        }
+        if (Cutouts.Any)
+        {
+            Cutouts.ToTreeAttribute(tree.GetOrAddTreeAttribute(attributeBanner));
+        }
         if (!string.IsNullOrEmpty(Name))
         {
-            bannerTree.SetString(attributeName, Name);
+            tree.GetOrAddTreeAttribute(attributeBanner).SetString(attributeName, Name);
         }
         if (setPlacement)
         {
@@ -113,15 +120,13 @@ public class BannerProperties
 
     public static void SetPlacement(ITreeAttribute tree, string placement)
     {
-        GetBannerTree(tree).SetString(attributePlacement, placement);
+        tree.GetOrAddTreeAttribute(attributeBanner).SetString(attributePlacement, placement);
     }
 
     public static void ClearPlacement(ITreeAttribute tree)
     {
-        GetBannerTree(tree).RemoveAttribute(attributePlacement);
+        tree.GetTreeAttribute(attributeBanner)?.RemoveAttribute(attributePlacement);
     }
-
-    public static ITreeAttribute GetBannerTree(ITreeAttribute tree) => tree.GetOrAddTreeAttribute(attributeBanner);
 
     public override string ToString()
     {

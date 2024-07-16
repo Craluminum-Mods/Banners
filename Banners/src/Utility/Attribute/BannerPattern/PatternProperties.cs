@@ -19,15 +19,22 @@ public class PatternProperties
 
     public PatternProperties FromTreeAttribute(ITreeAttribute tree)
     {
-        Type = tree.GetOrAddTreeAttribute(attributeBannerPattern).GetString(attributeType);
-        UnlockedTypes = tree.GetOrAddTreeAttribute(attributeBannerPattern).GetAsString(attributeUnlockedTypes, string.Empty).Split(unlockedSeparator).ToList();
+        Type = tree.GetTreeAttribute(attributeBannerPattern)?.GetString(attributeType);
+        UnlockedTypes = tree.GetTreeAttribute(attributeBannerPattern)?.GetAsString(attributeUnlockedTypes, string.Empty).Split(unlockedSeparator).ToList();
+
+        Type ??= "";
+        UnlockedTypes ??= new();
         return this;
     }
 
     public void ToTreeAttribute(ITreeAttribute tree)
     {
         tree.GetOrAddTreeAttribute(attributeBannerPattern).SetString(attributeType, Type ?? "");
-        tree.GetOrAddTreeAttribute(attributeBannerPattern).SetString(attributeUnlockedTypes, UnlockedTypesAsString);
+
+        if (!string.IsNullOrEmpty(UnlockedTypesAsString))
+        {
+            tree.GetOrAddTreeAttribute(attributeBannerPattern).SetString(attributeUnlockedTypes, UnlockedTypesAsString);
+        }
     }
 
     public static PatternProperties FromStack(ItemStack stack)

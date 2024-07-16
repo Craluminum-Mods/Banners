@@ -31,8 +31,8 @@ public static class GuiHandbookItemStackPage_PageCodeForStack_Patch
 
         ItemStack newStack = stack.Clone();
 
-        BannerProperties.GetBannerTree(newStack.Attributes).RemoveAttribute(attributeName);
-        BannerProperties.GetBannerTree(newStack.Attributes).RemoveAttribute(attributeCutouts);
+        newStack.Attributes.GetTreeAttribute(attributeBanner)?.RemoveAttribute(attributeName);
+        newStack.Attributes.GetTreeAttribute(attributeBanner)?.RemoveAttribute(attributeCutouts);
         newStack.Attributes.RemoveAttribute(attributeBannerModes);
         newStack.Attributes.RemoveAttribute(attributeRotX);
         newStack.Attributes.RemoveAttribute(attributeRotY);
@@ -46,8 +46,8 @@ public static class GuiHandbookItemStackPage_PageCodeForStack_Patch
         }
 
         while (fromProps.Patterns.TryRemoveLast()) { }
-        BannerProperties.GetBannerTree(newStack.Attributes).RemoveAttribute(attributeLayers);
-        fromProps.Patterns.ToTreeAttribute(BannerProperties.GetBannerTree(newStack.Attributes));
+        newStack.Attributes.GetTreeAttribute(attributeBanner)?.RemoveAttribute(attributeLayers);
+        fromProps.Patterns.ToTreeAttribute(newStack.Attributes.GetTreeAttribute(attributeBanner));
 
         __result = Base(newStack);
     }

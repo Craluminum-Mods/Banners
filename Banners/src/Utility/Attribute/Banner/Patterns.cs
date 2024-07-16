@@ -74,20 +74,20 @@ public class Patterns
     public bool CanCopyFrom(ItemStack fromStack)
     {
         BannerProperties fromProps = BannerProperties.FromStack(fromStack);
-        return fromProps.Patterns.Elements.Count > 1 && Elements.Count == 1 && SameBaseColors(fromProps);
+        return fromProps.Patterns.Count > 1 && Count == 1 && SameBaseColors(fromProps);
     }
 
     public bool CanCopyTo(ItemStack toStack)
     {
         BannerProperties toProps = BannerProperties.FromStack(toStack);
-        return Elements.Count > 1 && toProps.Patterns.Elements.Count == 1 && SameBaseColors(toProps);
+        return Count > 1 && toProps.Patterns.Count == 1 && SameBaseColors(toProps);
     }
 
     public void CopyFrom(ItemStack fromStack)
     {
         if (CanCopyFrom(fromStack))
         {
-            FromTreeAttribute(BannerProperties.GetBannerTree(fromStack.Attributes));
+            FromTreeAttribute(fromStack.Attributes.GetTreeAttribute(attributeBanner));
         }
     }
 
@@ -95,7 +95,7 @@ public class Patterns
     {
         if (CanCopyTo(toStack))
         {
-            ToTreeAttribute(BannerProperties.GetBannerTree(toStack.Attributes));
+            ToTreeAttribute(toStack.Attributes.GetOrAddTreeAttribute(attributeBanner));
         }
     }
 
@@ -106,7 +106,12 @@ public class Patterns
 
     public void FromTreeAttribute(ITreeAttribute bannerTree)
     {
-        ITreeAttribute patternsTree = GetPatternsTree(bannerTree);
+        if (!bannerTree.HasAttribute(attributeLayers) || !bannerTree.GetTreeAttribute(attributeLayers).Any())
+        {
+            return;
+        }
+
+        ITreeAttribute patternsTree = bannerTree.GetTreeAttribute(attributeLayers);
 
         foreach (string key in patternsTree.Select(x => x.Key).Where(key => !Elements.ContainsKey(key)))
         {
@@ -118,16 +123,13 @@ public class Patterns
     {
         foreach ((string key, string val) in Elements)
         {
-            GetPatternsTree(bannerTree).SetString(key, val);
+            bannerTree.GetOrAddTreeAttribute(attributeLayers).SetString(key, val);
         }
     }
-
-    public static ITreeAttribute GetPatternsTree(ITreeAttribute tree) => tree.GetOrAddTreeAttribute(attributeLayers);
 
     public override string ToString()
     {
         StringBuilder result = new StringBuilder();
-
         if (Elements.Any())
         {
             result.Append('(');

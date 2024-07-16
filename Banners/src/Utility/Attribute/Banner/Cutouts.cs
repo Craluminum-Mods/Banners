@@ -66,28 +66,30 @@ public class Cutouts
 
     public void CopyFrom(ItemStack fromStack)
     {
-        FromTreeAttribute(BannerProperties.GetBannerTree(fromStack.Attributes));
+        FromTreeAttribute(fromStack.Attributes.GetTreeAttribute(attributeBanner));
     }
 
     public void CopyTo(ItemStack toStack)
     {
-        ToTreeAttribute(BannerProperties.GetBannerTree(toStack.Attributes));
+        ToTreeAttribute(toStack.Attributes.GetOrAddTreeAttribute(attributeBanner));
     }
 
     public void FromTreeAttribute(ITreeAttribute bannerTree)
     {
-        Elements.AddRange(GetCutoutsTree(bannerTree).Select(x => x.Key).Where(key => !Elements.Contains(key)));
+        if (!bannerTree.HasAttribute(attributeCutouts) || !bannerTree.GetTreeAttribute(attributeCutouts).Any())
+        {
+            return;
+        }
+        Elements.AddRange(bannerTree.GetTreeAttribute(attributeCutouts).Select(x => x.Key).Where(key => !Elements.Contains(key)));
     }
 
     public void ToTreeAttribute(ITreeAttribute bannerTree)
     {
         foreach (string key in Elements)
         {
-            GetCutoutsTree(bannerTree).SetString(key, "");
+            bannerTree.GetOrAddTreeAttribute(attributeCutouts).SetString(key, "");
         }
     }
-
-    public static ITreeAttribute GetCutoutsTree(ITreeAttribute tree) => tree.GetOrAddTreeAttribute(attributeCutouts);
 
     public override string ToString()
     {
