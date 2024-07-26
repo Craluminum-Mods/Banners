@@ -63,7 +63,13 @@ public class BannerModes
     /// <param name="mainTree">The main attribute tree that is not a “banner”</param>
     public void FromTreeAttribute(ITreeAttribute mainTree, Dictionary<string, string> defaultValues)
     {
-        if (!mainTree.HasAttribute(attributeBannerModes) || !mainTree.GetTreeAttribute(attributeBannerModes).Any() || defaultValues == null || !defaultValues.Any())
+        if (mainTree == null && defaultValues != null && defaultValues.Any())
+        {
+            Elements = defaultValues;
+            return;
+        }
+
+        if (mainTree == null || mainTree?.HasAttribute(attributeBannerModes) == false || mainTree?.GetTreeAttribute(attributeBannerModes).Any() == false || defaultValues == null || !defaultValues.Any())
         {
             return;
         }

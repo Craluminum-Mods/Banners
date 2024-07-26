@@ -97,9 +97,17 @@ public static class HelperExtensions
         return block.PatternGroups.Any(otherBlock.PatternGroups.Contains);
     }
 
-    public static bool IsEditModeEnabled(this BannerProperties props, IPlayer byPlayer, bool printError = true)
+    public static bool IsEditModeEnabled(this BlockBanner block, BannerProperties props, IPlayer byPlayer, bool printError = true)
     {
         BannerModes modes = props.Modes;
+
+        if (!modes.Any)
+        {
+            BannerModes newModes = new BannerModes();
+            newModes.FromTreeAttribute(null, block.DefaultModes);
+            modes = newModes;
+        }
+
         if (!modes[BannerMode.EditMode_Off])
         {
             return modes[BannerMode.EditMode_On];
@@ -111,8 +119,8 @@ public static class HelperExtensions
         return false;
     }
 
-    public static bool IsEditModeEnabled(this BannerProperties props, ICoreClientAPI capi, bool printError = true)
+    public static bool IsEditModeEnabled(this BlockBanner block, BannerProperties props, ICoreClientAPI capi, bool printError = true)
     {
-        return props.IsEditModeEnabled(capi.World.Player, printError);
+        return block.IsEditModeEnabled(props, capi.World.Player, printError);
     }
 }

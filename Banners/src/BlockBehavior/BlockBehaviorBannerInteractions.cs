@@ -12,6 +12,8 @@ namespace Flags;
 
 public class BlockBehaviorBannerInteractions : BlockBehavior
 {
+    public BlockBanner blockBanner => block as BlockBanner;
+
     public BlockBehaviorBannerInteractions(Block block) : base(block) { }
 
     public override bool OnBlockInteractStart(IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel, ref EnumHandling handling)
@@ -47,7 +49,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         return base.OnBlockInteractStart(world, byPlayer, blockSel, ref handling);
     }
 
-    public static bool PickUp(IPlayer byPlayer)
+    public bool PickUp(IPlayer byPlayer)
     {
         IWorldAccessor world = byPlayer.Entity.World;
         BlockSelection blockSel = byPlayer.CurrentBlockSelection;
@@ -89,14 +91,14 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         return true;
     }
 
-    public static bool AddLayer(IPlayer byPlayer, ItemSlot leftSlot, ItemSlot rightSlot, BannerProperties bannerProps, BlockBanner blockBanner, bool isPreview = false)
+    public bool AddLayer(IPlayer byPlayer, ItemSlot leftSlot, ItemSlot rightSlot, BannerProperties bannerProps, BlockBanner blockBanner, bool isPreview = false)
     {
         if (leftSlot?.Itemstack?.Collectible is not ItemBannerPattern itemPattern || rightSlot?.Itemstack?.Collectible is not BlockLiquidContainerTopOpened blockContainer)
         {
             return false;
         }
 
-        if (!bannerProps.IsEditModeEnabled(byPlayer, printError: !isPreview)) return false;
+        if (!blockBanner.IsEditModeEnabled(bannerProps, byPlayer, printError: !isPreview)) return false;
 
         PatternProperties patternProperties = PatternProperties.FromStack(leftSlot.Itemstack);
         if (string.IsNullOrEmpty(patternProperties.Type))
@@ -140,10 +142,10 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         return true;
     }
 
-    public static bool RemoveLayer(IPlayer byPlayer, ItemSlot rightSlot, BannerProperties bannerProps, BlockBanner blockBanner, bool isPreview = false)
+    public bool RemoveLayer(IPlayer byPlayer, ItemSlot rightSlot, BannerProperties bannerProps, BlockBanner blockBanner, bool isPreview = false)
     {
         if (rightSlot?.Itemstack?.Collectible is not BlockLiquidContainerTopOpened blockContainer
-            || !bannerProps.IsEditModeEnabled(byPlayer, printError: !isPreview))
+            || !blockBanner.IsEditModeEnabled(bannerProps, byPlayer, printError: !isPreview))
         {
             return false;
         }
@@ -177,7 +179,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         return true;
     }
 
-    public static bool AddCutout(IPlayer byPlayer, ItemSlot leftSlot, ItemSlot rightSlot, BannerProperties bannerProps, BlockBanner blockBanner, bool isPreview = false)
+    public bool AddCutout(IPlayer byPlayer, ItemSlot leftSlot, ItemSlot rightSlot, BannerProperties bannerProps, BlockBanner blockBanner, bool isPreview = false)
     {
         CollectibleBehaviorCutoutTool cutoutToolBehavior = rightSlot?.Itemstack?.Collectible?.GetBehavior<CollectibleBehaviorCutoutTool>();
         if (leftSlot?.Itemstack?.Collectible is not ItemBannerPattern itemPattern || cutoutToolBehavior == null)
@@ -185,7 +187,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
             return false;
         }
 
-        if (!bannerProps.IsEditModeEnabled(byPlayer, printError: !isPreview)) return false;
+        if (!blockBanner.IsEditModeEnabled(bannerProps, byPlayer, printError: !isPreview)) return false;
 
         PatternProperties patternProperties = PatternProperties.FromStack(leftSlot.Itemstack);
         if (string.IsNullOrEmpty(patternProperties.Type))
@@ -209,7 +211,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         return applied;
     }
 
-    public static bool RemoveCutout(IPlayer byPlayer, ItemSlot leftSlot, ItemSlot rightSlot, BannerProperties bannerProps, bool isPreview = false)
+    public bool RemoveCutout(IPlayer byPlayer, ItemSlot leftSlot, ItemSlot rightSlot, BannerProperties bannerProps, bool isPreview = false)
     {
         CollectibleBehaviorCutoutTool cutoutToolBehavior = rightSlot?.Itemstack?.Collectible?.GetBehavior<CollectibleBehaviorCutoutTool>();
         if (!leftSlot.Empty || cutoutToolBehavior == null)
@@ -217,14 +219,14 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
             return false;
         }
 
-        if (!bannerProps.IsEditModeEnabled(byPlayer, printError: !isPreview)) return false;
+        if (!blockBanner.IsEditModeEnabled(bannerProps, byPlayer, printError: !isPreview)) return false;
 
         bool applied = bannerProps.Cutouts.TryRemoveLast();
         if (applied && !isPreview) cutoutToolBehavior.PlayRepairSound(byPlayer);
         return applied;
     }
 
-    public static bool CopyLayers(IPlayer byPlayer, ItemSlot rightSlot, BannerProperties bannerProps, BlockBanner blockBanner, bool isPreview = false)
+    public bool CopyLayers(IPlayer byPlayer, ItemSlot rightSlot, BannerProperties bannerProps, BlockBanner blockBanner, bool isPreview = false)
     {
         if (rightSlot?.Itemstack?.Collectible is not BlockBanner anotherBlockBanner)
         {
@@ -242,7 +244,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
             return true;
         }
 
-        if (!bannerProps.IsEditModeEnabled(byPlayer, printError: !isPreview)) return false;
+        if (!blockBanner.IsEditModeEnabled(bannerProps, byPlayer, printError: !isPreview)) return false;
 
         if (bannerProps.CopyFrom(rightSlot.Itemstack, copyLayers: true, copyCutouts: true))
         {
@@ -252,10 +254,10 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         return false;
     }
 
-    public static bool Rename(IPlayer byPlayer, ItemSlot rightSlot, BannerProperties bannerProps, BlockBanner blockBanner)
+    public bool Rename(IPlayer byPlayer, ItemSlot rightSlot, BannerProperties bannerProps, BlockBanner blockBanner)
     {
         CollectibleBehaviorRenameTool renameToolBehavior = rightSlot?.Itemstack?.Collectible?.GetBehavior<CollectibleBehaviorRenameTool>();
-        if (renameToolBehavior == null || !bannerProps.IsEditModeEnabled(byPlayer))
+        if (renameToolBehavior == null || !blockBanner.IsEditModeEnabled(bannerProps, byPlayer))
         {
             return false;
         }
@@ -282,7 +284,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         return BannerInteractions(blockEntity.BannerProps, capi, blockSel);
     }
 
-    public static WorldInteraction[] BannerInteractions(BannerProperties bannerProps, ICoreClientAPI capi, BlockSelection blockSel)
+    public WorldInteraction[] BannerInteractions(BannerProperties bannerProps, ICoreClientAPI capi, BlockSelection blockSel)
     {
         List<WorldInteraction> interactions = new List<WorldInteraction>();
 
@@ -308,12 +310,12 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
 
         interactions.Add(new WorldInteraction()
         {
-            ActionLangCode = bannerProps.IsEditModeEnabled(capi, printError: false) ? langCodeCopyLayers : langCodeCopyLayersFromPlaced,
+            ActionLangCode = blockBanner.IsEditModeEnabled(bannerProps, capi, printError: false) ? langCodeCopyLayers : langCodeCopyLayersFromPlaced,
             MouseButton = EnumMouseButton.Right,
             Itemstacks = bannerStacks
         });
 
-        if (bannerProps.IsEditModeEnabled(capi, printError: false))
+        if (blockBanner.IsEditModeEnabled(bannerProps, capi, printError: false))
         {
             interactions.Add(new WorldInteraction()
             {
@@ -359,10 +361,9 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         return interactions.ToArray();
     }
 
-    public static ItemStack GetPreview(IPlayer player)
+    public ItemStack GetPreview(IPlayer player, BlockSelection blockSel)
     {
         IWorldAccessor world = player.Entity.World;
-        BlockSelection blockSel = player.CurrentBlockSelection;
 
         if (blockSel == null
             || world.BlockAccessor.GetBlockEntity(blockSel.Position) is not BlockEntityBanner blockEntity

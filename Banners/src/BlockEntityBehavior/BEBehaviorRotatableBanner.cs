@@ -71,7 +71,7 @@ public class BEBehaviorRotatableBanner : BlockEntityBehavior, IRotatableBanner
 
         if (Blockentity is not BlockEntityBanner blockEntityBanner
             || byEntity is not EntityPlayer entityPlayer
-            || !blockEntityBanner.BannerProps.IsEditModeEnabled(entityPlayer.Player))
+            || !blockEntityBanner.BannerBlock.IsEditModeEnabled(blockEntityBanner.BannerProps, entityPlayer.Player))
         {
             return false;
         }

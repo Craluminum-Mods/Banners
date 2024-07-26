@@ -123,8 +123,8 @@ public class HudElementBannerPreview : HudElement
         {
             return null;
         }
-
-        ItemStack nextStack = BlockBehaviorBannerInteractions.GetPreview(capi.World.Player);
+        BlockBehaviorBannerInteractions behavior = capi.World.Player.CurrentBlockSelection?.Block.GetBehavior<BlockBehaviorBannerInteractions>();
+        ItemStack nextStack = behavior?.GetPreview(capi.World.Player, capi.World.Player.CurrentBlockSelection);
         nextStack?.TempAttributes.SetBool(attributeInBannerPreviewHUD, true);
         return nextStack switch
         {
