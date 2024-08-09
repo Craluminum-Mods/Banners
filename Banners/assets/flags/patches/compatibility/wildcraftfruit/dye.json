@@ -1,0 +1,16 @@
+[
+    {
+        "op": "addmerge",
+        "path": "/attributes/bannerLiquid",
+        "value": {
+            "type": "Dye",
+            "litresPerUse": 0.1,
+            "colorByType": {
+              "*-spindle": "red"
+            }
+        },
+        "file": "wildcraftfruit:itemtypes/liquid/spindledye.json",
+        "dependsOn": [ { "modid": "wildcraftfruit" } ],
+        "side": "Server"
+    }
+]
