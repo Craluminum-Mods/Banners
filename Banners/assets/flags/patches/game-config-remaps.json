@@ -1,8 +1,0 @@
-[
-    {
-        "op": "addmerge",
-        "path": "/flags:0.26.0",
-        "value": ["/iir remapq flags:bannerpattern flags:bannerpattern-blank force"],
-        "file": "game:config/remaps.json"
-    }
-]
