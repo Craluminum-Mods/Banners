@@ -1,12 +1,27 @@
 {
+    // ###################
+    // ### Руководство ###
+    // ###################
+
     "game:tabname-flags": "Флаги",
+
+    "item-handbooktitle-bannerpattern": "Получение",
+    "item-handbooktext-bannerpattern": "Для базовых узоров необходимо создать <a href=\"handbooksearch://Узор для флага (Пустой)\">пустой узор</a>. \nРедкие неизвестные узоры можно купить у торговцев.",
+    
+    //
+    //
+
+    // ########################
+    // ### Предметы и блоки ###
+    // ########################
 
     "block-banner": "Флаг",
     "item-bannerpattern": "Узор для флага",
     "itemdesc-bannerpattern": "Для изменения узора используйте клавишу <hk>toolmodeselect</hk> (режим инструмента).",
-
-    "item-handbooktitle-bannerpattern": "Получение",
-    "item-handbooktext-bannerpattern": "Для базовых узоров необходимо создать <a href=\"handbooksearch://Узор для флага (Пустой)\">пустой узор</a>. \nРедкие неизвестные узоры можно купить у торговцев.",
+        
+    // ################
+    // ### Описания ###
+    // ################
 
     "banner-liquid-type": "Тип жидкости для флага: {0}",
     "banner-liquid-color": "Цвет жидкости для флага: {0}",
@@ -20,6 +35,10 @@
     "patterns-nocolor": "Узоры",
     "cutouts-nocolor": "Вырезы",
     "banner-modes": "<font color=\"#C9FFFC\">Режимы:</font>",
+        
+    // #############
+    // ### Узоры ###
+    // #############
 
     "patterngroups": "Группы узоров: {0}",
     "patterngroup-basic": "Базовый",
@@ -137,6 +156,10 @@
     "patterndesc-vs_logo": "<font color=\"#FFFF00\">Редкий узор</font>",
     "patterndesc-lion_left": "<font color=\"#FFFF00\">Редкий узор</font>",
     "patterndesc-lion_right": "<font color=\"#FFFF00\">Редкий узор</font>",
+    
+    // ##########################
+    // ### Режимы инструмента ###
+    // ##########################
 
     "toolmode-editmode-on": "Включить 'Режим редактирования'",
     "toolmode-editmode-off": "Отключить 'Режим редактирования'",
@@ -154,6 +177,10 @@
 
     "toolmode-value-on": "<font color=\"#84ff84\">Включено</font>",
     "toolmode-value-off": "<font color=\"#ff8484\">Отключено</font>",
+    
+    // #################
+    // ### Взаємодії ###
+    // #################
 
     "blockhelp-banner-addlayer": "Добавить узор (требуется узор в левой руке)",
     "blockhelp-banner-removelayer": "Удалить последний узор",
@@ -178,6 +205,10 @@
     "ingameerror-layers-limitreached": "Достигнуто максимальное количество слоев ({0})!",
     "ingameerror-liquidcontainer-onemax": "Разрешается использовать только одну емкость с жидкостью",
     "ingameerror-editmode-off": "Невозможно отредактировать флаг, потому что режим редактирования отключен",
+    
+    // ###############
+    // ### Команды ###
+    // ###############
 
     "command-nobanner": "В активной руке отсутствует флаг или вы не смотрите на размещенный флаг",
     "command-generatetextures": "Успешно сгенерировано {0} текстур для флага",
@@ -187,6 +218,10 @@
     "command-genbannermc-desc": "Генерирует флаг из синтаксиса Minecraft",
     "command-genbannermc-invalidsyntax": "Неверный синтаксис. Синтаксис: 'minecraft:white_banner{BlockEntityTag:{_PLACEHOLDER_}}'",
     
+    // ####################################################
+    // ### Пользовательский интерфейс и горячие клавиши ###
+    // ####################################################
+
     "bannerextrainfo": "Дополнительная информация о флаге",
     "bannerextrainfo-desc": "<font color=\"#ffff9d\">Нажмите <hk>flags:bannerconfigdialog</hk>, чтобы скрыть дополнительную информацию о флаге.</font>",
 

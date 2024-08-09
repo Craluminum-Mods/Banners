@@ -1,12 +1,27 @@
 {
+    // ################
+    // ### Довідник ###
+    // ################
+
     "game:tabname-flags": "Прапори",
+
+    "item-handbooktitle-bannerpattern": "Отримання",
+    "item-handbooktext-bannerpattern": "Для базових візерунків потрібно створити <a href=\"handbooksearch://Візерунок для прапора (Пустий)\">пустий візерунок</a>. \nРідкісні невідомі візерунки можна придбати у торговців.",
+            
+    //
+    //
+
+    // #########################
+    // ### Предмети та блоки ###
+    // #########################
 
     "block-banner": "Прапор",
     "item-bannerpattern": "Візерунок для прапора",
     "itemdesc-bannerpattern": "Використовуйте клавішу <hk>toolmodeselect</hk> (режим інструменту) для зміни візерунка.",
 
-    "item-handbooktitle-bannerpattern": "Отримання",
-    "item-handbooktext-bannerpattern": "Для базових візерунків потрібно створити <a href=\"handbooksearch://Візерунок для прапора (Пустий)\">пустий візерунок</a>. \nРідкісні невідомі візерунки можна придбати у торговців.",
+    // #############
+    // ### Описи ###
+    // #############
 
     "banner-liquid-type": "Тип рідини для прапора: {0}",
     "banner-liquid-color": "Колір рідини для прапора: {0}",
@@ -20,6 +35,10 @@
     "patterns-nocolor": "Візерунки",
     "cutouts-nocolor": "Вирізки",
     "banner-modes": "<font color=\"#C9FFFC\">Режими:</font>",
+           
+    // #################
+    // ### Візерунки ###
+    // #################
 
     "patterngroups": "Групи візерунків: {0}",
     "patterngroup-basic": "Основний",
@@ -137,6 +156,10 @@
     "patterndesc-vs_logo": "<font color=\"#FFFF00\">Рідкісний візерунок</font>",
     "patterndesc-lion_left": "<font color=\"#FFFF00\">Рідкісний візерунок</font>",
     "patterndesc-lion_right": "<font color=\"#FFFF00\">Рідкісний візерунок</font>",
+    
+    // ##########################
+    // ### Режими інструменту ###
+    // ##########################
 
     "toolmode-editmode-on": "Увімкнути 'Режим редагування'",
     "toolmode-editmode-off": "Вимкнути 'Режим редагування'",
@@ -154,6 +177,10 @@
 
     "toolmode-value-on": "<font color=\"#84ff84\">Вимкнено</font>",
     "toolmode-value-off": "<font color=\"#ff8484\">Увімкнено</font>",
+    
+    // ######################
+    // ### Взаимодействия ###
+    // ######################
 
     "blockhelp-banner-addlayer": "Додати шар (потрібен візерунок в лівій руці)",
     "blockhelp-banner-removelayer": "Видалити останній шар",
@@ -178,6 +205,10 @@
     "ingameerror-layers-limitreached": "Досягнуто максимальну кількість шарів ({0})!",
     "ingameerror-liquidcontainer-onemax": "Дозволяється використовувати лише одну ємність для рідини",
     "ingameerror-editmode-off": "Неможливо відредагувати прапор, оскільки режим редагування було вимкнено",
+    
+    // ###############
+    // ### Команди ###
+    // ###############
 
     "command-nobanner": "В активній руці немає прапора або ви не дивитеся на розміщений прапор",
     "command-generatetextures": "Успішно згенеровано {0} текстур для прапора",
@@ -186,6 +217,10 @@
     "command-genbannermc": "Прапор успішно згенерований",
     "command-genbannermc-desc": "Генерує прапор з синтаксису Minecraft",
     "command-genbannermc-invalidsyntax": "Невірний синтаксис. Синтаксис: 'minecraft:white_banner{BlockEntityTag:{_PLACEHOLDER_}}'",
+    
+    // #################################################
+    // ### Користувацький інтерфейс і гарячі клавіші ###
+    // #################################################
 
     "bannerextrainfo": "Додаткова інформація про прапор",
     "bannerextrainfo-desc": "<font color=\"#ffff9d\">Натисніть <hk>flags:bannerconfigdialog</hk>, щоб приховати додаткову інформацію про прапор.</font>",

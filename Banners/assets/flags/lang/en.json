@@ -1,12 +1,27 @@
 {
+    // ################
+    // ### Handbook ###
+    // ################
+
     "game:tabname-flags": "Banners",
+
+    "item-handbooktitle-bannerpattern": "Obtaining",
+    "item-handbooktext-bannerpattern": "For basic patterns <a href=\"handbooksearch://Banner Pattern (Blank)\">a blank pattern</a> should be crafted first. \nRare unknown patterns can be bought from traders.",
+
+    //
+    //
+
+    // ######################
+    // ### Items & Blocks ###
+    // ######################
 
     "block-banner": "Banner",
     "item-bannerpattern": "Banner Pattern",
     "itemdesc-bannerpattern": "Use <hk>toolmodeselect</hk> key (Tool Mode) to change pattern.",
-
-    "item-handbooktitle-bannerpattern": "Obtaining",
-    "item-handbooktext-bannerpattern": "For basic patterns <a href=\"handbooksearch://Banner Pattern (Blank)\">a blank pattern</a> should be crafted first. \nRare unknown patterns can be bought from traders.",
+    
+    // ####################
+    // ### Descriptions ###
+    // ####################
 
     "banner-liquid-type": "Banner liquid type: {0}",
     "banner-liquid-color": "Banner liquid color: {0}",
@@ -20,6 +35,10 @@
     "patterns-nocolor": "Patterns",
     "cutouts-nocolor": "Cutouts",
     "banner-modes": "<font color=\"#C9FFFC\">Modes:</font>",
+    
+    // ################
+    // ### Patterns ###
+    // ################
 
     "patterngroups": "Pattern groups: {0}",
     "patterngroup-basic": "Basic",
@@ -138,6 +157,10 @@
     "patterndesc-lion_left": "<font color=\"#FFFF00\">Rare Pattern</font>",
     "patterndesc-lion_right": "<font color=\"#FFFF00\">Rare Pattern</font>",
 
+    // ##################
+    // ### Tool modes ###
+    // ##################
+
     "toolmode-editmode-on": "Enable 'Edit mode'",
     "toolmode-editmode-off": "Disable 'Edit mode'",
     "toolmode-pickup-on": "Enable 'Right-click pick up'",
@@ -154,6 +177,10 @@
 
     "toolmode-value-on": "<font color=\"#84ff84\">Enabled</font>",
     "toolmode-value-off": "<font color=\"#ff8484\">Disabled</font>",
+
+    // ##########################
+    // ### World interactions ###
+    // ##########################
 
     "blockhelp-banner-addlayer": "Add pattern (requires pattern in left hand)",
     "blockhelp-banner-removelayer": "Remove last pattern",
@@ -179,6 +206,10 @@
     "ingameerror-liquidcontainer-onemax": "Only one liquid container is allowed",
     "ingameerror-editmode-off": "Unable to edit banner because edit mode was disabled",
 
+    // ################
+    // ### Commands ###
+    // ################
+
     "command-nobanner": "Active hand is missing banner or you are not looking at placed banner",
     "command-generatetextures": "{0} textures were sucessfully generated for banner",
     "command-generatetextures-error": "No grayscale texture found",
@@ -186,6 +217,10 @@
     "command-genbannermc": "Successfully generated banner",
     "command-genbannermc-desc": "Generates banner from Minecraft syntax",
     "command-genbannermc-invalidsyntax": "Not a valid syntax. Syntax: 'minecraft:white_banner{BlockEntityTag:{_PLACEHOLDER_}}'",
+
+    // ################################
+    // ### User interface & Hotkeys ###
+    // ################################
 
     "bannerextrainfo": "Banner extra info",
     "bannerextrainfo-desc": "<font color=\"#ffff9d\">Press <hk>flags:bannerconfigdialog</hk> to hide banner's extra info.</font>",
