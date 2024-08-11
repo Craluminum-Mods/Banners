@@ -6,7 +6,7 @@
     "description": "Extremely customizable banners",
     "authors": ["Craluminum2413", "Moby_"],
     "contributors":  ["BillyGalbreath"],
-    "version": "0.32.1",
+    "version": "0.33.0",
     "dependencies": {
         "game": "1.19.0"
     }
