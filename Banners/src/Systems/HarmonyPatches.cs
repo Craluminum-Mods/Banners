@@ -12,6 +12,7 @@ public class HarmonyPatches : ModSystem
     public override void Start(ICoreAPI _api)
     {
         api = _api;
+
         HarmonyInstance.CreateReversePatcher(original: GuiHandbookItemStackPage_PageCodeForStack_Patch.TargetMethod(), standin: GuiHandbookItemStackPage_PageCodeForStack_Patch.GetBase()).Patch(HarmonyReversePatchType.Original);
 
         HarmonyInstance.Patch(original: BlockBed_OnBlockInteractStart_Patch.TargetMethod(), prefix: BlockBed_OnBlockInteractStart_Patch.GetPrefix());
@@ -26,14 +27,7 @@ public class HarmonyPatches : ModSystem
 
     public override void Dispose()
     {
-        HarmonyInstance.Unpatch(original: BlockBed_OnBlockInteractStart_Patch.TargetMethod(), HarmonyPatchType.All, HarmonyInstance.Id);
-        HarmonyInstance.Unpatch(original: ServerSystemBlockSimulation_HandleBlockPlaceOrBreak_Patch.TargetMethod(), HarmonyPatchType.All, HarmonyInstance.Id);
-        HarmonyInstance.Unpatch(original: BlockEntityBed_DidUnmount_Patch.TargetMethod(), HarmonyPatchType.All, HarmonyInstance.Id);
-        HarmonyInstance.Unpatch(original: ColorBlend_ColorBurn_Patch.TargetMethod(), HarmonyPatchType.All, HarmonyInstance.Id);
-        HarmonyInstance.Unpatch(original: GuiHandbookItemStackPage_PageCodeForStack_Patch.TargetMethod(), HarmonyPatchType.All, HarmonyInstance.Id);
+        HarmonyInstance.UnpatchAll(HarmonyInstance.Id);
         BlockEntityBed_DidUnmount_Patch.Applied = false;
-        HarmonyInstance.Unpatch(original: EntityShapeRenderer_onMeshReady_Patch.TargetMethod(), HarmonyPatchType.All, HarmonyInstance.Id);
-        HarmonyInstance.Unpatch(original: Entity_OnInteract_Patch.TargetMethod(), HarmonyPatchType.All, HarmonyInstance.Id);
-        HarmonyInstance.Unpatch(original: EntityBoat_OnInteract_Patch.TargetMethod(), HarmonyPatchType.All, HarmonyInstance.Id);
     }
 }
