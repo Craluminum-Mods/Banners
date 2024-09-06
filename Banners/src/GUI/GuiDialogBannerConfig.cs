@@ -2,7 +2,6 @@
 using System;
 using System.Linq;
 using Vintagestory.API.Client;
-using Vintagestory.Client.NoObf;
 using static Flags.ConfigSystem;
 using static Flags.GuiElementExtensions;
 
@@ -10,44 +9,17 @@ namespace Flags;
 
 public class GuiDialogBannerConfig : GuiDialog
 {
-    private bool recompose;
-    private GuiComposer composer;
-
     public override string ToggleKeyCombinationCode => guiBannerConfigDialog;
 
     public GuiDialogBannerConfig(ICoreClientAPI capi) : base(capi)
     {
-        capi.Event.RegisterGameTickListener(Every500ms, 500);
         ComposeDialog();
-        if (ShowBannerConfigDialog == true)
-        {
-            TryOpen();
-        }
-
-        ClientSettings.Inst.AddWatcher(ModClientSetting.ShowConfigDialog, delegate (bool on)
-        {
-            if (on)
-            {
-                TryOpen();
-            }
-            else
-            {
-                TryClose();
-            }
-        });
-    }
-
-    private void Every500ms(float dt)
-    {
-        if (recompose)
-        {
-            recompose = false;
-            composer?.ReCompose();
-        }
     }
 
     private void ComposeDialog()
     {
+        SingleComposer?.Dispose();
+
         string[] alignNames = Enum.GetNames(typeof(EnumDialogArea)).Select(x => $"{langCodeDialogArea}{x}".Localize()).ToArray();
         string[] alignValues = Enum.GetValues<EnumDialogArea>().Select(x => x.ToString()).ToArray();
 
@@ -74,7 +46,7 @@ public class GuiDialogBannerConfig : GuiDialog
         ElementBounds leftBounds = ElementBounds.FixedSize(indent * 10, indent).WithFixedOffset(0, indent);
         ElementBounds rightBounds = leftBounds.RightCopy(gap);
 
-        composer = Composers[guiBannerConfigDialog] = capi.Gui.CreateCompo(guiBannerConfigDialog, mainBounds)
+        GuiComposer composer = capi.Gui.CreateCompo(guiBannerConfigDialog, mainBounds)
         .AddDialogBG(backgroundBounds, false)
         .AddDialogTitleBarWithBg(langCodeGuiBannerConfigDialogTitle.Localize(), () => TryClose())
         .BeginChildElements(childBounds)
@@ -101,24 +73,24 @@ public class GuiDialogBannerConfig : GuiDialog
             .AddSwitch(OnToogleOverview, BelowCopySet(ref rightBounds, fixedDeltaY: gap), "switchOverview")
             .AddDynamicText("", textFont, BelowCopySet(ref leftBounds, fixedDeltaY: gap), "textShowExtraInfo")
             .AddSwitch(OnToogleExtraInfo, BelowCopySet(ref rightBounds, fixedDeltaY: gap), "switchExtraInfo")
-        .EndChildElements()
-        .Compose();
+        .EndChildElements();
+        SingleComposer = composer.Compose();
 
-        composer?.GetDropDown("dropdownPreviewAlign")?.SetSelectedIndex((int)BannerPreviewConfig.Alignment);
-        composer?.GetDropDown("dropdownOverviewAlign")?.SetSelectedIndex((int)BannerOverviewConfig.Alignment);
-        composer?.GetDynamicText("textTitlePreview")?.SetNewText(guiBannerPreviewHUD.Localize());
-        composer?.GetDynamicText("textTitleOverview")?.SetNewText(guiBannerOverviewHUD.Localize());
-        composer?.GetDynamicText("textTitleOther")?.SetNewText(langCodeOther.Localize());
-        composer?.GetDynamicText("textShowPreview")?.SetNewText(langCodeGuiBannerPreviewHUDTitle.Localize());
-        composer?.GetDynamicText("textShowOverview")?.SetNewText(langCodeGuiBannerOverviewHUDTitle.Localize());
-        composer?.GetDynamicText("textShowExtraInfo")?.SetNewText(langCodeBannerExtraInfo.Localize());
-        composer?.GetSwitch("switchPreview")?.SetValue(BannerPreviewConfig.Enabled);
-        composer?.GetSwitch("switchOverview")?.SetValue(BannerOverviewConfig.Enabled);
-        composer?.GetSwitch("switchExtraInfo")?.SetValue(BannerExtraInfoConfig.Enabled);
-        composer?.GetSlider("sliderPreviewX")?.SetValues((int)BannerPreviewConfig.X, -100, 100, 1);
-        composer?.GetSlider("sliderPreviewY")?.SetValues((int)BannerPreviewConfig.Y, -100, 100, 1);
-        composer?.GetSlider("sliderOverviewX")?.SetValues((int)BannerOverviewConfig.X, -100, 100, 1);
-        composer?.GetSlider("sliderOverviewY")?.SetValues((int)BannerOverviewConfig.Y, -100, 100, 1);
+        SingleComposer?.GetDropDown("dropdownPreviewAlign")?.SetSelectedIndex((int)BannerPreviewConfig.Alignment);
+        SingleComposer?.GetDropDown("dropdownOverviewAlign")?.SetSelectedIndex((int)BannerOverviewConfig.Alignment);
+        SingleComposer?.GetDynamicText("textTitlePreview")?.SetNewText(guiBannerPreviewHUD.Localize());
+        SingleComposer?.GetDynamicText("textTitleOverview")?.SetNewText(guiBannerOverviewHUD.Localize());
+        SingleComposer?.GetDynamicText("textTitleOther")?.SetNewText(langCodeOther.Localize());
+        SingleComposer?.GetDynamicText("textShowPreview")?.SetNewText(langCodeGuiBannerPreviewHUDTitle.Localize());
+        SingleComposer?.GetDynamicText("textShowOverview")?.SetNewText(langCodeGuiBannerOverviewHUDTitle.Localize());
+        SingleComposer?.GetDynamicText("textShowExtraInfo")?.SetNewText(langCodeBannerExtraInfo.Localize());
+        SingleComposer?.GetSwitch("switchPreview")?.SetValue(BannerPreviewConfig.Enabled);
+        SingleComposer?.GetSwitch("switchOverview")?.SetValue(BannerOverviewConfig.Enabled);
+        SingleComposer?.GetSwitch("switchExtraInfo")?.SetValue(BannerExtraInfoConfig.Enabled);
+        SingleComposer?.GetSlider("sliderPreviewX")?.SetValues((int)BannerPreviewConfig.X, -100, 100, 1);
+        SingleComposer?.GetSlider("sliderPreviewY")?.SetValues((int)BannerPreviewConfig.Y, -100, 100, 1);
+        SingleComposer?.GetSlider("sliderOverviewX")?.SetValues((int)BannerOverviewConfig.X, -100, 100, 1);
+        SingleComposer?.GetSlider("sliderOverviewY")?.SetValues((int)BannerOverviewConfig.Y, -100, 100, 1);
     }
 
     private void OnTooglePreview(bool newValue) => BannerPreviewConfig.Enabled = newValue;
@@ -167,15 +139,9 @@ public class GuiDialogBannerConfig : GuiDialog
         return true;
     }
 
-    public override void OnGuiOpened()
+    public override bool TryOpen()
     {
-        base.OnGuiOpened();
-        ShowBannerConfigDialog = true;
-    }
-
-    public override void OnGuiClosed()
-    {
-        base.OnGuiClosed();
-        ShowBannerConfigDialog = false;
+        ComposeDialog();
+        return base.TryOpen();
     }
 }
