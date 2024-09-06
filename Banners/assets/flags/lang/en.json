@@ -5,8 +5,8 @@
 
     "game:tabname-flags": "Banners",
 
-    "flags:block-handbooktitle-flags:banner": "Other",
-    "flags:block-handbooktext-flags:banner": "<strong><a href=\"handbook://flags:banner-modes\">Modes</a></strong>",
+    "block-handbooktitle-flags:banner": "Other",
+    "block-handbooktext-flags:banner": "<strong><a href=\"handbook://flags:banner-modes\">Modes</a></strong>",
 
     "item-handbooktitle-bannerpattern": "Other",
     "item-handbooktext-bannerpattern": "<strong><a href=\"handbook://flags:bannerpattern-obtaining-and-modes\">Obtaining and Modes</a></strong>",
@@ -24,7 +24,7 @@
     "bannerpattern-obtaining-and-modes-text": "<strong>Banners 104 - Banner Pattern - Obtaining and Modes</strong>     <br><br>These modes are used for selecting banner patterns. Use <hk>toolmodeselect</hk> key (Tool Mode) to change pattern     <br><br><strong>Obtaining</strong>     <br>For basic patterns <a href=\"handbook://item-flags:bannerpattern\">a blank pattern</a> should be crafted first. Rare unknown patterns can be bought from traders     <br><br><strong>Unlocking</strong>     <br>Some cool-looking patterns aren't available to you from the start, but they can be unlocked with certain items. Patterns list in their description which items are needed to unlock them. Once you have needed item, simply drag & drop it on any of the modes, it will immediately unlock patterns locked behind that item     <br><br><strong>Combining</strong>     <br>When you have two or more different \"pattern holders\" with many unlocked patterns, you may want to combine them. It is done the same way as unlocking, simply drag & drop it on any of the modes, it will merge all unlocked patterns and create two identical \"pattern holders\"",
 
     "mc-to-vs-converter-title": "Banners: Banners 105 - Banner converter",
-    "mc-to-vs-converter-text": "<strong>Banners 105 - Banner converter</strong>     <br><br>The mod has built-in converter tool that is used to convert banners from other games to Vintage Story's banner format     <br><br><strong>Minecraft to Vintage Story</strong>     <br>Most minecraft banners can be converted with <a href=\"chattype:///flags genmc\">/flags genmc</a> command. Note that you need to hold banner in right hand to make it work.     <br><br>Example of valid syntax:     <br><code>minecraft:red_banner{BlockEntityTag:{Patterns:[{Color:11,Pattern:\"bt\"},{Color:14,Pattern:\"ss\"},{Color:0,Pattern:\"ms\"},{Color:11,Pattern:\"cbo\"},{Color:14,Pattern:\"mc\"},{Color:11,Pattern:\"bo\"}]}}</code>     <br><br>Example above will give you banner with red kraken on blue background",
+    "mc-to-vs-converter-text": "<strong>Banners 105 - Banner converter</strong>     <br><br>The mod has built-in converter tool that is used to convert banners from other games to Vintage Story's banner format     <br><br><strong>from Minecraft</strong>     <br>Most minecraft banners can be converted with <a href=\"chattype:///flags genmc\">/flags genmc</a> command. Note that you need to hold banner in right hand to make this work.     <br><br>Example of valid syntax:     <br><code>minecraft:red_banner{BlockEntityTag:{Patterns:[{Color:11,Pattern:\"bt\"},{Color:14,Pattern:\"ss\"},{Color:0,Pattern:\"ms\"},{Color:11,Pattern:\"cbo\"},{Color:14,Pattern:\"mc\"},{Color:11,Pattern:\"bo\"}]}}</code>     <br><br>Example above will give you banner with red kraken on blue background.",
 
     // ######################
     // ### Items & Blocks ###

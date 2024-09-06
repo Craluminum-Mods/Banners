@@ -4,12 +4,12 @@
     // ###################
 
     "game:tabname-flags": "Флаги",
-
-    "item-handbooktitle-bannerpattern": "Получение",
-    "item-handbooktext-bannerpattern": "Для базовых узоров необходимо создать <a href=\"handbooksearch://Узор для флага (Пустой)\">пустой узор</a>. \nРедкие неизвестные узоры можно купить у торговцев.",
     
-    //
-    //
+    "block-handbooktitle-flags:banner": "Остальное",
+    "block-handbooktext-flags:banner": "<strong><a href=\"handbook://flags:banner-modes\">Режимы</a></strong>",
+
+    "item-handbooktitle-bannerpattern": "Остальное",
+    "item-handbooktext-bannerpattern": "<strong><a href=\"handbook://flags:bannerpattern-obtaining-and-modes\">Получение и режимы</a></strong>",
 
     // ########################
     // ### Предметы и блоки ###
@@ -17,7 +17,7 @@
 
     "block-banner": "Флаг",
     "item-bannerpattern": "Узор для флага",
-    "itemdesc-bannerpattern": "Для изменения узора используйте клавишу <hk>toolmodeselect</hk> (режим инструмента).",
+    //"itemdesc-bannerpattern": "Для изменения узора используйте клавишу <hk>toolmodeselect</hk> (режим инструмента).",
         
     // ################
     // ### Описания ###
