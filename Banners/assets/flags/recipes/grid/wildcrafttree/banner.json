@@ -2,7 +2,7 @@
     {
         "ingredientPattern": "PNC",
         "ingredients": {
-            "P": { "type": "item", "code": "game:plank-*" },
+            "P": { "type": "item", "code": "wildcrafttree:plank-*" },
             "N": { "type": "item", "code": "game:metalnailsandstrips-*" },
             "C": { "type": "item", "code": "game:cloth-*", "name": "color", "skipVariants": ["mordant"] }
         },

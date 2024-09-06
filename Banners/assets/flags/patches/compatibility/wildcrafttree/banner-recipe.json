@@ -1,0 +1,10 @@
+[
+    {
+        "op": "addmerge",
+        "path": "/0/enabled",
+        "value": false,
+        "file": "recipes/grid/wildcrafttree/banner.json",
+        "dependsOn": [{ "modid": "wildcrafttree", "invert": true }],
+        "side": "Server"
+    }
+]
