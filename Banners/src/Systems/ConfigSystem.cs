@@ -8,7 +8,6 @@ public class ConfigSystem : ModSystem
 {
     public class ModClientSetting
     {
-        public const string ShowConfigDialog = "flags:showBannerConfigDialog";
         public const string ShowExtraInfo = "flags:showBannerExtraInfo";
 
         public const string ShowPreview = "flags:showBannerPreview";
@@ -20,12 +19,6 @@ public class ConfigSystem : ModSystem
         public const string OverviewAlignment = "flags:bannerOverviewAlignment";
         public const string OverviewX = "flags:bannerOverviewX";
         public const string OverviewY = "flags:bannerOverviewY";
-    }
-
-    public static bool ShowBannerConfigDialog
-    {
-        get => ClientSettings.Inst.GetBoolSetting(ModClientSetting.ShowConfigDialog);
-        set => ClientSettings.Inst.Bool[ModClientSetting.ShowConfigDialog] = value;
     }
 
     public class BannerPreviewConfig
@@ -96,7 +89,6 @@ public class ConfigSystem : ModSystem
     public override void StartClientSide(ICoreClientAPI api)
     {
         api.Input.RegisterHotKey(guiBannerConfigDialog, guiBannerConfigDialog.Localize(), GlKeys.B, HotkeyType.GUIOrOtherControls, shiftPressed: true, ctrlPressed: true);
-        api.Input.SetHotKeyHandler(guiBannerConfigDialog, (_) => { ShowBannerConfigDialog = !ShowBannerConfigDialog; return true; });
 
         if (!api.Settings.Bool.Exists(ModClientSetting.ShowExtraInfo)) BannerExtraInfoConfig.Enabled = true;
         if (!api.Settings.Bool.Exists(ModClientSetting.ShowPreview)) BannerPreviewConfig.Enabled = true;
