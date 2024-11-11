@@ -10,12 +10,17 @@ public class Server : ModSystem
 
     public override void StartServerSide(ICoreServerAPI sapi)
     {
-        IChatCommand commands = sapi.ChatCommands.GetOrCreate("flags").WithRootAlias("banners").RequiresPlayer().RequiresPrivilege(Privilege.give);
+        IChatCommand commands = sapi.ChatCommands.GetOrCreate("flags")
+            .WithRootAlias("banners")
+            .RequiresPlayer()
+            .RequiresPrivilege(Privilege.chat);
+
         CommandArgumentParsers parsers = sapi.ChatCommands.Parsers;
 
         commands.BeginSub("genbannermc")
             .WithAlias("genmc")
             .WithDesc($"{modDomain}:command-genbannermc-desc".Localize())
+            .RequiresPrivilege(Privilege.give)
             .WithArgs(
             parsers.Unparsed("minecraft syntax"))
             .HandleWith(Core.Converter.TryGenerateBanner)

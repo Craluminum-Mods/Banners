@@ -3,14 +3,11 @@ using Flags.Converter;
 using System.Linq;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
-using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.Server;
 using Vintagestory.API.Util;
 using Vintagestory.Client.NoObf;
 using Vintagestory.GameContent;
-
-[assembly: ModInfo(name: "Banners", modID: modDomain)]
 
 namespace Flags;
 
