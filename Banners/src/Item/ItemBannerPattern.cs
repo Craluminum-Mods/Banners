@@ -4,6 +4,7 @@ using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Util;
+using Vintagestory.GameContent;
 
 namespace Flags;
 
@@ -63,7 +64,80 @@ public class ItemBannerPattern : ItemRollableFixed
     public override void OnBeforeRender(ICoreClientAPI capi, ItemStack itemstack, EnumItemRenderTarget target, ref ItemRenderInfo renderinfo)
     {
         base.OnBeforeRender(capi, itemstack, target, ref renderinfo);
-        MultiTextureMeshRef meshRef = this.GetInventoryMesh(capi, itemstack, renderinfo);
+        MultiTextureMeshRef meshRef = GetInventoryMesh(itemstack, renderinfo);
         renderinfo.ModelRef = meshRef;
+    }
+
+    public MeshData GetOrCreateMesh(PatternProperties properties)
+    {
+        ICoreClientAPI capi = api as ICoreClientAPI;
+
+        string key = $"{Code}-{properties}";
+        if (!Meshes.TryGetValue(key, out MeshData mesh))
+        {
+            CompositeShape rcshape = Shape;
+            if (rcshape == null)
+            {
+                capi.Tesselator.TesselateItem(this, out mesh);
+                capi.Logger.Error("[Flags] No matching shape found for item {0}", Code);
+                return mesh;
+            }
+            rcshape.Base.WithPathAppendixOnce(appendixJson).WithPathPrefixOnce(prefixShapes);
+            Shape shape = capi.Assets.TryGet(rcshape.Base)?.ToObject<Shape>();
+            ITexPositionSource texSource = HandleTextures(properties, shape, rcshape.Base.ToString());
+            if (shape == null)
+            {
+                capi.Tesselator.TesselateItem(this, out mesh);
+                capi.Logger.Error("[Flags] Item {0} defines shape '{1}', but no matching shape found", Code, rcshape.Base);
+                return mesh;
+            }
+            capi.Tesselator.TesselateShape("Banner pattern item", shape, out mesh, texSource);
+            Meshes[key] = mesh;
+        }
+        return mesh;
+    }
+
+    public MultiTextureMeshRef GetInventoryMesh(ItemStack stack, ItemRenderInfo renderinfo)
+    {
+        ICoreClientAPI capi = api as ICoreClientAPI;
+        PatternProperties properties = PatternProperties.FromStack(stack);
+        string key = $"{Code}-{properties}";
+        if (!InvMeshes.TryGetValue(key, out MultiTextureMeshRef meshref))
+        {
+            MeshData mesh = GetOrCreateMesh(properties);
+            meshref = InvMeshes[key] = capi.Render.UploadMultiTextureMesh(mesh);
+        }
+        return meshref;
+    }
+
+    public ITexPositionSource HandleTextures(PatternProperties properties, Shape shape, string filenameForLogging = "")
+    {
+        ShapeTextureSource texSource = new ShapeTextureSource(api as ICoreClientAPI, shape, filenameForLogging);
+
+        foreach ((string textureCode, CompositeTexture texture) in CustomTextures)
+        {
+            CompositeTexture ctex = texture.Clone();
+            if (TextureCodesForOverlays.Contains(textureCode))
+            {
+                ReplaceTexture(textureCode, ref ctex, properties);
+            }
+            ctex.Bake(api.Assets);
+            texSource.textures[textureCode] = ctex;
+        }
+        return texSource;
+    }
+
+    public void ReplaceTexture(string textureCode, ref CompositeTexture ctex, PatternProperties properties)
+    {
+        if (!CustomTextures.TryGetValue(properties.GetTextureCode(textureCode), out CompositeTexture _newTexture) || _newTexture == null)
+        {
+            api.Logger.Error("[Flags] Item {0} defines a texture key '{1}', but no matching texture found", Code, properties.GetTextureCode(textureCode));
+            ctex.Base = AssetLocation.Create("unknown");
+            return;
+        }
+
+        CompositeTexture newTexture = _newTexture.Clone();
+        newTexture.FillPlaceholder(textureCodePattern, properties.Type);
+        ctex = newTexture;
     }
 }
