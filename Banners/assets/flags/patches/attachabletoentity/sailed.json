@@ -1,0 +1,41 @@
+[
+    {
+        "op": "addeach",
+        "path": "/elements/0/children/-",
+        "value": [
+            {
+                "name": "Flags_Banner",
+                "from": [28.5, 50.0, -1.0],
+                "to": [32.5, 66.0, 3.0],
+                "rotationOrigin": [30.5, 50.0, 1.0],
+                "faces": {},
+                "attachmentpoints": [{ "code": "Flags_BannerAP", "posX": "2.0", "posY": "0.0", "posZ": "8.0", "rotationX": "0.0", "rotationY": "0.0", "rotationZ": "0.0" }]
+            }
+        ],
+        "file": "game:shapes/entity/water/boat/sailed.json"
+    },
+
+    {
+        "op": "addeach",
+        "path": "/behaviorConfigs/rideableaccessories/wearableSlotsByType/boat-sailed-*/-",
+        "value": [
+            {
+                "code": "Flags_Banner",
+                "forCategoryCodes": ["banner"],
+                "attachmentPointCode": "Flags_BannerAP",
+                "stepParentTo": {
+                    "": { "elementName": "Flags_Banner" }
+                },
+                "emptyInteractPassThrough": true
+            }
+        ],
+        "file": "game:entities/water/boat.json"
+    },
+
+    {
+        "op": "addeach",
+        "path": "/behaviorConfigs/selectionboxes/selectionBoxesByType/boat-sailed-*/-",
+        "value": ["Flags_BannerAP"],
+        "file": "game:entities/water/boat.json"
+    }
+]

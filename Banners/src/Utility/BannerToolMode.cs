@@ -82,7 +82,6 @@ public class SetAttribute
         }
 
         BannerProperties props = BannerProperties.FromStack(slot.Itemstack);
-        // props.Modes.SetValue(Key, SetValue);
         props.Modes.SetValue(Key, Value);
         props.ToStack(slot.Itemstack);
     }

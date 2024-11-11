@@ -32,11 +32,12 @@
 
     "block-banner": "Banner",
     "item-bannerpattern": "Banner Pattern",
-
+    
     // ####################
     // ### Descriptions ###
     // ####################
-
+    
+    "game:*-selectionbox-Flags_BannerAP": "Banner mounting point",
     "banner-liquid-type": "Banner liquid type: {0}",
     "banner-liquid-color": "Banner liquid color: {0}",
     "Dye": "Dye",

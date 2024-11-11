@@ -37,6 +37,7 @@
     // ### Описи ###
     // #############
 
+    "game:*-selectionbox-Flags_BannerAP": "Точка кріплення банера",
     "banner-liquid-type": "Тип рідини для прапора: {0}",
     "banner-liquid-color": "Колір рідини для прапора: {0}",
     "Dye": "Фарба",

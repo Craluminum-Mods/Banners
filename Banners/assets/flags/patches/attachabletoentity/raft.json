@@ -1,0 +1,57 @@
+[
+    {
+        "op": "addeach",
+        "path": "/elements/0/children/-",
+        "value": [
+            {
+                "name": "Flags_Banner",
+                "from": [4.0, 3.0, -14.0],
+                "to": [8.0, 7.0, 14.0],
+                "rotationOrigin": [6.0, 5.0, 0.0],
+                "faces": {},
+                "attachmentpoints": [{ "code": "Flags_BannerAP", "posX": "0.0", "posY": "0.0", "posZ": "0.0", "rotationX": "0.0", "rotationY": "0.0", "rotationZ": "0.0" }]
+            }
+        ],
+        "file": "game:shapes/entity/water/boat/raft.json"
+    },
+
+    {
+        "op": "addeach",
+        "path": "/elements/0/children/-",
+        "value": [
+            {
+                "name": "Flags_Banner",
+                "from": [6.0, 3.0, -14.0],
+                "to": [10.0, 7.0, 14.0],
+                "rotationOrigin": [8.0, 3.0, 0.0],
+                "faces": {},
+                "attachmentpoints": [{ "code": "Flags_BannerAP", "posX": "0.0", "posY": "0.0", "posZ": "0.0", "rotationX": "0.0", "rotationY": "0.0", "rotationZ": "0.0" }]
+            }
+        ],
+        "file": "game:shapes/entity/water/boat/raft-bamboo.json"
+    },
+
+    {
+        "op": "addeach",
+        "path": "/behaviorConfigs/rideableaccessories/wearableSlotsByType/boat-raft-*/-",
+        "value": [
+            {
+                "code": "Middle Banner",
+                "forCategoryCodes": ["banner"],
+                "attachmentPointCode": "Flags_BannerAP",
+                "stepParentTo": {
+                    "": { "elementName": "Flags_Banner" }
+                },
+                "emptyInteractPassThrough": true
+            }
+        ],
+        "file": "game:entities/water/boat.json"
+    },
+
+    {
+        "op": "addeach",
+        "path": "/behaviorConfigs/selectionboxes/selectionBoxesByType/boat-raft-*/-",
+        "value": ["Flags_BannerAP"],
+        "file": "game:entities/water/boat.json"
+    }
+]

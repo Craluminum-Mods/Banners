@@ -5,20 +5,24 @@
     "attributes": {
         "patternGroups": ["basic"],
         "shapes": {
-            "normal-groundsimple": { "base": "flags:block/wood/banner/normal-groundsimple" },
-            "normal-ground": { "base": "flags:block/wood/banner/normal-ground" },
-            "normal-wall": { "base": "flags:block/wood/banner/normal-wall" },
+            "normal-groundsimple": { "base": "flags:block/banner/normal-groundsimple" },
+            "normal-ground": { "base": "flags:block/banner/normal-ground" },
+            "normal-wall": { "base": "flags:block/banner/normal-wall" },
 
-            "compact-groundsimple": { "base": "flags:block/wood/banner/compact-groundsimple" },
-            "compact-ground": { "base": "flags:block/wood/banner/compact-ground" },
-            "compact-wall": { "base": "flags:block/wood/banner/compact-wall" },
+            "compact-groundsimple": { "base": "flags:block/banner/compact-groundsimple" },
+            "compact-ground": { "base": "flags:block/banner/compact-ground" },
+            "compact-wall": { "base": "flags:block/banner/compact-wall" },
 
-            "segment-groundsimple": { "base": "flags:block/wood/banner/segment-groundsimple" },
-            "segment-wall": { "base": "flags:block/wood/banner/segment-wall" },
+            "segment-groundsimple": { "base": "flags:block/banner/segment-groundsimple" },
+            "segment-wall": { "base": "flags:block/banner/segment-wall" },
 
-            "bed-vanilla-hay": { "base": "flags:block/bannercontainable/bed/vanilla-hay" },
-            "bed-vanilla-wood": { "base": "flags:block/bannercontainable/bed/vanilla-wood" },
-            "bed-vanilla-woodaged": { "base": "flags:block/bannercontainable/bed/vanilla-woodaged" }
+            "bed-vanilla-hay": { "base": "flags:block/banner/containable/bed/vanilla-hay" },
+            "bed-vanilla-wood": { "base": "flags:block/banner/containable/bed/vanilla-wood" },
+            "bed-vanilla-woodaged": { "base": "flags:block/banner/containable/bed/vanilla-woodaged" },
+            
+            "boat-raft-bamboo": { "base": "flags:block/banner/attachabletoentity/raft-bamboo" },
+            "boat-raft-*": { "base": "flags:block/banner/attachabletoentity/raft" },
+            "boat-sailed-*": { "base": "flags:block/banner/attachabletoentity/sailed" }
         },
         "ignoredTextureCodesForOverlays": {
             "topsymbol": ["hhb", "bs", "bl", "br", "bt", "bts"],
@@ -285,39 +289,6 @@
           "rotation": { "x": 0, "y": 180, "z": 0 },
           "origin": { "x": 0.5, "y": 0, "z": 0 },
           "scaleXyz": { "x": -0.85, "y": 0.85, "z": 0.85 }
-        },
-
-        "bannerOnBoatTransform": {
-            "translation": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "origin": { "x": 0.5, "y": 0, "z": 0 },
-            "scale": 1
-        },
-
-        "bannerOnBoatTransformByBoat": {
-            "@sailboat:crude.*": {
-              "translation": { "x": -0.045, "y": 2.92, "z": 2.095 },
-              "rotation": { "x": 0, "y": 90, "z": 0 },
-              "origin": { "x": 0.5, "y": 0, "z": 0 }
-            },
-            "@sailboat:(cargosailboat|sailboat).*": {
-              "translation": { "x": -0.04, "y": 3.2, "z": 1.905 },
-              "rotation": { "x": 0, "y": 90, "z": 0 },
-              "origin": { "x": 0.5, "y": 0, "z": 0 }
-            },
-
-            "@game:boat-raft.*bamboo": {
-              "translation": { "x": 0, "y": 0.4, "z": 0.1 },
-              "origin": { "x": 0.5, "y": 0, "z": 0 }
-            },
-            "@game:boat-raft.*": {
-              "translation": { "x": 0, "y": 0.4, "z": -0.025 },
-              "origin": { "x": 0.5, "y": 0, "z": 0 }
-            }
-        },
-        
-        "placementByBoat": {
-            "@game:boat-raft.*": "compact-groundsimple"
         },
 
         // "showDebugInfo": true,

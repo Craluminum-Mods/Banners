@@ -20,9 +20,6 @@ public class HarmonyPatches : ModSystem
         HarmonyInstance.Patch(original: BlockEntityBed_DidUnmount_Patch.TargetMethod(), transpiler: BlockEntityBed_DidUnmount_Patch.GetTranspiler());
         HarmonyInstance.Patch(original: ColorBlend_ColorBurn_Patch.TargetMethod(), prefix: ColorBlend_ColorBurn_Patch.GetPrefix());
         HarmonyInstance.Patch(original: GuiHandbookItemStackPage_PageCodeForStack_Patch.TargetMethod(), postfix: GuiHandbookItemStackPage_PageCodeForStack_Patch.GetPostfix());
-        HarmonyInstance.Patch(original: EntityShapeRenderer_onMeshReady_Patch.TargetMethod(), prefix: EntityShapeRenderer_onMeshReady_Patch.GetPrefix());
-        HarmonyInstance.Patch(original: Entity_OnInteract_Patch.TargetMethod(), prefix: Entity_OnInteract_Patch.GetPrefix());
-        HarmonyInstance.Patch(original: EntityBoat_OnInteract_Patch.TargetMethod(), prefix: EntityBoat_OnInteract_Patch.GetPrefix());
     }
 
     public override void Dispose()

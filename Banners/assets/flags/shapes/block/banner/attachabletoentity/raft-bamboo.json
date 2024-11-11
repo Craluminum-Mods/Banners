@@ -1,0 +1,121 @@
+{
+	"editor": {
+		"backDropShape": "entity/water/boat/raft-bamboo",
+		"allAngles": true,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+	},
+	"textures": {
+		"botsymbol": "block/cloth/banner/hansa/ship-bottom",
+		"topsymbol": "block/cloth/banner/hansa/ship-top",
+		"oak": "block/wood/debarked/oak"
+	},
+	"elements": [
+		{
+			"name": "ORIGIN",
+			"stepParentName": "barF1",
+			"from": [ 1.5, -1.5, 13.0 ],
+			"to": [ 1.5, -1.5, 13.0 ],
+			"rotationOrigin": [ 1.5, 2.5, 12.0 ],
+			"rotationZ": 22.5,
+			"faces": {
+			},
+			"children": [
+				{
+					"name": "origin flag",
+					"from": [ 0.0, 0.0, 0.0 ],
+					"to": [ 0.0, 0.0, 0.0 ],
+					"rotationOrigin": [ 0.0, 4.0, -1.0 ],
+					"rotationX": 4.0,
+					"rotationY": -90.0,
+					"faces": {
+					},
+					"children": [
+						{
+							"name": "cloth wrap 1",
+							"from": [ -8.0, 49.0, -1.75 ],
+							"to": [ 8.0, 50.5, 0.25 ],
+							"rotationOrigin": [ 0.0, 49.3, -1.75 ],
+							"faces": {
+								"north": { "texture": "#oak", "uv": [ 0.0, 1.0, 16.0, 2.5 ] },
+								"east": { "texture": "#oak", "uv": [ 0.0, 0.0, 2.0, 1.5 ] },
+								"south": { "texture": "#oak", "uv": [ 0.0, 2.5, 16.0, 4.0 ] },
+								"west": { "texture": "#oak", "uv": [ 0.0, 0.0, 2.0, 1.5 ] },
+								"up": { "texture": "#oak", "uv": [ 0.0, 8.0, 16.0, 10.0 ] },
+								"down": { "texture": "#oak", "uv": [ 0.0, 0.0, 16.0, 2.0 ] }
+							}
+						},
+						{
+							"name": "banner top",
+							"from": [ -8.0, 34.5, 0.25 ],
+							"to": [ 8.0, 50.5, 0.45 ],
+							"renderPass": 2,
+							"rotationOrigin": [ 0.5, 50.5, 0.25 ],
+							"faces": {
+								"north": { "texture": "#topsymbol", "uv": [ 16.0, 0.0, 0.0, 16.0 ], "autoUv": false, "windMode": [9,-1,-1,9], "windData": [0,1,1,0] },
+								"south": { "texture": "#topsymbol", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "windMode": [9,9,-1,-1], "windData": [1,1,2,2] }
+							},
+							"children": [
+								{
+									"name": "banner bottom",
+									"from": [ 0.0, -16.0, 0.0 ],
+									"to": [ 16.0, 0.0, 0.2 ],
+									"renderPass": 2,
+									"rotationOrigin": [ 0.0, -16.0, 0.0 ],
+									"faces": {
+										"north": { "texture": "#botsymbol", "uv": [ 16.0, 0.0, 0.0, 16.0 ], "autoUv": false, "windMode": [9,9,9,9], "windData": [0,1,1,0] },
+										"south": { "texture": "#botsymbol", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "windMode": [9,9,9,9], "windData": [0,0,1,1] }
+									}
+								}
+							]
+						},
+						{
+							"name": "pole1",
+							"from": [ -0.75, 4.0, -1.75 ],
+							"to": [ 0.75, 20.0, -0.25 ],
+							"rotationOrigin": [ -0.75, 4.0, -1.75 ],
+							"faces": {
+								"north": { "texture": "#oak", "uv": [ 0.0, 7.5, 16.0, 9.0 ], "rotation": 90 },
+								"east": { "texture": "#oak", "uv": [ 0.0, 7.0, 16.0, 8.5 ], "rotation": 90 },
+								"south": { "texture": "#oak", "uv": [ 0.0, 0.0, 16.0, 1.5 ], "rotation": 90 },
+								"west": { "texture": "#oak", "uv": [ 0.0, 0.5, 16.0, 2.0 ], "rotation": 90 },
+								"up": { "texture": "#oak", "uv": [ 4.0, 3.5, 5.5, 5.0 ] },
+								"down": { "texture": "#oak", "uv": [ 9.5, 11.5, 11.0, 13.0 ] }
+							}
+						},
+						{
+							"name": "pole2",
+							"from": [ -0.75, 20.0, -1.75 ],
+							"to": [ 0.75, 34.5, -0.25 ],
+							"rotationOrigin": [ -0.75, 20.0, -1.75 ],
+							"faces": {
+								"north": { "texture": "#oak", "uv": [ 0.0, 4.5, 16.0, 6.0 ], "rotation": 90, "autoUv": false },
+								"east": { "texture": "#oak", "uv": [ 0.0, 4.0, 14.5, 5.5 ], "rotation": 90 },
+								"south": { "texture": "#oak", "uv": [ 0.0, 6.0, 14.5, 7.5 ], "rotation": 90 },
+								"west": { "texture": "#oak", "uv": [ 0.0, 4.0, 14.5, 5.5 ], "rotation": 90 },
+								"up": { "texture": "#oak", "uv": [ 8.5, 9.5, 10.0, 11.0 ] },
+								"down": { "texture": "#oak", "uv": [ 12.0, 4.0, 13.5, 5.5 ] }
+							}
+						},
+						{
+							"name": "pole3",
+							"from": [ -0.75, 34.5, -1.75 ],
+							"to": [ 0.75, 49.0, -0.25 ],
+							"rotationOrigin": [ -0.75, 34.5, -1.75 ],
+							"faces": {
+								"north": { "texture": "#oak", "uv": [ 0.0, 4.5, 16.0, 6.0 ], "rotation": 90, "autoUv": false },
+								"east": { "texture": "#oak", "uv": [ 0.0, 4.0, 14.5, 5.5 ], "rotation": 90 },
+								"south": { "texture": "#oak", "uv": [ 0.0, 6.0, 14.5, 7.5 ], "rotation": 90 },
+								"west": { "texture": "#oak", "uv": [ 0.0, 4.0, 14.5, 5.5 ], "rotation": 90 },
+								"up": { "texture": "#oak", "uv": [ 8.5, 9.5, 10.0, 11.0 ] },
+								"down": { "texture": "#oak", "uv": [ 12.0, 4.0, 13.5, 5.5 ] }
+							}
+						}
+					]
+				}
+			]
+		}
+	]}

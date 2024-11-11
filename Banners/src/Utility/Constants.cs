@@ -67,7 +67,6 @@ public static class Constants
     public const string langCodeToolMode = $"{modDomain}:toolmode-";
     public const string langCodeToolModeValue = $"{modDomain}:toolmode-value-";
     public const string langCodeBannerPreviewHudTransform = $"{modDomain}:{attributeBannerPreviewHudTransform}";
-    public const string langCodeBannerOnBoatTransform = $"{modDomain}:{attributeBannerOnBoatTransform}";
     public const string langCodeAlignment = $"{modDomain}:alignment";
     public const string langCodePosX = $"{modDomain}:posX";
     public const string langCodePosY = $"{modDomain}:posY";
@@ -139,7 +138,6 @@ public static class Constants
     public const string attributeRolledShape = "rolledShape";
     public const string attributeBannerLiquid = "bannerLiquid";
     public const string attributeInventoryBannerContainable = "inventoryBannerContainable";
-    public const string attributeInventoryBannerContainableBoat = "inventoryBannerContainableBoat";
     public const string attributeExcludeFaces = "excludeFaces";
     public const string attributeShapeKey = "shapeKey";
     public const string attributeRotationsByFace = "rotationsByFace";
@@ -159,9 +157,6 @@ public static class Constants
     public const string attributeRepairSound = "repairSound";
     public const string attributeFromAttribute = "fromAttribute";
     public const string attributeQuantitySlots = "quantitySlots";
-    public const string attributeBannerOnBoatTransform = "bannerOnBoatTransform";
-    public const string attributeBannerOnBoatTransformByBoat = "bannerOnBoatTransformByBoat";
-    public const string attributePlacementByBoat = "placementByBoat";
     public const string attributeUnlockInNoLoreMode = "unlockInNoLoreMode";
 
     public const string worldConfigLayersLimit = "bannerLayersLimit";
@@ -178,7 +173,6 @@ public static class Constants
     public const string eventGenJsonTransform = "genjsontransform";
 
     public const string bannerContainableInvClassName = "flags-bannercontainable";
-    public const string bannerContainableBoatInvClassName = "flags-bannercontainableboat";
 
     public const string appendixJson = ".json";
     public const string appendixPng = ".png";

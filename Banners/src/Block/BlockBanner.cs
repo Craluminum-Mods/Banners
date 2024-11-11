@@ -1,8 +1,12 @@
+using Cairo.Freetype;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
+using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Util;
@@ -10,7 +14,7 @@ using Vintagestory.GameContent;
 
 namespace Flags;
 
-public class BlockBanner : Block, IContainedMeshSource
+public class BlockBanner : Block, IContainedMeshSource, IAttachableToEntity, IWearableShapeSupplier
 {
     public List<string> PatternGroups { get; protected set; } = new();
 
@@ -35,9 +39,6 @@ public class BlockBanner : Block, IContainedMeshSource
     public Dictionary<string, string> DefaultModes { get; protected set; } = new();
 
     public ModelTransform BannerPreviewHudTransform { get; protected set; } = new();
-    public ModelTransform BannerOnBoatTransform { get; protected set; } = new();
-    public Dictionary<string, ModelTransform> BannerOnBoatTransformByBoat { get; protected set; } = new();
-    public Dictionary<string, string> PlacementsByBoat { get; protected set; } = new();
 
     public Dictionary<string, MeshData> Meshes => ObjectCacheUtil.GetOrCreate(api, cacheKeyBlockBannerMeshes, () => new Dictionary<string, MeshData>());
     public Dictionary<string, MeshData> ContainableMeshes => ObjectCacheUtil.GetOrCreate(api, cacheKeyBlockBannerContainableMeshes, () => new Dictionary<string, MeshData>());
@@ -62,8 +63,6 @@ public class BlockBanner : Block, IContainedMeshSource
         CustomSelectionBoxes.Clear();
         CustomCollisionBoxes.Clear();
         DefaultModes.Clear();
-        BannerOnBoatTransformByBoat.Clear();
-        PlacementsByBoat.Clear();
 
         foreach (MeshData mesh in Meshes.Values)
         {
@@ -107,10 +106,7 @@ public class BlockBanner : Block, IContainedMeshSource
 
         DefaultModes = Attributes[attributeDefaultModes].AsObject<Dictionary<string, string>>();
 
-        PlacementsByBoat = Attributes[attributePlacementByBoat].AsObject<Dictionary<string, string>>();
-
         LoadTransforms();
-        LoadBoatTransforms();
 
         if (api is not ICoreClientAPI capi)
         {
@@ -135,12 +131,6 @@ public class BlockBanner : Block, IContainedMeshSource
     public void LoadTransforms()
     {
         BannerPreviewHudTransform = Attributes[attributeBannerPreviewHudTransform].AsObject<ModelTransform>();
-        BannerOnBoatTransform = Attributes[attributeBannerOnBoatTransform].AsObject<ModelTransform>();
-    }
-
-    public void LoadBoatTransforms()
-    {
-        BannerOnBoatTransformByBoat = Attributes[attributeBannerOnBoatTransformByBoat].AsObject<Dictionary<string, ModelTransform>>();
     }
 
     public override void GetHeldItemInfo(ItemSlot inSlot, StringBuilder sb, IWorldAccessor world, bool withDebugInfo)
@@ -267,7 +257,7 @@ public class BlockBanner : Block, IContainedMeshSource
     {
         BannerProperties props = BannerProperties.FromStack(itemstack);
         props.SetPlacement(DefaultVerticalPlacement);
-        return this.GetOrCreateMesh(api as ICoreClientAPI, props);
+        return GetOrCreateMesh(api as ICoreClientAPI, props);
     }
 
     public string GetMeshCacheKey(ItemStack itemstack)
@@ -275,5 +265,221 @@ public class BlockBanner : Block, IContainedMeshSource
         BannerProperties props = BannerProperties.FromStack(itemstack);
         props.SetPlacement(DefaultVerticalPlacement);
         return $"{itemstack.Collectible.Code}{props}";
+    }
+
+    public MeshData GetOrCreateMesh(ICoreAPI api, BannerProperties properties, ITexPositionSource overrideTexturesource = null)
+    {
+        ICoreClientAPI capi = api as ICoreClientAPI;
+
+        if (string.IsNullOrEmpty(properties.Placement))
+        {
+            properties.SetPlacement(DefaultPlacement);
+        }
+
+        string key = $"{Code}-{properties}";
+
+        if (overrideTexturesource != null || !Meshes.TryGetValue(key, out MeshData mesh))
+        {
+            if (!CustomShapes.TryGetValue(properties.Placement, out CompositeShape rcshape))
+            {
+                capi.Tesselator.TesselateBlock(this, out mesh);
+                capi.Logger.Error("[Flags] No matching shape found for block {0} for type {1}", Code, properties.Placement);
+                return mesh;
+            }
+            rcshape.Base.WithPathAppendixOnce(appendixJson).WithPathPrefixOnce(prefixShapes);
+            Shape shape = capi.Assets.TryGet(rcshape.Base)?.ToObject<Shape>();
+            ITexPositionSource texSource = overrideTexturesource ?? HandleTextures(properties, capi, shape, rcshape.Base.ToString());
+            if (shape == null)
+            {
+                capi.Tesselator.TesselateBlock(this, out mesh);
+                capi.Logger.Error("[Flags] Block {0} defines shape '{1}', but no matching shape found", Code, rcshape.Base);
+                return mesh;
+            }
+            try
+            {
+                capi.Tesselator.TesselateShape("Banner block", shape, out mesh, texSource);
+            }
+            catch (Exception)
+            {
+                capi.Tesselator.TesselateBlock(this, out mesh);
+                capi.Logger.Error("[Flags] Can't create shape for block {0} because of broken textures", Code);
+                return mesh;
+            }
+            if (properties.Modes[BannerMode.Wind_Off])
+            {
+                mesh.ClearWindFlags();
+            }
+            if (overrideTexturesource == null)
+            {
+                Meshes[key] = mesh;
+            }
+        }
+        return mesh;
+    }
+
+    public MeshData GetOrCreateContainableMesh(ICoreAPI api, ItemStack stack, string shapeKey, Vec3f rotation)
+    {
+        ICoreClientAPI capi = api as ICoreClientAPI;
+
+        BannerProperties properties = BannerProperties.FromStack(stack);
+        string key = $"{Code}-{properties}-{shapeKey}-{rotation}";
+
+        if (!ContainableMeshes.TryGetValue(key, out MeshData mesh))
+        {
+            if (!CustomShapes.TryGetValueOrWildcard(shapeKey, out CompositeShape rcshape))
+            {
+                capi.Tesselator.TesselateBlock(this, out mesh);
+                capi.Logger.Error("[Flags] No matching shape found for block {0} for BannerContainable key '{1}'", Code, shapeKey);
+                return mesh;
+            }
+            rcshape.Base.WithPathAppendixOnce(appendixJson).WithPathPrefixOnce(prefixShapes);
+            Shape shape = capi.Assets.TryGet(rcshape.Base)?.ToObject<Shape>();
+            ITexPositionSource texSource = HandleTextures(properties, capi, shape, rcshape.Base.ToString());
+            if (shape == null)
+            {
+                capi.Tesselator.TesselateBlock(this, out mesh);
+                capi.Logger.Error("[Flags] BannerContainable {0} defines shape '{1}', but no matching shape found", Code, rcshape.Base);
+                return mesh;
+            }
+            try
+            {
+                capi.Tesselator.TesselateShape("Containable banner block", shape, out mesh, texSource, rotation);
+            }
+            catch (Exception)
+            {
+                capi.Tesselator.TesselateBlock(this, out mesh);
+                capi.Logger.Error("[Flags] Can't create shape for block {0} for BannerContainable key '{1}' because of broken textures", Code, shapeKey);
+                return mesh;
+            }
+            ContainableMeshes[key] = mesh;
+        }
+        return mesh;
+    }
+
+    public MultiTextureMeshRef GetInventoryMesh(ICoreClientAPI capi, ItemStack stack)
+    {
+        BannerProperties properties = BannerProperties.FromStack(stack);
+        string key = $"{Code}-{properties}";
+        if (!InvMeshes.TryGetValue(key, out MultiTextureMeshRef meshref))
+        {
+            MeshData mesh = GetOrCreateMesh(capi, properties);
+            meshref = InvMeshes[key] = capi.Render.UploadMultiTextureMesh(mesh);
+        }
+        return meshref;
+    }
+
+    public ITexPositionSource HandleTextures(BannerProperties properties, ICoreAPI api, Shape shape, string filenameForLogging = "")
+    {
+        ShapeTextureSource texSource = new ShapeTextureSource(api as ICoreClientAPI, shape, filenameForLogging);
+
+        foreach ((string textureCode, CompositeTexture texture) in CustomTextures)
+        {
+            CompositeTexture ctex = texture.Clone();
+
+            if (TextureCodesForOverlays.Contains(textureCode))
+            {
+                foreach (BannerLayer layer in properties.Patterns.GetOrdered(textureCode))
+                {
+                    ApplyOverlay(api, textureCode, ctex, layer);
+                }
+
+                foreach (BannerLayer layer in properties.Cutouts.GetOrdered(textureCode))
+                {
+                    ApplyOverlay(api, textureCode, ctex, layer, EnumColorBlendMode.ColorBurn);
+                }
+            }
+
+            ctex.Bake(api.Assets);
+            texSource.textures[textureCode] = ctex;
+        }
+        return texSource;
+    }
+
+    public void ApplyOverlay(ICoreAPI api, string textureCode, CompositeTexture ctex, BannerLayer layer, EnumColorBlendMode blendMode = EnumColorBlendMode.Normal)
+    {
+        if ((IgnoredTextureCodes.TryGetValue(textureCode, out List<string> ignoredTextureCodes) && ignoredTextureCodes.Contains(layer.Pattern)) == true)
+        {
+            return;
+        }
+        ctex.BlendedOverlays ??= Array.Empty<BlendedOverlayTexture>();
+        if (!CustomTextures.TryGetValue(layer.TextureCode, out CompositeTexture _overlayTexture) || _overlayTexture == null)
+        {
+            api.Logger.Error("[Flags] Block {0} defines an overlay texture key '{1}', but no matching texture found", Code, layer.TextureCode);
+            ctex.BlendedOverlays = ctex.BlendedOverlays.Append(new BlendedOverlayTexture() { Base = AssetLocation.Create(textureUnknown), BlendMode = blendMode });
+            return;
+        }
+
+        CompositeTexture overlayTexture = _overlayTexture.Clone();
+        overlayTexture.FillPlaceholder(textureCodeColor, layer.Color ?? "black");
+        overlayTexture.FillPlaceholder(textureCodePattern, layer.Pattern);
+
+        AssetLocation logCode = overlayTexture.Base.Clone().WithPathPrefixOnce(prefixTextures).WithPathAppendixOnce(appendixPng);
+        if (!api.Assets.Exists(logCode))
+        {
+            api.Logger.Error("[Flags] Block {0} defines an overlay texture key '{1}' with path '{2}' for color '{3}', but no matching texture found", Code, layer.TextureCode, logCode.ToString(), layer.Color ?? "black");
+            ctex.BlendedOverlays = ctex.BlendedOverlays.Append(new BlendedOverlayTexture() { Base = AssetLocation.Create(textureUnknown), BlendMode = blendMode });
+            return;
+        }
+
+        ctex.BlendedOverlays = ctex.BlendedOverlays.Append(new BlendedOverlayTexture() { Base = overlayTexture.Base, BlendMode = blendMode });
+    }
+
+    bool IAttachableToEntity.IsAttachable(Entity toEntity, ItemStack itemStack) => true;
+
+    void IAttachableToEntity.CollectTextures(ItemStack stack, Shape shape, string texturePrefixCode, Dictionary<string, CompositeTexture> intoDict)
+    {
+        BannerProperties properties = BannerProperties.FromStack(stack);
+
+        foreach ((string textureCode, CompositeTexture texture) in CustomTextures)
+        {
+            CompositeTexture ctex = texture.Clone();
+
+            if (TextureCodesForOverlays.Contains(textureCode))
+            {
+                foreach (BannerLayer layer in properties.Patterns.GetOrdered(textureCode))
+                {
+                    ApplyOverlay(api, textureCode, ctex, layer);
+                }
+
+                foreach (BannerLayer layer in properties.Cutouts.GetOrdered(textureCode))
+                {
+                    ApplyOverlay(api, textureCode, ctex, layer, EnumColorBlendMode.ColorBurn);
+                }
+            }
+
+            intoDict[texturePrefixCode + textureCode] = ctex;
+        }
+    }
+
+    string IAttachableToEntity.GetCategoryCode(ItemStack stack) => "banner";
+    CompositeShape IAttachableToEntity.GetAttachedShape(ItemStack stack, string slotCode) => null;
+    string[] IAttachableToEntity.GetDisableElements(ItemStack stack) => null;
+    string[] IAttachableToEntity.GetKeepElements(ItemStack stack) => null;
+    string IAttachableToEntity.GetTexturePrefixCode(ItemStack stack) => GetMeshCacheKey(stack);
+
+    Shape IWearableShapeSupplier.GetShape(ItemStack stack, Entity forEntity, string texturePrefixCode)
+    {
+        BannerProperties properties = BannerProperties.FromStack(stack);
+
+        if (forEntity == null)
+        {
+            properties.SetPlacement(DefaultVerticalPlacement);
+        }
+        else
+        {
+            string firstKey = CustomShapes.Select(x => x.Key).FirstOrDefault(forEntity.WildCardMatch, defaultValue: DefaultVerticalPlacement);
+            properties.SetPlacement(firstKey);
+        }
+
+        if (CustomShapes.TryGetValue(properties.Placement, out CompositeShape rcshape))
+        {
+            rcshape.Base.WithPathAppendixOnce(appendixJson).WithPathPrefixOnce(prefixShapes);
+            Shape shape = api.Assets.TryGet(rcshape.Base)?.ToObject<Shape>();
+            return shape.PrefixTextures(texturePrefixCode).RemoveWindData();
+        }
+
+        api.Logger.Error("[Flags] No matching shape found for block {0} for type {1}", Code, properties.Placement);
+        Shape _shape = api.Assets.TryGet(Shape.Base)?.ToObject<Shape>();
+        return _shape.PrefixTextures(texturePrefixCode).RemoveWindData();
     }
 }
