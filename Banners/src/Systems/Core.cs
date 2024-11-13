@@ -7,7 +7,6 @@ using Vintagestory.API.Config;
 using Vintagestory.API.Server;
 using Vintagestory.API.Util;
 using Vintagestory.Client.NoObf;
-using Vintagestory.GameContent;
 
 namespace Flags;
 
@@ -18,22 +17,25 @@ public class Core : ModSystem
     public override void Start(ICoreAPI api)
     {
         api.RegisterBlockClass("Flags.BlockBanner", typeof(BlockBanner));
+        api.RegisterBlockEntityClass("Flags.Banner", typeof(BlockEntityBanner));
+        api.RegisterItemClass("Flags.ItemBannerPattern", typeof(ItemBannerPattern));
+
         api.RegisterBlockBehaviorClass("Flags.BannerName", typeof(BlockBehaviorBannerName));
         api.RegisterBlockBehaviorClass("Flags.BannerInteractions", typeof(BlockBehaviorBannerInteractions));
         api.RegisterBlockBehaviorClass("Flags.BannerContainableInteractions", typeof(BlockBehaviorBannerContainableInteractions));
         api.RegisterBlockBehaviorClass("Flags.BannerToolModes", typeof(BlockBehaviorBannerToolModes));
-        api.RegisterBlockEntityClass("Flags.Banner", typeof(BlockEntityBanner));
+
         api.RegisterBlockEntityBehaviorClass("Flags.Banner.Rotatable", typeof(BEBehaviorRotatableBanner));
         api.RegisterBlockEntityBehaviorClass("Flags.Banner.WrenchOrientable", typeof(BEBehaviorWrenchOrientableBanner));
         api.RegisterBlockEntityBehaviorClass("Flags.BannerContainable", typeof(BEBehaviorBannerContainable));
-        api.RegisterItemClass("Flags.ItemRollableFixed", typeof(ItemRollableFixed));
-        api.RegisterItemClass("Flags.ItemBannerPattern", typeof(ItemBannerPattern));
         api.RegisterCollectibleBehaviorClass("Flags.BannerPatternName", typeof(CollectibleBehaviorBannerPatternName));
         api.RegisterCollectibleBehaviorClass("Flags.BannerPatternDescription", typeof(CollectibleBehaviorBannerPatternDescription));
         api.RegisterCollectibleBehaviorClass("Flags.BannerPatternToolModes", typeof(CollectibleBehaviorBannerPatternToolModes));
         api.RegisterCollectibleBehaviorClass("Flags.BannerLiquidDescription", typeof(CollectibleBehaviorBannerLiquidDescription));
+
         api.RegisterCollectibleBehaviorClass("Flags.CutoutTool", typeof(CollectibleBehaviorCutoutTool));
         api.RegisterCollectibleBehaviorClass("Flags.RenameTool", typeof(CollectibleBehaviorRenameTool));
+
         api.Logger.Event("started '{0}' mod", Mod.Info.Name);
 
         GlobalConstants.IgnoredStackAttributes = GlobalConstants.IgnoredStackAttributes.Append(BannersIgnoreAttributeSubTrees);
@@ -55,61 +57,20 @@ public class Core : ModSystem
 
     public override void AssetsFinalize(ICoreAPI api)
     {
+        bool addedCutoutToolToCreative = false;
+        bool addedWrenchToolToCreative = false;
+
         foreach (CollectibleObject obj in api.World.Collectibles)
         {
-            if (BannerLiquid.HasAttribute(obj))
-            {
-                if (!obj.HasBehavior<CollectibleBehaviorBannerLiquidDescription>())
-                {
-                    obj.CollectibleBehaviors = obj.CollectibleBehaviors.Append(new CollectibleBehaviorBannerLiquidDescription(obj));
-                }
+            obj.PatchLiquidDescription();
+            obj.PatchCutoutTool(ref addedCutoutToolToCreative);
+            obj.PatchRenameTool();
+            obj.PatchWrenchTool(ref addedWrenchToolToCreative);
 
-                foreach (CreativeTabAndStackList item in obj.CreativeInventoryStacks)
-                {
-                    item.Tabs = item?.Tabs?.Append(modCreativeTab);
-                }
-            }
-            if (obj is BlockLiquidContainerTopOpened && !obj.HasBehavior<CollectibleBehaviorBannerLiquidDescription>())
-            {
-                obj.CollectibleBehaviors = obj.CollectibleBehaviors.Append(new CollectibleBehaviorBannerLiquidDescription(obj));
-            }
-            if (obj is ItemShears and not ItemScythe && !obj.HasBehavior<CollectibleBehaviorCutoutTool>())
-            {
-                obj.CollectibleBehaviors = obj.CollectibleBehaviors.Append(new CollectibleBehaviorCutoutTool(obj));
-            }
-            if (obj is ItemBook && !obj.HasBehavior<CollectibleBehaviorRenameTool>())
-            {
-                obj.CollectibleBehaviors = obj.CollectibleBehaviors.Append(new CollectibleBehaviorRenameTool(obj));
-
-                if (obj.Code == AssetLocation.Create(itemcodeParchment))
-                {
-                    obj.CreativeInventoryTabs = obj.CreativeInventoryTabs.Append(modCreativeTab);
-                }
-            }
-            if (obj.Code == AssetLocation.Create(itemcodeInkAndQuill))
+            if (obj.Code.Equals(itemcodeParchment) || obj.Code.Equals(itemcodeInkAndQuill))
             {
                 obj.CreativeInventoryTabs = obj.CreativeInventoryTabs.Append(modCreativeTab);
             }
-        }
-
-        CollectibleObject cutoutTool = api.World.Collectibles
-            .Where(obj => obj != null && obj.Code != null && obj.HasBehavior<CollectibleBehaviorCutoutTool>() && obj.CreativeInventoryTabs != null)
-            ?.OrderByDescending(obj => obj.Durability)
-            ?.FirstOrDefault();
-
-        if (cutoutTool != null)
-        {
-            cutoutTool.CreativeInventoryTabs = cutoutTool.CreativeInventoryTabs.Append(modCreativeTab);
-        }
-
-        CollectibleObject wrenchTool = api.World.Collectibles
-            .Where(obj => obj is ItemWrench && obj.CreativeInventoryTabs != null)
-            ?.OrderByDescending(obj => obj.Durability)
-            ?.FirstOrDefault();
-
-        if (wrenchTool != null)
-        {
-            wrenchTool.CreativeInventoryTabs = wrenchTool.CreativeInventoryTabs.Append(modCreativeTab);
         }
     }
 
