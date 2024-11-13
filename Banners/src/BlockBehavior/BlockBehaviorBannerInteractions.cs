@@ -86,7 +86,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
                 world.BlockAccessor.SetBlock(0, blockSel.Position);
                 world.BlockAccessor.TriggerNeighbourBlockUpdate(blockSel.Position);
             }
-            world.PlaySoundAt(blockSel.Block.GetSounds(world.BlockAccessor, blockSel.Position).Place, byPlayer);
+            world.PlaySoundAt(blockSel.Block.GetSounds(world.BlockAccessor, blockSel).Place, byPlayer);
         }
         return true;
     }
