@@ -26,9 +26,29 @@ public class BannerLiquid
         return blockContainer.GetCurrentLitres(containerStack) >= LitresPerUse / (float)containerStack.StackSize;
     }
 
-    public ItemStack TryTakeLiquid(ItemStack containerStack, BlockLiquidContainerTopOpened blockContainer)
+    public bool TryTakeLiquid(IPlayer byPlayer, ItemSlot slot, BlockLiquidContainerTopOpened blockContainer)
     {
-        return blockContainer.TryTakeLiquid(containerStack, LitresPerUse / (float)containerStack.StackSize);
+        WaterTightContainableProps owncontentProps = blockContainer.GetContentProps(slot.Itemstack);
+        ItemStack owncontentStack = blockContainer.GetContent(slot.Itemstack);
+        ItemStack liquidStackForParticles = owncontentStack.Clone();
+        int moved = 0;
+        if (byPlayer.IsCreative())
+        {
+            moved = 1000;
+        }
+        else
+        {
+            moved = blockContainer.SplitStackAndPerformAction(byPlayer.Entity, slot, (ItemStack stack) =>
+            {
+                return blockContainer.TryTakeLiquid(slot.Itemstack, LitresPerUse)?.StackSize * (int)owncontentProps.ItemsPerLitre ?? 0;
+            });
+        }
+        if (moved > 0)
+        {
+            blockContainer.DoLiquidMovedEffects(byPlayer, liquidStackForParticles, moved, BlockLiquidContainerBase.EnumLiquidDirection.Pour);
+            return true;
+        }
+        return false;
     }
 
     public static bool TryGet(ItemStack fromStack, BlockLiquidContainerTopOpened container, out BannerLiquid props)

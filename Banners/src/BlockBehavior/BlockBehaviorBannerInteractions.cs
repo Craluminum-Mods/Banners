@@ -93,12 +93,12 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
 
     public bool AddLayer(IPlayer byPlayer, ItemSlot leftSlot, ItemSlot rightSlot, BannerProperties bannerProps, BlockBanner blockBanner, bool isPreview = false)
     {
-        if (leftSlot?.Itemstack?.Collectible is not ItemBannerPattern itemPattern || rightSlot?.Itemstack?.Collectible is not BlockLiquidContainerTopOpened blockContainer)
+        if (leftSlot?.Itemstack?.Collectible is not ItemBannerPattern itemPattern
+            || rightSlot?.Itemstack?.Collectible is not BlockLiquidContainerTopOpened blockContainer
+            || !blockBanner.IsEditModeEnabled(bannerProps, byPlayer, printError: !isPreview))
         {
             return false;
         }
-
-        if (!blockBanner.IsEditModeEnabled(bannerProps, byPlayer, printError: !isPreview)) return false;
 
         PatternProperties patternProperties = PatternProperties.FromStack(leftSlot.Itemstack);
         if (string.IsNullOrEmpty(patternProperties.Type))
@@ -111,11 +111,6 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
             if (!isPreview) byPlayer.IngameError(blockBanner, IngameError.BannerPatternGroups, IngameError.BannerPatternGroups.Localize());
             return false;
         }
-        if (rightSlot.Itemstack.StackSize > 1 && !byPlayer.IsCreative())
-        {
-            if (!isPreview) byPlayer.IngameError(blockBanner, IngameError.LiquidContainerOneMax, IngameError.LiquidContainerOneMax.Localize());
-            return false;
-        }
         if (!BannerLiquid.TryGet(rightSlot.Itemstack, blockContainer, out BannerLiquid liquidProps) || !liquidProps.IsDye)
         {
             return false;
@@ -123,7 +118,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
 
         if (!liquidProps.CanTakeLiquid(rightSlot.Itemstack, blockContainer) && !byPlayer.IsCreative())
         {
-            if (isPreview) byPlayer.IngameError(blockBanner, IngameError.BannerNotEnoughDye, IngameError.BannerNotEnoughDye.Localize(liquidProps.LitresPerUse));
+            if (!isPreview) byPlayer.IngameError(blockBanner, IngameError.BannerNotEnoughDye, IngameError.BannerNotEnoughDye.Localize(liquidProps.LitresPerUse));
             return false;
         }
 
@@ -132,14 +127,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
             if (!isPreview) byPlayer.IngameError(blockBanner, IngameError.LayersLimitReached, IngameError.LayersLimitReached.Localize(Patterns.GetLayersLimit(byPlayer.Entity.World)));
             return false;
         }
-
-        if (!byPlayer.IsCreative())
-        {
-            if (!isPreview) liquidProps.TryTakeLiquid(rightSlot.Itemstack, blockContainer);
-        }
-
-        if (!isPreview) byPlayer.DoLiquidMovedEffects(blockContainer.GetContent(rightSlot.Itemstack), 1000, BlockLiquidContainerBase.EnumLiquidDirection.Pour);
-        return true;
+        return isPreview ? true : liquidProps.TryTakeLiquid(byPlayer, rightSlot, blockContainer);
     }
 
     public bool RemoveLayer(IPlayer byPlayer, ItemSlot rightSlot, BannerProperties bannerProps, BlockBanner blockBanner, bool isPreview = false)
@@ -147,12 +135,6 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         if (rightSlot?.Itemstack?.Collectible is not BlockLiquidContainerTopOpened blockContainer
             || !blockBanner.IsEditModeEnabled(bannerProps, byPlayer, printError: !isPreview))
         {
-            return false;
-        }
-
-        if (rightSlot.Itemstack.StackSize > 1 && !byPlayer.IsCreative())
-        {
-            if (!isPreview) byPlayer.IngameError(blockBanner, IngameError.LiquidContainerOneMax, IngameError.LiquidContainerOneMax.Localize());
             return false;
         }
         if (!BannerLiquid.TryGet(rightSlot.Itemstack, blockContainer, out BannerLiquid liquidProps) || !liquidProps.IsBleach)
@@ -169,14 +151,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         {
             return false;
         }
-
-        if (!isPreview && !byPlayer.IsCreative())
-        {
-            liquidProps.TryTakeLiquid(rightSlot.Itemstack, blockContainer);
-        }
-
-        if (!isPreview) byPlayer.DoLiquidMovedEffects(blockContainer.GetContent(rightSlot.Itemstack), 1000, BlockLiquidContainerBase.EnumLiquidDirection.Pour);
-        return true;
+        return isPreview ? true : liquidProps.TryTakeLiquid(byPlayer, rightSlot, blockContainer);
     }
 
     public bool AddCutout(IPlayer byPlayer, ItemSlot leftSlot, ItemSlot rightSlot, BannerProperties bannerProps, BlockBanner blockBanner, bool isPreview = false)
