@@ -9,21 +9,13 @@ using Vintagestory.GameContent;
 
 namespace Flags;
 
-/// <summary>
-/// Patch because bed drops banner upon waking up
-/// </summary>
-public static class BlockEntityBed_DidUnmount_Patch
+public static class FixBedDroppingBanner
 {
     [ThreadStatic]
     public static bool Applied;
 
-    public static MethodBase TargetMethod()
-    {
-        return AccessTools.Method(typeof(BlockEntityBed), nameof(BlockEntityBed.DidUnmount), new[] { typeof(EntityAgent) });
-    }
-
-    public static MethodInfo GetTranspiler() => typeof(BlockEntityBed_DidUnmount_Patch).GetMethod(nameof(Transpiler));
-
+    [HarmonyTranspiler]
+    [HarmonyPatch(typeof(BlockEntityBed), nameof(BlockEntityBed.DidUnmount))]
     public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator il)
     {
         if (Applied)

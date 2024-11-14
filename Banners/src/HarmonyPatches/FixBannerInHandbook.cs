@@ -1,27 +1,19 @@
 using HarmonyLib;
-using System.Reflection;
 using System.Runtime.CompilerServices;
 using Vintagestory.API.Common;
 using Vintagestory.GameContent;
 
 namespace Flags;
 
-public static class GuiHandbookItemStackPage_PageCodeForStack_Patch
+public static class FixBannerInHandbook
 {
-    public static MethodBase TargetMethod()
-    {
-        return AccessTools.Method(typeof(GuiHandbookItemStackPage), nameof(GuiHandbookItemStackPage.PageCodeForStack), new[] { typeof(ItemStack) });
-    }
-
-    public static MethodInfo GetBase() => typeof(GuiHandbookItemStackPage_PageCodeForStack_Patch).GetMethod(nameof(Base));
-    public static MethodInfo GetPostfix() => typeof(GuiHandbookItemStackPage_PageCodeForStack_Patch).GetMethod(nameof(Postfix));
-
+    [HarmonyReversePatch(HarmonyReversePatchType.Original)]
+    [HarmonyPatch(typeof(GuiHandbookItemStackPage), nameof(GuiHandbookItemStackPage.PageCodeForStack))]
     [MethodImpl(MethodImplOptions.NoInlining)]
-    public static string Base(ItemStack stack)
-    {
-        return default;
-    }
+    public static string Base(ItemStack stack) => default;
 
+    [HarmonyPostfix]
+    [HarmonyPatch(typeof(GuiHandbookItemStackPage), nameof(GuiHandbookItemStackPage.PageCodeForStack))]
     public static void Postfix(ref string __result, ItemStack stack)
     {
         if (stack?.Collectible is not BlockBanner)

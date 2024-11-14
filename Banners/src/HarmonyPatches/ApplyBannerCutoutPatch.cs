@@ -1,21 +1,12 @@
 using HarmonyLib;
-using System.Reflection;
 using Vintagestory.API.MathTools;
 
 namespace Flags;
 
-/// <summary>
-/// Temporary solution for banner cutouts
-/// </summary>
-public static class ColorBlend_ColorBurn_Patch
+public static class ApplyBannerCutoutPatch
 {
-    public static MethodBase TargetMethod()
-    {
-        return AccessTools.Method(typeof(ColorBlend), nameof(ColorBlend.ColorBurn), new[] { typeof(int), typeof(int) });
-    }
-
-    public static MethodInfo GetPrefix() => typeof(ColorBlend_ColorBurn_Patch).GetMethod(nameof(Prefix));
-
+    [HarmonyPrefix]
+    [HarmonyPatch(typeof(ColorBlend), nameof(ColorBlend.ColorBurn))]
     public static bool Prefix(ref int __result, int rgb1, int rgb2)
     {
         __result = OverlayCutout(rgb1, rgb2);

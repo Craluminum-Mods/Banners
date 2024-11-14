@@ -1,22 +1,13 @@
 using HarmonyLib;
-using System.Reflection;
 using Vintagestory.API.Common;
 using Vintagestory.GameContent;
 
 namespace Flags;
 
-/// <summary>
-/// Patch because BlockBed doesn't call base.OnBlockInteractStart
-/// </summary>
-public static class BlockBed_OnBlockInteractStart_Patch
+public static class ApplyBannerToBedPatch
 {
-    public static MethodBase TargetMethod()
-    {
-        return AccessTools.Method(typeof(BlockBed), nameof(BlockBed.OnBlockInteractStart), new[] { typeof(IWorldAccessor), typeof(IPlayer), typeof(BlockSelection) });
-    }
-
-    public static MethodInfo GetPrefix() => typeof(BlockBed_OnBlockInteractStart_Patch).GetMethod(nameof(Prefix));
-
+    [HarmonyPrefix]
+    [HarmonyPatch(typeof(BlockBed), nameof(BlockBed.OnBlockInteractStart))]
     public static bool Prefix(BlockBed __instance, ref bool __result, IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel)
     {
         if (blockSel != null
