@@ -8,22 +8,20 @@ public static class CollectibleObjectPatches
 {
     public static void PatchLiquidDescription(this CollectibleObject obj)
     {
-        bool isLiquid = BannerLiquid.HasAttribute(obj);
-        bool hasBehavior = obj.HasBehavior<CollectibleBehaviorBannerLiquidDescription>();
-        if (!isLiquid && obj is not BlockLiquidContainerTopOpened)
+        if ((obj is BlockLiquidContainerTopOpened || BannerLiquid.HasAttribute(obj)) && !obj.HasBehavior<CollectibleBehaviorBannerLiquidDescription>())
         {
-            return;
+            obj.CollectibleBehaviors = obj.CollectibleBehaviors.Append(new CollectibleBehaviorBannerLiquidDescription(obj));
         }
-        if (isLiquid)
+    }
+
+    public static void AddLiquidToCreative(this CollectibleObject obj)
+    {
+        if (BannerLiquid.HasAttribute(obj))
         {
             foreach (CreativeTabAndStackList item in obj.CreativeInventoryStacks)
             {
                 item.Tabs = item?.Tabs?.Append(modCreativeTab);
             }
-        }
-        if (!hasBehavior)
-        {
-            obj.CollectibleBehaviors = obj.CollectibleBehaviors.Append(new CollectibleBehaviorBannerLiquidDescription(obj));
         }
     }
 

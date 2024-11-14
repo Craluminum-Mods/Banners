@@ -63,6 +63,7 @@ public class Core : ModSystem
             obj.PatchCutoutTool(ref addedCutoutToolToCreative);
             obj.PatchRenameTool();
             obj.PatchWrenchTool(ref addedWrenchToolToCreative);
+            obj.AddLiquidToCreative();
 
             if (obj.Code.Equals(itemcodeParchment) || obj.Code.Equals(itemcodeInkAndQuill))
             {
