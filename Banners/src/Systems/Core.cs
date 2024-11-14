@@ -1,5 +1,4 @@
 global using static Flags.Constants;
-using Flags.Converter;
 using System.Linq;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
@@ -12,8 +11,6 @@ namespace Flags;
 
 public class Core : ModSystem
 {
-    public static BannerConverter Converter { get; set; } = new();
-
     public override void Start(ICoreAPI api)
     {
         api.RegisterBlockClass("Flags.BlockBanner", typeof(BlockBanner));
@@ -72,10 +69,5 @@ public class Core : ModSystem
                 obj.CreativeInventoryTabs = obj.CreativeInventoryTabs.Append(modCreativeTab);
             }
         }
-    }
-
-    public override void AssetsLoaded(ICoreAPI api)
-    {
-        Converter = api.Assets.TryGet(AssetLocation.Create(pathConverter)).ToObject<BannerConverter>();
     }
 }

@@ -1,26 +1,33 @@
-
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
 
-namespace Flags.Converter;
+namespace Flags;
 
-public enum EnumConverterInteraction
+public class BannerConverter : ModSystem
 {
-    Hand = 0,
-    Block = 1
-}
+    public static BannerConverterConfig ConverterConfig { get; set; } = new();
 
-public class BannerConverter
-{
-    public Dictionary<string, string> BaseColorsToColors { get; set; } = new();
-    public Dictionary<string, string> IdsToColors { get; set; } = new();
-    public Dictionary<string, string> Patterns { get; set; } = new();
+    public override void AssetsLoaded(ICoreAPI api)
+    {
+        ConverterConfig = api.Assets.TryGet(AssetLocation.Create(pathConverter)).ToObject<BannerConverterConfig>();
+    }
 
-    public TextCommandResult TryGenerateBanner(TextCommandCallingArgs args)
+    public static string GetPattern(JsonObject pattern)
+    {
+        ConverterConfig.Patterns.TryGetValueOrWildcard(pattern["Pattern"].AsString(), out string value);
+        return value;
+    }
+
+    public static string GetColor(JsonObject pattern)
+    {
+        ConverterConfig.IdsToColors.TryGetValueOrWildcard(pattern["Color"].AsInt().ToString(), out string value);
+        return value;
+    }
+
+    public static TextCommandResult TryGenerateBanner(TextCommandCallingArgs args)
     {
         IPlayer byPlayer = args.Caller.Player;
         ItemSlot slot = byPlayer.Entity.RightHandItemSlot;
@@ -59,7 +66,7 @@ public class BannerConverter
             return TextCommandResult.Error($"{modDomain}:command-genbannermc-invalidsyntax".Localize());
         }
 
-        if (!BaseColorsToColors.TryGetValueOrWildcard(mcBaseColor, out string vsBaseColor))
+        if (!ConverterConfig.BaseColorsToColors.TryGetValueOrWildcard(mcBaseColor, out string vsBaseColor))
         {
             return TextCommandResult.Error($"{modDomain}:command-genbannermc-invalidsyntax".Localize());
         }
@@ -86,17 +93,5 @@ public class BannerConverter
                 break;
         }
         return TextCommandResult.Success($"{modDomain}:command-genbannermc".Localize());
-    }
-
-    private string GetPattern(JsonObject pattern)
-    {
-        _ = Patterns.TryGetValueOrWildcard(pattern["Pattern"].AsString(), out string value);
-        return value;
-    }
-
-    private string GetColor(JsonObject pattern)
-    {
-        _ = IdsToColors.TryGetValueOrWildcard(pattern["Color"].AsInt().ToString(), out string value);
-        return value;
     }
 }

@@ -10,6 +10,16 @@ namespace Flags;
 
 public static class BannerExtensions
 {
+    public static TextCommandResult GenerateTextures(this TextCommandCallingArgs args)
+    {
+        bool replaceExisting = args?[0].ToString().ToBool() ?? false;
+        ItemSlot slot = args.Caller.Player.Entity.RightHandItemSlot;
+        ICoreClientAPI capi = args.Caller.Player.Entity.Api as ICoreClientAPI;
+        return slot?.Itemstack?.Collectible is BlockBanner blockBanner
+            ? blockBanner.DebugPregenerateTextures(capi, replaceExisting)
+            : TextCommandResult.Error($"{modDomain}:command-nobanner".Localize());
+    }
+
     public static TextCommandResult DebugPregenerateTextures(this BlockBanner blockBanner, ICoreClientAPI capi, bool replaceExisting = false, string grayscaleColor = defaultColor)
     {
         int amount = 0;
