@@ -5,8 +5,8 @@
     "name": "Banners",
     "description": "Extremely customizable banners",
     "authors": ["Craluminum2413", "Moby_"],
-    "contributors":  ["BillyGalbreath"],
-    "version": "1.0.0",
+    "contributors":  ["BillyGalbreath", "LANDSEERS"],
+    "version": "1.1.0",
     "dependencies": {
         "game": "1.20.0-pre.1"
     }
