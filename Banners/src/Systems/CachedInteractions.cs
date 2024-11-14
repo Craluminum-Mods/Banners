@@ -8,12 +8,17 @@ namespace Flags;
 
 public class CachedInteractions : ModSystem
 {
+    private ICoreClientAPI capi;
+
     public override bool ShouldLoad(EnumAppSide forSide) => forSide.IsClient();
+
+    public override void StartClientSide(ICoreClientAPI api)
+    {
+        capi = api;
+    }
 
     public override void AssetsFinalize(ICoreAPI api)
     {
-        ICoreClientAPI capi = api as ICoreClientAPI;
-
         ObjectCacheUtil.GetOrCreate(capi, cacheKeyBannerStacks, () =>
         {
             return capi.World.Collectibles.Where(obj => obj is BlockBanner).SelectMany(obj => obj.GetHandBookStacksArray(capi)).Select(stack =>
