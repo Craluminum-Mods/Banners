@@ -14,3 +14,5 @@ resources/assets/flags/textures/icons
     saverotations* - modified version of "rotation-lock", "save" and "delete" icons
 
 640x640 as default, 384x384 as subicon (on 640px icon)
+
+Elk caparison model: https://github.com/VIRGINCUBALIBRE/ElkBarding

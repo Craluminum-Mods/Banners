@@ -19,11 +19,15 @@
             "bed-vanilla-hay": { "base": "flags:block/banner/containable/bed/vanilla-hay" },
             "bed-vanilla-wood": { "base": "flags:block/banner/containable/bed/vanilla-wood" },
             "bed-vanilla-woodaged": { "base": "flags:block/banner/containable/bed/vanilla-woodaged" },
-            
+
             "boat-raft-bamboo": { "base": "flags:block/banner/attachabletoentity/raft-bamboo" },
             "boat-raft-*": { "base": "flags:block/banner/attachabletoentity/raft" },
-            "boat-sailed-*": { "base": "flags:block/banner/attachabletoentity/sailed" }
+            "boat-sailed-*": { "base": "flags:block/banner/attachabletoentity/sailed" },
+            "tameddeer-*": { "base": "flags:block/banner/attachabletoentity/elk-caparison2" }
         },
+
+        "disableElements": ["Neck2ORIGIN", "neck1ORIGIN"],
+
         "ignoredTextureCodesForOverlays": {
             "topsymbol": ["hhb", "bs", "bl", "br", "bt", "bts"],
             "botsymbol": ["hh", "ts", "tl", "tr", "tt", "tts"]
@@ -286,9 +290,9 @@
         },
 
         "bannerPreviewHudTransform": {
-          "rotation": { "x": 0, "y": 180, "z": 0 },
-          "origin": { "x": 0.5, "y": 0, "z": 0 },
-          "scaleXyz": { "x": -0.85, "y": 0.85, "z": 0.85 }
+            "rotation": { "x": 0, "y": 180, "z": 0 },
+            "origin": { "x": 0.5, "y": 0, "z": 0 },
+            "scaleXyz": { "x": -0.85, "y": 0.85, "z": 0.85 }
         },
 
         // "showDebugInfo": true,
