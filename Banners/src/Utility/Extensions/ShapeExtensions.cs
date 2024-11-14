@@ -6,7 +6,7 @@ public static class ShapeExtensions
 {
     public static Shape RemoveWindData(this Shape shape)
     {
-        shape.WalkElements("*", (ShapeElement shapeElement) =>
+        shape?.WalkElements("*", (ShapeElement shapeElement) =>
         {
             foreach (ShapeElementFace face in shapeElement.FacesResolved)
             {
@@ -36,7 +36,7 @@ public static class ShapeExtensions
 
     public static Shape PrefixTextures(this Shape shape, string prefix)
     {
-        shape.WalkElements("*", (ShapeElement shapeElement) =>
+        shape?.WalkElements("*", (ShapeElement shapeElement) =>
         {
             foreach (ShapeElementFace face in shapeElement.FacesResolved)
             {
