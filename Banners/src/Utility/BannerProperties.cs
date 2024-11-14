@@ -142,4 +142,11 @@ public class BannerProperties
         result.Append(Modes.ToString());
         return result.ToString();
     }
+
+    public string ToCompactString()
+    {
+        StringBuilder result = new StringBuilder();
+        result.Append(Patterns.ToCompactString());
+        return result.ToString();
+    }
 }

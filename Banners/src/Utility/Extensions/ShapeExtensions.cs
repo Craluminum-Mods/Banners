@@ -33,22 +33,4 @@ public static class ShapeExtensions
 
         return shape;
     }
-
-    public static Shape PrefixTextures(this Shape shape, string prefix)
-    {
-        shape?.WalkElements("*", (ShapeElement shapeElement) =>
-        {
-            foreach (ShapeElementFace face in shapeElement.FacesResolved)
-            {
-                if (face == null || string.IsNullOrEmpty(face.Texture))
-                {
-                    continue;
-                }
-
-                face.Texture = prefix + face.Texture;
-            }
-        });
-
-        return shape;
-    }
 }

@@ -261,8 +261,8 @@ public class BlockBanner : Block, IContainedMeshSource, IAttachableToEntity, IWe
     public string GetMeshCacheKey(ItemStack itemstack)
     {
         BannerProperties props = BannerProperties.FromStack(itemstack);
-        props.SetPlacement(DefaultVerticalPlacement);
-        return $"{itemstack.Collectible.Code}{props}";
+        string compactKey = props.ToCompactString();
+        return $"{itemstack.Collectible.Code}-{compactKey}";
     }
 
     public MeshData GetOrCreateMesh(ICoreAPI api, BannerProperties properties, ITexPositionSource overrideTexturesource = null)
@@ -445,13 +445,13 @@ public class BlockBanner : Block, IContainedMeshSource, IAttachableToEntity, IWe
                 }
             }
 
-            intoDict[texturePrefixCode + textureCode] = ctex;
+            intoDict[textureCode] = ctex;
         }
     }
 
     string IAttachableToEntity.GetCategoryCode(ItemStack stack) => "banner";
     CompositeShape IAttachableToEntity.GetAttachedShape(ItemStack stack, string slotCode) => null;
-    string[] IAttachableToEntity.GetDisableElements(ItemStack stack) => null;
+    string[] IAttachableToEntity.GetDisableElements(ItemStack stack) => stack?.Collectible?.Attributes?["disableElements"]?.AsArray<string>();
     string[] IAttachableToEntity.GetKeepElements(ItemStack stack) => null;
     string IAttachableToEntity.GetTexturePrefixCode(ItemStack stack) => GetMeshCacheKey(stack);
 
@@ -473,11 +473,11 @@ public class BlockBanner : Block, IContainedMeshSource, IAttachableToEntity, IWe
         {
             rcshape.Base.WithPathAppendixOnce(appendixJson).WithPathPrefixOnce(prefixShapes);
             Shape shape = api.Assets.TryGet(rcshape.Base)?.ToObject<Shape>();
-            return shape.PrefixTextures(texturePrefixCode).RemoveWindData();
+            return shape.RemoveWindData();
         }
 
         api.Logger.Error("[Flags] No matching shape found for block {0} for type {1}", Code, properties.Placement);
         Shape _shape = api.Assets.TryGet(Shape.Base)?.ToObject<Shape>();
-        return _shape.PrefixTextures(texturePrefixCode).RemoveWindData();
+        return _shape.RemoveWindData();
     }
 }

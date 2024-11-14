@@ -138,4 +138,14 @@ public class Patterns
         }
         return result.ToString();
     }
+
+    public string ToCompactString()
+    {
+        StringBuilder result = new StringBuilder();
+        if (Elements.Any())
+        {
+            result.Append(string.Join('-', Elements.Select(x => $"{x.Key}-{x.Value}")));
+        }
+        return result.ToString();
+    }
 }
