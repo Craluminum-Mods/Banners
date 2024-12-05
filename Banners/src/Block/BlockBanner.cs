@@ -182,14 +182,7 @@ public class BlockBanner : Block, IContainedMeshSource, IAttachableToEntity, IWe
         {
             IRotatableBanner rotatableBanner = GetInterface<IRotatableBanner>(world, blockSel.Position);
             rotatableBanner?.RotateWhenPlaced(byPlayer, blockSel, byItemStack, be);
-            if (blockSel.Face.IsHorizontal)
-            {
-                BannerProperties.SetPlacement(byItemStack.Attributes, DefaultHorizontalPlacement);
-            }
-            else if (blockSel.Face.IsVertical)
-            {
-                BannerProperties.SetPlacement(byItemStack.Attributes, DefaultVerticalPlacement);
-            }
+            BannerProperties.SetPlacement(byItemStack.Attributes, blockSel.Face.IsHorizontal ? DefaultHorizontalPlacement : DefaultVerticalPlacement);
             be.OnBlockPlaced(byItemStack);
         }
         return place;
