@@ -6,10 +6,10 @@ using Vintagestory.Server;
 
 namespace Flags;
 
+[HarmonyPatch(typeof(ServerSystemBlockSimulation), "HandleBlockPlaceOrBreak")]
 public static class RemoveBannerFromBedPatch
 {
     [HarmonyPrefix]
-    [HarmonyPatch(typeof(ServerSystemBlockSimulation), "HandleBlockPlaceOrBreak")]
     public static void Prefix(ServerSystemBlockSimulation __instance, Packet_Client packet, ConnectedClient client)
     {
         Packet_ClientBlockPlaceOrBreak p = packet.BlockPlaceOrBreak;

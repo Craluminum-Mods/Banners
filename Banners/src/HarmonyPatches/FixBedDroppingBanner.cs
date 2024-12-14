@@ -9,13 +9,13 @@ using Vintagestory.GameContent;
 
 namespace Flags;
 
+[HarmonyPatch(typeof(BlockEntityBed), nameof(BlockEntityBed.DidUnmount))]
 public static class FixBedDroppingBanner
 {
     [ThreadStatic]
     public static bool Applied;
 
     [HarmonyTranspiler]
-    [HarmonyPatch(typeof(BlockEntityBed), nameof(BlockEntityBed.DidUnmount))]
     public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator il)
     {
         if (Applied)

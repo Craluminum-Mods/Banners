@@ -4,10 +4,10 @@ using Vintagestory.GameContent;
 
 namespace Flags;
 
+[HarmonyPatch(typeof(BlockBed), nameof(BlockBed.OnBlockInteractStart))]
 public static class ApplyBannerToBedPatch
 {
     [HarmonyPrefix]
-    [HarmonyPatch(typeof(BlockBed), nameof(BlockBed.OnBlockInteractStart))]
     public static bool Prefix(BlockBed __instance, ref bool __result, IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel)
     {
         if (blockSel != null

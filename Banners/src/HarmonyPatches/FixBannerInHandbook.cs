@@ -5,15 +5,14 @@ using Vintagestory.GameContent;
 
 namespace Flags;
 
+[HarmonyPatch(typeof(GuiHandbookItemStackPage), nameof(GuiHandbookItemStackPage.PageCodeForStack))]
 public static class FixBannerInHandbook
 {
     [HarmonyReversePatch(HarmonyReversePatchType.Original)]
-    [HarmonyPatch(typeof(GuiHandbookItemStackPage), nameof(GuiHandbookItemStackPage.PageCodeForStack))]
     [MethodImpl(MethodImplOptions.NoInlining)]
     public static string Base(ItemStack stack) => default;
 
     [HarmonyPostfix]
-    [HarmonyPatch(typeof(GuiHandbookItemStackPage), nameof(GuiHandbookItemStackPage.PageCodeForStack))]
     public static void Postfix(ref string __result, ItemStack stack)
     {
         if (stack?.Collectible is not BlockBanner)

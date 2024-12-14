@@ -3,10 +3,10 @@ using Vintagestory.API.MathTools;
 
 namespace Flags;
 
+[HarmonyPatch(typeof(ColorBlend), nameof(ColorBlend.ColorBurn))]
 public static class ApplyBannerCutoutPatch
 {
     [HarmonyPrefix]
-    [HarmonyPatch(typeof(ColorBlend), nameof(ColorBlend.ColorBurn))]
     public static bool Prefix(ref int __result, int rgb1, int rgb2)
     {
         __result = OverlayCutout(rgb1, rgb2);
