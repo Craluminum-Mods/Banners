@@ -15,6 +15,5 @@ public class HarmonyPatches : ModSystem
     public override void Dispose()
     {
         HarmonyInstance.UnpatchAll(HarmonyInstance.Id);
-        FixBedDroppingBanner.Applied = false;
     }
 }
