@@ -376,7 +376,7 @@ public class BlockBanner : Block, IContainedMeshSource, IAttachableToEntity, IWe
 
                 foreach (BannerLayer layer in properties.Cutouts.GetOrdered(textureCode))
                 {
-                    ApplyOverlay(api, textureCode, ctex, layer, EnumColorBlendMode.ColorBurn);
+                    ApplyOverlay(api, textureCode, ctex, layer, EnumColorBlendMode.OverlayCutout);
                 }
             }
 
@@ -434,7 +434,7 @@ public class BlockBanner : Block, IContainedMeshSource, IAttachableToEntity, IWe
 
                 foreach (BannerLayer layer in properties.Cutouts.GetOrdered(textureCode))
                 {
-                    ApplyOverlay(api, textureCode, ctex, layer, EnumColorBlendMode.ColorBurn);
+                    ApplyOverlay(api, textureCode, ctex, layer, EnumColorBlendMode.OverlayCutout);
                 }
             }
 
