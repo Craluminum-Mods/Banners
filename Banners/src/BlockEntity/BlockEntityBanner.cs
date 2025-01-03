@@ -10,6 +10,7 @@ namespace Flags;
 
 public class BlockEntityBanner : BlockEntity, IRotatable
 {
+    public string EditMode { get; protected set; } = "on";
     public BannerProperties BannerProps { get; protected set; } = new BannerProperties();
     public BlockBanner BannerBlock => Block as BlockBanner;
 
@@ -27,8 +28,9 @@ public class BlockEntityBanner : BlockEntity, IRotatable
         }
     }
 
-    public void ReplaceProperties(BannerProperties fromProps)
+    public void ReplaceProperties(BannerProperties fromProps, string editMode = "on")
     {
+        EditMode = editMode;
         BannerProps = fromProps;
         MarkDirty(redrawOnClient: true);
     }
@@ -71,6 +73,7 @@ public class BlockEntityBanner : BlockEntity, IRotatable
                 defaultType: BannerBlock.DefaultPlacement,
                 defaultModes: BannerBlock.DefaultModes);
             BannerProperties.ClearPlacement(byItemStack.Attributes);
+            EditMode = byItemStack.Attributes.GetAsString("editmode", "on");
         }
         Init();
     }
@@ -78,6 +81,7 @@ public class BlockEntityBanner : BlockEntity, IRotatable
     public override void ToTreeAttributes(ITreeAttribute tree)
     {
         BannerProps.ToTreeAttribute(tree);
+        tree.SetString("editmode", EditMode);
         base.ToTreeAttributes(tree);
     }
 
@@ -88,6 +92,7 @@ public class BlockEntityBanner : BlockEntity, IRotatable
         BannerProps.FromTreeAttribute(tree,
             defaultType: BannerBlock.DefaultPlacement,
             defaultModes: BannerBlock.DefaultModes);
+        EditMode = tree.GetAsString("editmode", "on");
         Init();
     }
 
@@ -111,6 +116,15 @@ public class BlockEntityBanner : BlockEntity, IRotatable
     {
         base.GetBlockInfo(forPlayer, sb);
         BannerProps.GetDescription(BannerBlock, forPlayer, sb, BannerBlock.ShowDebugInfo);
+        GetModesDescription(sb);
+    }
+
+    public void GetModesDescription(StringBuilder sb)
+    {
+        if (Api is ICoreClientAPI && ConfigSystem.BannerExtraInfoConfig.Enabled)
+        {
+            sb.AppendLine($"{langCodeToolMode}{"editmode"}".Localize($"{langCodeToolModeValue}{EditMode}".Localize()));
+        }
     }
 
     public Cuboidf[] GetOrCreateSelectionBoxes(bool forceNew = false)
@@ -164,5 +178,15 @@ public class BlockEntityBanner : BlockEntity, IRotatable
         };
         rotatableBanner?.RotateByAxis(dir, EnumAxis.Y, Radians90);
         MarkDirty(redrawOnClient: true);
+    }
+
+    public bool IsEditModeEnabled(bool printError = true)
+    {
+        if (EditMode == "off" && printError)
+        {
+            string errorCode = "flags:ingameerror-editmode-off";
+            (Api as ICoreClientAPI)?.IngameError(this, errorCode, errorCode.Localize());
+        }
+        return EditMode == "on";
     }
 }

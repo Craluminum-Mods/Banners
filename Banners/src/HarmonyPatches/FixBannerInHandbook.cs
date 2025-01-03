@@ -24,10 +24,10 @@ public static class FixBannerInHandbook
 
         newStack.Attributes.GetTreeAttribute(attributeBanner)?.RemoveAttribute(attributeName);
         newStack.Attributes.GetTreeAttribute(attributeBanner)?.RemoveAttribute(attributeCutouts);
-        newStack.Attributes.RemoveAttribute(attributeBannerModes);
         newStack.Attributes.RemoveAttribute(attributeRotX);
         newStack.Attributes.RemoveAttribute(attributeRotY);
         newStack.Attributes.RemoveAttribute(attributeRotZ);
+        newStack.Attributes.RemoveAttribute("editmode");
 
         BannerProperties fromProps = BannerProperties.FromStack(newStack);
         if (fromProps.Patterns.Count <= 1)

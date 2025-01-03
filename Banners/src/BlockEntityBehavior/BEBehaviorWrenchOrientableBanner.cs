@@ -35,20 +35,18 @@ public class BEBehaviorWrenchOrientableBanner : BlockEntityBehavior, IWrenchOrie
             return;
         }
 
-        if (!be.BannerBlock.IsEditModeEnabled(be.BannerProps, byPlayer)) return;
+        if (!be.IsEditModeEnabled()) return;
 
         bool sneak = byEntity.Controls.Sneak;
         bool sprint = byEntity.Controls.Sprint;
 
         BannerProperties BannerProps = be.BannerProps;
         IRotatableBanner rotatableBanner = Block.GetInterface<IRotatableBanner>(Api.World, Pos);
-        if (rotatableBanner?.TryRotate(byEntity, blockSel, dir) == true)
-        {
-
-        }
-        else if (sneak && sprint
-        && PlacementBaseCodes?.TryGetValueOrWildcard(BannerProps.Placement, out string baseCode) == true
-        && Placements?.TryGetValueOrWildcard(baseCode, out List<string> possibleTypes) == true)
+        if (rotatableBanner?.TryRotate(byEntity, blockSel, dir) == false
+            && sneak
+            && sprint
+            && PlacementBaseCodes?.TryGetValueOrWildcard(BannerProps.Placement, out string baseCode) == true
+            && Placements?.TryGetValueOrWildcard(baseCode, out List<string> possibleTypes) == true)
         {
             using List<string>.Enumerator types = possibleTypes.GetEnumerator();
             while (types.MoveNext())

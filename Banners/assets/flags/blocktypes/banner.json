@@ -281,13 +281,6 @@
         "defaultPlacement": "compact-wall",
         "defaultHorizontalPlacement": "compact-wall",
         "defaultVerticalPlacement": "compact-groundsimple",
-        "defaultModes": {
-            // "displayonmap": "off",
-            "pickup": "off",
-            "wind": "on",
-            "editmode": "on",
-            "saverotations": "off"
-        },
 
         "bannerPreviewHudTransform": {
             "rotation": { "x": 0, "y": 180, "z": 0 },
@@ -458,28 +451,8 @@
                     Possible values:
                     - displayonmap       = on, off, group
                     - editmode          = on, off
-                    - pickup            = on, off
-                    - saverotations     = on, off
-                    - wind              = on, off
                 */
                 "toolModes": [
-                    {
-                        "icon": "flags:textures/icons/toolmode/pickup-on.svg",
-                        "SetAttribute": { "Key": "pickup", "Value": "on" }
-                    },
-                    {
-                        "icon": "flags:textures/icons/toolmode/pickup-off.svg",
-                        "SetAttribute": { "Key": "pickup", "Value": "off" }
-                    },
-                    {
-                        "icon": "flags:textures/icons/toolmode/wind-on.svg",
-                        "SetAttribute": { "Key": "wind", "Value": "on" },
-                        "linebreak": true
-                    },
-                    {
-                        "icon": "flags:textures/icons/toolmode/wind-off.svg",
-                        "SetAttribute": { "Key": "wind", "Value": "off" }
-                    },
                     {
                         "icon": "flags:textures/icons/toolmode/editmode-on.svg",
                         "SetAttribute": { "Key": "editmode", "Value": "on" },
@@ -488,15 +461,6 @@
                     {
                         "icon": "flags:textures/icons/toolmode/editmode-off.svg",
                         "SetAttribute": { "Key": "editmode", "Value": "off" }
-                    },
-                    {
-                        "icon": "flags:textures/icons/toolmode/saverotations-on.svg",
-                        "SetAttribute": { "Key": "saverotations", "Value": "on" },
-                        "linebreak": true
-                    },
-                    {
-                        "icon": "flags:textures/icons/toolmode/saverotations-off.svg",
-                        "SetAttribute": { "Key": "saverotations", "Value": "off" }
                     }
                 ]
             }

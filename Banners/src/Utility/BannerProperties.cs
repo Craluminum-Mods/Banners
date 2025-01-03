@@ -12,8 +12,6 @@ public class BannerProperties
     public string Name { get; protected set; }
     public string Placement { get; protected set; }
 
-    public BannerModes Modes { get; protected set; } = new();
-
     public Patterns Patterns { get; protected set; } = new();
     public Cutouts Cutouts { get; protected set; } = new();
 
@@ -25,14 +23,11 @@ public class BannerProperties
             dsc.AppendLine(langCodePatternGroups.Localize(string.Join(commaSeparator, blockBanner.PatternGroups.Select(group => $"{langCodePatternGroup}{group}".Localize()))));
             Patterns.GetDescription(dsc, withDebugInfo);
             Cutouts.GetDescription(dsc, withDebugInfo);
-            Modes.GetDescription(dsc, withDebugInfo);
         }
     }
 
     public BannerProperties FromTreeAttribute(ITreeAttribute tree, string defaultType, Dictionary<string, string> defaultModes)
     {
-        Modes.FromTreeAttribute(tree, defaultModes);
-
         if (!tree.HasAttribute(attributeBanner)) return this;
 
         ITreeAttribute bannerTree = tree.GetTreeAttribute(attributeBanner);
@@ -50,8 +45,6 @@ public class BannerProperties
 
     public void ToTreeAttribute(ITreeAttribute tree, bool setPlacement = true)
     {
-        Modes.ToTreeAttribute(tree);
-
         if (Patterns.Any)
         {
             Patterns.ToTreeAttribute(tree.GetOrAddTreeAttribute(attributeBanner));
@@ -138,8 +131,6 @@ public class BannerProperties
         result.Append(Patterns.ToString());
         result.Append('-');
         result.Append(Cutouts.ToString());
-        result.Append('-');
-        result.Append(Modes.ToString());
         return result.ToString();
     }
 

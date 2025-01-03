@@ -135,6 +135,16 @@ public class BlockBanner : Block, IContainedMeshSource, IAttachableToEntity, IWe
     {
         base.GetHeldItemInfo(inSlot, sb, world, withDebugInfo);
         BannerProperties.FromStack(inSlot.Itemstack).GetDescription(this, (world as IClientWorldAccessor)?.Player, sb, ShowDebugInfo);
+        GetModesDescription(inSlot, sb, world);
+    }
+
+    public void GetModesDescription(ItemSlot slot, StringBuilder sb, IWorldAccessor world)
+    {
+        if (world.Api is ICoreClientAPI && ConfigSystem.BannerExtraInfoConfig.Enabled)
+        {
+            string editMode = slot.Itemstack.Attributes.GetAsString("editmode", "on");
+            sb.AppendLine($"{langCodeToolMode}{"editmode"}".Localize($"{langCodeToolModeValue}{editMode}".Localize()));
+        }
     }
 
     public override bool Equals(ItemStack thisStack, ItemStack otherStack, params string[] ignoreAttributeSubTrees)
@@ -197,17 +207,7 @@ public class BlockBanner : Block, IContainedMeshSource, IAttachableToEntity, IWe
         }
 
         be.BannerProps.ToStack(stack);
-
-        IRotatableBanner rotatableBanner = GetInterface<IRotatableBanner>(world, pos);
-        if (rotatableBanner == null || (rotatableBanner.RotateX == 0 && rotatableBanner.RotateY == 0 && rotatableBanner.RotateZ == 0))
-        {
-            return stack;
-        }
-
-        bool saverotations = be.BannerProps.Modes[BannerMode.SaveRotations_On];
-        stack.Attributes.SetFloat(attributeRotX, saverotations ? rotatableBanner.RotateX : 0);
-        stack.Attributes.SetFloat(attributeRotY, saverotations ? rotatableBanner.RotateY : 0);
-        stack.Attributes.SetFloat(attributeRotZ, saverotations ? rotatableBanner.RotateZ : 0);
+        stack.Attributes.SetString("editmode", be.EditMode);
         return stack;
     }
 
@@ -295,10 +295,6 @@ public class BlockBanner : Block, IContainedMeshSource, IAttachableToEntity, IWe
                 capi.Tesselator.TesselateBlock(this, out mesh);
                 capi.Logger.Error("[Flags] Can't create shape for block {0} because of broken textures", Code);
                 return mesh;
-            }
-            if (properties.Modes[BannerMode.Wind_Off])
-            {
-                mesh.ClearWindFlags();
             }
             if (overrideTexturesource == null)
             {

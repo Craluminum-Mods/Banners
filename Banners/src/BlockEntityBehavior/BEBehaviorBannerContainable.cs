@@ -79,7 +79,6 @@ public class BEBehaviorBannerContainable : BlockEntityBehavior, IBlockEntityCont
             DropContents();
         }
 
-        // calling MarkDirty and Init in case BlockBed calls OnBlockRemoved in THE MOST STUPID WAY POSSIBLE
         Blockentity?.MarkDirty(true);
         Init();
     }

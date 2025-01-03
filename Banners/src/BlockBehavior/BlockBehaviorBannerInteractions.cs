@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
-using Vintagestory.API.Config;
-using Vintagestory.API.Datastructures;
 using Vintagestory.API.Util;
 using Vintagestory.GameContent;
 
@@ -23,21 +21,15 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
             return base.OnBlockInteractStart(world, byPlayer, blockSel, ref handling);
         }
 
-        if (blockEntity.BannerProps.Modes[BannerMode.PickUp_On] && PickUp(byPlayer))
-        {
-            handling = EnumHandling.PreventDefault;
-            return true;
-        }
-
         ItemSlot leftSlot = byPlayer.Entity.LeftHandItemSlot;
         ItemSlot rightSlot = byPlayer.Entity.RightHandItemSlot;
 
-        if (AddLayer(byPlayer, leftSlot, rightSlot, blockEntity.BannerProps, blockEntity.BannerBlock)
-            || RemoveLayer(byPlayer, rightSlot, blockEntity.BannerProps, blockEntity.BannerBlock)
-            || AddCutout(byPlayer, leftSlot, rightSlot, blockEntity.BannerProps, blockEntity.BannerBlock)
-            || RemoveCutout(byPlayer, leftSlot, rightSlot, blockEntity.BannerProps)
-            || CopyLayers(byPlayer, rightSlot, blockEntity.BannerProps, blockEntity.BannerBlock)
-            || Rename(byPlayer, rightSlot, blockEntity.BannerProps, blockEntity.BannerBlock))
+        if (AddLayer(byPlayer, leftSlot, rightSlot, blockEntity.BannerProps, blockEntity)
+            || RemoveLayer(byPlayer, rightSlot, blockEntity.BannerProps, blockEntity)
+            || AddCutout(byPlayer, leftSlot, rightSlot, blockEntity.BannerProps, blockEntity)
+            || RemoveCutout(byPlayer, leftSlot, rightSlot, blockEntity.BannerProps, blockEntity)
+            || CopyLayers(byPlayer, rightSlot, blockEntity.BannerProps, blockEntity)
+            || Rename(byPlayer, rightSlot, blockEntity.BannerProps, blockEntity))
         {
             blockEntity.MarkDirty(true);
             byPlayer.Entity.RightHandItemSlot.MarkDirty();
@@ -49,53 +41,11 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         return base.OnBlockInteractStart(world, byPlayer, blockSel, ref handling);
     }
 
-    public bool PickUp(IPlayer byPlayer)
-    {
-        IWorldAccessor world = byPlayer.Entity.World;
-        BlockSelection blockSel = byPlayer.CurrentBlockSelection;
-        ItemStack[] dropStacks = new ItemStack[1] { blockSel.Block.OnPickBlock(world, blockSel.Position) };
-        ItemSlot activeSlot = byPlayer.InventoryManager.ActiveHotbarSlot;
-        bool heldSlotSuitable = activeSlot.Empty || (dropStacks.Length >= 1 && activeSlot.Itemstack.Equals(world, dropStacks[0], GlobalConstants.IgnoredStackAttributes));
-        if (!heldSlotSuitable || !world.Claims.TryAccess(byPlayer, blockSel.Position, EnumBlockAccessFlags.BuildOrBreak))
-        {
-            return false;
-        }
-        if (byPlayer.Entity.Controls.ShiftKey)
-        {
-            return false;
-        }
-        if (world.Side != EnumAppSide.Server || !BlockBehaviorReinforcable.AllowRightClickPickup(world, blockSel.Position, byPlayer))
-        {
-            return true;
-        }
-        bool blockToBreak = true;
-        foreach (ItemStack stack in dropStacks)
-        {
-            ItemStack origStack = stack.Clone();
-            if (!byPlayer.InventoryManager.TryGiveItemstack(stack, slotNotifyEffect: true))
-            {
-                world.SpawnItemEntity(stack, blockSel.Position.ToVec3d().AddCopy(0.5, 0.1, 0.5));
-            }
-            TreeAttribute tree = new TreeAttribute();
-            tree["itemstack"] = new ItemstackAttribute(origStack.Clone());
-            tree["byentityid"] = new LongAttribute(byPlayer.Entity.EntityId);
-            world.Api.Event.PushEvent("onitemcollected", tree);
-            if (blockToBreak)
-            {
-                blockToBreak = false;
-                world.BlockAccessor.SetBlock(0, blockSel.Position);
-                world.BlockAccessor.TriggerNeighbourBlockUpdate(blockSel.Position);
-            }
-            world.PlaySoundAt(blockSel.Block.GetSounds(world.BlockAccessor, blockSel).Place, byPlayer);
-        }
-        return true;
-    }
-
-    public bool AddLayer(IPlayer byPlayer, ItemSlot leftSlot, ItemSlot rightSlot, BannerProperties bannerProps, BlockBanner blockBanner, bool isPreview = false)
+    public bool AddLayer(IPlayer byPlayer, ItemSlot leftSlot, ItemSlot rightSlot, BannerProperties bannerProps, BlockEntityBanner blockEntityBanner, bool isPreview = false)
     {
         if (leftSlot?.Itemstack?.Collectible is not ItemBannerPattern itemPattern
             || rightSlot?.Itemstack?.Collectible is not BlockLiquidContainerTopOpened blockContainer
-            || !blockBanner.IsEditModeEnabled(bannerProps, byPlayer, printError: !isPreview))
+            || !blockEntityBanner.IsEditModeEnabled(printError: !isPreview))
         {
             return false;
         }
@@ -130,10 +80,10 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         return isPreview ? true : liquidProps.TryTakeLiquid(byPlayer, rightSlot, blockContainer);
     }
 
-    public bool RemoveLayer(IPlayer byPlayer, ItemSlot rightSlot, BannerProperties bannerProps, BlockBanner blockBanner, bool isPreview = false)
+    public bool RemoveLayer(IPlayer byPlayer, ItemSlot rightSlot, BannerProperties bannerProps, BlockEntityBanner blockEntityBanner, bool isPreview = false)
     {
         if (rightSlot?.Itemstack?.Collectible is not BlockLiquidContainerTopOpened blockContainer
-            || !blockBanner.IsEditModeEnabled(bannerProps, byPlayer, printError: !isPreview))
+            || !blockEntityBanner.IsEditModeEnabled(printError: !isPreview))
         {
             return false;
         }
@@ -154,7 +104,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         return isPreview ? true : liquidProps.TryTakeLiquid(byPlayer, rightSlot, blockContainer);
     }
 
-    public bool AddCutout(IPlayer byPlayer, ItemSlot leftSlot, ItemSlot rightSlot, BannerProperties bannerProps, BlockBanner blockBanner, bool isPreview = false)
+    public bool AddCutout(IPlayer byPlayer, ItemSlot leftSlot, ItemSlot rightSlot, BannerProperties bannerProps, BlockEntityBanner blockEntityBanner, bool isPreview = false)
     {
         CollectibleBehaviorCutoutTool cutoutToolBehavior = rightSlot?.Itemstack?.Collectible?.GetBehavior<CollectibleBehaviorCutoutTool>();
         if (leftSlot?.Itemstack?.Collectible is not ItemBannerPattern itemPattern || cutoutToolBehavior == null)
@@ -162,7 +112,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
             return false;
         }
 
-        if (!blockBanner.IsEditModeEnabled(bannerProps, byPlayer, printError: !isPreview)) return false;
+        if (!blockEntityBanner.IsEditModeEnabled(printError: !isPreview)) return false;
 
         PatternProperties patternProperties = PatternProperties.FromStack(leftSlot.Itemstack);
         if (string.IsNullOrEmpty(patternProperties.Type))
@@ -170,7 +120,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
             return false;
         }
 
-        if (!blockBanner.MatchesPatternGroups(itemPattern, patternProperties))
+        if (!blockEntityBanner.BannerBlock.MatchesPatternGroups(itemPattern, patternProperties))
         {
             if (!isPreview) byPlayer.IngameError(blockBanner, IngameError.BannerPatternGroups, IngameError.BannerPatternGroups.Localize());
             return false;
@@ -186,7 +136,7 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         return applied;
     }
 
-    public bool RemoveCutout(IPlayer byPlayer, ItemSlot leftSlot, ItemSlot rightSlot, BannerProperties bannerProps, bool isPreview = false)
+    public static bool RemoveCutout(IPlayer byPlayer, ItemSlot leftSlot, ItemSlot rightSlot, BannerProperties bannerProps, BlockEntityBanner blockEntityBanner, bool isPreview = false)
     {
         CollectibleBehaviorCutoutTool cutoutToolBehavior = rightSlot?.Itemstack?.Collectible?.GetBehavior<CollectibleBehaviorCutoutTool>();
         if (!leftSlot.Empty || cutoutToolBehavior == null)
@@ -194,23 +144,23 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
             return false;
         }
 
-        if (!blockBanner.IsEditModeEnabled(bannerProps, byPlayer, printError: !isPreview)) return false;
+        if (!blockEntityBanner.IsEditModeEnabled(printError: !isPreview)) return false;
 
         bool applied = bannerProps.Cutouts.TryRemoveLast();
         if (applied && !isPreview) cutoutToolBehavior.PlayRepairSound(byPlayer);
         return applied;
     }
 
-    public bool CopyLayers(IPlayer byPlayer, ItemSlot rightSlot, BannerProperties bannerProps, BlockBanner blockBanner, bool isPreview = false)
+    public static bool CopyLayers(IPlayer byPlayer, ItemSlot rightSlot, BannerProperties bannerProps, BlockEntityBanner blockEntityBanner, bool isPreview = false)
     {
         if (rightSlot?.Itemstack?.Collectible is not BlockBanner anotherBlockBanner)
         {
             return false;
         }
 
-        if (!blockBanner.MatchesPatternGroups(anotherBlockBanner))
+        if (!blockEntityBanner.BannerBlock.MatchesPatternGroups(anotherBlockBanner))
         {
-            if (!isPreview) byPlayer.IngameError(blockBanner, IngameError.BannerPatternGroups, IngameError.BannerPatternGroups.Localize());
+            if (!isPreview) byPlayer.IngameError(blockEntityBanner.BannerBlock, IngameError.BannerPatternGroups, IngameError.BannerPatternGroups.Localize());
             return false;
         }
 
@@ -219,20 +169,20 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
             return true;
         }
 
-        if (!blockBanner.IsEditModeEnabled(bannerProps, byPlayer, printError: !isPreview)) return false;
+        if (!blockEntityBanner.IsEditModeEnabled(printError: !isPreview)) return false;
 
         if (bannerProps.CopyFrom(rightSlot.Itemstack, copyLayers: true, copyCutouts: true))
         {
             return true;
         }
-        if (!isPreview) byPlayer.IngameError(blockBanner, IngameError.BannerCopyLayers, IngameError.BannerCopyLayers.Localize());
+        if (!isPreview) byPlayer.IngameError(blockEntityBanner, IngameError.BannerCopyLayers, IngameError.BannerCopyLayers.Localize());
         return false;
     }
 
-    public bool Rename(IPlayer byPlayer, ItemSlot rightSlot, BannerProperties bannerProps, BlockBanner blockBanner)
+    public bool Rename(IPlayer byPlayer, ItemSlot rightSlot, BannerProperties bannerProps, BlockEntityBanner blockEntityBanner)
     {
         CollectibleBehaviorRenameTool renameToolBehavior = rightSlot?.Itemstack?.Collectible?.GetBehavior<CollectibleBehaviorRenameTool>();
-        if (renameToolBehavior == null || !blockBanner.IsEditModeEnabled(bannerProps, byPlayer))
+        if (renameToolBehavior == null || !blockEntityBanner.IsEditModeEnabled())
         {
             return false;
         }
@@ -256,10 +206,10 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         }
 
         handling = EnumHandling.Handled;
-        return BannerInteractions(blockEntity.BannerProps, capi, blockSel);
+        return BannerInteractions(blockEntity, capi, blockSel);
     }
 
-    public WorldInteraction[] BannerInteractions(BannerProperties bannerProps, ICoreClientAPI capi, BlockSelection blockSel)
+    public WorldInteraction[] BannerInteractions(BlockEntityBanner blockEntityBanner, ICoreClientAPI capi, BlockSelection blockSel)
     {
         List<WorldInteraction> interactions = new List<WorldInteraction>();
 
@@ -267,30 +217,20 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         foreach (ItemStack stack in ObjectCacheUtil.TryGet<ItemStack[]>(capi, cacheKeyBannerStacks))
         {
             BannerProperties stackProps = BannerProperties.FromStack(stack);
-            if (bannerProps.Patterns.SameBaseColors(stackProps) && stackProps.Patterns.Count == 1)
+            if (blockEntityBanner.BannerProps.Patterns.SameBaseColors(stackProps) && stackProps.Patterns.Count == 1)
             {
                 bannerStacks = bannerStacks.Append(stack);
             }
         }
 
-        if (bannerProps.Modes[BannerMode.PickUp_On])
-        {
-            interactions.Add(new WorldInteraction
-            {
-                ActionLangCode = langCodeRightClickPickUp,
-                MouseButton = EnumMouseButton.Right,
-                RequireFreeHand = true
-            });
-        }
-
         interactions.Add(new WorldInteraction()
         {
-            ActionLangCode = blockBanner.IsEditModeEnabled(bannerProps, capi, printError: false) ? langCodeCopyLayers : langCodeCopyLayersFromPlaced,
+            ActionLangCode = blockEntityBanner.IsEditModeEnabled(printError: false) ? langCodeCopyLayers : langCodeCopyLayersFromPlaced,
             MouseButton = EnumMouseButton.Right,
             Itemstacks = bannerStacks
         });
 
-        if (blockBanner.IsEditModeEnabled(bannerProps, capi, printError: false))
+        if (blockEntityBanner.IsEditModeEnabled(printError: false))
         {
             interactions.Add(new WorldInteraction()
             {
@@ -352,11 +292,11 @@ public class BlockBehaviorBannerInteractions : BlockBehavior
         ItemSlot leftSlot = new DummySlot(player.Entity?.LeftHandItemSlot?.Itemstack?.Clone());
         ItemSlot rightSlot = new DummySlot(player.Entity?.RightHandItemSlot?.Itemstack?.Clone());
 
-        if (AddLayer(player, leftSlot, rightSlot, placedProps, blockEntity.BannerBlock, isPreview: true)
-            || RemoveLayer(player, rightSlot, placedProps, blockEntity.BannerBlock, isPreview: true)
-            || AddCutout(player, leftSlot, rightSlot, placedProps, blockEntity.BannerBlock, isPreview: true)
-            || RemoveCutout(player, leftSlot, rightSlot, placedProps, isPreview: true)
-            || CopyLayers(player, rightSlot, placedProps, blockEntity.BannerBlock, isPreview: true))
+        if (AddLayer(player, leftSlot, rightSlot, placedProps, blockEntity, isPreview: true)
+            || RemoveLayer(player, rightSlot, placedProps, blockEntity, isPreview: true)
+            || AddCutout(player, leftSlot, rightSlot, placedProps, blockEntity, isPreview: true)
+            || RemoveCutout(player, leftSlot, rightSlot, placedProps, blockEntity, isPreview: true)
+            || CopyLayers(player, rightSlot, placedProps, blockEntity, isPreview: true))
         {
             placedStack.Attributes.RemoveAttribute(attributeBanner);
             placedProps.ToStack(placedStack);

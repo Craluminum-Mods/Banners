@@ -83,6 +83,11 @@ public static class HelperExtensions
     {
         (byPlayer.Entity.World.Api as ICoreClientAPI)?.TriggerIngameError(sender, errorCode, text);
     }
+    
+    public static void IngameError(this ICoreClientAPI capi, object sender, string errorCode, string text)
+    {
+        capi?.TriggerIngameError(sender, errorCode, text);
+    }
 
     public static bool MatchesPatternGroups(this BlockBanner block, ItemBannerPattern itemPattern, PatternProperties props)
     {
@@ -95,32 +100,5 @@ public static class HelperExtensions
     public static bool MatchesPatternGroups(this BlockBanner block, BlockBanner otherBlock)
     {
         return block.PatternGroups.Any(otherBlock.PatternGroups.Contains);
-    }
-
-    public static bool IsEditModeEnabled(this BlockBanner block, BannerProperties props, IPlayer byPlayer, bool printError = true)
-    {
-        BannerModes modes = props.Modes;
-
-        if (!modes.Any)
-        {
-            BannerModes newModes = new BannerModes();
-            newModes.FromTreeAttribute(null, block.DefaultModes);
-            modes = newModes;
-        }
-
-        if (!modes[BannerMode.EditMode_Off])
-        {
-            return modes[BannerMode.EditMode_On];
-        }
-        if (printError)
-        {
-            byPlayer?.IngameError(props, modes.ErrorCode(BannerMode.EditMode_Off.Key), modes.ErrorCode(BannerMode.EditMode_Off.Key).Localize());
-        }
-        return false;
-    }
-
-    public static bool IsEditModeEnabled(this BlockBanner block, BannerProperties props, ICoreClientAPI capi, bool printError = true)
-    {
-        return block.IsEditModeEnabled(props, capi.World.Player, printError);
     }
 }

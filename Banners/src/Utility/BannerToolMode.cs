@@ -13,7 +13,7 @@ public class BannerToolMode
     public string Color { get; set; }
     public bool Linebreak { get; set; }
 
-    public string Name => BannerModes.LangCode(SetAttribute.Key, SetAttribute.Value);
+    public string Name => $"{langCodeToolMode}{SetAttribute.Key}-{SetAttribute.Value}";
 
     public AssetLocation Code => AssetLocation.Create(Name);
 
@@ -65,12 +65,8 @@ public class SetAttribute
             return false;
         }
 
-        if (BannerProperties.FromStack(slot.Itemstack).Modes.TryGetValue(Key, out string currentValue))
-        {
-            return currentValue == Value;
-        }
-
-        currentValue = Default ? Value : null;
+        string currentValue = slot.Itemstack.Attributes.GetAsString(Key);
+        currentValue ??= Default ? Value : null;
         return currentValue == Value;
     }
 
@@ -81,8 +77,6 @@ public class SetAttribute
             return;
         }
 
-        BannerProperties props = BannerProperties.FromStack(slot.Itemstack);
-        props.Modes.SetValue(Key, Value);
-        props.ToStack(slot.Itemstack);
+        slot.Itemstack.Attributes.SetString(Key, Value);
     }
 }
