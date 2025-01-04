@@ -34,8 +34,6 @@ public class BlockBanner : Block, IContainedMeshSource, IAttachableToEntity, IWe
     public List<string> Colors { get; protected set; } = new();
     public List<string> IgnoreForGeneratingTextures { get; protected set; } = new();
 
-    public Dictionary<string, string> DefaultModes { get; protected set; } = new();
-
     public ModelTransform BannerPreviewHudTransform { get; protected set; } = new();
 
     public Dictionary<string, MeshData> Meshes => ObjectCacheUtil.GetOrCreate(api, cacheKeyBlockBannerMeshes, () => new Dictionary<string, MeshData>());
@@ -51,28 +49,39 @@ public class BlockBanner : Block, IContainedMeshSource, IAttachableToEntity, IWe
     public override void OnUnloaded(ICoreAPI api)
     {
         base.OnUnloaded(api);
-        PatternGroups.Clear();
-        CustomShapes.Clear();
-        CustomTextures.Clear();
-        IgnoredTextureCodes.Clear();
-        TextureCodesForOverlays.Clear();
-        Colors.Clear();
-        IgnoreForGeneratingTextures.Clear();
-        CustomSelectionBoxes.Clear();
-        CustomCollisionBoxes.Clear();
-        DefaultModes.Clear();
+        PatternGroups?.Clear();
+        CustomShapes?.Clear();
+        CustomTextures?.Clear();
+        IgnoredTextureCodes?.Clear();
+        TextureCodesForOverlays?.Clear();
+        Colors?.Clear();
+        IgnoreForGeneratingTextures?.Clear();
+        CustomSelectionBoxes?.Clear();
+        CustomCollisionBoxes?.Clear();
 
-        foreach (MeshData mesh in Meshes.Values)
+        if (Meshes != null && Meshes.Any())
         {
-            mesh.Dispose();
+            foreach (MeshData mesh in Meshes.Values)
+            {
+                mesh?.Dispose();
+            }
+            Meshes?.Clear();
         }
-        foreach (MeshData mesh in ContainableMeshes.Values)
+        if (ContainableMeshes != null && ContainableMeshes.Any())
         {
-            mesh.Dispose();
+            foreach (MeshData mesh in ContainableMeshes.Values)
+            {
+                mesh?.Dispose();
+            }
+            ContainableMeshes?.Clear();
         }
-        foreach (MultiTextureMeshRef meshRef in InvMeshes.Values)
+        if (InvMeshes != null && InvMeshes.Any())
         {
-            meshRef.Dispose();
+            foreach (MultiTextureMeshRef meshRef in InvMeshes.Values)
+            {
+                meshRef?.Dispose();
+            }
+            InvMeshes?.Clear();
         }
 
         ObjectCacheUtil.Delete(api, cacheKeyBlockBannerMeshes);
@@ -101,8 +110,6 @@ public class BlockBanner : Block, IContainedMeshSource, IAttachableToEntity, IWe
         TopTexturePrefix = Attributes[attributeTopTexturePrefix].AsString();
         Colors = Attributes[attributeColors].AsObject<List<string>>();
         IgnoreForGeneratingTextures = Attributes[attributeIgnoredTextureCodesForGeneratingTextures].AsObject<List<string>>();
-
-        DefaultModes = Attributes[attributeDefaultModes].AsObject<Dictionary<string, string>>();
 
         LoadTransforms();
 
@@ -150,7 +157,7 @@ public class BlockBanner : Block, IContainedMeshSource, IAttachableToEntity, IWe
     public override bool Equals(ItemStack thisStack, ItemStack otherStack, params string[] ignoreAttributeSubTrees)
     {
         ignoreAttributeSubTrees ??= Array.Empty<string>();
-        ignoreAttributeSubTrees = ignoreAttributeSubTrees.Append(BannersIgnoreAttributeSubTrees);
+        ignoreAttributeSubTrees = ignoreAttributeSubTrees.Append("editmode");
         return base.Equals(thisStack, otherStack, ignoreAttributeSubTrees);
     }
 
@@ -165,7 +172,7 @@ public class BlockBanner : Block, IContainedMeshSource, IAttachableToEntity, IWe
 
         handbookStack.Attributes.GetTreeAttribute(attributeBanner)?.RemoveAttribute(attributeName);
         handbookStack.Attributes.GetTreeAttribute(attributeBanner)?.RemoveAttribute(attributeCutouts);
-        handbookStack.Attributes.RemoveAttribute(attributeBannerModes);
+        handbookStack.Attributes.RemoveAttribute("editmode");
         handbookStack.Attributes.RemoveAttribute(attributeRotX);
         handbookStack.Attributes.RemoveAttribute(attributeRotY);
         handbookStack.Attributes.RemoveAttribute(attributeRotZ);

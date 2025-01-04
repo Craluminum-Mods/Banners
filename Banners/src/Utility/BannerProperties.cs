@@ -26,7 +26,7 @@ public class BannerProperties
         }
     }
 
-    public BannerProperties FromTreeAttribute(ITreeAttribute tree, string defaultType, Dictionary<string, string> defaultModes)
+    public BannerProperties FromTreeAttribute(ITreeAttribute tree, string defaultType)
     {
         if (!tree.HasAttribute(attributeBanner)) return this;
 
@@ -65,9 +65,7 @@ public class BannerProperties
 
     public static BannerProperties FromStack(ItemStack stack)
     {
-        return new BannerProperties().FromTreeAttribute(stack.Attributes,
-            defaultType: (stack.Collectible as BlockBanner).DefaultPlacement,
-            defaultModes: (stack.Collectible as BlockBanner).DefaultModes);
+        return new BannerProperties().FromTreeAttribute(stack.Attributes, defaultType: (stack.Collectible as BlockBanner).DefaultPlacement);
     }
 
     public void ToStack(ItemStack stack)
@@ -81,9 +79,7 @@ public class BannerProperties
         {
             Patterns.CopyFrom(fromStack);
             if (copyCutouts) Cutouts.CopyFrom(fromStack);
-            FromTreeAttribute(fromStack.Attributes,
-                defaultType: (fromStack.Collectible as BlockBanner).DefaultPlacement,
-                defaultModes: (fromStack.Collectible as BlockBanner).DefaultModes);
+            FromTreeAttribute(fromStack.Attributes, defaultType: (fromStack.Collectible as BlockBanner).DefaultPlacement);
             return true;
         }
         return false;

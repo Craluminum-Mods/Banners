@@ -2,7 +2,6 @@ global using static Flags.Constants;
 using System.Linq;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
-using Vintagestory.API.Config;
 using Vintagestory.API.Server;
 using Vintagestory.API.Util;
 using Vintagestory.Client.NoObf;
@@ -34,8 +33,6 @@ public class Core : ModSystem
         api.RegisterCollectibleBehaviorClass("Flags.RenameTool", typeof(CollectibleBehaviorRenameTool));
 
         api.Logger.Event("started '{0}' mod", Mod.Info.Name);
-
-        GlobalConstants.IgnoredStackAttributes = GlobalConstants.IgnoredStackAttributes.Append(BannersIgnoreAttributeSubTrees);
     }
 
     public override void StartServerSide(ICoreServerAPI api)

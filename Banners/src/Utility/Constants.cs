@@ -61,7 +61,6 @@ public static class Constants
     public const string langCodeCutouts = $"{modDomain}:cutouts";
     public const string langCodePatternsNoColor = $"{modDomain}:patterns-nocolor";
     public const string langCodeCutoutsNoColor = $"{modDomain}:cutouts-nocolor";
-    public const string langCodeBannerModes = $"{modDomain}:banner-modes";
     public const string langCodeAddCutout = $"{modDomain}:blockhelp-banner-addcutout";
     public const string langCodeRemoveCutout = $"{modDomain}:blockhelp-banner-removecutout";
     public const string langCodeToolMode = $"{modDomain}:toolmode-";
@@ -142,8 +141,6 @@ public static class Constants
     public const string attributeShapeKey = "shapeKey";
     public const string attributeRotationsByFace = "rotationsByFace";
     public const string attributeToolModes = "toolModes";
-    public const string attributeBannerModes = "bannerModes";
-    public const string attributeDefaultModes = "defaultModes";
     public const string attributeUnlockedTypes = "unlockedTypes";
     public const string attributeEnabled = "enabled";
     public const string attributeRotX = "rotX";
@@ -182,8 +179,6 @@ public static class Constants
     public const string pathConverter = "flags:config/mc-to-vs-converter.json";
     public const string outputFolderName = "Banners";
     public static string OutputFolder => Path.Combine(GamePaths.Cache, outputFolderName);
-
-    public static string[] BannersIgnoreAttributeSubTrees => new string[] { attributeBannerModes };
 
     public class IngameError
     {

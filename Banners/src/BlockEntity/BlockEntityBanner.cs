@@ -69,9 +69,7 @@ public class BlockEntityBanner : BlockEntity, IRotatable
         base.OnBlockPlaced(byItemStack);
         if (byItemStack != null)
         {
-            BannerProps.FromTreeAttribute(byItemStack.Attributes,
-                defaultType: BannerBlock.DefaultPlacement,
-                defaultModes: BannerBlock.DefaultModes);
+            BannerProps.FromTreeAttribute(byItemStack.Attributes, defaultType: BannerBlock.DefaultPlacement);
             BannerProperties.ClearPlacement(byItemStack.Attributes);
             EditMode = byItemStack.Attributes.GetAsString("editmode", "on");
         }
@@ -89,9 +87,7 @@ public class BlockEntityBanner : BlockEntity, IRotatable
     {
         base.FromTreeAttributes(tree, world);
         BannerProps = new BannerProperties();
-        BannerProps.FromTreeAttribute(tree,
-            defaultType: BannerBlock.DefaultPlacement,
-            defaultModes: BannerBlock.DefaultModes);
+        BannerProps.FromTreeAttribute(tree, defaultType: BannerBlock.DefaultPlacement);
         EditMode = tree.GetAsString("editmode", "on");
         Init();
     }
