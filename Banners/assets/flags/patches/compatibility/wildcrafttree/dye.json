@@ -1,0 +1,16 @@
+[
+    {
+        "op": "addmerge",
+        "path": "/attributes/bannerLiquid",
+        "value": {
+            "type": "Dye",
+            "litresPerUse": 0.1,
+            "colorByType": {
+              "*-walnut": "black"
+            }
+        },
+        "file": "wildcrafttree:itemtypes/liquid/walnutdye.json",
+        "dependsOn": [ { "modid": "wildcrafttree" } ],
+        "side": "Server"
+    }
+]
