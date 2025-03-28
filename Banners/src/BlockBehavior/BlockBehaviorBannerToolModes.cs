@@ -11,10 +11,8 @@ namespace Flags;
 
 public class BlockBehaviorBannerToolModes : BlockBehavior
 {
-    private ICoreAPI api;
-
     public List<BannerToolMode> ToolModes { get; protected set; } = new();
-    public List<LoadedTexture> CachedTextures => ObjectCacheUtil.GetOrCreate(api, cacheKeyBannerToolModeTextures, () => new List<LoadedTexture>(ToolModes?.Count ?? 0));
+    public List<LoadedTexture> GetCachedTextures(ICoreAPI api) => ObjectCacheUtil.GetOrCreate(api, cacheKeyBannerToolModeTextures, () => new List<LoadedTexture>(ToolModes?.Count ?? 0));
 
     public BlockBehaviorBannerToolModes(Block block) : base(block) { }
 
@@ -24,17 +22,9 @@ public class BlockBehaviorBannerToolModes : BlockBehavior
         ToolModes = properties[attributeToolModes].AsObject<List<BannerToolMode>>();
     }
 
-    public override void OnLoaded(ICoreAPI api)
-    {
-        this.api = api;
-    }
-
     public override void OnUnloaded(ICoreAPI api)
     {
-        for (int i = 0; i < CachedTextures.Count; i++)
-        {
-            CachedTextures[i]?.Dispose();
-        }
+        GetCachedTextures(api)?.ForEach(texture => texture?.Dispose());
         ObjectCacheUtil.Delete(api, cacheKeyBannerToolModeTextures);
         ToolModes?.Clear();
     }
@@ -54,7 +44,7 @@ public class BlockBehaviorBannerToolModes : BlockBehavior
         }
 
         SkillItem[] skillItems = BannerToolMode.GetToolModes(capi, slot, ToolModes);
-        CachedTextures.AddRange(skillItems.Where(toolMode => toolMode.Texture != null).Select(toolMode => toolMode.Texture));
+        GetCachedTextures(forPlayer.Entity.Api).AddRange(skillItems.Where(toolMode => toolMode.Texture != null).Select(toolMode => toolMode.Texture));
         return skillItems;
     }
 
