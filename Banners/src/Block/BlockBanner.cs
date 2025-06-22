@@ -36,9 +36,32 @@ public class BlockBanner : Block, IContainedMeshSource, IAttachableToEntity, IWe
 
     public ModelTransform BannerPreviewHudTransform { get; protected set; } = new();
 
-    public Dictionary<string, MeshData> Meshes => ObjectCacheUtil.GetOrCreate(api, cacheKeyBlockBannerMeshes, () => new Dictionary<string, MeshData>());
-    public Dictionary<string, MeshData> ContainableMeshes => ObjectCacheUtil.GetOrCreate(api, cacheKeyBlockBannerContainableMeshes, () => new Dictionary<string, MeshData>());
-    public Dictionary<string, MultiTextureMeshRef> InvMeshes => ObjectCacheUtil.GetOrCreate(api, cacheKeyBlockBannerInvMeshes, () => new Dictionary<string, MultiTextureMeshRef>());
+    public Dictionary<string, MeshData> Meshes
+    {
+        get
+        {
+            if (api == null) return new();
+            return ObjectCacheUtil.GetOrCreate(api, cacheKeyBlockBannerMeshes, () => new Dictionary<string, MeshData>());
+        }
+    }
+
+    public Dictionary<string, MeshData> ContainableMeshes
+    {
+        get
+        {
+            if (api == null) return new();
+            return ObjectCacheUtil.GetOrCreate(api, cacheKeyBlockBannerContainableMeshes, () => new Dictionary<string, MeshData>());
+        }
+    }
+
+    public Dictionary<string, MultiTextureMeshRef> InvMeshes
+    {
+        get
+        {
+            if (api == null) return new();
+            return ObjectCacheUtil.GetOrCreate(api, cacheKeyBlockBannerInvMeshes, () => new Dictionary<string, MultiTextureMeshRef>());
+        }
+    }
 
     public override void OnLoaded(ICoreAPI api)
     {

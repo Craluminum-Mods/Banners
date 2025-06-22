@@ -18,8 +18,23 @@ public class ItemBannerPattern : Item, IContainedMeshSource
     public Dictionary<string, CompositeTexture> CustomTextures { get; protected set; } = new();
     public List<string> TextureCodesForOverlays { get; protected set; } = new();
 
-    public Dictionary<string, MeshData> Meshes => ObjectCacheUtil.GetOrCreate(api, cacheKeyItemBannerPatternMeshes, () => new Dictionary<string, MeshData>());
-    public Dictionary<string, MultiTextureMeshRef> InvMeshes => ObjectCacheUtil.GetOrCreate(api, cacheKeyItemBannerPatternMeshesInv, () => new Dictionary<string, MultiTextureMeshRef>());
+    public Dictionary<string, MeshData> Meshes
+    {
+        get
+        {
+            if (api == null) return new();
+            return ObjectCacheUtil.GetOrCreate(api, cacheKeyItemBannerPatternMeshes, () => new Dictionary<string, MeshData>());
+        }
+    }
+
+    public Dictionary<string, MultiTextureMeshRef> InvMeshes
+    {
+        get
+        {
+            if (api == null) return new();
+            return ObjectCacheUtil.GetOrCreate(api, cacheKeyItemBannerPatternMeshesInv, () => new Dictionary<string, MultiTextureMeshRef>());
+        }
+    }
 
     public override void OnLoaded(ICoreAPI api)
     {
@@ -31,17 +46,23 @@ public class ItemBannerPattern : Item, IContainedMeshSource
     public override void OnUnloaded(ICoreAPI api)
     {
         base.OnUnloaded(api);
-        PatternGroupsBy.Clear();
-        CustomTextures.Clear();
-        TextureCodesForOverlays.Clear();
+        PatternGroupsBy?.Clear();
+        CustomTextures?.Clear();
+        TextureCodesForOverlays?.Clear();
 
-        foreach (MeshData mesh in Meshes.Values)
+        if (Meshes != null)
         {
-            mesh.Dispose();
+            foreach (MeshData mesh in Meshes.Values)
+            {
+                mesh?.Dispose();
+            }
         }
-        foreach (MultiTextureMeshRef meshRef in InvMeshes.Values)
+        if (InvMeshes != null)
         {
-            meshRef.Dispose();
+            foreach (MultiTextureMeshRef meshRef in InvMeshes.Values)
+            {
+                meshRef?.Dispose();
+            }
         }
         ObjectCacheUtil.Delete(api, cacheKeyItemBannerPatternMeshesInv);
     }
