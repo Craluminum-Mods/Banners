@@ -473,6 +473,7 @@ public class BlockBanner : Block, IContainedMeshSource, IAttachableToEntity, IWe
     string[] IAttachableToEntity.GetDisableElements(ItemStack stack) => stack?.Collectible?.Attributes?["disableElements"]?.AsArray<string>();
     string[] IAttachableToEntity.GetKeepElements(ItemStack stack) => null;
     string IAttachableToEntity.GetTexturePrefixCode(ItemStack stack) => GetMeshCacheKey(stack);
+    int IAttachableToEntity.RequiresBehindSlots { get; set; }
 
     Shape IWearableShapeSupplier.GetShape(ItemStack stack, Entity forEntity, string texturePrefixCode)
     {
