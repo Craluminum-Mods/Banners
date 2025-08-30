@@ -3,6 +3,6 @@
         "op": "addeach",
         "path": "/behaviorConfigs/rideableaccessories/wearableSlots/4/forCategoryCodes/-",
         "value": ["banner"],
-        "file": "game:entities/land/hooved/elk-tamed.json"
+        "file": "game:entities/animal/mammal/hooved/elk-tamed.json"
     }
 ]
