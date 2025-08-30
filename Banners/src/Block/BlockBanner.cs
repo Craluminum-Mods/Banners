@@ -12,7 +12,7 @@ using Vintagestory.GameContent;
 
 namespace Flags;
 
-public class BlockBanner : Block, IContainedMeshSource, IAttachableToEntity, IWearableShapeSupplier
+public class BlockBanner : Block, IContainedMeshSource, IAttachableToEntity, IWearableShapeSupplier, IBannerExtraThings
 {
     public List<string> PatternGroups { get; protected set; } = new();
 
@@ -387,7 +387,8 @@ public class BlockBanner : Block, IContainedMeshSource, IAttachableToEntity, IWe
 
     public ITexPositionSource HandleTextures(BannerProperties properties, ICoreAPI api, Shape shape, string filenameForLogging = "")
     {
-        ShapeTextureSource texSource = new ShapeTextureSource(api as ICoreClientAPI, shape, filenameForLogging);
+        ICoreClientAPI capi = api as ICoreClientAPI;
+        UniversalShapeTextureSource texSource = new UniversalShapeTextureSource(capi, capi.BlockTextureAtlas, shape, filenameForLogging);
 
         foreach ((string textureCode, CompositeTexture texture) in CustomTextures)
         {

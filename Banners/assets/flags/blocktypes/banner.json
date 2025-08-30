@@ -23,7 +23,8 @@
             "boat-raft-bamboo": { "base": "flags:block/banner/attachabletoentity/raft-bamboo" },
             "boat-raft-*": { "base": "flags:block/banner/attachabletoentity/raft" },
             "boat-sailed-*": { "base": "flags:block/banner/attachabletoentity/sailed" },
-            "tameddeer-*": { "base": "flags:block/banner/attachabletoentity/elk-caparison2" }
+            "tameddeer-*": { "base": "flags:block/banner/attachabletoentity/elk-caparison2" },
+            "player": { "base": "flags:block/banner/attachabletoentity/seraph-neck" }
         },
 
         "disableElements": ["Neck2ORIGIN", "neck1ORIGIN"],

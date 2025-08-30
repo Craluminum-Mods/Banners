@@ -9,12 +9,10 @@ using Vintagestory.API.Util;
 
 namespace Flags;
 
-public class BlockBehaviorBannerToolModes : BlockBehavior
+public class CollectibleBehaviorToolModes(CollectibleObject collObj) : CollectibleBehavior(collObj)
 {
     public List<BannerToolMode> ToolModes { get; protected set; } = new();
     public List<LoadedTexture> GetCachedTextures(ICoreAPI api) => ObjectCacheUtil.GetOrCreate(api, cacheKeyBannerToolModeTextures, () => new List<LoadedTexture>(ToolModes?.Count ?? 0));
-
-    public BlockBehaviorBannerToolModes(Block block) : base(block) { }
 
     public override void Initialize(JsonObject properties)
     {

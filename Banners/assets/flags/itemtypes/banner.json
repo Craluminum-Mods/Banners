@@ -1,0 +1,31 @@
+{
+    "code": "banner",
+    "class": "Flags.ItemBanner",
+    "storageFlags": 128,
+    "attributes": {
+        "ownBlock": { "type": "block", "code": "flags:banner" },
+        "clothescategory": "neck",
+        "wearableAttachment": true
+    },
+    "renderAlphaTest": 0.25,
+    "textures": {
+        "seraph": { "base": "game:block/transparent" }
+    },
+    "maxStackSize": 16,
+    "guiTransform": {
+        "translation": { "x": 0, "y": 0, "z": 0 },
+        "rotation": { "x": -4, "y": -89, "z": 166 },
+        "origin": { "x": 0.5, "y": 0.6, "z": 0.5 },
+        "scaleXyz": { "x": -0.85, "y": 0.85, "z": 0.85 }
+    },
+    "tpHandTransform": {
+        "translation": { "x": -1.555, "y": -2.9, "z": -1.5 },
+        "rotation": { "x": 0, "y": 0, "z": 0 }
+    },
+    "groundTransform": {
+        "translation": { "x": 0, "y": 0, "z": 0 },
+        "rotation": { "x": -90, "y": 0, "z": 0 },
+        "origin": { "x": 0, "y": 0, "z": 0 },
+        "scale": 5
+    }
+}

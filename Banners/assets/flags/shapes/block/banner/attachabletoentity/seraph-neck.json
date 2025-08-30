@@ -1,0 +1,55 @@
+{
+	"editor": {
+		"backDropShape": "entity/humanoid/seraph",
+		"collapsedPaths": ",Root/ORIGINmid,Root/neck1ORIGIN,Root/ORIGINhead,Root/Rump,Root/HEADORIGIN,Root/Bardneck1ORIGIN,Root/Hood,Root/Neck2ORIGIN,Root/Hood2",
+		"allAngles": true,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+		"botsymbol": [16,16],
+		"topsymbol": [16,16]
+	},
+	"textures": {
+		"botsymbol": "block/cloth/banner/hansa/ship-bottom",
+		"topsymbol": "block/cloth/banner/hansa/ship-top"
+	},
+	"elements": [
+		{
+			"name": "ORIGIN",
+			"stepParentName": "Neck",
+			"from": [ 1.0, -1.5, 13.5 ],
+			"to": [ 1.0, -1.5, 13.5 ],
+			"rotationOrigin": [ 1.0, -1.5, 13.5 ],
+			"faces": {
+			},
+			"children": [
+				{
+					"name": "banner top",
+					"from": [ -5.61, -12.51, -11.68 ],
+					"to": [ 10.39, 3.49, -11.48 ],
+					"renderPass": 2,
+					"rotationOrigin": [ 2.75, 3.37, -11.6761 ],
+					"rotationY": -90.0,
+					"faces": {
+						"north": { "texture": "#topsymbol", "uv": [ 16.0, 0.0, 0.0, 16.0 ], "autoUv": false, "windMode": [9,-1,-1,9], "windData": [0,1,1,0] },
+						"south": { "texture": "#topsymbol", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "windMode": [9,9,-1,-1], "windData": [1,1,2,2] }
+					},
+					"children": [
+						{
+							"name": "banner bottom",
+							"from": [ 0.0, -16.0, 0.0 ],
+							"to": [ 16.0, 0.0, 0.2 ],
+							"renderPass": 2,
+							"rotationOrigin": [ 0.0, -16.0, 0.0 ],
+							"faces": {
+								"north": { "texture": "#botsymbol", "uv": [ 16.0, 0.0, 0.0, 16.0 ], "autoUv": false, "windMode": [9,9,9,9], "windData": [0,1,1,0] },
+								"south": { "texture": "#botsymbol", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "windMode": [9,9,9,9], "windData": [0,0,1,1] }
+							}
+						}
+					]
+				}
+			]
+		}
+	]}

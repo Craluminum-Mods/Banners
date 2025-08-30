@@ -1,4 +1,5 @@
 global using static Flags.Constants;
+using Banners;
 using System.Linq;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
@@ -15,11 +16,11 @@ public class Core : ModSystem
         api.RegisterBlockClass("Flags.BlockBanner", typeof(BlockBanner));
         api.RegisterBlockEntityClass("Flags.Banner", typeof(BlockEntityBanner));
         api.RegisterItemClass("Flags.ItemBannerPattern", typeof(ItemBannerPattern));
+        api.RegisterItemClass("Flags.ItemBanner", typeof(ItemBanner));
 
         api.RegisterBlockBehaviorClass("Flags.BannerName", typeof(BlockBehaviorBannerName));
         api.RegisterBlockBehaviorClass("Flags.BannerInteractions", typeof(BlockBehaviorBannerInteractions));
         api.RegisterBlockBehaviorClass("Flags.BannerContainableInteractions", typeof(BlockBehaviorBannerContainableInteractions));
-        api.RegisterBlockBehaviorClass("Flags.BannerToolModes", typeof(BlockBehaviorBannerToolModes));
 
         api.RegisterBlockEntityBehaviorClass("Flags.Banner.Rotatable", typeof(BEBehaviorRotatableBanner));
         api.RegisterBlockEntityBehaviorClass("Flags.Banner.WrenchOrientable", typeof(BEBehaviorWrenchOrientableBanner));
@@ -28,6 +29,7 @@ public class Core : ModSystem
         api.RegisterCollectibleBehaviorClass("Flags.BannerPatternDescription", typeof(CollectibleBehaviorBannerPatternDescription));
         api.RegisterCollectibleBehaviorClass("Flags.BannerPatternToolModes", typeof(CollectibleBehaviorBannerPatternToolModes));
         api.RegisterCollectibleBehaviorClass("Flags.BannerLiquidDescription", typeof(CollectibleBehaviorBannerLiquidDescription));
+        api.RegisterCollectibleBehaviorClass("Flags.BannerToolModes", typeof(CollectibleBehaviorToolModes));
 
         api.RegisterCollectibleBehaviorClass("Flags.CutoutTool", typeof(CollectibleBehaviorCutoutTool));
         api.RegisterCollectibleBehaviorClass("Flags.RenameTool", typeof(CollectibleBehaviorRenameTool));

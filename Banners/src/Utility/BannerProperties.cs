@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Vintagestory.API.Client;
@@ -65,7 +64,8 @@ public class BannerProperties
 
     public static BannerProperties FromStack(ItemStack stack)
     {
-        return new BannerProperties().FromTreeAttribute(stack.Attributes, defaultType: (stack.Collectible as BlockBanner).DefaultPlacement);
+        IBannerExtraThings extra = stack?.Collectible?.GetCollectibleInterface<IBannerExtraThings>();
+        return new BannerProperties().FromTreeAttribute(stack.Attributes, defaultType: extra?.DefaultPlacement);
     }
 
     public void ToStack(ItemStack stack)
@@ -75,11 +75,12 @@ public class BannerProperties
 
     public bool CopyFrom(ItemStack fromStack, bool copyLayers = false, bool copyCutouts = false)
     {
+        IBannerExtraThings extra = fromStack?.Collectible?.GetCollectibleInterface<IBannerExtraThings>();
         if (copyLayers && Patterns.CanCopyFrom(fromStack))
         {
             Patterns.CopyFrom(fromStack);
             if (copyCutouts) Cutouts.CopyFrom(fromStack);
-            FromTreeAttribute(fromStack.Attributes, defaultType: (fromStack.Collectible as BlockBanner).DefaultPlacement);
+            FromTreeAttribute(fromStack.Attributes, defaultType: extra?.DefaultPlacement);
             return true;
         }
         return false;

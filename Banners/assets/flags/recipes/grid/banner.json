@@ -9,5 +9,25 @@
         "width": 1,
         "height": 3,
         "output": { "type": "block", "code": "flags:banner", "attributes": { "banner": { "layers": { "0-b": "{color}" } } } }
+    },
+    {
+        "ingredientPattern": "A",
+        "ingredients": {
+            "A": { "type": "block", "code": "flags:banner" }
+        },
+        "width": 1,
+        "height": 1,
+        "copyAttributesFrom": "A",
+        "output": { "type": "item", "code": "flags:banner" }
+    },
+    {
+        "ingredientPattern": "A",
+        "ingredients": {
+            "A": { "type": "item", "code": "flags:banner" }
+        },
+        "width": 1,
+        "height": 1,
+        "copyAttributesFrom": "A",
+        "output": { "type": "block", "code": "flags:banner" }
     }
 ]
