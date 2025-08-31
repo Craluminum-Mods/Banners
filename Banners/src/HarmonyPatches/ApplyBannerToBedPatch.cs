@@ -24,14 +24,3 @@ public static class ApplyBannerToBedPatch
         return true;
     }
 }
-
-[HarmonyPatch(typeof(ItemSlotWearable), nameof(ItemSlotWearable.IsDressType))]
-public static class IsDressTypePatch
-{
-    [HarmonyPrefix]
-    public static bool Prefix(ItemSlotWearable __instance, ref bool __result, ItemStack itemstack, string[] slotWearableCodes)
-    {
-        _ = 1;
-        return true;
-    }
-}

@@ -12,7 +12,7 @@ using Vintagestory.GameContent;
 
 namespace Flags;
 
-public class BlockBanner : Block, IContainedMeshSource, IAttachableToEntity, IWearableShapeSupplier, IBannerExtraThings
+public class BlockBanner : Block, IContainedMeshSource, IAttachableToEntity, IWearableShapeSupplier, IBannerExtraThings, IHandBookPageCodeProvider
 {
     public List<string> PatternGroups { get; protected set; } = new();
 
@@ -500,5 +500,29 @@ public class BlockBanner : Block, IContainedMeshSource, IAttachableToEntity, IWe
         api.Logger.Error("[Flags] No matching shape found for block {0} for type {1}", Code, properties.Placement);
         Shape _shape = api.Assets.TryGet(Shape.Base)?.ToObject<Shape>();
         return _shape.RemoveWindData();
+    }
+
+    string IHandBookPageCodeProvider.HandbookPageCodeForStack(IWorldAccessor world, ItemStack stack)
+    {
+        ItemStack newStack = stack.Clone();
+
+        newStack.Attributes.GetTreeAttribute(attributeBanner)?.RemoveAttribute(attributeName);
+        newStack.Attributes.GetTreeAttribute(attributeBanner)?.RemoveAttribute(attributeCutouts);
+        newStack.Attributes.RemoveAttribute(attributeRotX);
+        newStack.Attributes.RemoveAttribute(attributeRotY);
+        newStack.Attributes.RemoveAttribute(attributeRotZ);
+        newStack.Attributes.RemoveAttribute("editmode");
+
+        BannerProperties fromProps = BannerProperties.FromStack(newStack);
+        if (fromProps.Patterns.Count <= 1)
+        {
+            return GuiHandbookItemStackPage.PageCodeForStack(newStack);
+        }
+
+        while (fromProps.Patterns.TryRemoveLast()) { }
+        newStack.Attributes.GetTreeAttribute(attributeBanner)?.RemoveAttribute(attributeLayers);
+        fromProps.Patterns.ToTreeAttribute(newStack.Attributes.GetTreeAttribute(attributeBanner));
+
+        return GuiHandbookItemStackPage.PageCodeForStack(newStack);
     }
 }
