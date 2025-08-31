@@ -9,7 +9,9 @@
     },
     "renderAlphaTest": 0.25,
     "textures": {
-        "seraph": { "base": "game:block/transparent" }
+        "seraph": { "base": "game:block/transparent" },
+        "neck": { "base": "game:block/cloth/linen/gray" },
+        "brooch": { "base": "game:block/metal/plate/steel" }
     },
     "maxStackSize": 16,
     "guiTransform": {
