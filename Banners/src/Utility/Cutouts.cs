@@ -102,4 +102,17 @@ public class Cutouts
         }
         return result.ToString();
     }
+
+    /// <summary>
+    /// For rendering
+    /// </summary>
+    public string ToCompactString()
+    {
+        StringBuilder result = new StringBuilder();
+        if (Elements.Any())
+        {
+            result.Append(string.Join('-', Elements));
+        }
+        return result.ToString();
+    }
 }
