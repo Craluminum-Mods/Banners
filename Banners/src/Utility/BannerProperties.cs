@@ -122,19 +122,26 @@ public class BannerProperties
     {
         StringBuilder result = new StringBuilder();
         result.Append(Name);
-        result.Append('-');
+        result.Append("--");
         result.Append(Placement);
-        result.Append('-');
+        result.Append("--");
         result.Append(Patterns.ToString());
-        result.Append('-');
+        result.Append("--");
         result.Append(Cutouts.ToString());
         return result.ToString();
     }
 
+    /// <summary>
+    /// For rendering
+    /// </summary>
     public string ToCompactString()
     {
         StringBuilder result = new StringBuilder();
+        result.Append(Placement);
+        result.Append("--");
         result.Append(Patterns.ToCompactString());
+        result.Append("--");
+        result.Append(Cutouts.ToCompactString());
         return result.ToString();
     }
 }

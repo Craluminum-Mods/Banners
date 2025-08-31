@@ -139,6 +139,9 @@ public class Patterns
         return result.ToString();
     }
 
+    /// <summary>
+    /// For rendering
+    /// </summary>
     public string ToCompactString()
     {
         StringBuilder result = new StringBuilder();
