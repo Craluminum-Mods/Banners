@@ -22,6 +22,7 @@ public class BEBehaviorBannerContainable : BlockEntityBehavior, IBlockEntityCont
 
     public IInventory Inventory => inv;
     public string InventoryClassName => bannerContainableInvClassName;
+    public void CheckInventoryClearedMidTick() { }
 
     public BEBehaviorBannerContainable(BlockEntity blockentity) : base(blockentity)
     {
